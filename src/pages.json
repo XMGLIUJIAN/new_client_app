@@ -1,0 +1,631 @@
+{
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "Beranda"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/run/run",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "Manage"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/activity/activity",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "Aktivitas"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/team/team",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "Tim"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/user/user",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "Akun"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/exchange/exchange",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "TUKAR"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/points/points",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "POIN"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/trade/trade",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "TRANSAKSI"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/recharge/recharge",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "DEPOSIT"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/withdrawal/withdrawal",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "PENARIKAN"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/feedback/feedback",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "FEEDBACK"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/about_us/about_us",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "TENTANG"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/as_us/as_us",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "ABOUT THE APP"
+				// #endif
+			}
+			
+		},
+		{
+			"path": "pages/user_set/user_set",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "ACCOUNT AND SECURITY"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/forget_pwd/forget_pwd",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "RECOVER YOUR PASSWORD"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/forget_payPwd/forget_payPwd",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "RECOVER YOUR PAYPASSWORD"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/change_password/change_password",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "ACCOUNT AND SECURITY"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/user_data/user_data",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "PERSONAL DATA"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/bind_mobile/bind_mobile",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "CHANGING YOUR PHONE"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/change_payPwd/change_payPwd",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "WITHDRAWAL PASSWORD"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/manage_bank/manage_bank",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "MANAGE BANK CARDS"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/bind_card/bind_card",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "BIND CARD NUMBER"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/select_bank/select_bank",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "PILIH BANK",
+				// #endif
+				"disableScroll": true
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "LOG IN"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/register/register",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "REGISTER"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/mine_detail/mine_detail",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "MINE DETAIL"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/points_investment/points_investment",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "POINTS INVESTMENT"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/user_rule/user_rule",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "RULES"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/activity_detail/activity_detail",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "EVENT INFORMATION"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/message/message",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "MESSAGE NOTIFICATION"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/message/detail",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "MESSAGE NOTIFICATION"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/message/parse",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "MESSAGE DETAILS"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/connection/connection",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "RELATIONSHIP LIST"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/rules/rules",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "RULES"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/invite/invite",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "INVITE FRIENDS"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/agreement/agreement",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "AGREEMENT"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/raffle/raffle",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "REFFLE"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/customer_service/customer_service",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "CUSTOMER SERVICE"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/investment/investment",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "RIWAYAT"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/investment_record/investment_record",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "RIWAYAT INVESTASI"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/newsCement/newsCement",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "RIWAYAT INVESTASI"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/release_info/release_info",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "RINCIAN PELEPASAN"
+				// #endif
+			}
+		},
+		{
+			"path": "pages/qualification/qualification",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "CEK KUALIFIKASI"
+				// #endif
+			}
+		},
+		{
+			"path": "uni_modules/vk-uview-ui/components/u-avatar-cropper/u-avatar-cropper",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "AVATAR CROPPER",
+				// #endif
+				"navigationBarBackgroundColor": "#000000"
+			}
+		}
+	],
+	"subPackages": [{
+		"root": "packages",
+		"pages": [{
+				"path": "pages/404/404",
+				"style": {
+					"navigationBarTitleText": "404"
+				},
+				"name": "404",
+				"meta": {
+					"white": true
+				}
+			}
+		]
+	}],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "Rice Rich",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF",
+		"h5": {
+			"navigationStyle": "custom"
+		}
+	},
+	"tabBar": {
+		"backgroundColor": "#FFFFFF",
+		"custom": true,
+		"iconWidth": "20px",
+		"list": [{
+				"iconPath": "static/images/tabbar/Home.png",
+				"selectedIconPath": "static/images/tabbar/Home_Act.png",
+				"pagePath": "pages/index/index",
+				"text": "Beranda"
+			},
+			{
+				"iconPath": "static/images/tabbar/Run.png",
+				"selectedIconPath": "static/images/tabbar/Run_Act.png",
+				"pagePath": "pages/run/run",
+				"text": "Manage"
+			},
+			{
+				"iconPath": "static/images/tabbar/Activity.png",
+				"selectedIconPath": "static/images/tabbar/Activity_Act.png",
+				"pagePath": "pages/activity/activity",
+				"text": "Aktivitas"
+			},
+			{
+				"iconPath": "static/images/tabbar/Team.png",
+				"selectedIconPath": "static/images/tabbar/Team_Act.png",
+				"pagePath": "pages/team/team",
+				"text": "Tim"
+			},
+			{
+				"iconPath": "static/images/tabbar/Mine.png",
+				"selectedIconPath": "static/images/tabbar/Mine_Act.png",
+				"pagePath": "pages/user/user",
+				"text": "Akun"
+			}
+		]
+	},
+	"easycom": {
+		"custom": {
+			"router-navigate": "uniapp-router-next/components/router-navigate/router-navigate.vue",
+			"^(?!z-paging-refresh|z-paging-load-more)z-paging(.*)": "z-paging/components/z-paging$1/z-paging$1.vue",
+			"^w-(.*)": "@/components/widgets/$1/$1.vue"
+		}
+	}
+}

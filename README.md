@@ -1,0 +1,20 @@
+# 11_client_app
+app客户端
+
+#签名证书
+client.keystore
+
+#证书别名
+clientalias
+
+#证书密钥
+XMGJIAN0804
+
+#证书库密码
+XMGJIAN0804
+
+#SHA1
+SHA1: 73:66:75:33:C8:0A:23:31:60:71:A0:BF:A8:DD:16:BB:8D:F1:13:B3
+
+#SHA256
+SHA256: 62:DE:3F:63:47:15:E8:2F:BA:C9:86:1E:0D:BB:7F:72:23:59:2C:48:5E:7D:04:B9:19:90:22:A1:39:17:B7:D3
