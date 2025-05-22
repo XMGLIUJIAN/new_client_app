@@ -1,7 +1,7 @@
 <template>
 	<u-popup v-model="show" mode="bottom" border-radius="28" :safe-area-inset-bottom="true">
 		<view class="download">
-			<u-image width="750" height="360" src="@/static/images/pageStyle/download_popup.png" alt="" />
+			<u-image width="750" height="360" src="@/static/images/page/download_popup.png" alt="" />
 			<view class="content">
 				<view class="download_row">
 					<u-image width="112" height="112" src="@/static/images/icon/download_icon01.png" alt="" />

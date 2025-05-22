@@ -7,7 +7,7 @@
 			<view class="point_con mb-[20rpx]">
 				<view class="point_label">
 					<view class="label_head">
-						<u-image width="48" height="48" src="@/static/images/pageStyle/Frame01.png"></u-image>
+						<u-image width="48" height="48" src="@/static/images/page/Frame01.png"></u-image>
 						<view class="label_title">PoinKu</view>
 					</view>
 					<view class="label_foot">
@@ -16,7 +16,7 @@
 				</view>
 				<view class="point_label">
 					<view class="label_head">
-						<u-image width="48" height="48" src="@/static/images/pageStyle/Frame02.png"></u-image>
+						<u-image width="48" height="48" src="@/static/images/page/Frame02.png"></u-image>
 						<view class="label_title">Dividen</view>
 					</view>
 					<view class="label_foot">
@@ -31,7 +31,7 @@
 			<view class="point_con">
 				<view class="point_label">
 					<view class="label_head">
-						<u-image width="48" height="48" src="@/static/images/pageStyle/Frame03.png"></u-image>
+						<u-image width="48" height="48" src="@/static/images/page/Frame03.png"></u-image>
 						<view class="label_title">Distribusi</view>
 					</view>
 					<view class="label_foot">
@@ -45,7 +45,7 @@
 				</view>
 				<view class="point_label">
 					<view class="label_head">
-						<u-image width="48" height="48" src="@/static/images/pageStyle/Frame04.png"></u-image>
+						<u-image width="48" height="48" src="@/static/images/page/Frame04.png"></u-image>
 						<view class="label_title">Komunitas</view>
 					</view>
 					<view class="label_foot">

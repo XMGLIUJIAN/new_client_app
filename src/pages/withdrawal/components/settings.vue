@@ -198,7 +198,7 @@
 		keywordShow.value = false
 	}
 	const payment = () => {
-		emitter.emit('gifType',{type: 1})
+		emitter.emit('gifType')
 		withdrawalAsync()
 	}
 	const withdrawalAsync = () => {

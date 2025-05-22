@@ -1,8 +1,8 @@
 <template>
-	<view class="notice-container mx-[40rpx] px-[20rpx] mt-[20rpx] mb-[20rpx]">
+	<view class="notice-container mx-[60rpx] px-[20rpx] mt-[180rpx]">
 		<view class="announcement">
 			<view class="announcement_icon">
-				<u-image width="60" height="60" src="@/static/images/user/notice.png" alt="" />
+				<u-image width="40" height="40" src="@/static/images/user/notice.png" alt="" />
 			</view>
 			<view class="announcement_text">
 				<view class="songName">
@@ -11,7 +11,6 @@
 					</view>
 				</view>
 			</view>
-			<u-icon name="arrow-right" color="#1E1E1E" size="26"></u-icon>
 		</view>
 	</view>
 </template>
@@ -139,10 +138,10 @@ import {
 
 <style lang="scss" scoped>
 	.notice-container {
-		padding: 20rpx;
-		background: #FFFFFF;
-		border-radius: 10rpx;
-
+		padding: 10rpx 30rpx;
+		background: #F1F1F1;
+		border-top-left-radius: 18rpx;
+		border-top-right-radius: 18rpx;
 		.announcement {
 			display: flex;
 			justify-content: flex-start;
@@ -158,11 +157,11 @@ import {
 					justify-content: flex-start;
 					width: 450rpx;
 					padding-left: 40rpx;
-					font-size: 28rpx;
-					height: 48rpx;
-					color: #1E1E1E;
+					font-size: 16rpx;
+					height: 40rpx;
+					color: #1E4B2E;
 					font-weight: 500;
-					line-height: 48rpx;
+					line-height: 40rpx;
 					overflow: hidden;
 					position: relative;
 
@@ -170,15 +169,6 @@ import {
 						position: absolute;
 						white-space: nowrap;
 						will-change: transform;
-						
-						.price {
-							margin-left: 5rpx;
-							font-size: 28rpx;
-							height: 48rpx;
-							color: #EF0000;
-							font-weight: 500;
-							line-height: 48rpx;
-						}
 					}
 				}
 			}

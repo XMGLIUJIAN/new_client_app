@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="imageGroup">
-			<u-image width="750" height="498" src="@/static/images/pageStyle/imageGroupFour.png"></u-image>
+			<u-image width="750" height="475" src="@/static/images/page/pageGroup.png"></u-image>
 		</view>
 		<view class="points pb-[40rpx]">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
@@ -156,7 +156,7 @@
 		if (!formData.exchange_amount) return toast('Silakan masukkan jumlah pertukaran')
 		if (formData.exchange_amount < rateInfo.value.min_amount) return toast('Tidak bisa kurang dari jumlah pertukaran minimum')
 		if (formData.exchange_amount > rateInfo.value.max_amount || rateInfo.value.max_amount == -1) return toast('Tidak bisa lebih besar dari jumlah pertukaran maksimum')
-		emitter.emit('gifType',{type: 1})
+		emitter.emit('gifType')
 		currencyConversionAsync()
 	}
 	const currencyConversionAsync = () => {

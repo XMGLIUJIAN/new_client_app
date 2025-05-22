@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="imageGroup">
-			<u-image width="750" height="612" src="@/static/images/pageStyle/imageGroupFirst.png"></u-image>
+			<u-image width="750" height="612" src="@/static/images/page/imageGroupFirst.png"></u-image>
 		</view>
 		<view class="register">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
@@ -222,7 +222,7 @@
 	}
 	const contactService = () => {
 		getInfo()
-		emitter.emit('gifType',{type: 1})
+		emitter.emit('gifType')
 		setTimeout(()=>{
 			contactShow.value = true
 		},3000)
@@ -238,7 +238,7 @@
 	}
 
 	const loginFun = async () => {
-		emitter.emit('gifType',{type: 1})
+		emitter.emit('gifType')
 		try {
 			const data = await login({ scene: 1, account: formData.mobile, password: formData.password ,registerMac: formData.registerMac })
 			loginHandle(data)

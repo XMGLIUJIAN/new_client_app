@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="imageGroup">
-			<u-image width="750" height="498" src="@/static/images/pageStyle/imageGroupSeventh.png"></u-image>
+			<u-image width="750" height="475" src="@/static/images/page/pageGroup.png"></u-image>
 		</view>
 		<view class="inactive">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
@@ -45,7 +45,7 @@
 						</view>
 						<view class="inactive_line"></view>
 						<view class="card_invite">
-							<view class="code_title">Kode Referralï¼š</view>
+							<view class="code_title">Kode Referralï¼/view>
 							<view class="code_text">{{userInfo.invite_code}}</view>
 						</view>
 						<view class="card_link">Salin & Bagikan Tautan</view>
@@ -62,7 +62,7 @@
 			<toastPopup></toastPopup>
 		</view>
 		<view class="bottom_Group">
-			<u-image width="750" height="185" src="@/static/images/pageStyle/extend_bot.png"></u-image>
+			<u-image width="750" height="185" src="@/static/images/page/extend_bot.png"></u-image>
 		</view>
 	</view>
 </template>

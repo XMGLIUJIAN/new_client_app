@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="imageGroup">
-			<u-image width="750" height="612" src="@/static/images/pageStyle/imageGroupFirst.png"></u-image>
+			<u-image width="750" height="612" src="@/static/images/page/imageGroupFirst.png"></u-image>
 		</view>
 		<view class="login">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
@@ -224,7 +224,7 @@
 	}
 	const contactService = () => {
 		getInfo()
-		emitter.emit('gifType',{type: 1})
+		emitter.emit('gifType')
 		setTimeout(()=>{
 			contactShow.value = true
 		},3000)
@@ -291,7 +291,7 @@
 		const system = getDeviceInfo()
 		formData.loginMac = system.deviceId //获取设备唯一标识码
 		uCodeRef.value?.reset()
-		emitter.emit('gifType',{type: 1})
+		emitter.emit('gifType')
 		loginAsync()
 	}
 	const toast = (message : any = '') => {
@@ -352,7 +352,7 @@
 			showModel.value = true
 			return
 		}
-		emitter.emit('gifType',{type: 1})
+		emitter.emit('gifType')
 		wxloginAsync()
 	}
 	const wxloginAsync = () => {
@@ -434,7 +434,7 @@
 		const options = wechatOa.getAuthData()
 		try {
 			if (options.code && options.scene === UrlScene.LOGIN) {
-				emitter.emit('gifType',{type: 1})
+				emitter.emit('gifType')
 				oaLoginAsync(options)
 			}
 		} catch (error) {

@@ -119,7 +119,7 @@
 		prizeShow.value = false
 	}
 	const prizeEvent = () => {
-		emitter.emit('gifType', { type: 1})
+		emitter.emit('gifType')
 		logArrShow.value = true
 	}
 	const getluckUser = async () => {
@@ -178,7 +178,7 @@
 	}
 	// 获取奖品数据
 	const getPrizeList = () => {
-		emitter.emit('gifType', { type: 1 })
+		emitter.emit('gifType')
 		getPrizeListAsync()
 	}
 	// 本地获取中奖下标

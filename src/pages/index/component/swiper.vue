@@ -1,7 +1,7 @@
 <template>
 	<view class="content mx-[40rpx] mt-[20rpx] mb-[20rpx] pt-[20rpx] pb-[20rpx]">
 		<view class="swiper_head mb-[10rpx]">
-			<u-image width="57" height="57" src="@/static/images/pageStyle/ellipse.png" />
+			<u-image width="57" height="57" src="@/static/images/page/ellipse.png" />
 			<view class="swiper_title">Pilihan Sawah</view>
 		</view>
 		<view class="scroll-box mx-[20rpx]">

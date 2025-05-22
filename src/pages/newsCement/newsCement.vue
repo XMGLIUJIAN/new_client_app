@@ -32,7 +32,7 @@
 	}
 	const contactService = () => {
 		getInfo()
-		emitter.emit('gifType',{type: 1})
+		emitter.emit('gifType')
 		setTimeout(()=>{
 			contactShow.value = true
 		},3000)

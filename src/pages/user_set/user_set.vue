@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="imageGroup">
-			<u-image width="750" height="498" src="@/static/images/pageStyle/imageGroupFive.png"></u-image>
+			<u-image width="750" height="475" src="@/static/images/page/pageGroup.png"></u-image>
 		</view>
 		<view class="user-set">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
@@ -108,7 +108,7 @@
 	const bindWechat = async () => {
 		if (userInfo.value.is_auth) return
 		try {
-			emitter.emit('gifType',{type: 1})
+			emitter.emit('gifType')
 			// #ifdef MP-WEIXIN
 			const { code } : any = await uni.login({
 				provider: 'weixin'
@@ -138,7 +138,7 @@
 		const code = options.code
 		if (!isWeixin.value) return
 		if (code) {
-			emitter.emit('gifType',{type: 1})
+			emitter.emit('gifType')
 			try {
 				await oaAuthBind({ code })
 				await userStore.getUser()
