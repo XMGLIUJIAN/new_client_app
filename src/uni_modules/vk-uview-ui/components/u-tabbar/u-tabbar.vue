@@ -115,12 +115,12 @@ export default {
 		// 激活时的演示，包括字体图标，提示文字等的演示
 		activeColor: {
 			type: String,
-			default: "#303133"
+			default: "#1E4B2E"
 		},
 		// 未激活时的颜色
 		inactiveColor: {
 			type: String,
-			default: "#606266"
+			default: "#D7D7D7"
 		},
 		// 是否显示中部的凸起按钮
 		midButton: {

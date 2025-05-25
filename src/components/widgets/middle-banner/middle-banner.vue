@@ -1,11 +1,11 @@
 <template>
     <view
-        class="banner h-[200rpx] mx-[40rpx] mt-[20rpx] translate-y-0"
+        class="banner h-[220rpx] mx-[30rpx] mt-[20rpx] translate-y-0"
         v-if="showList.length && content.enabled"
     >
         <swiper
             class="swiper h-full"
-            :indicator-dots="showList.length > 1"
+            :indicator-dots="false"
             indicator-active-color="#FFFFFF"
             :autoplay="true"
         >

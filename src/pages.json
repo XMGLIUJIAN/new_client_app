@@ -8,21 +8,10 @@
 				// #ifdef H5
 				"navigationBarTitleText": "Beranda"
 				// #endif
-			}
-		},
-		{
-			"path": "pages/run/run",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "Manage"
-				// #endif
 			},
-			"meta": {
-				"auth": true
-			}
+			// "meta": {
+			// 	"auth": true
+			// }
 		},
 		{
 			"path": "pages/activity/activity",
@@ -33,6 +22,9 @@
 				// #ifdef H5
 				"navigationBarTitleText": "Aktivitas"
 				// #endif
+			},
+			"meta": {
+				"auth": true
 			}
 		},
 		{
@@ -58,6 +50,9 @@
 				// #ifdef H5
 				"navigationBarTitleText": "Akun"
 				// #endif
+			},
+			"meta": {
+				"auth": true
 			}
 		},
 		{
@@ -124,20 +119,6 @@
 				// #endif
 				// #ifdef H5
 				"navigationBarTitleText": "PENARIKAN"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/feedback/feedback",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "FEEDBACK"
 				// #endif
 			},
 			"meta": {
@@ -587,6 +568,9 @@
 	},
 	"tabBar": {
 		"backgroundColor": "#FFFFFF",
+		"selectedColor": "#1E4B2E",
+		"color": "#D7D7D7",
+		"borderStyle": "white",
 		"custom": true,
 		"iconWidth": "20px",
 		"list": [{
@@ -594,12 +578,6 @@
 				"selectedIconPath": "static/images/tabbar/Home_Act.png",
 				"pagePath": "pages/index/index",
 				"text": "Beranda"
-			},
-			{
-				"iconPath": "static/images/tabbar/Run.png",
-				"selectedIconPath": "static/images/tabbar/Run_Act.png",
-				"pagePath": "pages/run/run",
-				"text": "Manage"
 			},
 			{
 				"iconPath": "static/images/tabbar/Activity.png",

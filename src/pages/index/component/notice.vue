@@ -1,8 +1,9 @@
 <template>
-	<view class="notice-container mx-[60rpx] px-[20rpx] mt-[180rpx]">
+	<view class="notice-container mx-[50rpx] px-[20rpx] mt-[180rpx]">
 		<view class="announcement">
 			<view class="announcement_icon">
-				<u-image width="40" height="40" src="@/static/images/user/notice.png" alt="" />
+				<u-image width="36" height="36" src="@/static/images/user/notice.png" alt="" />
+				<view class="announcement_title">Siaran Sistem</view>
 			</view>
 			<view class="announcement_text">
 				<view class="songName">
@@ -89,7 +90,7 @@ import {
 		const startPosition = containerWidth.value // 初始位置（右侧外部
 		const endPosition = -contentWidth.value// 结束位置（左侧外部）
 		const totalDistance = startPosition - endPosition
-		const speed = 40 // 像素/秒
+		const speed = 20 // 像素/秒
 		const duration = (totalDistance / speed) * 1000 // 总持续时间（毫秒）
 
 		let startTime = null
@@ -138,7 +139,7 @@ import {
 
 <style lang="scss" scoped>
 	.notice-container {
-		padding: 10rpx 30rpx;
+		padding: 10rpx 20rpx;
 		background: #F1F1F1;
 		border-top-left-radius: 18rpx;
 		border-top-right-radius: 18rpx;
@@ -146,18 +147,28 @@ import {
 			display: flex;
 			justify-content: flex-start;
 			align-items: center;
-
+			.announcement_icon{
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				.announcement_title{
+					margin-left: 10rpx;
+					padding-right: 20rpx;
+					font-family: Arial;
+					font-weight: 400;
+					font-size: 24rpx;
+					line-height: 28rpx;
+					color: #1E4B2E;
+					border-right: 2rpx solid #1E4B2E;
+				}
+			}
 			.announcement_text {
 				display: flex;
-				margin: 0 20rpx;
-				padding: 0 20rpx;
-
 				.songName {
 					display: flex;
 					justify-content: flex-start;
-					width: 450rpx;
-					padding-left: 40rpx;
-					font-size: 16rpx;
+					width: 350rpx;
+					font-size: 22rpx;
 					height: 40rpx;
 					color: #1E4B2E;
 					font-weight: 500;

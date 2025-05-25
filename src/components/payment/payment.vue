@@ -187,7 +187,7 @@
 
 		// 调用预支付
 		const prepayTask = () => {
-			emitter.emit('gifType',{type: 1})
+			emitter.emit('gifType')
 			setTimeout(async () => {
 				const data = await prepay({
 					order_id: props.orderId,

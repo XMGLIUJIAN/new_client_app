@@ -1,34 +1,38 @@
 <template>
-    <div class="relative mx-[40rpx]">
-        <swiper
-            class="py-[40rpx] rounded-lg"
-            :style="{
-                height: navList[0].length > content.per_line ? '288rpx' : '132rpx'
-            }"
-            :autoplay="false"
-            :indicator-dots="false"
-            @change="swiperChange"
-        >
-            <swiper-item v-for="(sItem, sIndex) in navList" :key="sIndex">
-                <view class="nav" v-if="navList.length && content.enabled">
-                    <view
-                        class="grid grid-rows-auto gap-y-3 w-full"
-                        :style="{ 'grid-template-columns': `repeat(${content.per_line}, 1fr)` }"
-                    >
-                        <view
-                            v-for="(item, index) in sItem"
-                            :key="index"
-                            class="flex flex-col items-center"
-                            @click="handleClick(item.link)"
-                        >
-                            <u-image width="82" height="82" :src="getImageUrl(item.image)" alt=""/>
-                            <view class="iconText mt-[14rpx] text-white">{{ item.name }}</view>
-                        </view>
-                    </view>
-                </view>
-            </swiper-item>
-        </swiper>
-    </div>
+	<view class="container mb-[20rpx] mx-[30rpx]">
+		<view class="relative">
+		    <swiper
+		        class="py-[30rpx] px-[40rpx] h-full"
+		        :style="{
+		            height: navList[0].length > content.per_line ? '288rpx' : '132rpx'
+		        }"
+		        :autoplay="false"
+		       :indicator-dots="navList.length > 1" 
+			   indicator-active-color="#1E4B2E"
+			   indicator-color="#F1F1F1"
+		        @change="swiperChange"
+		    >
+		        <swiper-item v-for="(sItem, sIndex) in navList" :key="sIndex">
+		            <view class="nav" v-if="navList.length && content.enabled">
+		                <view
+		                    class="grid grid-rows-auto gap-y-3 w-full"
+		                    :style="{ 'grid-template-columns': `repeat(${content.per_line}, 1fr)` }"
+		                >
+		                    <view
+		                        v-for="(item, index) in sItem"
+		                        :key="index"
+		                        class="flex flex-col items-center navItem"
+		                        @click="handleClick(item.link)"
+		                    >
+		                        <u-image width="44" height="44" :src="getImageUrl(item.image)" alt=""/>
+		                        <view class="iconText mt-[14rpx] text-white">{{ item.name }}</view>
+		                    </view>
+		                </view>
+		            </view>
+		        </swiper-item>
+		    </swiper>
+		</view>
+	</view>
 </template>
 
 <script setup lang="ts">
@@ -84,11 +88,31 @@ const swiperChange = (e: any) => {
 }
 </script>
 <style lang="scss" scoped>
+	.container{
+		background: #FFFFFF;
+		border-radius: 12rpx;
+		.navItem{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 180rpx;
+			height: 115rpx;
+			border-radius: 8rpx;
+			background: #F1F1F1;
+		}
+	}
 	.iconText{
 		font-family:  Arial;
-		font-size: 26rpx;
+		font-size: 18rpx;
 		font-weight: 400;
 		text-align: center;
-		color: #FFFFFF;
+		color: #1E1E1E;
+	}
+	::v-deep .uni-swiper-dots-horizontal{
+		bottom: 0;
+	}
+	::v-deep .uni-swiper-dot-active{
+		width: 40rpx;
+		border-radius: 4rpx;
 	}
 </style>

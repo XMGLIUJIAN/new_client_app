@@ -1,120 +1,75 @@
 <template>
 	<view class="user-info">
 		<u-sticky h5-nav-height="0" bg-color="transparent">
-			<u-navbar :is-back="false" :is-fixed="false" :custom-title="metaData.title_type == 2" :border-bottom="false"
-				:title-bold="true" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
-				title-color="#1E1E1E">
-				<view class="slot-wrap" :style="{ justifyContent: isLogin?'space-between':'center'}">
-					<u-image v-if="isLogin" @tap="refreshCode" width="60" height="60"
-						src="@/static/images/user/extend_icon.png" alt="" />
-					<view class="title">
-						AKUN
+			<u-navbar :is-back="false" :is-fixed="false" :border-bottom="false" :title-bold="true"
+				:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
+				:title-color="scrollTop ? '#1E1E1E':'#FFFFFF'" title="AKUN">
+				<template #right>
+					<view class="slot-wrap">
+						<u-image width="40" height="40" src="@/static/images/user/icon_service.png" alt="" />
 					</view>
-					<u-image @tap="navigateAuth('/pages/message/message')" v-if="isLogin && !badge" width="60" height="60" src="@/static/images/user/message_icon.png" alt="" />
-					<u-image @tap="navigateAuth('/pages/message/message')" v-if="isLogin && badge" width="60" height="60" src="@/static/images/user/message.png" alt="" />
-				</view>
+				</template>
 			</u-navbar>
 		</u-sticky>
-		<view class="flex items-center justify-between px-[40rpx] pb-[40rpx] pt-[40rpx]">
-			<view v-if="isLogin" class="flex items-center" @click="navigateAuth('/pages/user_data/user_data')">
-				<u-avatar :src="user.avatar" :size="120"></u-avatar>
-				<view class="text-white ml-[20rpx]">
-					<view class="text-2xl userInfo">
-						<view class="nickname">{{ user.nickname }}</view>
-						<u-image v-if="isLogin" width="40" height="40" src="@/static/images/user/user_data.png"
-							alt="" />
+		<view class="point_card mx-[30rpx] mt-[20rpx] mb-[20rpx]">
+			<u-image width="690" height="360" src="@/static/images/user/mineGroup.png" alt="" />
+			<view class="user_card">
+				<view class="user_card_head">
+					<view class="card_head_info">
+						<view class="card_head_title">Saldo Poin</view>
+						<u-image width="24" height="24" src="@/static/images/user/icon_lock.png" alt="" />
 					</view>
-					<view class="text-xs mt-[18rpx] account" @click.stop="copy(user.account)">
-						Akun ID：{{ user.account }}
+					<view class="card_head_phone">ID:08888811111</view>
+				</view>
+				<view class="user_card_info">
+					<view class="user_card_poin">Poin 200.000.000</view>
+					<view class="user_card_saldo">Saldo Pengguna Rp 9.999.999.999</view>
+				</view>
+				<view class="user_card_line"></view>
+				<view class="user_card_box">
+					<view class="user_card_label">
+						<u-image width="80" height="80" src="@/static/images/user/icon_card01.png" alt="" />
+						<view class="card_label_text">Tukar Poin</view>
 					</view>
-				</view>
-			</view>
-			<navigator v-else class="flex items-center" hover-class="none" url="/pages/login/login">
-				<u-avatar src="/static/images/user/default_avatar.png" :size="120"></u-avatar>
-				<view class="text-white ml-[20rpx]">
-					<view class="text-2xl notLogin">
-						<text>Masuk</text>
-						<u-icon class="ml-[20rpx]" name="arrow-right" color="#0067E0" size="28"></u-icon>
+					<view class="user_card_label">
+						<u-image width="80" height="80" src="@/static/images/user/icon_card02.png" alt="" />
+						<view class="card_label_text">Isi Ulang</view>
 					</view>
-					<view class="text-xs mt-[18rpx] account">Belum login.</view>
-				</view>
-			</navigator>
-			<navigator v-if="isLogin" class="group" hover-class="none"
-				url="/pages/user_data/user_data">
-				<u-image width="208" height="64" src="@/static/images/user/group.png" alt="" />
-				<view class="level" v-if="user.identity">Level {{user.identity}}</view>
-				<view class="normal" v-else>Biasa</view>
-			</navigator>
-		</view>
-		<view class="pointCard mx-[40rpx] mb-[20rpx]">
-			<view class="pointHead">
-				<u-image width="48" height="48" src="@/static/images/user/point.png" alt="" />
-				<view class="point_title">Saldo</view>
-				<view class="eyeChange" @tap="eyeChange">
-					<u-image width="42"  v-if="eyeShow" height="42" src="@/static/images/user/hidden.png" alt="" />
-					<u-image width="42" v-else height="42" src="@/static/images/user/reveal.png" alt="" />
-				</view>
-			</view>
-			<view class="point_num">
-				<view class="num">Rp {{!eyeShow ? formatNumber(user.user_money) || 0 : '*****' }}</view>
-				<view class="btn" @tap="navigateAuth('/pages/withdrawal/withdrawal')">Penarikan</view>
-			</view>
-			<view class="point_con">
-				<view class="point_label">
-					<view class="label_title">Poin</view>
-					<view class="label_num">{{!eyeShow ? formatNumber(user.user_integral) || 0 : '***' }}</view>
-					<view class="label_btn" @tap="navigateAuth('/pages/points/points')">Tukar</view>
-				</view>
-				<view class="point_label">
-					<view class="label_title">
-						<text>Token</text>
-						<view class="buy" @tap="navigateTo('/pages/customer_service/customer_service')">
-							<u-image width="26" height="26" src="@/static/images/user/buy.png" alt="" />
-							<text>BELI</text>
-						</view>
+					<view class="user_card_label">
+						<u-image width="80" height="80" src="@/static/images/user/icon_card03.png" alt="" />
+						<view class="card_label_text">Tarik Dana</view>
 					</view>
-					<view class="label_num">{{!eyeShow ? formatNumber(user.user_token) || 0 : '***' }}</view>
-					<view class="label_btn" @tap="navigateAuth('/pages/exchange/exchange')">Tukar</view>
-				</view>
-				<view class="point_label">
-					<view class="label_title">Ukuran Tim</view>
-					<view class="label_num">{{!eyeShow ? formatNumber(user.team_size) || 0 : '***' }}</view>
-					<view class="label_invite" @click="navigateAuth('/pages/invite/invite')">
-						<u-image width="34" height="34" src="@/static/images/user/invite.png" alt="" />
-						<text>Undang</text>
+					<view class="user_card_label">
+						<u-image width="80" height="80" src="@/static/images/user/icon_card04.png" alt="" />
+						<view class="card_label_text">Transfer Dana</view>
 					</view>
 				</view>
 			</view>
 		</view>
-		<view class="accountCard px-[40rpx] mt-[20rpx] mb-[20rpx]">
-			<view class="card" @tap="navigateAuth('/pages/recharge/recharge')">
-				<view class="card_text">Deposit Akun</view>
-				<view class="card_foot">
-					<view class="card_btn">
-						<text>Deposit</text>
-						<u-icon name="arrow-right" color="#FFFFFF" size="24"></u-icon>
-					</view>
-					<u-image width="76" height="37" src="@/static/images/user/recharge.png" alt="" />
+		<view class="article_card mx-[30rpx] mb-[20rpx]">
+			<view class="article_head">Pemasukan dan Pengeluaran Bulan Ini</view>
+			<view class="article_box">
+				<view class="article_label">
+					<view class="label_title">Pemasukan</view>
+					<view class="label_num">RP 6.000.000.000.000</view>
+				</view>
+				<view class="article_line"></view>
+				<view class="article_label">
+					<view class="label_title">Tarik Dana</view>
+					<view class="label_num">RP 1.000.000.000.000</view>
 				</view>
 			</view>
-			<view class="card" @tap="navigateAuth('/pages/trade/trade')">
-				<view class="card_text">Transaksi Akun</view>
-				<view class="card_foot">
-					<view class="card_btn">
-						<text>Transaksi</text>
-						<u-icon name="arrow-right" color="#FFFFFF" size="24"></u-icon>
-					</view>
-					<u-image width="66" height="45" src="@/static/images/user/transactions.png" alt="" />
-				</view>
-			</view>
+			<u-line-progress height="12" :show-percent="false" round :percent="formatProgress(50,100)"
+				active-color="#F1C44D" inactive-color="#F0F0F0"></u-line-progress>
 		</view>
-		<Popup :show="extendShow" :code="uQrcode" :link="uQrlink"  @copy="extendCopy" @cancel="extendShow = false"></Popup>
+		<Popup :show="extendShow" :code="uQrcode" :link="uQrlink" @copy="extendCopy" @cancel="extendShow = false">
+		</Popup>
 		<toastPopup></toastPopup>
 	</view>
 </template>
 <script lang="ts" setup>
 	import { computed, ref } from "vue";
-	import { formatNumber } from '@/utils/util'
+	import { formatNumber, formatProgress } from '@/utils/util'
 	import Popup from './popup.vue'
 	import { emitter } from '@/utils/emitter';
 	import { mesNotifiConf } from '@/api/eventInfo';
@@ -159,28 +114,28 @@
 		eyeShow.value = !eyeShow.value
 	}
 	const toast = (message : any = '') => {
-		emitter.emit('toast',message)
+		emitter.emit('toast', message)
 	}
-	const copy = (text: string) => {
-	    uni.setClipboardData({
+	const copy = (text : string) => {
+		uni.setClipboardData({
 			showToast: false,
-	        data: String(text),
+			data: String(text),
 			success: function () {
 				toast('Isinya disalin')
 			}
-	    })
+		})
 	}
 	const extendCopy = (link : any) => {
 		copy(link)
 		extendShow.value = false
 	}
-	const refreshCode = (code : string,link: string) => {
+	const refreshCode = (code : string, link : string) => {
 		// uQrcode.value = code
 		// uQrlink.value = link
 		// extendShow.value = true
 		navigateTo('/pages/invite/invite')
 	}
-	const navigateAuth = (url: string) => {
+	const navigateAuth = (url : string) => {
 		props.isLogin ? navigateTo(url) : navigateTo('/pages/login/login')
 	}
 	const navigateTo = (url : string) => {
@@ -190,266 +145,165 @@
 	}
 	const getlist = async () => {
 		const data = await mesNotifiConf()
-		let number = data.lists.reduce((sum: number, e: { number: any }) => sum + Number(e.number || 0), 0)
+		let number = data.lists.reduce((sum : number, e : { number : any }) => sum + Number(e.number || 0), 0)
 		badge.value = number ? true : false
 	}
 	getlist()
 </script>
 
 <style lang="scss" scoped>
+	.user-info {
 
-		.user-info {
+		.slot-wrap {
+			padding-right: 30rpx;
+		}
 
-			.slot-wrap {
-				display: flex;
-				align-items: center;
-				width: 100%;
-				padding: 0 30rpx;
+		.point_card {
+			position: relative;
 
-				.title {
-					font-family:  Arial;
-					font-size: 36rpx;
-					font-weight: 700;
-					line-height: 48rpx;
-					text-align: center;
-					color: #1E1E1E;
-				}
-			}
-
-			.userInfo {
-				display: flex;
-				justify-content: flex-start;
-				align-items: center;
-
-				.nickname {
-					margin-right: 5rpx;
-					font-family:  Arial;
-					font-size: 32rpx;
-					font-weight: 700;
-					text-align: left;
-					color: #1E1E1E;
-				}
-			}
-
-
-			.account {
-				font-family:  Arial;
-				font-size: 24rpx;
-				font-weight: 500;
-				text-align: left;
-				color: #999999;
-			}
-
-			.notLogin {
-				font-family:  Arial;
-				font-size: 34rpx;
-				font-weight: 700;
-				text-align: left;
-				color: #0067E0;
-			}
-
-			.group {
-				position: relative;
+			.user_card {
+				position: absolute;
 				top: 0;
-				left: 40rpx;
+				left: 0;
+				width: 100%;
+				padding: 20rpx 0;
 
-				.level {
-					display: flex;
-					justify-content: flex-end;
-					align-items: center;
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					padding: 0 15rpx;
-					font-family:  Arial;
-					font-size: 28rpx;
-					font-weight: 700;
-					line-height: 40rpx;
-					color: #1E1E1E;
-				}
-				.normal{
-					display: flex;
-					justify-content: flex-end;
-					align-items: center;
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					padding: 0 20rpx;
-					font-family:  Arial;
-					font-size: 28rpx;
-					font-weight: 700;
-					line-height: 40rpx;
-					color: #1E1E1E;
-				}
-			}
-			.pointCard {
-				padding: 40rpx;
-				background: #FFFFFF;
-				border-radius: 12rpx;
-
-				.pointHead {
-					display: flex;
-					justify-content: flex-start;
-					align-items: center;
-
-					.point_title {
-						margin-left: 10rpx;
-						font-family:  Arial;
-						font-size: 32rpx;
-						font-weight: 700;
-						line-height: 48rpx;
-						color: #0067E0;
-						text-align: left;
-					}
-					.eyeChange{
-						margin-left: 20rpx;
-					}
-				}
-
-				.point_num {
+				.user_card_head {
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
-					padding: 20rpx 0;
+					padding: 0 20rpx;
 
-					.num {
-						font-family:  Arial;
-						font-size: 48rpx;
-						font-weight: 600;
-						line-height: 100rpx;
-						text-align: left;
-						color: #1E1E1E;
+					.card_head_info {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+
+						.card_head_title {
+							margin-right: 20rpx;
+							font-family: Arial;
+							font-weight: 400;
+							font-size: 24rpx;
+							line-height: 40rpx;
+							text-align: center;
+							color: #FFFFFF;
+						}
 					}
 
-					.btn {
-						padding: 14rpx 18rpx;
-						border-radius: 14rpx;
-						background: linear-gradient(270deg, #5693FF 0%, #0067E0 100%);
-						font-family:  Arial;
+					.card_head_phone {
+						font-family: Arial;
+						font-weight: 400;
 						font-size: 24rpx;
-						font-weight: 500;
+						line-height: 40rpx;
+						text-align: right;
+						color: #FFFFFF;
+					}
+				}
+
+				.user_card_info {
+					padding: 15rpx 20rpx;
+
+					.user_card_poin {
+						font-family: Arial;
+						font-weight: 400;
+						font-size: 32rpx;
+						line-height: 54rpx;
+						text-align: left;
+						color: #FFFFFF;
+					}
+
+					.user_card_saldo {
+						font-family: Arial;
+						font-weight: 400;
+						font-size: 22rpx;
+						line-height: 48rpx;
 						text-align: left;
 						color: #FFFFFF;
 					}
 				}
 
-				.point_con {
+				.user_card_line {
+					width: 690rpx;
+					height: 10rpx;
+					background: linear-gradient(270deg, rgba(246, 219, 144, 0) 0%, #FFEAAE 100%);
+				}
+
+				.user_card_box {
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
+					padding: 20rpx 40rpx;
 
-					.point_label {
-						.label_title {
-							display: flex;
-							justify-content: flex-start;
-							align-items: center;
-							font-family:  Arial;
-							font-size: 26rpx;
-							font-weight: 500;
-							line-height: 36rpx;
-							text-align: left;
-							color: #999999;
-
-							.buy {
-								margin-left: 10rpx;
-								display: flex;
-								justify-content: flex-start;
-								align-items: center;
-								font-family:  Arial;
-								font-size: 26rpx;
-								font-weight: 500;
-								line-height: 36rpx;
-								text-align: left;
-								color: #FF8138;
-							}
-						}
-
-						.label_num {
-							margin: 10rpx 0;
-							font-family:  Arial;
-							font-size: 32rpx;
-							font-weight: 700;
-							line-height: 48rpx;
-							text-align: left;
-							color: #1E1E1E;
-						}
-
-						.label_btn {
-							display: inline-block;
-							font-family:  Arial;
-							font-size: 26rpx;
-							font-weight: 700;
-							text-align: center;
-							color: #0067E0;
-							padding: 10rpx 15rpx;
-							border-radius: 14rpx;
-							border: 2rpx solid #0067E0;
-						}
-						.label_invite{
-							display: flex;
-							justify-content: space-between;
-							align-items: center;
-							font-family:  Arial;
-							font-size: 26rpx;
-							font-weight: 700;
-							text-align: center;
-							color: #FF4646;
-							background: #FFEFEF;
-							padding: 10rpx 15rpx;
-							border-radius: 14rpx;
-							border: 2rpx solid #FF4646;
-						}
-					}
-				}
-			}
-
-			.accountCard {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-
-				.card {
-					width: 325rpx;
-					padding: 20rpx;
-					background: #E4F0FF;
-					border-radius: 12rpx;
-
-					.card_text {
-						font-family:  Arial;
-						font-size: 26rpx;
-						font-weight: 700;
-						line-height: 40rpx;
-						text-align: left;
-						color: #1E1E1E;
-					}
-
-					.card_foot {
+					.user_card_label {
 						display: flex;
-						justify-content: space-between;
+						flex-direction: column;
+						justify-content: center;
 						align-items: center;
-						padding: 10rpx 0;
 
-						.card_btn {
-							display: flex;
-							justify-content: space-between;
-							align-items: center;
-							width: 142rpx;
-							height: 50rpx;
-							padding: 10rpx;
-							border-radius: 8rpx;
-							background: linear-gradient(270deg, #5693FF 0%, #0067E0 100%);
-							font-family:  Arial;
-							font-size: 24rpx;
-							font-weight: 500;
+						.card_label_text {
+							font-family: Arial;
+							font-weight: 400;
+							font-size: 16rpx;
+							line-height: 40rpx;
+							text-align: center;
 							color: #FFFFFF;
-
 						}
 					}
 				}
 			}
 		}
+
+		.article_card {
+			padding: 10rpx 20rpx 20rpx 20rpx;
+			border-radius: 12rpx;
+			background: #FFFFFF;
+
+			.article_head {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 40rpx;
+				font-family: Arial;
+				font-weight: 700;
+				font-size: 32rpx;
+				line-height: 54rpx;
+				color: #1E4B2E;
+			}
+
+			.article_box {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				.article_label {
+					width: 300rpx;
+					padding: 0 10rpx;
+
+					.label_title {
+						font-family: Arial;
+						font-weight: 400;
+						font-size: 20rpx;
+						line-height: 40rpx;
+						text-align: center;
+						color: #8B9098;
+					}
+
+					.label_num {
+						font-family: Arial;
+						font-weight: 700;
+						font-size: 24rpx;
+						line-height: 40rpx;
+						text-align: center;
+						color: #D90C07;
+					}
+				}
+
+				.article_line {
+					width: 4rpx;
+					height: 30rpx;
+					background: #D7D7D7;
+				}
+			}
+		}
+	}
 </style>

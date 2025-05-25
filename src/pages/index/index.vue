@@ -13,8 +13,20 @@
 					</view>
 				</u-navbar>
 			</u-sticky>
-			<Notice></Notice>
+			<Notice :notice="noticeArr"></Notice>
+			<!-- 组件 -->
+			<template v-for="item in state.pages" :key="item.name">
+				<template v-if="item.name == 'nav'">
+					<w-nav :content="item.content" :styles="item.styles" />
+				</template>
+			</template>
 			<InformasiAset></InformasiAset>
+			<template v-for="item in state.pages" :key="item.name">
+				<template v-if="item.name == 'middle-banner'">
+					<w-middle-banner :content="item.content" :styles="item.styles" />
+				</template>
+			</template>
+			<Swiper></Swiper>
 		</view>
 		<tabbar />
 	</view>
@@ -27,13 +39,39 @@
 	import { storeToRefs } from 'pinia'
 	import InformasiAset from './component/informasiAset.vue'
 	import Notice from './component/notice.vue'
+	import Swiper from './component/swiper.vue'
+	import { getIndex } from "@/api/shop"
+	import { mesNotifiList } from "@/api/eventInfo"
 	const userStore = useUserStore()
+	const state = reactive<{
+		pages : any[]
+		meta : any[]
+		article : any[]
+	}>({
+		pages: [],
+		meta: [],
+		article: []
+	})
 	const { userInfo, isLogin } = storeToRefs(userStore)
 	const scrollTop = ref<any>(0)
+	const swiperRef = ref<any>(null)
+	const noticeArr = ref<Array<any>>([])
+	const getNotice = async () => {
+		const data = await mesNotifiList({ type:4 })
+		noticeArr.value = data.lists.map((item : any) => item.content)
+	}
+	const getData = async () => {
+		const data = await getIndex()
+		state.pages = JSON.parse(data?.page?.data)
+		state.meta = JSON.parse(data?.page?.meta)
+		state.article = data.article
+	}
 	onPageScroll((event : any) => {
 		scrollTop.value = event.scrollTop
 	})
 	onLoad(()=>{
+		getData()
+		getNotice()
 		userStore.getUser()
 	})
 </script>

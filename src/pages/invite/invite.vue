@@ -45,7 +45,7 @@
 						</view>
 						<view class="inactive_line"></view>
 						<view class="card_invite">
-							<view class="code_title">Kode Referralï¼/view>
+							<view class="code_title">Kode Referral£º</view>
 							<view class="code_text">{{userInfo.invite_code}}</view>
 						</view>
 						<view class="card_link">Salin & Bagikan Tautan</view>

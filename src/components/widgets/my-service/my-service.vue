@@ -1,20 +1,20 @@
 <template>
 	<view class="mb-[120rpx]">
-		<view class="my-service bg-white mx-[40rpx] mt-[20rpx] mb-[20rpx] rounded-lg px-[40rpx] pt-[20rpx] pb-[20rpx]">
+		<view class="my-service bg-white mx-[30rpx] mt-[20rpx] mb-[20rpx] rounded-lg px-[20rpx] pt-[20rpx] pb-[20rpx]">
 		    <view
 		        v-if="content.title"
 		        class="title font-medium text-lg"
 		    >
 		        <view>{{ content.title }}</view>
 		    </view>
-		    <view v-if="content.style == 1" class="grid grid-cols-4 gap-x-9 gap-y-7">
+		    <view v-if="content.style == 1" class="grid grid-cols-4 gap-x-15 gap-y-4">
 		        <view
 		            v-for="(item, index) in showList"
 		            :key="index"
-		            class="flex flex-col items-center pt-[40rpx]"
+		            class="flex flex-col items-center pt-[10rpx]"
 		            @click="handleClick(item.link)"
 		        >
-		            <u-image width="52" height="52" :src="getImageUrl(item.image)" alt="" />
+		            <u-image width="64" height="64" :src="getImageUrl(item.image)" alt="" />
 		            <view class="mt-[22rpx] text-sm name">{{ item.name }}</view>
 		        </view>
 		    </view>
@@ -35,8 +35,7 @@
 		    </view>
 		</view>
 		<view v-if="isLogin" class="switch_account mx-[40rpx]" @tap="switchAccount">
-			<u-image width="42" height="42" src="@/static/images/user/switch.png" alt="" />
-			<view class="switch_text">Tukar_Akun</view>
+			<view class="switch_text">Tukar Akun</view>
 		</view>
 		<Popup v-if="switchPopup" @confirm="confirm" @cancel="cancel"></Popup>
 		<toastPopup></toastPopup>
@@ -105,7 +104,11 @@ const showList = computed(() => {
 
 <style lang="scss" scoped>
 	.name{
-		font-family:  Arial;
+		font-family: Arial;
+		font-weight: 400;
+		font-size: 15rpx;
+		line-height: 28rpx;
+		color: #1E1E1E;
 	}
 	.version{
 		font-family:  Arial;
@@ -118,9 +121,9 @@ const showList = computed(() => {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: 90rpx;
-		border: 2rpx solid #0067E0;
-		border-radius: 8rpx;
+		height: 88rpx;
+		background: #458060;
+		border-radius: 12rpx;
 		.switch_text{
 			margin-left: 20rpx;
 			font-family:  Arial;
@@ -128,7 +131,7 @@ const showList = computed(() => {
 			font-weight: 500;
 			line-height: 48rpx;
 			text-align: left;
-			color: #0067E0;
+			color: #FFFFFF;
 		}
 	}
 </style>

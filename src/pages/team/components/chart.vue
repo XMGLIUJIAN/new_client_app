@@ -9,7 +9,7 @@
 	import { ref } from 'vue'
 	const chartRef = ref(null)
 	const option = {
-		color: ['#0067E0'],
+		color: ['#F6DB90'],
 		tooltip: {
 			trigger: 'axis',
 			axisPointer: {

@@ -2,8 +2,7 @@
 	<view class="popup" v-if="show">
 		<view class="content">
 			<view class="explain" v-if="toastType == 'gif'">
-				<u-image width="200" height="200" v-if="gif_type == 1" src="@/static/images/gif/aigei_01.gif" alt="" />
-				<u-image width="200" height="200" v-if="gif_type == 2" src="@/static/images/gif/aigei_02.gif" alt="" />
+				<u-image width="200" height="200" src="@/static/images/gif/aigei.gif" alt="" />
 			</view>
 			<view class="toast" v-if="toastType == 'message'">
 				<view class="message">{{toastMessage}}</view>
@@ -17,7 +16,6 @@
 	import { emitter } from '@/utils/emitter';
 	const show = ref<boolean>(false)
 	const toastMessage = ref<any>(null)
-	const gif_type = ref<number>(1)
 	const toastType = ref<any>('message')
 	const toast = (message : any = null) => {
 		toastMessage.value = message
@@ -27,9 +25,8 @@
 			show.value = false
 		}, 2000)
 	}
-	const gifType = (_type : number = 1,time:number = 2000) => {
+	const gifType = (time:number = 2000) => {
 		toastType.value = 'gif'
-		gif_type.value = _type
 		show.value = true
 		setTimeout(() => {
 			toastType.value = 'message'
@@ -40,8 +37,8 @@
 		emitter.on('toast', (message : string | any) => {
 			 toast(message)
 		})
-		emitter.on('gifType',(data: any) =>{
-			 gifType(data.type,data.time);
+		emitter.on('gifType',(time: number | any) =>{
+			 gifType(time);
 		})
 	})
 </script>

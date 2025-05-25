@@ -33,7 +33,7 @@
 		align-items: center;
 		height: 90rpx;
 		border-radius: 45rpx;
-		background: #0067E0;
+		background: #1E1E1E;
 		font-family:  Arial;
 		font-size: 32rpx;
 		font-weight: 500;

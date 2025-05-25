@@ -69,7 +69,7 @@
 	}
 
 	const uploadImageIng = (file : string) => {
-		emitter.emit('gifType',{type: 1})
+		emitter.emit('gifType')
 		setTimeout(async () => {
 			try {
 				const res : any = await uploadImage(file, userStore.temToken!)
