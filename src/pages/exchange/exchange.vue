@@ -9,64 +9,40 @@
 					title="TUKAR" :title-bold="true" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
 					title-color="#1E1E1E">
 					<template #right>
-						<view class="rule mr-[20rpx]" @tap="navigateTo('/pages/user_rule/user_rule?type=exchange')">
-							Peraturan
+						<view class="rule mr-[30rpx]" @tap="navigateTo('/pages/point_rule/point_rule')">
+							<u-image width="40" height="40" src="@/static/images/icon/icon_rule.png"></u-image>
 						</view>
 					</template>
 				</u-navbar>
 			</u-sticky>
-			<view class="exchange_card mt-[40rpx] px-[40rpx] pt-[40rpx] pb-[40rpx] mx-[40rpx]">
-				<view class="flex items-center justify-between pb-[20rpx]">
-					<view v-if="isLogin" class="flex items-center">
-						<u-avatar :src="userInfo.avatar" :size="120"></u-avatar>
-						<view class="text-white ml-[20rpx]">
-							<view class="text-2xl nickname">{{ userInfo.nickname }}</view>
-							<view class="text-xs mt-[18rpx] account">
-								Akun ID：{{ userInfo.account }}
-							</view>
-						</view>
-					</view>
-					<navigator v-else class="flex items-center" hover-class="none" url="/pages/login/login">
-						<u-avatar src="/static/images/user/default_avatar.png" :size="120"></u-avatar>
-						<view class="text-white ml-[20rpx]">
-							<view class="text-2xl notLogin">
-								<text>Masuk</text>
-								<u-icon class="ml-[20rpx]" name="arrow-right" color="#1E1E1E" size="28"></u-icon>
-							</view>
-							<view class="text-xs mt-[18rpx] account">Belum login.</view>
-						</view>
-					</navigator>
+			<view class="exchange_card mt-[50rpx] mx-[30rpx]">
+				<view class="trade_card_head">
+					<view class="card_head_title">Informasi Aset</view>
+					<view class="card_head_account">ID:{{userInfo.account}}</view>
 				</view>
-				<view class="trade_card px-[40rpx] pb-[20rpx] pt-[20rpx]">
-					<view class="card_left">
-						<view class="card_num">
-							{{formatNumber(userInfo.user_token)}}
-						</view>
-						<view class="card_text">
-							Token
-						</view>
+				<view class="transfer_card">
+					<view class="card_box">
+						<view class="card_text">Saldo</view>
+						<view class="card_num">Rp {{formatNumber(userInfo.user_money)}}</view>
 					</view>
-					<view class="card_right">
-						<view class="card_num">
-							{{formatNumber(userInfo.user_money)}}
-						</view>
-						<view class="card_text">
-							Saldo
-						</view>
+					<view class="card_line"></view>
+					<view class="card_box">
+						<view class="card_text">Poin</view>
+						<view class="card_num">{{formatNumber(userInfo.user_token)}}</view>
 					</view>
 				</view>
 			</view>
 
-			<view class="trade_con mt-[20rpx] mb-[40rpx] px-[40rpx] pt-[40rpx] pb-[40rpx] mx-[40rpx]">
+			<view class="trade_con mt-[20rpx] mb-[40rpx] px-[40rpx] pt-[40rpx] pb-[40rpx] mx-[30rpx]">
 				<view class="trade_submit">
 					<view class="trade_Item">
 						<view class="trade_head">
-							<view class="trade_title">Jumlah Pertukaran：</view>
+							<view class="trade_title">Jumlah Pertukaran</view>
 							<view class="trade_tips" @tap="exchangeAll">Tukar Semua</view>
 						</view>
 						<view class="trade_input">
 							<u-input v-model="formData.exchange_amount" type="number" :border="false"
-								placeholder-style="color: #999999;font-size:28rpx;"
+								placeholder-style="color: #8B9098;font-size:24rpx;"
 								placeholder="Masukkan Jumlah Token Yang Di Tukar" />
 						</view>
 					</view>
@@ -76,20 +52,19 @@
 						<view class="token">Rp {{formatNumber(rateInfo.rate)}}</view>
 					</view>
 					<view class="exchange_result pt-[20rpx]">
-						<view class="result_left">Jumlah Total Penukaran：</view>
-						<view class="result_right">
-							<u-image width="48" height="48" src="@/static/images/tradeExchange/rise.png" alt="" />
-							<view class="number ml-[10rpx]">
-								<view class="num ml-[10rpx]">Rp {{formatNumber(number)}}</view>
+						<view class="result_left">Jumlah Total Penukaran</view>
+						<view class="result_right mt-[20rpx]">
+							<view class="number">
+								<view class="num"><text class="unit">Rp</text> {{formatNumber(number)}}</view>
 							</view>
 						</view>
 					</view>
 				</view>
 			</view>
 			<view class="submit_btn mx-[40rpx]" @tap="submitEvent">Konfirmasi</view>
-			<Popup v-if="exchangePopup" :exchangeType="exchangeType" @confirm="exchangeFinish"
-				@cancel="exchangeCancel"></Popup>
 		</view>
+		<Popup v-if="exchangePopup" :exchangeType="exchangeType" @confirm="exchangeFinish"
+			@cancel="exchangeCancel"></Popup>
 		<toastPopup></toastPopup>
 	</view>
 
@@ -183,7 +158,7 @@
 
 <style lang="scss">
 	page {
-		background: #F6F6F6 !important;
+		background: #F0F0F0 !important;
 	}
 </style>
 <style lang="scss" scoped>
@@ -206,96 +181,66 @@
 			}
 
 			.exchange_card {
+				overflow: hidden;
 				border-radius: 12rpx;
 				background: #FFFFFF;
-
-				.nickname {
-					font-family: Arial;
-					font-size: 34rpx;
-					font-weight: 700;
-					text-align: left;
-					color: #1E1E1E;
-				}
-
-				.account {
-					font-family: Arial;
-					font-size: 28rpx;
-					font-weight: 500;
-					text-align: left;
-					color: #8FA8C5;
-				}
-
-				.notLogin {
-					font-family: Arial;
-					font-size: 34rpx;
-					font-weight: 700;
-					text-align: left;
-					color: #1E1E1E;
-				}
-
-				.trade_card {
+				
+				.trade_card_head {
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
-					border-radius: 12rpx;
-					background: #DBEBFF;
-
-					.card_left {
+					padding: 20rpx 40rpx;
+					background: linear-gradient(303.05deg, #92BEAB 10.45%, #26815A 89.55%);
+				
+					.card_head_title {
+						font-family: Arial;
+						font-weight: 500;
+						font-size: 32rpx;
+						line-height: 40rpx;
+						color: #FFFFFF;
+					}
+				
+					.card_head_account {
+						font-family: Arial;
+						font-weight: 400;
+						font-size: 20rpx;
+						line-height: 40rpx;
+						color: #FFFFFF;
+					}
+				}
+				
+				.transfer_card {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 20rpx 40rpx;
+				
+					.card_box {
+						width: 45%;
+				
 						.card_num {
 							font-family: Arial;
-							font-size: 36rpx;
-							font-weight: 700;
+							font-size: 28rpx;
+							font-weight: 500;
 							line-height: 64rpx;
-							text-align: left;
+							text-align: center;
 							color: #1E1E1E;
-
-							.num {
-								font-family: Arial;
-								font-size: 32rpx;
-								font-weight: 700;
-								line-height: 64rpx;
-								text-align: right;
-								color: #1E1E1E;
-							}
 						}
-
+				
 						.card_text {
 							font-family: Arial;
 							font-size: 32rpx;
 							font-weight: 500;
 							line-height: 48rpx;
-							text-align: left;
-							color: #999999;
+							text-align: center;
+							color: #8B9098;
 						}
 					}
-
-					.card_right {
-						.card_num {
-							font-family: Arial;
-							font-size: 36rpx;
-							font-weight: 700;
-							line-height: 64rpx;
-							text-align: right;
-							color: #1E1E1E;
-
-							.num {
-								font-family: Arial;
-								font-size: 32rpx;
-								font-weight: 700;
-								line-height: 64rpx;
-								text-align: right;
-								color: #1E1E1E;
-							}
-						}
-
-						.card_text {
-							font-family: Arial;
-							font-size: 32rpx;
-							font-weight: 500;
-							line-height: 48rpx;
-							text-align: right;
-							color: #999999;
-						}
+				
+					.card_line {
+						width: 2rpx;
+						height: 50rpx;
+						background: #D7D7D7;
 					}
 				}
 			}
@@ -316,28 +261,29 @@
 
 							.trade_title {
 								font-family: Arial;
-								font-size: 28rpx;
-								font-weight: 500;
+								font-size: 32rpx;
+								font-weight: 700;
 								line-height: 40rpx;
 								text-align: left;
-								color: #1E1E1E;
+								color: #1E4B2E;
 							}
 
 							.trade_tips {
 								font-family: Arial;
-								font-size: 28rpx;
+								font-size: 24rpx;
 								font-weight: 500;
 								line-height: 40rpx;
 								text-align: right;
-								color: #0067E0;
+								color: #D79D2A;
 							}
 						}
 
 						.trade_input {
 							margin-top: 20rpx;
-							padding: 10rpx 20rpx;
-							background: #F4F4F4;
-							border-radius: 10rpx;
+							padding: 10rpx 30rpx;
+							background: #FFFFFF;
+							border-radius: 12rpx;
+							border: 2rpx solid #8B9098;
 						}
 					}
 
@@ -348,26 +294,26 @@
 
 						.title {
 							font-family: Arial;
-							font-size: 28rpx;
+							font-size: 24rpx;
 							font-weight: 500;
 							line-height: 40rpx;
 							text-align: left;
-							color: #999999;
+							color: #8B9098;
 						}
 
 						.token {
 							margin: 0 10rpx;
 							font-family: Arial;
-							font-size: 28rpx;
+							font-size: 24rpx;
 							font-weight: 500;
 							line-height: 40rpx;
 							text-align: left;
-							color: #0067E0;
+							color: #ECB54B;
 						}
 
 						.point {
 							font-family: Arial;
-							font-size: 28rpx;
+							font-size: 24rpx;
 							font-weight: 500;
 							line-height: 40rpx;
 							text-align: left;
@@ -380,16 +326,16 @@
 
 						.result_left {
 							font-family: Arial;
-							font-size: 24rpx;
+							font-size: 32rpx;
 							font-weight: 500;
 							line-height: 48rpx;
 							text-align: left;
-							color: #1E1E1E;
+							color: #1E4B2E;
 						}
 
 						.result_right {
 							display: flex;
-							justify-content: flex-end;
+							justify-content: flex-start;
 							align-items: center;
 
 							.number {
@@ -400,10 +346,17 @@
 								.num {
 									font-family: Arial;
 									font-size: 32rpx;
-									font-weight: 700;
+									font-weight: 400;
 									line-height: 48rpx;
 									text-align: left;
 									color: #1E1E1E;
+									.unit{
+										font-family: Arial;
+										font-weight: 400;
+										font-size: 36rpx;
+										line-height: 40rpx;
+										color: #D79D2A;
+									}
 								}
 							}
 						}

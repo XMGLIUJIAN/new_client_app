@@ -94,7 +94,7 @@
 
 <style lang="scss">
 	page {
-		background: #F6F6F6 !important;
+		background: #F0F0F0 !important;
 	}
 </style>
 <style lang="scss" scoped>

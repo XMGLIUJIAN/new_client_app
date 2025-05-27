@@ -5,47 +5,55 @@
 		</view>
 		<view class="change_payPwd">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
-				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#1E1E1E"
+				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#FFFFFF"
 					:title-bold="true" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
-					title="KATA SANDI PENARIKAN" title-color="#1E1E1E">
+					title="KATA SANDI PENARIKAN" title-color="#FFFFFF">
 				</u-navbar>
 			</u-sticky>
 			<view class="password_con mt-[50rpx]">
-				<view class="password_recover"
-					v-if="type != 'set' && current != 'password' && current != 'password_confirm'">
-					<view class="recover_head">Silakan masukkan Password penarikan yang lama：</view>
-					<view class="recover_code mt-[20rpx] mb-[20rpx]">
-						<u-message-input v-model="formData.old_password" font-size="64" bg-color="#FFFFFF"
-							active-color="#1E1E1E" inactive-color="#D9D9D9" :focus="true" :breathe="false" maxlength="6"
-							mode="box"></u-message-input>
+				<template v-if="type != 'set' && current != 'password' && current != 'password_confirm'">
+					<view class="password_recover">
+						<view class="recover_head">Silakan masukkan Password penarikan yang lama</view>
+						<view class="recover_code mt-[20rpx] mb-[20rpx]">
+							<u-message-input v-model="formData.old_password" font-size="64" bg-color="#F1F1F1"
+								active-color="#1E1E1E" inactive-color="#F1F1F1" :focus="true" :breathe="false"
+								maxlength="6" mode="box"></u-message-input>
+						</view>
+						<view class="forget" @tap="forget">Lupa password?</view>
 					</view>
-					<view class="forget" @tap="forget">Lupa password?</view>
 					<view class="submit-btn mt-[40rpx]" @click="editPassword">Pergi Ke Sunting</view>
-				</view>
-				<view class="password_recover" v-if="current == 'password'">
-					<view class="recover_head">Masukkan Kode Verifikasi Baru：</view>
-					<view class="recover_code mt-[20rpx] mb-[20rpx]">
-						<u-message-input v-model="formData.password" font-size="64" bg-color="#FFFFFF"
-							active-color="#1E1E1E" inactive-color="#D9D9D9" :focus="true" :breathe="false" maxlength="6"
-							mode="box"></u-message-input>
+				</template>
+
+				<template v-if="current == 'password'">
+					<view class="password_recover">
+						<view class="recover_head">Masukkan Kode Verifikasi Baru</view>
+						<view class="recover_code mt-[20rpx] mb-[20rpx]">
+							<u-message-input v-model="formData.password" font-size="64" bg-color="#F1F1F1"
+								active-color="#1E1E1E" inactive-color="#F1F1F1" :focus="true" :breathe="false"
+								maxlength="6" mode="box"></u-message-input>
+						</view>
+						<view class="recover_text">Kata Sandi Penarikan Hanya Boleh Nomor</view>
 					</view>
-					<view class="recover_text">Kata Sandi Penarikan Hanya Boleh Nomor</view>
 					<view class="submit-btn mt-[40rpx]" @click="newConfirm">Konfirmasi</view>
-				</view>
-				<view class="password_recover" v-if="current == 'password_confirm'">
-					<view class="recover_head">Pastikan Kembali Kata Sandi Penarikan：</view>
-					<view class="recover_code mt-[20rpx] mb-[20rpx]">
-						<u-message-input v-model="formData.password_confirm" font-size="64" bg-color="#FFFFFF"
-							active-color="#1E1E1E" inactive-color="#D9D9D9" :focus="true" :breathe="false" maxlength="6"
-							mode="box"></u-message-input>
+				</template>
+
+				<template v-if="current == 'password_confirm'">
+					<view class="password_recover">
+						<view class="recover_head">Pastikan Kembali Kata Sandi Penarikan</view>
+						<view class="recover_code mt-[20rpx] mb-[20rpx]">
+							<u-message-input v-model="formData.password_confirm" font-size="64" bg-color="#F1F1F1"
+								active-color="#1E1E1E" inactive-color="#F1F1F1" :focus="true" :breathe="false"
+								maxlength="6" mode="box"></u-message-input>
+						</view>
+						<view class="recover_text">Kata Sandi Penarikan Hanya Boleh Nomor</view>
 					</view>
-					<view class="recover_text">Kata Sandi Penarikan Hanya Boleh Nomor</view>
-					<view class="submit-btn mt-[40rpx]" @click="pwdConfirm">Konfirmasi</view>
-				</view>
+					<view class="submit-btn mt-[40rpx] mx-[30rpx]" @click="pwdConfirm">Konfirmasi</view>
+				</template>
+
 			</view>
-			<Popup v-if="passwordPopup" :type="passwordType" :message="passwordMessage" @finish="finishPopup"
-				@confirm="canclePopup"></Popup>
 		</view>
+		<Popup v-if="passwordPopup" :type="passwordType" :message="passwordMessage" @finish="finishPopup"
+			@confirm="canclePopup"></Popup>
 		<toastPopup></toastPopup>
 	</view>
 </template>
@@ -71,7 +79,7 @@
 		password_confirm: ''
 	})
 	const toast = (message : any = '') => {
-		emitter.emit('toast',message)
+		emitter.emit('toast', message)
 	}
 	const forget = () => {
 		router.navigateTo('/pages/forget_payPwd/forget_payPwd')
@@ -139,7 +147,7 @@
 
 <style lang="scss">
 	page {
-		background: #F6F6F6 !important;
+		background: #F0F0F0 !important;
 	}
 </style>
 <style lang="scss" scoped>
@@ -156,9 +164,12 @@
 				padding: 0 40rpx;
 
 				.password_recover {
+					padding: 20rpx 30rpx 50rpx 30rpx;
+					border-radius: 12rpx;
+					background: #FFFFFF;
 					.recover_head {
-						font-family:  Arial;
-						font-size: 28rpx;
+						font-family: Arial;
+						font-size: 26rpx;
 						font-weight: 500;
 						line-height: 48rpx;
 						text-align: left;
@@ -166,54 +177,39 @@
 					}
 
 					.recover_text {
-						font-family:  Arial;
-						font-size: 26rpx;
+						font-family: Arial;
+						font-size: 24rpx;
 						font-weight: 500;
 						line-height: 48rpx;
 						text-align: left;
-						color: #999999;
+						color: #8B9098;
 					}
 
 					.forget {
-						font-family:  Arial;
-						font-size: 28rpx;
+						font-family: Arial;
+						font-size: 24rpx;
 						font-weight: 500;
 						line-height: 48rpx;
 						text-align: left;
-						color: #0067E0;
-					}
-
-					.submit-btn {
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						height: 90rpx;
-						border-radius: 8rpx;
-						background: #0067E0;
-						font-family:  Arial;
-						font-size: 32rpx;
-						font-weight: 500;
-						line-height: 48rpx;
-						text-align: center;
-						color: #FFFFFF;
+						color: #ECB54B;
 					}
 				}
-
-				.message {
+				.submit-btn {
 					display: flex;
 					justify-content: center;
 					align-items: center;
-					padding: 20rpx;
-					border-radius: 10rpx;
-					border: 2rpx solid #EBEBEB;
-					font-family:  Arial;
-					font-size: 26rpx;
+					height: 90rpx;
+					border-radius: 12rpx;
+					background: #458060;
+					font-family: Arial;
+					font-size: 32rpx;
 					font-weight: 500;
+					line-height: 48rpx;
 					text-align: center;
-					color: #1E1E1E;
-					word-break: normal;
+					color: #FFFFFF;
 				}
 			}
+
 		}
 	}
 </style>

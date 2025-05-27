@@ -17,7 +17,7 @@
 						<view>
 							<view class="mb-[15rpx] text-xl font-medium">{{ userInfo.nickname }}</view>
 							<view class="text-content text-xs">
-								<text class="account_num">Akun ID：{{ userInfo.account }}</text>
+								<text class="account_num">ID：{{ userInfo.account }}</text>
 							</view>
 						</view>
 						<u-icon name="arrow-right" color="#B0B0B0"></u-icon>
@@ -25,7 +25,7 @@
 				</view>
 			</navigator>
 			<view class="user_set_card mt-[20rpx] ml-[40rpx] mr-[40rpx]">
-				<view class="item btn-border flex flex-1 justify-between">
+				<view class="item btn-border flex flex-1 justify-between" @click="handlePhone">
 					<view class="label_name">Ikat Ponsel</view>
 					<view class="flex justify-between">
 						<view class="text-muted mr-[20rpx]">
@@ -158,7 +158,7 @@
 
 <style lang="scss">
 	page {
-		background: #F6F6F6 !important;
+		background: #F0F0F0 !important;
 	}
 </style>
 <style lang="scss" scoped>

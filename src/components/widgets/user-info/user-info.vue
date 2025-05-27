@@ -22,7 +22,7 @@
 							<u-image v-else width="24" height="24" src="@/static/images/user/icon_lock.png" alt="" />
 						</view>
 					</view>
-					<view class="card_head_phone">ID:08888811111</view>
+					<view class="card_head_phone">ID:{{user.account}}</view>
 				</view>
 				<view class="user_card_info">
 					<view class="user_card_poin">Poin 200.000.000</view>
@@ -65,15 +65,12 @@
 			<u-line-progress height="12" :show-percent="false" round :percent="formatProgress(50,100)"
 				active-color="#F1C44D" inactive-color="#F0F0F0"></u-line-progress>
 		</view>
-		<Popup :show="extendShow" :code="uQrcode" :link="uQrlink" @copy="extendCopy" @cancel="extendShow = false">
-		</Popup>
 		<toastPopup></toastPopup>
 	</view>
 </template>
 <script lang="ts" setup>
 	import { computed, ref } from "vue";
 	import { formatNumber, formatProgress } from '@/utils/util'
-	import Popup from './popup.vue'
 	import { emitter } from '@/utils/emitter';
 	import { mesNotifiConf } from '@/api/eventInfo';
 	const props = defineProps({
@@ -107,9 +104,6 @@
 	})
 	const badge = ref<Boolean>(false)
 	const eyeShow = ref<Boolean>(true)
-	const uQrcode = ref<String>('')
-	const uQrlink = ref<String>('')
-	const extendShow = ref<Boolean>(false)
 	const metaData : any = computed(() => {
 		return props.pageMeta[0].content
 	})
@@ -127,10 +121,6 @@
 				toast('Isinya disalin')
 			}
 		})
-	}
-	const extendCopy = (link : any) => {
-		copy(link)
-		extendShow.value = false
 	}
 	const navigateAuth = (url : string) => {
 		props.isLogin ? navigateTo(url) : navigateTo('/pages/login/login')

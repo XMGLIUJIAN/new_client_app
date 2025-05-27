@@ -5,36 +5,36 @@
 		</view>
 		<view class="change_password">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
-				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#1E1E1E"
+				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#FFFFFF"
 					:title-bold="true" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
-					title="GANTI KATA SANDI" title-color="#1E1E1E">
+					title="GANTI KATA SANDI" title-color="#FFFFFF">
 				</u-navbar>
 			</u-sticky>
-			<view class="password_con mt-[50rpx]">
+			<view class="password_con mt-[50rpx] mx-[30rpx]">
 				<view class="password_row" v-if="type != 'set'">
-					<view class="password_label mb-[20rpx]">Verifikasi Kata Sandi：</view>
+					<view class="password_label mb-[20rpx]">Verifikasi Kata Sandi</view>
 					<view class="password_input">
 						<u-input type="password" v-model="formData.old_password" :border="false"
-							placeholder-style="color: #999999;" placeholder="Masukkan Kata Sandi Lama" />
+							placeholder-style="color: #999999;font-size:24rpx;" placeholder="Masukkan Kata Sandi Lama" />
 					</view>
 				</view>
 				<view class="password_row">
-					<view class="password_label mb-[20rpx]">Kata Sandi Baru：</view>
+					<view class="password_label mb-[20rpx]">Kata Sandi Baru</view>
 					<view class="password_input">
 						<u-input type="password" v-model="formData.password" :border="false"
-							placeholder-style="color: #999999;" placeholder="Masukkan Kata Sandi Baru" />
+							placeholder-style="color: #999999;font-size:24rpx;" placeholder="Masukkan Kata Sandi Baru" />
 					</view>
 				</view>
 				<view class="password_row">
-					<view class="password_label mb-[20rpx]">Konfirmasi Kata Sandi：</view>
+					<view class="password_label mb-[20rpx]">Konfirmasi Kata Sandi</view>
 					<view class="password_input">
 						<u-input type="password" v-model="formData.password_confirm" :border="false"
-							placeholder-style="color: #999999;" placeholder="Masukkan Kata Sandi Kembali" />
+							placeholder-style="color: #999999;font-size:24rpx;" placeholder="Masukkan Kata Sandi Kembali" />
 					</view>
 				</view>
 				<view class="forget" @tap="forget" v-if="type != 'set'">Lupa Kata Sandi</view>
-				<view class="submit-btn mt-[40rpx]" @click="handleConfirm">Konfimasi</view>
 			</view>
+			<view class="submit-btn mt-[40rpx] mx-[30rpx]" @click="handleConfirm">Konfimasi</view>
 		</view>
 		<toastPopup></toastPopup>
 	</view>
@@ -96,7 +96,7 @@
 
 <style lang="scss">
 	page {
-		background: #F6F6F6 !important;
+		background: #F0F0F0 !important;
 	}
 </style>
 <style lang="scss" scoped>
@@ -110,50 +110,51 @@
 			width: 100%;
 
 			.password_con {
-				padding: 0 40rpx;
-
+				padding: 20rpx;
+				background: #FFFFFF;
+				border-radius: 12rpx;
 				.password_row {
 					margin-bottom: 20rpx;
 
 					.password_label {
 						font-family:  Arial;
 						font-size: 32rpx;
-						font-weight: 500;
+						font-weight: 400;
 						line-height: 48rpx;
 						text-align: left;
 						color: #1E1E1E;
 					}
 
 					.password_input {
-						padding: 10rpx 20rpx;
+						padding: 10rpx 40rpx;
 						border-radius: 10rpx;
 						background: #FFFFFF;
+						border: 2rpx solid #8B9098;
 					}
 				}
 
 				.forget {
 					font-family:  Arial;
-					font-size: 28rpx;
+					font-size: 24rpx;
 					font-weight: 500;
 					line-height: 48rpx;
 					text-align: left;
-					color: #0067E0;
+					color: #ECB54B;
 				}
-
-				.submit-btn {
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					height: 90rpx;
-					border-radius: 8rpx;
-					background: #0067E0;
-					font-family:  Arial;
-					font-size: 32rpx;
-					font-weight: 500;
-					line-height: 48rpx;
-					text-align: center;
-					color: #FFFFFF;
-				}
+			}
+			.submit-btn {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 90rpx;
+				border-radius: 12rpx;
+				background: #458060;
+				font-family:  Arial;
+				font-size: 32rpx;
+				font-weight: 500;
+				line-height: 48rpx;
+				text-align: center;
+				color: #FFFFFF;
 			}
 		}
 	}

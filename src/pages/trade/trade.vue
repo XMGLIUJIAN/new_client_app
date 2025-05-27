@@ -5,85 +5,64 @@
 		</view>
 		<view class="trade pb-[40rpx]">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
-				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#1E1E1E"
+				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" :back-icon-color="scrollTop ? '#1E1E1E' : '#FFFFFF'"
 					title="TRANSAKSI" :title-bold="true"
-					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}" title-color="#1E1E1E">
+					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}" :title-color="scrollTop ? '#1E1E1E' : '#FFFFFF'">
 				</u-navbar>
 			</u-sticky>
-			<view class="trade_card mt-[40rpx] px-[40rpx] pt-[40rpx] pb-[40rpx] mx-[40rpx]">
-				<view class="flex items-center justify-between pb-[20rpx]">
-					<view v-if="isLogin" class="flex items-center">
-						<u-avatar :src="userInfo.avatar" :size="120"></u-avatar>
-						<view class="text-white ml-[20rpx]">
-							<view class="text-2xl nickname">{{ userInfo.nickname }}</view>
-							<view class="text-xs mt-[18rpx] account">
-								Akun ID：{{ userInfo.account }}
-							</view>
-						</view>
-					</view>
-					<navigator v-else class="flex items-center" hover-class="none" url="/pages/login/login">
-						<u-avatar src="/static/images/user/default_avatar.png" :size="120"></u-avatar>
-						<view class="text-white ml-[20rpx]">
-							<view class="text-2xl notLogin">
-								<text>Masuk</text>
-								<u-icon class="ml-[20rpx]" name="arrow-right" color="#FFFFFF" size="28"></u-icon>
-							</view>
-							<view class="text-xs mt-[18rpx] account">Belum login.</view>
-						</view>
-					</navigator>
+			<view class="trade_card mt-[50rpx] mx-[30rpx]">
+				<view class="trade_card_head">
+					<view class="card_head_title">Informasi Aset</view>
+					<view class="card_head_account">ID:{{userInfo.account}}</view>
 				</view>
-				<view class="transfer_card px-[40rpx] pb-[20rpx] pt-[20rpx]">
-					<view class="card_left">
-						<view class="card_num">
-							{{formatNumber(userInfo.user_money)}}
-						</view>
-						<view class="card_text">
-							Saldo
-						</view>
+				<view class="transfer_card">
+					<view class="card_box">
+						<view class="card_text">Saldo</view>
+						<view class="card_num">Rp {{formatNumber(userInfo.user_money)}}</view>
 					</view>
-					<view class="card_right">
-						<view class="card_num">
-							{{formatNumber(userInfo.user_token)}}
-						</view>
-						<view class="card_text">
-							Token
-						</view>
+					<view class="card_line"></view>
+					<view class="card_box">
+						<view class="card_text">Poin</view>
+						<view class="card_num">{{formatNumber(userInfo.user_integral)}}</view>
 					</view>
 				</view>
 			</view>
-			<view class="trade_con mt-[20rpx] mb-[40rpx] px-[40rpx] pt-[40rpx] pb-[40rpx] mx-[40rpx]">
-				<view class="settings_head">Silakan pilih mata uang：</view>
-				<view class="settings_list">
-					<view class="settings_label mt-[20rpx] mb-[20rpx]"
-						:class="{'hidden': e.state == true,'active':formData.type == e.currency_type}"
-						v-for="(e,index) in transferArr" :key="index" @tap="change(e)">
-						<view class="settings_Item">
-							{{e.currency_name}}
+			<view class="trade_con mt-[20rpx] mb-[40rpx] px-[20rpx] pt-[20rpx] pb-[20rpx] mx-[30rpx]">
+				<view class="settings_head">Silakan pilih mata uang</view>
+				<u-radio-group v-model="formData.type">
+					<view class="payment_list">
+						<view class="payment_Item mb-[20rpx]" @tap="radioChange(item)" v-for="(item,index) in transferArr"
+							:key="index">
+							<view class="payment_label" v-if="!item.state">
+								<u-image width="100" height="100" :src="item.icon" alt="" />
+								<view class="payment_name">{{item.currency_name}}</view>
+							</view>
+							<u-radio  v-if="!item.state" activeColor="#528B6B" shape="circle" @change="radioChange" :name="item.currency_type"></u-radio>
 						</view>
 					</view>
-				</view>
+				</u-radio-group>
 				<view class="trade_submit">
 					<view class="trade_Item">
-						<view class="trade_title">Nomor Akun Penerima：</view>
+						<view class="trade_title">Nomor Akun Penerima</view>
 						<view class="trade_input">
 							<u-input v-model="formData.accept_user_id" :border="false"
-								placeholder-style="color: #999999;font-size:28rpx;"
+								placeholder-style="color: #8B9098;font-size:24rpx;"
 								placeholder="Masukan Nomor HP Penerima" />
 						</view>
 					</view>
 					<view class="trade_Item">
-						<view class="trade_title">Konfirmasi Kembali：</view>
+						<view class="trade_title">Konfirmasi Kembali</view>
 						<view class="trade_input">
 							<u-input v-model="formData.accept_user_id_confirm" :border="false"
-								placeholder-style="color: #999999;font-size:28rpx;"
+								placeholder-style="color: #8B9098;font-size:24rpx;"
 								placeholder="Masukan Nomor HP Penerima Kembali" />
 						</view>
 					</view>
 					<view class="trade_Item">
-						<view class="trade_title">Jumlah Transaksi：</view>
+						<view class="trade_title">Jumlah Transaksi</view>
 						<view class="trade_input">
 							<u-input v-model="formData.exchange_amount" type="number" :border="false"
-								placeholder-style="color: #999999;font-size:28rpx;"
+								placeholder-style="color: #8B9098;font-size:24rpx;"
 								placeholder="Masukkan Nilai Yang Dikirim" />
 						</view>
 					</view>
@@ -133,7 +112,7 @@
 		exchange_amount: null,
 		type: 0
 	})
-	const change = (e : any) => {
+	const radioChange = (e : any) => {
 		formData.type = e.currency_type
 		currencyName.value = e.currency_name
 		min_amount.value = e.min_amount
@@ -212,7 +191,7 @@
 
 <style lang="scss">
 	page {
-		background: #F6F6F6 !important;
+		background: #F0F0F0 !important;
 	}
 </style>
 <style lang="scss" scoped>
@@ -226,47 +205,44 @@
 			width: 100%;
 
 			.trade_card {
+				overflow: hidden;
 				border-radius: 12rpx;
 				background: #FFFFFF;
-
-				.nickname {
-					font-family: Arial;
-					font-size: 34rpx;
-					font-weight: 700;
-					text-align: left;
-					color: #1E1E1E;
-				}
-
-				.account {
-					font-family: Arial;
-					font-size: 28rpx;
-					font-weight: 500;
-					text-align: left;
-					color: #8FA8C5;
-				}
-
-				.notLogin {
-					font-family: Arial;
-					font-size: 34rpx;
-					font-weight: 700;
-					text-align: left;
-					color: #1E1E1E;
+				.trade_card_head{
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 20rpx 40rpx;
+					background: linear-gradient(303.05deg, #92BEAB 10.45%, #26815A 89.55%);
+					.card_head_title{
+						font-family: Arial;
+						font-weight: 500;
+						font-size: 32rpx;
+						line-height: 40rpx;
+						color: #FFFFFF;
+					}
+					.card_head_account{
+						font-family: Arial;
+						font-weight: 400;
+						font-size: 20rpx;
+						line-height: 40rpx;
+						color: #FFFFFF;
+					}
 				}
 
 				.transfer_card {
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
-					border-radius: 12rpx;
-					background: #DBEBFF;
-
-					.card_left {
+					padding: 20rpx 40rpx;
+					.card_box {
+						width: 45%;
 						.card_num {
 							font-family: Arial;
-							font-size: 36rpx;
-							font-weight: 700;
+							font-size: 28rpx;
+							font-weight: 500;
 							line-height: 64rpx;
-							text-align: left;
+							text-align: center;
 							color: #1E1E1E;
 						}
 
@@ -275,29 +251,14 @@
 							font-size: 32rpx;
 							font-weight: 500;
 							line-height: 48rpx;
-							text-align: left;
-							color: #999999;
+							text-align: center;
+							color: #8B9098;
 						}
 					}
-
-					.card_right {
-						.card_num {
-							font-family: Arial;
-							font-size: 36rpx;
-							font-weight: 700;
-							line-height: 64rpx;
-							text-align: right;
-							color: #1E1E1E;
-						}
-
-						.card_text {
-							font-family: Arial;
-							font-size: 32rpx;
-							font-weight: 500;
-							line-height: 48rpx;
-							text-align: right;
-							color: #999999;
-						}
+					.card_line{
+						width: 2rpx;
+						height: 50rpx;
+						background: #D7D7D7;
 					}
 				}
 			}
@@ -312,39 +273,34 @@
 					font-weight: 700;
 					line-height: 48rpx;
 					text-align: left;
-					color: #1E1E1E;
+					color: #1E4B2E;
 				}
 
-				.settings_list {
-					display: grid;
-					grid-template-columns: repeat(3, 1fr);
-					gap: 0 10px;
-
-					.settings_label {
+				.u-radio-group {
+					display: block;
+				}
+								
+				.payment_list {
+					.payment_Item {
 						display: flex;
-						justify-content: center;
+						justify-content: space-between;
 						align-items: center;
-						width: 186rpx;
-						height: 124rpx;
-						border-radius: 6rpx;
-						background: #F4F4F4;
-
-						.settings_Item {
-							font-family: Arial;
-							font-size: 36rpx;
-							font-weight: 700;
-							text-align: center;
-							color: #1E1E1E;
+								
+						.payment_label {
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+								
+							.payment_name {
+								margin-left: 20rpx;
+								font-family: Arial;
+								font-size: 28rpx;
+								font-weight: 700;
+								line-height: 40rpx;
+								text-align: left;
+								color: #333333;
+							}
 						}
-					}
-
-					.active {
-						border: 3rpx solid #0067E0;
-						background: #E5F0FF;
-					}
-
-					.hidden {
-						display: none;
 					}
 				}
 
@@ -357,17 +313,18 @@
 						.trade_title {
 							font-family: Arial;
 							font-size: 28rpx;
-							font-weight: 500;
+							font-weight: 700;
 							line-height: 40rpx;
 							text-align: left;
-							color: #1E1E1E;
+							color: #1E4B2E;
 						}
 
 						.trade_input {
 							margin-top: 20rpx;
-							padding: 10rpx 20rpx;
-							background: #F4F4F4;
-							border-radius: 10rpx;
+							padding: 10rpx 30rpx;
+							background: #FFFFFF;
+							border-radius: 12rpx;
+							border: 2rpx solid #8B9098;
 						}
 					}
 				}
@@ -378,10 +335,10 @@
 				justify-content: center;
 				align-items: center;
 				height: 90rpx;
-				border-radius: 8rpx;
-				background: #0067E0;
+				border-radius: 12rpx;
+				background: #458060;
 				font-family: Arial;
-				font-size: 32rpx;
+				font-size: 28rpx;
 				font-weight: 500;
 				line-height: 48rpx;
 				text-align: center;

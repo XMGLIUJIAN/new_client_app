@@ -155,19 +155,19 @@
 						padding: 20rpx;
 						border-radius: 20rpx;
 						background: linear-gradient(180deg, #EBF4FF 0%, #FFFFFF 100%);
-					
+
 						.extend_code {
 							display: flex;
 							justify-content: center;
 							align-items: center;
 							margin: 20rpx 0;
-					
+
 							.code {
 								position: relative;
 								width: 268rpx;
 								height: 268rpx;
 								background: #FFFFFF;
-					
+
 								#uqrcode {
 									position: absolute;
 									top: 50%;
@@ -176,12 +176,12 @@
 								}
 							}
 						}
-					
+
 						.card_invite {
 							display: flex;
 							justify-content: center;
 							align-items: center;
-					
+
 							.code_title {
 								margin-right: 10rpx;
 								font-family: Arial;
@@ -191,7 +191,7 @@
 								text-align: center;
 								color: #1E1E1E;
 							}
-					
+
 							.code_text {
 								font-family: Arial;
 								font-size: 24rpx;
@@ -202,6 +202,7 @@
 							}
 						}
 					}
+
 
 					.extend_link {
 						display: flex;

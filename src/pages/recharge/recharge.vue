@@ -5,19 +5,20 @@
 		</view>
 		<view class="recharge  pb-[40rpx]">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
-				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#1E1E1E"
+				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" :back-icon-color="scrollTop ? '#1E1E1E' : '#FFFFFF'"
 					:title-bold="true" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
-					title="DEPOSIT" title-color="#1E1E1E">
+					title="DEPOSIT" :title-color="scrollTop ? '#1E1E1E' : '#FFFFFF'">
 					<template #right>
-						<view class="contact mr-[20rpx]" @tap="navigateTo('/pages/customer_service/customer_service')">
-							<u-image width="40" height="40" src="@/static/images/user/icon_service.png" alt="" />
+						<view class="contact mr-[30rpx]" @tap="navigateTo('/pages/customer_service/customer_service')">
+							<u-image v-if="!scrollTop" width="40" height="40" src="@/static/images/user/icon_service.png" alt="" />
+							<u-image v-else width="40" height="40" src="@/static/images/icon/contact.png" alt="" />
 						</view>
 					</template>
 				</u-navbar>
 			</u-sticky>
-			<view class="recharge_con px-[40rpx]">
-				<view class="recharge_payment mt-[40rpx] mb-[20rpx]">
-					<view class="payment_head">Memilih Pembayaran：</view>
+			<view class="recharge_con px-[30rpx]">
+				<view class="recharge_payment mt-[50rpx] mb-[20rpx]">
+					<view class="payment_head">Memilih Pembayaran</view>
 					<u-radio-group v-model="formData.pay_way">
 						<view class="payment_list">
 							<view class="payment_Item mb-[20rpx]" @tap="radioChange(item)" v-for="(item,index) in paymentArr"
@@ -26,13 +27,13 @@
 									<u-image width="100" height="100" :src="item.icon" alt="" />
 									<view class="payment_name">{{item.name}}</view>
 								</view>
-								<u-radio shape="circle" @change="radioChange" :name="item.pay_way"></u-radio>
+								<u-radio activeColor="#528B6B" shape="circle" @change="radioChange" :name="item.pay_way"></u-radio>
 							</view>
 						</view>
 					</u-radio-group>
 				</view>
 				<view class="settings_card mb-[40rpx]">
-					<view class="settings_head">Memilih Nominal：</view>
+					<view class="settings_head">Memilih Nominal</view>
 					<view class="settings_list">
 						<view class="settings_label mt-[20rpx] mb-[20rpx]" v-for="e in rechargeArr" :key="e"
 							@tap="change(e)" :class="{'active':formData.money == e}">
@@ -46,10 +47,10 @@
 					</view>
 					<view class="trade_submit">
 						<view class="trade_Item">
-							<view class="trade_title">Jumlah Deposit：</view>
+							<view class="trade_title">Jumlah Deposit</view>
 							<view class="trade_input">
 								<u-input v-model="formData.money" type="number" :border="false"
-									placeholder-style="color: #999999;font-size:28rpx;"
+									placeholder-style="color: ##8B9098;font-size:24rpx;"
 									placeholder="Masukkan Jumlah Yang Ingin Deposit" />
 							</view>
 						</view>
@@ -153,7 +154,7 @@
 
 <style lang="scss">
 	page {
-		background: #F6F6F6 !important;
+		background: #F0F0F0 !important;
 	}
 </style>
 <style lang="scss" scoped>
@@ -168,18 +169,18 @@
 
 			.recharge_con {
 				.recharge_payment {
-					padding: 40rpx 40rpx 20rpx 40rpx;
+					padding: 20rpx 30rpx;
 					border-radius: 12rpx;
 					background: #FFFFFF;
 
 					.payment_head {
 						margin-bottom: 20rpx;
 						font-family: Arial;
-						font-size: 32rpx;
+						font-size: 30rpx;
 						font-weight: 700;
 						line-height: 48rpx;
 						text-align: left;
-						color: #1E1E1E;
+						color: #1E4B2E;
 					}
 
 					.u-radio-group {
@@ -212,37 +213,36 @@
 				}
 
 				.settings_card {
-					padding: 40rpx;
+					padding: 20rpx 30rpx;
 					border-radius: 12rpx;
 					background: #FFFFFF;
 
 					.settings_head {
-						margin-bottom: 20rpx;
 						font-family: Arial;
-						font-size: 32rpx;
+						font-size: 30rpx;
 						font-weight: 700;
 						line-height: 48rpx;
 						text-align: left;
-						color: #1E1E1E;
+						color: #1E4B2E;
 					}
 
 					.settings_list {
 						display: grid;
 						grid-template-columns: repeat(3, 1fr);
-						gap: 0 10px;
+						gap: 0 10rpx;
 
 						.settings_label {
 							display: flex;
 							justify-content: center;
 							align-items: center;
-							width: 186rpx;
-							height: 124rpx;
-							border-radius: 6rpx;
-							background: #F4F4F4;
+							width: 188rpx;
+							height: 120rpx;
+							border-radius: 8rpx;
+							background: #F0F0F0;
 
 							.settings_Item {
 								font-family: Arial;
-								font-size: 28rpx;
+								font-size: 24rpx;
 								font-weight: 700;
 								text-align: center;
 								color: #1E1E1E;
@@ -255,36 +255,35 @@
 						}
 					}
 					.trade_submit {
-						margin-top: 20rpx;
 					
 						.trade_Item {
 							margin-bottom: 20rpx;
 					
 							.trade_title {
 								font-family: Arial;
-								font-size: 32rpx;
+								font-size: 30rpx;
 								font-weight: 700;
 								line-height: 40rpx;
 								text-align: left;
-								color: #1E1E1E;
+								color: #1E4B2E;
 							}
 					
 							.trade_input {
 								margin-top: 20rpx;
-								padding: 10rpx 20rpx;
-								background: #F4F4F4;
-								border-radius: 10rpx;
+								padding: 10rpx 30rpx;
+								background: #FFFFFF;
+								border-radius: 12rpx;
+								border: 2rpx solid #8B9098;
 							}
 						}
 						
 						.trade_tips{
-							margin: 10rpx 0;
 							font-family: Arial;
-							font-size: 28rpx;
+							font-size: 24rpx;
 							font-weight: 500;
 							line-height: 40rpx;
 							text-align: left;
-							color: #999999;
+							color: #8B9098;
 						}
 					}
 				}
@@ -294,23 +293,23 @@
 					justify-content: center;
 					align-items: center;
 					height: 90rpx;
-					border-radius: 8rpx;
-					background: #0067E0;
+					border-radius: 12rpx;
+					background: #458060;
 					font-family: Arial;
-					font-size: 32rpx;
+					font-size: 28rpx;
 					font-weight: 500;
 					line-height: 48rpx;
 					text-align: center;
 					color: #FFFFFF;
 				}
 				.recharge_box{
-					margin-top: 10rpx;
+					margin-top: 20rpx;
 					padding: 20rpx;
 					border-radius: 12rpx;
 					background: #FFFFFF;
 					.recharge_text{
 						font-family: Arial;
-						font-size: 28rpx;
+						font-size: 20rpx;
 						font-weight: 500;
 						line-height: 40rpx;
 						text-align: left;

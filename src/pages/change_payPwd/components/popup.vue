@@ -4,7 +4,7 @@
 			<view class="success px-[40rpx] pt-[40rpx] pb-[40rpx]" v-if="type == 'success'">
 				<view class="tips mb-[40rpx]">Pemberitahuan</view>
 				<view class="status">
-					<u-image width="140" height="140" src="@/static/images/icon/success.png" alt="" />
+					<u-image width="100" height="100" src="@/static/images/icon/success.png" alt="" />
 				</view>
 				<view class="explain">Set sandi penarikan berhasil</view>
 				<view class="btn mt-[20rpx]" @tap="finishPopup">selesai</view>
@@ -12,7 +12,7 @@
 			<view class="lose px-[40rpx] pt-[40rpx] pb-[40rpx]" v-if="type == 'lose'">
 				<view class="tips mb-[40rpx]">Pemberitahuan</view>
 				<view class="status">
-					<u-image width="140" height="140" src="@/static/images/icon/lose.png" alt="" />
+					<u-image width="100" height="100" src="@/static/images/icon/lose.png" alt="" />
 				</view>
 				<view class="explain">{{message}}</view>
 				<view class="btn mt-[20rpx]" @tap="confirmPopup">Konfirmasi</view>
@@ -78,16 +78,16 @@
 				}
 				.explain{
 					font-family:  Arial;
-					font-size: 28rpx;
+					font-size: 24rpx;
 					font-weight: 400;
 					line-height: 48rpx;
 					text-align: center;
-					color: #666666;
+					color: #8B9098;
 				}
 				.btn{
 					height: 80rpx;
 					border-radius: 12rpx;
-					background: #0067E0;
+					background: #81AF95;
 					font-family:  Arial;
 					font-size: 28rpx;
 					font-weight: 500;
@@ -117,21 +117,21 @@
 				}
 				.explain{
 					font-family:  Arial;
-					font-size: 28rpx;
+					font-size: 24rpx;
 					font-weight: 400;
 					line-height: 48rpx;
 					text-align: center;
-					color: #EF0000;
+					color: #8B9098;
 				}
 				.btn{
 					height: 80rpx;
 					border-radius: 12rpx;
-					background: #E9E9E9;
+					background: #C3C6CB;
 					font-family:  Arial;
 					font-size: 28rpx;
 					font-weight: 500;
 					line-height: 80rpx;
-					color: #1E1E1E;
+					color: #FFFFFF;
 					text-align: center;
 				}
 			}

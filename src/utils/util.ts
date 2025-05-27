@@ -223,7 +223,7 @@ export const formatRichText = (html : string) => {
 			return match;
 		});
 		newContent = newContent.replace(/<br[^>]*\/>/gi, '');
-		newContent = newContent.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:inline-block;margin:10rpx auto;"');
+		newContent = newContent.replace(/\<img/gi, '<img style="max-width:100%;height:auto;display:inline-block;margin:0 auto;"');
 
 		return newContent;
 	}
