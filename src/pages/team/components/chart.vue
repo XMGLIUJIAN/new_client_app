@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<l-echart ref="chartRef"></l-echart>
+		<l-echart ref="chartRef" :style="{width: '640rpx',height:'480rpx'}"></l-echart>
 	</view>
 </template>
 

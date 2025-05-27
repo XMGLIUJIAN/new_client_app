@@ -1,11 +1,11 @@
 <template>
 	<view class="container">
 		<view class="imageGroup">
-			<u-image width="750" height="2567" src="@/static/images/page/about_us.png"></u-image>
+			<u-image width="750" height="1288" src="@/static/images/page/invite_rule.png"></u-image>
 		</view>
 		<view class="rules">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
-				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" :title-bold="true" title="TENTANG"
+				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" :title-bold="true" title="ATURAN MENGUNDANG"
 					:back-icon-color="scrollTop ? '#1E1E1E' : '#FFFFFF'" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
 					:title-color="scrollTop ? '#1E1E1E' : '#FFFFFF'">
 				</u-navbar>

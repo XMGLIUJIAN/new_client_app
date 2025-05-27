@@ -10,7 +10,7 @@
 					title="DEPOSIT" title-color="#1E1E1E">
 					<template #right>
 						<view class="contact mr-[20rpx]" @tap="navigateTo('/pages/customer_service/customer_service')">
-							<u-image width="50" height="50" src="@/static/images/user/service.png" alt="" />
+							<u-image width="40" height="40" src="@/static/images/user/icon_service.png" alt="" />
 						</view>
 					</template>
 				</u-navbar>

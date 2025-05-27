@@ -10,7 +10,8 @@
 					:title-color="scrollTop ? '#1E1E1E':'#FFFFFF'" title="TIM">
 					<template #right>
 						<view class="slot-wrap">
-							<u-image width="40" height="40" src="@/static/images/user/icon_service.png" alt="" />
+							<u-image v-if="scrollTop" width="40" height="40" src="@/static/images/icon/contact.png" alt="" />
+							<u-image v-if="!scrollTop" width="40" height="40" src="@/static/images/user/icon_service.png" alt="" />
 						</view>
 					</template>
 				</u-navbar>
@@ -177,7 +178,7 @@
 		extendShow.value = false
 	}
 	const teamRule = () => {
-		router.navigateTo('/pages/rules/rules?active=3')
+		router.navigateTo('/pages/team_rule/team_rule')
 	}
 	//团队用户排名
 	const getRank = async () => {

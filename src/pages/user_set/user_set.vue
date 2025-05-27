@@ -7,7 +7,7 @@
 			<u-sticky h5-nav-height="0" bg-color="transparent">
 				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#1E1E1E"
 					:title-bold="true" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
-					title="PRIVASI DAN KEAMANAN" title-color="#1E1E1E">
+					title="PRIVASI DAN KEAMANAN" title-color="#FFFFFF">
 				</u-navbar>
 			</u-sticky>
 			<navigator :url="`/pages/user_data/user_data`">
@@ -20,7 +20,7 @@
 								<text class="account_num">Akun ID：{{ userInfo.account }}</text>
 							</view>
 						</view>
-						<u-icon name="arrow-right" :color="userInfo.nickname ? '#0067E0':'#666666'"></u-icon>
+						<u-icon name="arrow-right" color="#B0B0B0"></u-icon>
 					</view>
 				</view>
 			</navigator>
@@ -31,7 +31,7 @@
 						<view class="text-muted mr-[20rpx]">
 							{{ userInfo.mobile }}
 						</view>
-						<u-icon name="arrow-right" color="#666666"></u-icon>
+						<u-icon name="arrow-right" color="#B0B0B0"></u-icon>
 					</view>
 				</view>
 				<view class="item btn-border flex flex-1 justify-between" @click="handlePwd">
@@ -55,7 +55,7 @@
 						<view class="text-muted mr-[20rpx]">
 							{{ userInfo.is_auth ? 'Terikat' : 'Tidak Terikat' }}
 						</view>
-						<u-icon v-if="userInfo.is_auth == 0" name="arrow-right" color="#666"></u-icon>
+						<u-icon v-if="userInfo.is_auth == 0" name="arrow-right" color="#B0B0B0"></u-icon>
 					</view>
 				</view>
 				<!-- #endif -->
@@ -190,7 +190,7 @@
 					font-size: 28rpx;
 					font-weight: 400;
 					text-align: right;
-					color: #0067E0;
+					color: #ECB54B;
 				}
 				.label_name{
 					font-family:  Arial;

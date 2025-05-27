@@ -9,7 +9,7 @@
 					:title-bold="true" :background="{ background:  scrollTop ? '#FFFFFF' : 'transparent'}"
 					title-color="#1E1E1E">
 					<template #right>
-						<view class="rule mr-[20rpx]" @tap="navigateTo('/pages/user_rule/user_rule?type=points')">
+						<view class="rule mr-[20rpx]" @tap="navigateTo('/pages/point_rule/point_rule')">
 							Peraturan
 						</view>
 					</template>

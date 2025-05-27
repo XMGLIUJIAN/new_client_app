@@ -23,33 +23,33 @@
 				<view class="item text-nr">
 					<view class="label">Akun ID</view>
 					<view class="content">{{ userInfo?.account }}</view>
-					<u-icon name="arrow-right" size="22" color="#666"></u-icon>
+					<u-icon name="arrow-right" size="22" color="#B0B0B0"></u-icon>
 				</view>
 
 				<!-- 昵称 -->
 				<view class="item text-nr" @click=";(showNickName = true), (newNickname = userInfo?.nickname)">
 					<view class="label">Panggilan</view>
 					<view class="content">{{ userInfo?.nickname }}</view>
-					<u-icon name="arrow-right" size="22" color="#666"></u-icon>
+					<u-icon name="arrow-right" size="22" color="#B0B0B0"></u-icon>
 				</view>
 
 				<!-- 性别 -->
 				<view class="item text-nr" @click="changeSex">
 					<view class="label">Jenis Kelamin</view>
 					<view class="content">{{ userInfo?.sex }}</view>
-					<u-icon name="arrow-right" size="22" color="#666"></u-icon>
+					<u-icon name="arrow-right" size="22" color="#B0B0B0"></u-icon>
 				</view>
 				<!-- whatsapp -->
 				<view class="item text-nr" @click=";(showWhatapp = true), (newWhatsapp = userInfo?.whatsapp)">
 					<view class="label">WhatsApp</view>
 					<view class="content">{{ userInfo?.whatsapp }}</view>
-					<u-icon name="arrow-right" size="22" color="#666"></u-icon>
+					<u-icon name="arrow-right" size="22" color="#B0B0B0"></u-icon>
 				</view>
 				<!-- telegram -->
 				<view class="item text-nr" @click=";(showTelegram = true), (newTelegram = userInfo?.telegram)">
 					<view class="label">Telegram</view>
 					<view class="content">{{ userInfo?.telegram }}</view>
-					<u-icon name="arrow-right" size="22" color="#666"></u-icon>
+					<u-icon name="arrow-right" size="22" color="#B0B0B0"></u-icon>
 				</view>
 			</view>
 
@@ -71,7 +71,7 @@
 				</view>
 			</u-popup>
 			<!-- 性别修改组件 -->
-			<u-picker mode="selector" v-model="showPicker" confirm-color="#4173FF" :default-selector="[0]"
+			<u-picker mode="selector" v-model="showPicker" cancel-color="#8B9098" confirm-color="#275534" :default-selector="[0]"
 				:range="sexList" @confirm="changeSexConfirm" />
 			<!-- whatsapp修改组件 -->
 			<u-popup v-model="showWhatapp" :closeable="true" mode="center" :maskCloseAble="false" border-radius="20">
@@ -299,7 +299,7 @@
 				align-items: center;
 				height: 90rpx;
 				border-radius: 8rpx;
-				background: #0067E0;
+				background: #458060;
 				font-family:  Arial;
 				font-size: 32rpx;
 				font-weight: 500;

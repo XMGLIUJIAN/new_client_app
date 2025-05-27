@@ -17,7 +17,10 @@
 				<view class="user_card_head">
 					<view class="card_head_info">
 						<view class="card_head_title">Saldo Poin</view>
-						<u-image width="24" height="24" src="@/static/images/user/icon_lock.png" alt="" />
+						<view class="lock_box" @tap="eyeChange">
+							<u-image v-if="!eyeShow" width="24" height="24" src="@/static/images/user/icon_see.png" alt="" />
+							<u-image v-else width="24" height="24" src="@/static/images/user/icon_lock.png" alt="" />
+						</view>
 					</view>
 					<view class="card_head_phone">ID:08888811111</view>
 				</view>
@@ -27,19 +30,19 @@
 				</view>
 				<view class="user_card_line"></view>
 				<view class="user_card_box">
-					<view class="user_card_label">
+					<view class="user_card_label" @tap="navigateAuth('/pages/points/points')">
 						<u-image width="80" height="80" src="@/static/images/user/icon_card01.png" alt="" />
 						<view class="card_label_text">Tukar Poin</view>
 					</view>
-					<view class="user_card_label">
+					<view class="user_card_label" @tap="navigateAuth('/pages/recharge/recharge')">
 						<u-image width="80" height="80" src="@/static/images/user/icon_card02.png" alt="" />
 						<view class="card_label_text">Isi Ulang</view>
 					</view>
-					<view class="user_card_label">
+					<view class="user_card_label" @tap="navigateAuth('/pages/withdrawal/withdrawal')">
 						<u-image width="80" height="80" src="@/static/images/user/icon_card03.png" alt="" />
 						<view class="card_label_text">Tarik Dana</view>
 					</view>
-					<view class="user_card_label">
+					<view class="user_card_label" @tap="navigateAuth('/pages/trade/trade')">
 						<u-image width="80" height="80" src="@/static/images/user/icon_card04.png" alt="" />
 						<view class="card_label_text">Transfer Dana</view>
 					</view>
@@ -128,12 +131,6 @@
 	const extendCopy = (link : any) => {
 		copy(link)
 		extendShow.value = false
-	}
-	const refreshCode = (code : string, link : string) => {
-		// uQrcode.value = code
-		// uQrlink.value = link
-		// extendShow.value = true
-		navigateTo('/pages/invite/invite')
 	}
 	const navigateAuth = (url : string) => {
 		props.isLogin ? navigateTo(url) : navigateTo('/pages/login/login')
