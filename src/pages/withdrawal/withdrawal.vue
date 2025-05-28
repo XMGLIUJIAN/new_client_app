@@ -5,12 +5,13 @@
 		</view>
 		<view class="withdrawal pb-[40rpx]">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
-				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#1E1E1E"
+				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" :back-icon-color="scrollTop ? '#1E1E1E' : '#FFFFFF'"
 					:title-bold="true" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
-					title="PENARIKAN" title-color="#1E1E1E">
+					title="PENARIKAN" :title-color="scrollTop ? '#1E1E1E' : '#FFFFFF'">
 					<template #right>
-						<view class="rule mr-[20rpx]" @tap="navigateTo('/pages/user_rule/user_rule?type=withdrawal')">
-							Peraturan
+						<view class="rule mr-[30rpx]" @tap="navigateTo('/pages/user_rule/user_rule?type=withdrawal')">
+							<u-image v-if="!scrollTop" width="40" height="40" src="@/static/images/icon/icon_help.png"></u-image>
+							<u-image v-else width="40" height="40" src="@/static/images/icon/help.png"></u-image>
 						</view>
 					</template>
 				</u-navbar>
@@ -55,7 +56,7 @@
 
 <style lang="scss">
 	page {
-		background: #F0F0F0 !important;
+		background: #F1F1F1 !important;
 	}
 </style>
 <style lang="scss" scoped>
@@ -67,41 +68,31 @@
 			top: 0;
 			left: 0;
 			width: 100%;
-
-			.rule {
-				font-family: serif;
-				font-size: 28rpx;
-				font-weight: 500;
-				line-height: 45rpx;
-				text-align: right;
-				color: #1E1E1E;
-			}
-
 			.withdraw_tabs {
 				display: flex;
 				justify-content: space-around;
 				align-items: center;
 
 				.tabs_Item {
-					width: 250rpx;
-					height: 88rpx;
+					width: 258rpx;
+					height: 80rpx;
 					border-radius: 48rpx;
 					background: transparent;
 					font-family: serif;
-					font-size: 30rpx;
+					font-size: 28rpx;
 					font-weight: 500;
-					line-height: 88rpx;
+					line-height: 80rpx;
 					text-align: center;
-					color: #1E1E1E;
-					background: rgba(255, 255, 255, 0.3);
+					color: #A0A3A9;
+					background: rgba(255, 255, 255, 0.5);
 				}
 
 				.active {
 					font-family: serif;
-					font-size: 32rpx;
+					font-size: 28rpx;
 					font-weight: 700;
 					border: 2rpx solid #FFFFFF;
-					color: #006EEE;
+					color: #1E4B2E;
 				}
 			}
 		}

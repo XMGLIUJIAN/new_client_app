@@ -5,12 +5,12 @@
 		</view>
 		<view class="agreement pb-[50rpx]">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
-				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#1E1E1E"
+				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" :back-icon-color="scrollTop ? '#1E1E1E' : '#FFFFFF'"
 					:title-bold="true" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
-					:title="agreementType == 'privacy' ? 'KEBIJAKAN PRIVASI':'KETENTUAN LAYANAN'" title-color="#1E1E1E">
+					:title="agreementType == 'privacy' ? 'KEBIJAKAN PRIVASI':'KETENTUAN LAYANAN'" :title-color="scrollTop ? '#1E1E1E' : '#FFFFFF'">
 				</u-navbar>
 			</u-sticky>
-			<view class="parse mt-[50rpx] mb-[50rpx] ml-[40rpx]  mr-[40rpx]">
+			<view class="parse mt-[50rpx] mb-[30rpx] ml-[30rpx]  mr-[30rpx]">
 				<view class="parse_con">
 					<rich-text class="rich_text" :nodes="agreementContent"></rich-text>
 				</view>
@@ -46,7 +46,7 @@
 
 <style lang="scss">
 	page {
-		background: #F0F0F0 !important;
+		background: #F1F1F1 !important;
 	}
 </style>
 <style lang="scss" scoped>
@@ -64,7 +64,7 @@
 				background: #FFFFFF;
 
 				.parse_con {
-					padding: 0 20rpx;
+					padding: 20rpx;
 					.rich_text{
 						word-break:break-all;
 					}

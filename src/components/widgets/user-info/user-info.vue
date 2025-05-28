@@ -6,7 +6,8 @@
 				:title-color="scrollTop ? '#1E1E1E':'#FFFFFF'" title="AKUN">
 				<template #right>
 					<view class="slot-wrap">
-						<u-image width="40" height="40" src="@/static/images/user/icon_service.png" alt="" />
+						<u-image v-if="!scrollTop" width="40" height="40" src="@/static/images/user/icon_service.png" alt="" />
+						<u-image v-else width="40" height="40" src="@/static/images/icon/contact.png" alt="" />
 					</view>
 				</template>
 			</u-navbar>

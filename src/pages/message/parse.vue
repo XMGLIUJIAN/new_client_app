@@ -6,15 +6,15 @@
 		<view class="parse">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
 				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" :title-bold="true"
-					title="DETAIL PESAN" back-icon-color="#1E1E1E"
-					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}" title-color="#1E1E1E">
+					title="DETAIL PESAN" back-icon-color="#FFFFFF"
+					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}" title-color="#FFFFFF">
 				</u-navbar>
 			</u-sticky>
-			<view class="swiper mt-[40rpx] mx-[40rpx]" v-if="swiperArr.length">
+			<view class="swiper mt-[40rpx] mx-[30rpx]" v-if="swiperArr.length">
 				<u-swiper border-radius="20" :indicator-dots="swiperArr.length > 1" height="385"  :list="swiperArr" mode="rect"
 					indicator-pos="bottomRight"></u-swiper>
 			</view>
-			<view class="parse_con pt-[40rpx] pb-[40rpx] px-[40rpx]">
+			<view class="parse_con mt-[20rpx] mb-[20rpx] mx-[30rpx]">
 				<view class="parse_title">{{messageInfo.title}}</view>
 				<view class="parse_info">
 					<view class="info_name">{{messageInfo.subtitle}}</view>
@@ -53,7 +53,7 @@
 
 <style lang="scss">
 	page {
-		background: #F0F0F0 !important;
+		background: #F1F1F1 !important;
 	}
 </style>
 <style lang="scss" scoped>
@@ -67,13 +67,16 @@
 			width: 100%;
 
 			.parse_con {
+				padding: 20rpx;
+				background: #FFFFFF;
+				border-radius: 12rpx;
 				.parse_title {
 					font-family:  Arial;
-					font-size: 40rpx;
+					font-size: 32rpx;
 					font-weight: 700;
 					line-height: 60rpx;
 					text-align: left;
-					color: #1E1E1E;
+					color: #1E4B2E;
 				}
 
 				.parse_info {
@@ -84,23 +87,27 @@
 
 					.info_name {
 						font-family:  Arial;
-						font-size: 32rpx;
+						font-size: 24rpx;
 						font-weight: 500;
 						line-height: 48rpx;
 						text-align: left;
-						color: #999999;
+						color: #8B9098;
 					}
 
 					.info_time {
 						font-family:  Arial;
-						font-size: 32rpx;
+						font-size: 24rpx;
 						font-weight: 500;
 						line-height: 48rpx;
 						text-align: right;
-						color: #999999;
+						color: #8B9098;
 					}
 				}
 				.rich_text{
+					font-family: Arial;
+					font-weight: 400;
+					font-size: 24rpx;
+					color: #1E1E1E;
 					word-break:break-all;
 				}
 			}

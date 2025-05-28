@@ -1,7 +1,7 @@
 <template>
 	<view class="state pb-[40rpx]">
-		<view class="state_con px-[40rpx]">
-			<view class="state_card px-[40rpx] pb-[40rpx] pt-[40rpx]">
+		<view class="state_con px-[30rpx]">
+			<view class="state_card px-[30rpx] pb-[30rpx] pt-[30rpx]">
 				<view class="card_left">
 					<view class="card_num">
 						{{formatNumber(userInfo.user_money)}}
@@ -97,7 +97,7 @@
 				justify-content: space-between;
 				align-items: center;
 				border-radius: 12rpx;
-				background: #FFFFFF;
+				background: linear-gradient(270.01deg, #FFFFFF 29.05%, #C7E1C9 111.86%);
 
 				.card_left {
 					.card_num {
@@ -111,23 +111,23 @@
 
 					.card_text {
 						font-family:  Arial;
-						font-size: 32rpx;
+						font-size: 30rpx;
 						font-weight: 500;
 						line-height: 48rpx;
 						text-align: left;
-						color: #96B1D1;
+						color: #A0A3A9;
 					}
 				}
 
 			}
 
 			.state_list {
-				padding: 36rpx;
+				padding: 30rpx;
 				border-radius: 12rpx;
 				background: #FFFFFF;
 
 				.state_Item {
-					border-bottom: 2rpx solid #E6E6E6;
+					border-bottom: 2rpx solid #D7D7D7;
 					.state_head {
 						display: flex;
 						justify-content: space-between;
@@ -136,7 +136,7 @@
 						.state_title {
 							font-family:  Arial;
 							font-size: 32rpx;
-							font-weight: 700;
+							font-weight: 400;
 							line-height: 48rpx;
 							text-align: left;
 							color: #1E1E1E;
@@ -145,7 +145,7 @@
 						.state_num {
 							font-family:  Arial;
 							font-size: 36rpx;
-							font-weight: 700;
+							font-weight: 400;
 							line-height: 48rpx;
 							text-align: right;
 							color: #1E1E1E;
@@ -158,11 +158,11 @@
 
 						.state_time {
 							font-family:  Arial;
-							font-size: 26rpx;
+							font-size: 24rpx;
 							font-weight: 500;
 							line-height: 40rpx;
 							text-align: left;
-							color: #999999;
+							color: #A0A3A9;
 						}
 
 						.state_status {
@@ -172,21 +172,18 @@
 							font-size: 24rpx;
 							font-weight: 500;
 							text-align: left;
+							color: #FFFFFF;
 							&.audit{
-								color: #E4EFFF;
-								background: #0067E0;
+								background: #ECB54B;
 							}
 							&.remit{
-								color: #909399;
-								background: #C8C9CCC;
+								background: #C8C9CC;
 							}
 							&.fail{
-								color: #EF0000;
-								background: #FFE7E7;
+								background: #EC4A32;
 							}
 							&.success{
-								color: #00B01A;
-								background: #EAFFED;
+								background: #458060;
 							}
 						}
 					}

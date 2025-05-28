@@ -309,7 +309,8 @@
 				}
 
 				.next-placeholder {
-					color: #ABAFB5;
+					color: #8B9098;
+					font-size: 24rpx;
 				}
 
 				.next-cancel {
@@ -317,7 +318,7 @@
 					font-weight: 500;
 					font-size: 30rpx;
 					text-align: right;
-					color: #0067E0;
+					color: #1E4B2E;
 				}
 			}
 

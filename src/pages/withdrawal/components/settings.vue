@@ -1,29 +1,13 @@
 <template>
 	<view class="settings">
-		<view class="set_card mt-[20rpx] px-[40rpx] pt-[40rpx] pb-[40rpx] mx-[40rpx]">
-			<view class="flex items-center justify-between pb-[20rpx]">
-				<view v-if="isLogin" class="flex items-center">
-					<u-avatar :src="userInfo.avatar" :size="120"></u-avatar>
-					<view class="text-white ml-[20rpx]">
-						<view class="text-2xl nickname">{{ userInfo.nickname }}</view>
-						<view class="text-xs mt-[18rpx] account">
-							Akun ID：{{ userInfo.account }}
-						</view>
-					</view>
+		<view class="set_card mt-[20rpx] mx-[30rpx]">
+			<u-image width="690" height="245" src="@/static/images/user/setGroup.png"></u-image>
+			<view class="settings_card pt-[20rpx] pb-[20rpx] px-[40rpx]">
+				<view class="card_head">
+					<view class="card_head_title">Informasi Aset</view>
+					<view class="card_head_account">ID:{{userInfo.account}}</view>
 				</view>
-				<navigator v-else class="flex items-center" hover-class="none" url="/pages/login/login">
-					<u-avatar src="/static/images/user/default_avatar.png" :size="120"></u-avatar>
-					<view class="text-white ml-[20rpx]">
-						<view class="text-2xl notLogin">
-							<text>Masuk</text>
-							<u-icon class="ml-[20rpx]" name="arrow-right" color="#FFFFFF" size="28"></u-icon>
-						</view>
-						<view class="text-xs mt-[18rpx] account">Belum login.</view>
-					</view>
-				</navigator>
-			</view>
-			<view class="settings_card pt-[20rpx]">
-				<view class="card_left">
+				<view class="card_box">
 					<view class="card_num">
 						{{formatNumber(userInfo.user_money)}}
 					</view>
@@ -34,8 +18,8 @@
 			</view>
 		</view>
 		
-		<view class="recharge_payment mt-[20rpx] mb-[40rpx] px-[40rpx] pt-[20rpx] pb-[40rpx] mx-[40rpx]">
-			<view class="payment_head">Memilih Pembayaran：</view>
+		<view class="recharge_payment mt-[30rpx] mb-[30rpx] px-[30rpx] pt-[20rpx] pb-[30rpx] mx-[30rpx]">
+			<view class="payment_head">Memilih Pembayaran</view>
 			<u-radio-group v-model="formData.pay_way">
 				<view class="payment_list">
 					<view class="payment_Item mb-[20rpx]" @tap="radioChange(item)" v-for="(item,index) in paymentArr"
@@ -44,13 +28,13 @@
 							<u-image width="100" height="100" :src="item.icon" alt="" />
 							<view class="payment_name">{{item.name}}</view>
 						</view>
-						<u-radio shape="circle" :name="item.pay_way"></u-radio>
+						<u-radio shape="circle" activeColor="#528B6B" :name="item.pay_way"></u-radio>
 					</view>
 				</view>
 			</u-radio-group>
 		</view>
 		
-		<view class="settings_con mt-[20rpx] mb-[40rpx] px-[40rpx] pt-[20rpx] pb-[40rpx] mx-[40rpx]">
+		<view class="settings_con mt-[20rpx] mb-[30rpx] px-[30rpx] pt-[30rpx] pb-[30rpx] mx-[30rpx]">
 			<view class="settings_list">
 				<view class="settings_label mt-[20rpx] mb-[20rpx]" :class="{'active':formData.money == e}"
 					v-for="(e,index) in withdrawArr" :key="index" @tap="change(e)">
@@ -61,10 +45,10 @@
 			</view>
 			<view class="trade_submit">
 				<view class="trade_Item">
-					<view class="trade_title">Jumlah Penarikan：</view>
+					<view class="trade_title">Jumlah Penarikan</view>
 					<view class="trade_input">
 						<u-input v-model="formData.money" type="number" :border="false"
-							placeholder-style="color: #999999;font-size:28rpx;"
+							placeholder-style="color: #8B9098;font-size:24rpx;"
 							placeholder="Masukkan Jumlah Yang Ingin Ditarik" />
 					</view>
 				</view>
@@ -74,7 +58,7 @@
 					<view class="point">({{feeRate}}%)</view>
 				</view>
 				<view class="trade_head  mt-[20rpx] mb-[20rpx]">
-					<view class="head_title">Bank：</view>
+					<view class="head_title">Bank</view>
 					<view class="head_bind" @tap="navigateTo('/pages/bind_card/bind_card')">
 						<u-image width="30" height="30" src="@/static/images/icon/addCard.png" alt="" />
 						<text class="addCard">Mengikat Rekening Bank</text>
@@ -82,11 +66,11 @@
 				</view>
 				<view class="trade_bank" @tap="select">
 					<u-input type="select" v-model="cardNumber" @click="selectShow = true" :border="false"
-						placeholder-style="color: #999999;font-size:28rpx;" placeholder="Pilih Rekening Bank" />
+						placeholder-style="color: #8B9098;font-size:24rpx;" placeholder="Pilih Rekening Bank" />
 				</view>
 			</view>
 		</view>
-		<view class="submit_btn mx-[40rpx]" @tap="submitEvent">Permintaan</view>
+		<view class="submit_btn mx-[30rpx]" @tap="submitEvent">Permintaan</view>
 		<u-select v-model="selectShow" confirm-text="Konfirmasi" cancel-text="Batal" :list="cardArr"
 			@confirm="actionSheet"></u-select>
 		<keywords :popup="keywordShow" title="Penarikan" :money="formData.money" @confirm="keywordConfirm" @close="keywordClose"></keywords>
@@ -231,39 +215,33 @@
 <style lang="scss" scoped>
 	.settings {
 		.set_card {
-			border-radius: 12rpx;
-			background: linear-gradient(270deg, #5693FF 0%, #0067E0 100%);
-
-			.nickname {
-				font-family: Arial;
-				font-size: 34rpx;
-				font-weight: 700;
-				text-align: left;
-				color: #FFFFFF;
-			}
-
-			.account {
-				font-family: Arial;
-				font-size: 28rpx;
-				font-weight: 500;
-				text-align: left;
-				color: #A8C3E4;
-			}
-
-			.notLogin {
-				font-family: Arial;
-				font-size: 34rpx;
-				font-weight: 700;
-				text-align: left;
-				color: #FFFFFF;
-			}
-
+			position: relative;
 			.settings_card {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-
-				.card_left {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				.card_head{
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					.card_head_title{
+						font-family: Arial;
+						font-weight: 700;
+						font-size: 32rpx;
+						line-height: 48rpx;
+						color: #FFFFFF;
+					}
+					.card_head_account{
+						font-family: Arial;
+						font-weight: 400;
+						font-size: 20rpx;
+						line-height: 40rpx;
+						color: #FFFFFF;
+					}
+				}
+				.card_box {
+					padding: 20rpx 0;
 					.card_num {
 						font-family: Arial;
 						font-size: 48rpx;
@@ -275,11 +253,11 @@
 
 					.card_text {
 						font-family: Arial;
-						font-size: 32rpx;
+						font-size: 30rpx;
 						font-weight: 500;
 						line-height: 48rpx;
 						text-align: left;
-						color: #96B1D1;
+						color: #eeeeee;
 					}
 				}
 
@@ -299,7 +277,7 @@
 				font-weight: 700;
 				line-height: 48rpx;
 				text-align: left;
-				color: #1E1E1E;
+				color: #1E4B2E;
 			}
 		
 			.u-radio-group {
@@ -347,7 +325,7 @@
 					width: 186rpx;
 					height: 124rpx;
 					border-radius: 6rpx;
-					background: #F4F4F4;
+					background: #F0F0F0;
 
 					.settings_Item {
 						font-family: Arial;
@@ -359,7 +337,7 @@
 				}
 
 				.active {
-					border: 3rpx solid #0067E0;
+					border: 2rpx solid #1E4B2E;
 					background: #E5F0FF;
 				}
 
@@ -378,28 +356,29 @@
 						font-weight: 700;
 						line-height: 40rpx;
 						text-align: left;
-						color: #1E1E1E;
+						color: #1E4B2E;
 					}
 									
 					.trade_input {
 						margin-top: 20rpx;
-						padding: 10rpx 20rpx;
-						background: #F4F4F4;
-						border-radius: 10rpx;
+						padding: 10rpx 30rpx;
+						background: #FFFFFF;
+						border-radius: 12rpx;
+						border: 2rpx solid #8B9098;
 					}
 				}
 				.trade_tips{
 					margin: 10rpx 0;
 					font-family: Arial;
-					font-size: 28rpx;
+					font-size: 24rpx;
 					font-weight: 500;
 					line-height: 40rpx;
 					text-align: left;
-					color: #999999;
+					color: #8B9098;
 					.tips{
 						margin-right: 5rpx;
 						font-family: Arial;
-						font-size: 28rpx;
+						font-size: 24rpx;
 						font-weight: 500;
 						line-height: 40rpx;
 						text-align: left;
@@ -413,7 +392,7 @@
 
 					.title {
 						font-family: Arial;
-						font-size: 28rpx;
+						font-size: 24rpx;
 						font-weight: 500;
 						line-height: 40rpx;
 						text-align: left;
@@ -423,11 +402,11 @@
 					.point {
 						margin: 0 10rpx;
 						font-family: Arial;
-						font-size: 28rpx;
+						font-size: 24rpx;
 						font-weight: 500;
 						line-height: 40rpx;
 						text-align: left;
-						color: #0067E0;
+						color: #ECB54B;
 					}
 				}
 				.trade_head {
@@ -441,7 +420,7 @@
 						font-weight: 500;
 						line-height: 48rpx;
 						text-align: left;
-						color: #1E1E1E;
+						color: #1E4B2E;
 					}
 
 					.head_bind {
@@ -456,7 +435,7 @@
 							font-weight: 500;
 							line-height: 40rpx;
 							text-align: right;
-							color: #0067E0;
+							color: #1E4B2E;
 						}
 					}
 				}
@@ -465,9 +444,10 @@
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
-					padding: 10rpx 20rpx;
-					background: #F4F4F4;
-					border-radius: 10rpx;
+					padding: 10rpx 30rpx;
+					background: #FFFFFF;
+					border-radius: 12rpx;
+					border: 2rpx solid #8B9098;
 				}
 			}
 		}
@@ -477,8 +457,8 @@
 			justify-content: center;
 			align-items: center;
 			height: 90rpx;
-			border-radius: 8rpx;
-			background: #0067E0;
+			border-radius: 12rpx;
+			background: #458060;
 			font-family: Arial;
 			font-size: 32rpx;
 			font-weight: 500;

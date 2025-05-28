@@ -104,7 +104,7 @@ export default {
 		// "确定"按钮的颜色
 		confirmColor: {
 			type: String,
-			default: '#2979ff'
+			default: '#458060'
 		},
 		// 弹出的z-index值
 		zIndex: {

@@ -5,12 +5,13 @@
 		</view>
 		<view class="exchange pb-[40rpx]">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
-				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#1E1E1E"
+				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#FFFFFF"
 					title="TUKAR" :title-bold="true" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
-					title-color="#1E1E1E">
+					title-color="#FFFFFF">
 					<template #right>
 						<view class="rule mr-[30rpx]" @tap="navigateTo('/pages/point_rule/point_rule')">
-							<u-image width="40" height="40" src="@/static/images/icon/icon_rule.png"></u-image>
+							<u-image v-if="!scrollTop" width="40" height="40" src="@/static/images/icon/icon_help.png"></u-image>
+							<u-image v-else width="40" height="40" src="@/static/images/icon/help.png"></u-image>
 						</view>
 					</template>
 				</u-navbar>
@@ -158,7 +159,7 @@
 
 <style lang="scss">
 	page {
-		background: #F0F0F0 !important;
+		background: #F1F1F1 !important;
 	}
 </style>
 <style lang="scss" scoped>
@@ -369,8 +370,8 @@
 				justify-content: center;
 				align-items: center;
 				height: 90rpx;
-				border-radius: 8rpx;
-				background: #0067E0;
+				border-radius: 12rpx;
+				background: #458060;
 				font-family: Arial;
 				font-size: 32rpx;
 				font-weight: 500;

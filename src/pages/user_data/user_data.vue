@@ -228,7 +228,7 @@
 
 <style lang="scss">
 	page {
-		background: #F0F0F0 !important;
+		background: #F1F1F1 !important;
 	}
 </style>
 <style lang="scss" scoped>

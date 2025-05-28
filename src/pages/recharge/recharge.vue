@@ -154,7 +154,7 @@
 
 <style lang="scss">
 	page {
-		background: #F0F0F0 !important;
+		background: #F1F1F1 !important;
 	}
 </style>
 <style lang="scss" scoped>
@@ -250,7 +250,7 @@
 						}
 
 						.active {
-							border: 3rpx solid #0067E0;
+							border: 2rpx solid #1E4B2E;
 							background: #E5F0FF;
 						}
 					}

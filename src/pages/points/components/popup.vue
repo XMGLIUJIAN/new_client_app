@@ -15,7 +15,7 @@
 					<u-image width="100" height="100" src="@/static/images/icon/lose.png" alt="" />
 				</view>
 				<view class="explain">Saldo tidak cukup, silakan coba lagi</view>
-				<view class="btn mt-[20rpx]" @tap="cancelPopup">Konfirmasi</view>
+				<view class="btn mt-[20rpx]" @tap="cancelPopup">Batal</view>
 			</view>
 		</view>
 	</view>

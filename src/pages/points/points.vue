@@ -10,7 +10,8 @@
 					title-color="#FFFFFF">
 					<template #right>
 						<view class="rule mr-[30rpx]" @tap="navigateTo('/pages/point_rule/point_rule')">
-							<u-image width="40" height="40" src="@/static/images/icon/icon_rule.png"></u-image>
+							<u-image v-if="!scrollTop" width="40" height="40" src="@/static/images/icon/icon_help.png"></u-image>
+							<u-image v-else width="40" height="40" src="@/static/images/icon/help.png"></u-image>
 						</view>
 					</template>
 				</u-navbar>
@@ -158,7 +159,7 @@
 
 <style lang="scss">
 	page {
-		background: #F0F0F0 !important;
+		background: #F1F1F1 !important;
 	}
 </style>
 <style lang="scss" scoped>

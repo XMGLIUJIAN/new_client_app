@@ -17,8 +17,8 @@
 					<view class="nickname">{{userInfo.nickname}}</view>
 				</view>
 				<view class="btn mt-[50rpx]">
-					<view class="confirm" @tap="Confirm">Confirm</view>
-					<view class="cancel" @tap="Cancel">Cancel</view>
+					<view class="confirm" @tap="Confirm">Konfirmasi</view>
+					<view class="cancel" @tap="Cancel">Batal</view>
 				</view>
 			</view>
 		</view>
@@ -86,7 +86,7 @@
 					justify-content: space-between;
 					align-items: center;
 					font-family:  Arial;
-					font-size: 26rpx;
+					font-size: 24rpx;
 					font-weight: 400;
 					line-height: 48rpx;
 					text-align: left;
@@ -113,7 +113,7 @@
 						font-weight: 700;
 						line-height: 48rpx;
 						text-align: left;
-						color: #0067E0;
+						color: #1E4B2E;
 					}
 
 					.give {
@@ -155,12 +155,11 @@
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
-
 					.confirm {
 						width: 242rpx;
 						height: 80rpx;
 						border-radius: 12rpx;
-						background: #0067E0;
+						background: #81AF95;
 						font-family:  Arial;
 						font-size: 28rpx;
 						font-weight: 500;
@@ -173,13 +172,13 @@
 						width: 242rpx;
 						height: 80rpx;
 						border-radius: 12rpx;
-						background: #E9E9E9;
+						background: #C3C6CB;
 						font-family:  Arial;
 						font-size: 28rpx;
 						font-weight: 500;
 						line-height: 80rpx;
 						text-align: center;
-						color: #333333;
+						color: #FFFFFF;
 					}
 				}
 			}

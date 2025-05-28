@@ -5,45 +5,44 @@
 		</view>
 		<view class="bind_card pb-[40rpx]">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
-				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#1E1E1E"
+				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" :back-icon-color="scrollTop ? '#1E1E1E' : '#FFFFFF'"
 					:title-bold="true" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
-					title="DATA BANK" title-color="#1E1E1E">
+					title="DATA BANK" :title-color="scrollTop ? '#1E1E1E' : '#FFFFFF'">
 				</u-navbar>
 			</u-sticky>
-			<view class="card_con pt-[40rpx] mx-[40rpx]">
+			<view class="card_con pt-[30rpx] pb-[30rpx] px-[30rpx] mx-[30rpx]">
 				<view class="trade_Item">
 					<view class="trade_head">
-						<view class="trade_title">Nama：</view>
+						<view class="trade_title">Nama</view>
 					</view>
 					<view class="trade_input">
-						<u-input v-model="formData.name" :border="false" placeholder-style="color: #999999;"
+						<u-input v-model="formData.name" :border="false" placeholder-style="color: #8B9098;font-size:24rpx;"
 							placeholder="Masukkan Nama Anda" />
 					</view>
 				</view>
 				<view class="trade_Item">
 					<view class="trade_head">
-						<view class="trade_title">Nomor Rekening：</view>
+						<view class="trade_title">Nomor Rekening</view>
 					</view>
 					<view class="trade_input">
-						<u-input v-model="formData.bank_card" :border="false" :maxlength="16" placeholder-style="color: #999999;"
+						<u-input v-model="formData.bank_card" :border="false" :maxlength="16" placeholder-style="color: #8B9098;font-size:24rpx;"
 							placeholder="Masukkan Nomor Rekening" />
 					</view>
 				</view>
 				<view class="trade_Item">
 					<view class="trade_head">
-						<view class="trade_title">Bank：</view>
+						<view class="trade_title">Bank</view>
 					</view>
 					<view class="trade_input">
 						<u-input type="select" @click="selectBank" v-model="formData.bank_name" :border="false"
-							placeholder-style="color: #999999;" placeholder="Pilih Bank" />
+							placeholder-style="color: #8B9098;font-size:24rpx;" placeholder="Pilih Bank" />
 					</view>
 				</view>
 				<view class="description mt-[20rpx]">
 					Untuk memastikan penarikan Anda cepat dan benar, harap periksa apakah informasi yang Anda isi sudah benar
 				</view>
-
-				<view class="submit_btn mt-[50rpx]" @tap="submitEvent">Konfirmasi</view>
 			</view>
+			<view class="submit_btn mt-[50rpx] mx-[30rpx]" @tap="submitEvent">Konfirmasi</view>
 		</view>
 		<toastPopup></toastPopup>
 	</view>
@@ -139,7 +138,7 @@
 
 <style lang="scss">
 	page {
-		background: #F0F0F0 !important;
+		background: #F1F1F1 !important;
 	}
 </style>
 <style lang="scss" scoped>
@@ -153,6 +152,8 @@
 			width: 100%;
 
 			.card_con {
+				background: #FFFFFF;
+				border-radius: 12rpx;
 				.trade_Item {
 					margin-bottom: 40rpx;
 
@@ -173,31 +174,11 @@
 
 					.trade_input {
 						margin-top: 20rpx;
-						padding: 20rpx 40rpx;
+						padding: 10rpx 30rpx;
 						background: #FFFFFF;
-						border-radius: 10rpx;
+						border-radius: 12rpx;
+						border: 2rpx solid #8B9098;
 					}
-
-					.trade_code {
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-						margin-top: 20rpx;
-
-						.card_input {
-							padding: 20rpx 40rpx;
-							background: #FFFFFF;
-							border-radius: 10rpx;
-						}
-
-						.card_line {
-							margin: 0 10rpx;
-							width: 40rpx;
-							height: 4rpx;
-							background: #999999;
-						}
-					}
-
 				}
 
 				.description {
@@ -206,23 +187,22 @@
 					font-weight: 500;
 					line-height: 40rpx;
 					text-align: left;
-					color: #999999;
+					color: #8B9098;
 				}
-
-				.submit_btn {
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					height: 90rpx;
-					border-radius: 8rpx;
-					background: #0067E0;
-					font-family:  Arial;
-					font-size: 32rpx;
-					font-weight: 500;
-					line-height: 48rpx;
-					text-align: center;
-					color: #FFFFFF;
-				}
+			}
+			.submit_btn {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 90rpx;
+				border-radius: 12rpx;
+				background: #458060;
+				font-family:  Arial;
+				font-size: 32rpx;
+				font-weight: 500;
+				line-height: 48rpx;
+				text-align: center;
+				color: #FFFFFF;
 			}
 		}
 	}

@@ -15,7 +15,7 @@
 					<u-avatar :src="userInfo.avatar" shape="square" :size="100"></u-avatar>
 					<view class="ml-[20rpx] flex flex-1 justify-between items-center">
 						<view>
-							<view class="mb-[15rpx] text-xl font-medium">{{ userInfo.nickname }}</view>
+							<view class="mb-[15rpx] text-xl font-medium nickname">{{ userInfo.nickname }}</view>
 							<view class="text-content text-xs">
 								<text class="account_num">ID：{{ userInfo.account }}</text>
 							</view>
@@ -158,7 +158,7 @@
 
 <style lang="scss">
 	page {
-		background: #F0F0F0 !important;
+		background: #F1F1F1 !important;
 	}
 </style>
 <style lang="scss" scoped>
@@ -170,9 +170,16 @@
 			left: 0;
 			width: 100%;
 			.account_info {
-				border-radius: 10rpx;
+				border-radius: 12rpx;
+				.nickname{
+					font-family: Arial;
+					font-weight: 700;
+					font-size: 28rpx;
+					line-height: 40rpx;
+					color: #1E4B2E;
+				}
 			}
-		
+			
 			.account_num {
 				font-family:  Arial;
 				font-size: 24rpx;
@@ -182,7 +189,7 @@
 			}
 		
 			.user_set_card {
-				border-radius: 10rpx;
+				border-radius: 12rpx;
 				background: #FFFFFF;
 		
 				.Not_set {

@@ -6,14 +6,14 @@
 		<view class="connection">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
 				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" :title-bold="true"
-					title="INFORMASI KONTAK TIM" back-icon-color="#1E1E1E"
-					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}" title-color="#1E1E1E">
+					title="INFORMASI KONTAK TIM" :back-icon-color="scrollTop ? '#1E1E1E' : '#FFFFFF'"
+					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}" :title-color="scrollTop ? '#1E1E1E' : '#FFFFFF'">
 				</u-navbar>
 			</u-sticky>
-			<view class="connection_con pt-[40rpx] pb-[40rpx]">
-				<view class="connection_card mx-[40rpx]">
-					<u-image height="300" src="@/static/images/user/connection.png"></u-image>
-					<view class="card_info pt-[40rpx]">
+			<view class="connection_con pt-[40rpx]">
+				<view class="connection_card mx-[30rpx] mb-[30rpx]">
+					<u-image height="278" src="@/static/images/user/connection.png"></u-image>
+					<view class="card_info pt-[20rpx]">
 						<view class="title">Atasan Saya</view>
 						<view class="info">
 							<view class="info_text">
@@ -27,19 +27,18 @@
 						</view>
 						<view class="contact">
 							<view class="contact_box">
-								<u-image width="45" height="45" src="@/static/images/icon/whatsapp.png" alt="" />
+								<u-image width="45" height="45" src="@/static/images/icon/icon_whatsapp.png" alt="" />
 								<view class="contact_num">{{seniorUser.whatsapp}}</view>
 							</view>
 							<view class="contact_box">
-								<u-image width="45" height="45" src="@/static/images/icon/telegram.png" alt="" />
+								<u-image width="45" height="45" src="@/static/images/icon/icon_telegram.png" alt="" />
 								<view class="contact_num">{{seniorUser.telegram}}</view>
 							</view>
 						</view>
 					</view>
-
 				</view>
-				<view class="connection_popup pt-[40rpx] pb-[40rpx] px-[40rpx]">
-					<view class="connection_direct mb-[20rpx]">Member Langsung Saya</view>
+				<view class="connection_popup pt-[30rpx] pb-[30rpx] px-[30rpx]">
+					<view class="connection_direct mb-[30rpx]">Member Langsung Saya</view>
 					<view class="connection_row" v-for="(item,index) in list" :key="index">
 						<view class="info">
 							<view class="info_text">
@@ -53,11 +52,11 @@
 						</view>
 						<view class="contact">
 							<view class="contact_box" v-if="item.whatsapp">
-								<u-image width="45" height="45" src="@/static/images/icon/whatsapp.png" alt="" />
+								<u-image width="45" height="45" src="@/static/images/icon/icon_whatsapp.png" alt="" />
 								<view class="contact_num">{{item.whatsapp}}</view>
 							</view>
 							<view class="contact_box" v-if="item.telegram">
-								<u-image width="45" height="45" src="@/static/images/icon/telegram.png" alt="" />
+								<u-image width="45" height="45" src="@/static/images/icon/icon_telegram.png" alt="" />
 								<view class="contact_num">{{item.telegram}}</view>
 							</view>
 						</view>
@@ -100,13 +99,13 @@
 
 <style lang="scss">
 	page {
-		background: #FFFFFF !important;
+		background: #F1F1F1 !important;
 	}
 </style>
 <style lang="scss" scoped>
 	.container {
 		position: relative;
-
+		background: #FFFFFF;
 		.connection {
 			position: absolute;
 			top: 0;
@@ -116,45 +115,43 @@
 			.connection_con {
 				.connection_card {
 					position: relative;
-					border-top-left-radius: 20rpx;
-					border-top-right-radius: 20rpx;
+					overflow: hidden;
+					border-radius: 20rpx;
 
 					.card_info {
 						position: absolute;
 						top: 0;
 						left: 0;
 						width: 100%;
-						border-top-left-radius: 20rpx;
-						border-top-right-radius: 20rpx;
 						.title {
 							margin: 0 40rpx;
 							font-family:  Arial;
-							font-size: 34rpx;
+							font-size: 32rpx;
 							font-weight: 700;
 							line-height: 48rpx;
 							text-align: left;
-							color: #FFFFFF;
+							color: #1E4B2E;
 						}
 
 						.info {
-							margin: 12rpx 40rpx;
+							margin: 12rpx 30rpx;
 
 							.info_text {
 								font-family:  Arial;
-								font-size: 28rpx;
+								font-size: 24rpx;
 								font-weight: 400;
 								line-height: 48rpx;
 								text-align: left;
-								color: #A2BDE1;
+								color: #60926D;
 
 								.text_con {
 									margin-left: 10rpx;
 									font-family:  Arial;
-									font-size: 28rpx;
+									font-size: 24rpx;
 									font-weight: 400;
 									line-height: 48rpx;
 									text-align: left;
-									color: #FFFFFF;
+									color: #60926D;
 								}
 							}
 						}
@@ -164,16 +161,16 @@
 							justify-content: space-between;
 							align-items: center;
 							padding: 20rpx 40rpx;
-
+							background: linear-gradient(316.44deg, #92BEAB 1.2%, #26815A 98.8%);
 							.contact_box {
 								display: flex;
-								justify-content: space-between;
+								justify-content: flex-start;
 								align-items: center;
-
+								width: 45%;
 								.contact_num {
 									margin-left: 10rpx;
 									font-family:  Arial;
-									font-size: 30rpx;
+									font-size: 28rpx;
 									font-weight: 500;
 									line-height: 48rpx;
 									text-align: left;
@@ -186,16 +183,17 @@
 				}
 
 				.connection_popup {
-					border-radius: 26rpx;
-					background: #FFFFFF;
+					border-top-left-radius: 20rpx;
+					border-top-right-radius: 20rpx;
+					background: #F1F1F1;
 
 					.connection_direct {
 						font-family:  Arial;
-						font-size: 34rpx;
+						font-size: 32rpx;
 						font-weight: 700;
 						line-height: 48rpx;
 						text-align: left;
-						color: #0067E0;
+						color: #1E4B2E;
 					}
 
 					.connection_row {
@@ -204,25 +202,25 @@
 						overflow: hidden;
 
 						.info {
-							background: #ECF4FF;
-							padding: 20rpx 40rpx;
+							background: #FFFFFF;
+							padding: 20rpx 30rpx;
 
 							.info_text {
 								font-family:  Arial;
-								font-size: 28rpx;
+								font-size: 24rpx;
 								font-weight: 400;
 								line-height: 48rpx;
 								text-align: left;
-								color: #999999;
+								color: #60926D;
 
 								.text_con {
 									margin-left: 10rpx;
 									font-family:  Arial;
-									font-size: 28rpx;
+									font-size: 24rpx;
 									font-weight: 400;
 									line-height: 48rpx;
 									text-align: left;
-									color: #1E1E1E;
+									color: #60926D;
 								}
 							}
 						}
@@ -233,20 +231,22 @@
 							align-items: center;
 							background: #E3EDFF;
 							padding: 20rpx 40rpx;
+							background: linear-gradient(316.44deg, #92BEAB 1.2%, #26815A 98.8%);
+
 
 							.contact_box {
 								display: flex;
-								justify-content: space-between;
+								justify-content: flex-start;
 								align-items: center;
-
+								width: 45%;
 								.contact_num {
 									margin-left: 10rpx;
 									font-family:  Arial;
-									font-size: 30rpx;
+									font-size: 24rpx;
 									font-weight: 500;
 									line-height: 48rpx;
 									text-align: left;
-									color: #1E1E1E;
+									color: #FFFFFF;
 								}
 							}
 						}

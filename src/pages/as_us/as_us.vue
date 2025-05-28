@@ -5,9 +5,9 @@
 		</view>
 		<view class="as-us">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
-				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#1E1E1E"
+				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#FFFFFF"
 					:title-bold="true" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
-					title="TENTANG RICE RICH APP" title-color="#1E1E1E">
+					title="TENTANG RICE RICH APP" title-color="#FFFFFF">
 				</u-navbar>
 			</u-sticky>
 			<view class="app_info mt-[50rpx] mb-[20rpx] ml-[40rpx] mr-[40rpx]">
@@ -46,7 +46,7 @@
 
 <style lang="scss">
 	page {
-		background: #F0F0F0 !important;
+		background: #F1F1F1 !important;
 	}
 </style>
 <style lang="scss" scoped>

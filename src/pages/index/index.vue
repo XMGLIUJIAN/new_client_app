@@ -9,7 +9,8 @@
 					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}">
 					<view class="slot-wrap">
 						<u-image width="227" height="54" src="@/static/images/icon/logoIcon.png"></u-image>
-						<u-image width="50" height="50" src="@/static/images/icon/contact.png"></u-image>
+						<u-image v-if="!scrollTop" width="50" height="50" src="@/static/images/user/icon_service.png" alt="" />
+						<u-image v-else width="50" height="50" src="@/static/images/icon/contact.png" alt="" />
 					</view>
 				</u-navbar>
 			</u-sticky>
@@ -78,7 +79,7 @@
 
 <style lang="scss">
 	page {
-		background: #F0F0F0 !important;
+		background: #F1F1F1 !important;
 	}
 </style>
 <style lang="scss" scoped>

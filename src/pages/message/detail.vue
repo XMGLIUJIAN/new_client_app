@@ -6,11 +6,11 @@
 		<view class="detail">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
 				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" :title-bold="true"
-					title="NOTIFIKASI PESAN" back-icon-color="#1E1E1E"
-					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}" title-color="#1E1E1E">
+					title="NOTIFIKASI PESAN" :back-icon-color="scrollTop ? '#1E1E1E' : '#FFFFFF'"
+					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}" :title-color="scrollTop ? '#1E1E1E' : '#FFFFFF'">
 				</u-navbar>
 			</u-sticky>
-			<view class="detail_con pt-[20rpx] pb-[20rpx] px-[40rpx]">
+			<view class="detail_con pt-[20rpx] pb-[20rpx] px-[30rpx]">
 				<view class="message_card" v-for="(item,index) in list" :key="index">
 					<view class="card_head">
 						<view class="card_info">
@@ -68,7 +68,7 @@
 
 <style lang="scss">
 	page {
-		background: #F0F0F0 !important;
+		background: #F1F1F1 !important;
 	}
 </style>
 <style lang="scss" scoped>
