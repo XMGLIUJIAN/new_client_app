@@ -10,7 +10,7 @@
 					title="DATA BANK" :title-color="scrollTop ? '#1E1E1E' : '#FFFFFF'">
 				</u-navbar>
 			</u-sticky>
-			<view class="card_con pt-[30rpx] pb-[30rpx] px-[30rpx] mx-[30rpx]">
+			<view class="card_con mt-[50rpx] pt-[30rpx] pb-[30rpx] px-[30rpx] mx-[30rpx]">
 				<view class="trade_Item">
 					<view class="trade_head">
 						<view class="trade_title">Nama</view>
