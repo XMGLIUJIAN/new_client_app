@@ -23,7 +23,8 @@
 					</view>
 				</view>
 				<view class="empty mt-[50rpx]" v-if="!stateArr.length">
-					<u-empty text="Tidak ada catatan" mode="data" icon-color="#999999" color="#999999"></u-empty>
+					<u-image width="462" height="291" src="@/static/images/icon/empty.png" alt="" />
+					<view class="empty_text">Tidak Ada Catatan</view>
 				</view>
 			</view>
 		</view>

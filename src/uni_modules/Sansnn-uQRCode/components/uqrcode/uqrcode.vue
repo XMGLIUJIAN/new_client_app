@@ -112,7 +112,7 @@
        */
       size: {
         type: [String, Number],
-        default: 128
+        default: 150
       },
       /**
        * 二维码尺寸单位

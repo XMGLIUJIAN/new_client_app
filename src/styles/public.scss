@@ -6,6 +6,37 @@ page {
     font-family: theme('fontFamily.sans')
     //font-family: PingFang SC;
 }
+.empty{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	.empty_text{
+		margin-top: 20rpx;
+		width: 494rpx;
+		height: 60rpx;
+		font-family: Arial;
+		font-weight: 400;
+		font-size: 24rpx;
+		text-align: center;
+		line-height: 60rpx;
+		color: #F0F0F0;
+		border-radius: 12rpx;
+		background: #C3C6CB;
+	}
+	.empty_popup{
+		margin-top: 20rpx;
+		width: 494rpx;
+		height: 60rpx;
+		font-family: Arial;
+		font-weight: 400;
+		font-size: 24rpx;
+		text-align: center;
+		line-height: 60rpx;
+		color: #F0F0F0;
+		border-radius: 12rpx;
+	}
+}
 
 uni-modal {
     z-index: 999999 !important;

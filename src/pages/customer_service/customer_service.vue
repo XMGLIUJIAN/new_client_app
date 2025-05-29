@@ -5,9 +5,9 @@
 		</view>
 		<view class="customer_service">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
-				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#1E1E1E"
+				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#FFFFFF"
 					:title-bold="true" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
-					title="CUSTOMER SERVICE" title-color="#1E1E1E">
+					title="CUSTOMER SERVICE" title-color="#FFFFFF">
 				</u-navbar>
 			</u-sticky>
 			<view class="service_con">
@@ -130,11 +130,11 @@
 						display: flex;
 						justify-content: center;
 						align-items: center;
-						padding: 12rpx 24rpx;
-						border-radius: 10rpx;
-						background: linear-gradient(270deg, #5693FF 0%, #0067E0 100%);
+						padding: 10rpx 20rpx;
+						border-radius: 12rpx;
+						background: linear-gradient(316.44deg, #92BEAB 1.2%, #26815A 98.8%);
 						font-family:  Arial;
-						font-size: 30rpx;
+						font-size: 28rpx;
 						font-weight: 700;
 						line-height: 45rpx;
 						text-align: center;

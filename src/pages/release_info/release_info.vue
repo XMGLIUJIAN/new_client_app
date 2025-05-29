@@ -42,8 +42,8 @@
 					<view class="release_row_date">{{formatDate(item.created_at)}}</view>
 				</view>
 				<view class="empty mt-[100rpx]" v-if="!recordArr.length">
-					<u-empty text="Tidak Ada Catatan" mode="data" icon-color="#999999"
-						color="#999999"></u-empty>
+					<u-image width="462" height="291" src="@/static/images/icon/empty.png" alt="" />
+					<view class="empty_text">Tidak Ada Catatan</view>
 				</view>
 			</view>
 		</view>

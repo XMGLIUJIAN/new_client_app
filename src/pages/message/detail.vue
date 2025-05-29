@@ -32,8 +32,9 @@
 						</view>
 					</view>
 				</view>
-				<view class="empty mt-[50rpx]" v-if="!list.length">
-					<u-empty text="Tidak ada kabar" mode="data" icon-color="#999999" color="#999999"></u-empty>
+				<view class="empty mt-[300rpx]" v-if="!list.length">
+					<u-image width="462" height="291" src="@/static/images/icon/empty.png" alt="" />
+					<view class="empty_text">Tidak Ada Kabar</view>
 				</view>
 			</view>
 		</view>

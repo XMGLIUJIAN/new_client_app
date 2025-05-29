@@ -34,8 +34,8 @@
 					</view>
 					<u-loadmore v-if="!isRefreshing &&  list.length > 0" icon-type="flower" :status="status" color="#999999" />
 					<view class="empty mt-[300rpx]" v-if="!list.length">
-						<u-image width="482" height="291" src="@/static/images/investment/notdata.png"></u-image>
-						<view class="empty_text">Belum Bergabung dalam Program</view>
+						<u-image width="462" height="291" src="@/static/images/icon/empty.png" alt="" />
+						<view class="empty_text">Belum Bergabung Dalam Program</view>
 					</view>
 				</scroll-view>
 			</view>
@@ -266,23 +266,6 @@
 							color: #999999;
 						}
 					}
-				}
-			}
-
-			.empty {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-
-				.empty_text {
-					margin-top: 20rpx;
-					font-family: Source Han Sans CN;
-					font-weight: 500;
-					font-size: 28rpx;
-					line-height: 48rpx;
-					text-align: center;
-					color: #999999;
 				}
 			}
 		}

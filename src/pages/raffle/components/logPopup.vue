@@ -32,11 +32,10 @@
 							</view>
 							<u-loadmore v-if="!isRefreshing &&  list.length > 0" icon-type="flower" :status="status" color="#FFFFFF" />
 							<view class="empty mt-[100rpx]" v-if="!list.length">
-								<u-empty text="Tidak Ada Catatan" mode="data" icon-color="#FFFFFF"
-									color="#FFFFFF"></u-empty>
+								<u-image width="462" height="291" src="@/static/images/icon/empty.png" alt="" />
+								<view class="empty_popup">Tidak Ada Catatan</view>
 							</view>
 						</scroll-view>
-
 					</view>
 
 				</view>

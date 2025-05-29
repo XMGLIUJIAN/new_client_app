@@ -6,9 +6,9 @@
 				{{item.mobile}} Menang <text class="label_text">{{item.name}}</text>
 			</view>
 		</view>
-		<view class="empty mt-[50rpx]"  v-if="!mergedList.length">
-			<u-empty text="Tidak Ada Catatan" mode="data" icon-color="#999999"
-				color="#999999"></u-empty>
+		<view class="empty mt-[50rpx]" v-if="!mergedList.length">
+			<u-image width="462" height="291" src="@/static/images/icon/empty.png" alt="" />
+			<view class="empty_text">Tidak Ada Catatan</view>
 		</view>
 	</view>
 </template>

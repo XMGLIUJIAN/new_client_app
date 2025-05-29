@@ -43,7 +43,8 @@
 						</view>
 					</view>
 					<view class="empty mt-[50rpx]" v-if="!rechargeArr.length">
-						<u-empty text="Kesalahan jaringan, silakan coba lagi" mode="data" icon-color="#999999" color="#999999"></u-empty>
+						<u-image width="462" height="291" src="@/static/images/icon/empty.png" alt="" />
+						<view class="empty_text">Kesalahan Jaringan, Silakan Coba Lagi</view>
 					</view>
 					<view class="trade_submit">
 						<view class="trade_Item">

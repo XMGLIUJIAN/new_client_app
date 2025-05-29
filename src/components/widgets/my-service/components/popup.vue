@@ -49,7 +49,7 @@
 
 				.tips {
 					font-family:  Arial;
-					font-size: 34rpx;
+					font-size: 32rpx;
 					font-weight: 700;
 					line-height: 48rpx;
 					text-align: center;
@@ -61,14 +61,14 @@
 					justify-content: space-between;
 					align-items: center;
 					font-family:  Arial;
-					font-size: 26rpx;
+					font-size: 24rpx;
 					font-weight: 400;
 					line-height: 48rpx;
 					text-align: left;
 
 					.explain_text {
 						text-align: left;
-						color: #666666;
+						color: #8B9098;
 					}
 				}
 
@@ -81,7 +81,7 @@
 						width: 242rpx;
 						height: 80rpx;
 						border-radius: 12rpx;
-						background: #0067E0;
+						background: #458060;
 						font-family:  Arial;
 						font-size: 28rpx;
 						font-weight: 500;
@@ -94,13 +94,13 @@
 						width: 242rpx;
 						height: 80rpx;
 						border-radius: 12rpx;
-						background: #E9E9E9;
+						background: #C3C6CB;
 						font-family:  Arial;
 						font-size: 28rpx;
 						font-weight: 500;
 						line-height: 80rpx;
 						text-align: center;
-						color: #333333;
+						color: #FFFFFF;
 					}
 				}
 			}

@@ -119,7 +119,7 @@
 				</template>
 			</view>
 			<view class="contact" @tap="contactService">
-				<u-image width="115" height="108" src="@/static/images/icon/contact.png" alt="" />
+				<u-image width="75" height="75" src="@/static/images/icon/contact.png" alt="" />
 			</view>
 			<toastPopup></toastPopup>
 			<loginPopup v-if="loginShow" @cancel="loginShow = false" @confirm="confirmPopup"></loginPopup>
@@ -649,7 +649,7 @@
 
 			.contact {
 				position: fixed;
-				top: 75%;
+				top: 50%;
 				right: 0;
 				z-index: 100;
 			}

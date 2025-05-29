@@ -10,23 +10,17 @@
 					title="TENTANG RICE RICH APP" title-color="#FFFFFF">
 				</u-navbar>
 			</u-sticky>
-			<view class="app_info mt-[50rpx] mb-[20rpx] ml-[40rpx] mr-[40rpx]">
-				<u-image width="292" height="292" :src="appStore.getWebsiteConfig.shop_logo" alt="" />
+			<view class="app_info mt-[100rpx] mb-[30rpx] ml-[30rpx] mr-[30rpx]">
+				<u-image width="159" height="154" :src="appStore.getWebsiteConfig.shop_logo" alt="" />
 				<view class="text-content mt-[20rpx]">{{ appStore.getWebsiteConfig.shop_name }}</view>
+				<view class="version mt-[30rpx]">Versi 2.3.1</view>
 			</view>
 			<view class="user-set mb-[20rpx]  ml-[40rpx] mr-[40rpx]">
-				<navigator :url="`/pages/agreement/agreement?type=${AgreementEnum.PRIVACY}`">
-					<view class="privacy item bg-white mt-[20rpx] btn-border flex flex-1 justify-between">
-						<view class="label_name">Kebijakan Privasi</view>
-						<u-icon name="arrow-right" color="#666"></u-icon>
-					</view>
-				</navigator>
-				<navigator :url="`/pages/agreement/agreement?type=${AgreementEnum.SERVICE}`">
-					<view class="service item bg-white btn-border flex flex-1 justify-between">
-						<view class="label_name">Ketentuan layanan</view>
-						<u-icon name="arrow-right" color="#666"></u-icon>
-					</view>
-				</navigator>
+				<view class="invention">Versi baru ditemukan</view>
+				<view class="tip">V.2.3.1</view>
+			</view>
+			<view class="app_btn mt-[50rpx]">
+				<view class="btn">Perbarui sekarang</view>
 			</view>
 		</view>
 	</view>
@@ -46,7 +40,7 @@
 
 <style lang="scss">
 	page {
-		background: #F1F1F1 !important;
+		background: #FFFFFF !important;
 	}
 </style>
 <style lang="scss" scoped>
@@ -65,8 +59,6 @@
 				justify-content: center;
 				align-items: center;
 				height: 420rpx;
-				border-radius: 12rpx;
-				background: #FFFFFF;
 
 				.text-content {
 					font-family:  Arial;
@@ -74,42 +66,57 @@
 					font-weight: 700;
 					line-height: 54rpx;
 					text-align: center;
-					color: #333333;
+					color: #D2B571;
+				}
+				.version{
+					font-family: Arial;
+					font-weight: 400;
+					font-size: 32rpx;
+					line-height: 40rpx;
+					color: #1E1E1E;
 				}
 			}
 
 			.user-set {
-				.item {
-
-					padding: 30rpx;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				.invention{
+					margin-right: 20rpx;
+					font-family: Arial;
+					font-weight: 400;
+					font-size: 24rpx;
+					line-height: 40rpx;
+					color: #4B92EA;
 				}
-
-				.privacy {
-					border-top-left-radius: 10rpx;
-					border-top-right-radius: 10rpx;
-					.label_name{
-						font-family:  Arial;
-						font-size: 28rpx;
-						font-weight: 500;
-						text-align: left;
-						color: #1E1E1E;
-					}
+				.tip{
+					width: 90rpx;
+					height: 35rpx;
+					font-family: Arial;
+					font-weight: 400;
+					font-size: 24rpx;
+					text-align: center;
+					line-height: 35rpx;
+					color: #8B9098;
+					border-radius: 4rpx;
+					background: rgba(240,200,163,0.4);
 				}
-
-				.service {
-					border-bottom-left-radius: 10rpx;
-					border-bottom-right-radius: 10rpx;
-					.label_name{
-						font-family:  Arial;
-						font-size: 28rpx;
-						font-weight: 500;
-						text-align: left;
-						color: #1E1E1E;
-					}
-				}
-
-				.btn-border {
-					border-bottom: 2rpx solid #EAEAEA;
+			}
+			.app_btn{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				.btn{
+					width: 500rpx;
+					height: 65rpx;
+					font-family: Arial;
+					font-weight: 400;
+					font-size: 24rpx;
+					text-align: center;
+					line-height: 65rpx;
+					color: #FFFFFF;
+					border-radius: 8rpx;
+					background: #4B92EA;
 				}
 			}
 		}

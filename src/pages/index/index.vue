@@ -9,8 +9,8 @@
 					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}">
 					<view class="slot-wrap">
 						<u-image width="227" height="54" src="@/static/images/icon/logoIcon.png"></u-image>
-						<u-image v-if="!scrollTop" width="50" height="50" src="@/static/images/user/icon_service.png" alt="" />
-						<u-image v-else width="50" height="50" src="@/static/images/icon/contact.png" alt="" />
+						<u-image v-if="!scrollTop" @tap="contactService" width="50" height="50" src="@/static/images/user/icon_service.png" alt="" />
+						<u-image v-else @tap="contactService" width="50" height="50" src="@/static/images/icon/contact.png" alt="" />
 					</view>
 				</u-navbar>
 			</u-sticky>
@@ -29,6 +29,8 @@
 			</template>
 			<Swiper></Swiper>
 		</view>
+		<Popup v-if="contactShow" :service="serviceInfo" @confirm="contactlink" @cancel="contactShow = false"></Popup>
+		<toastPopup></toastPopup>
 		<tabbar />
 	</view>
 </template>
@@ -41,8 +43,10 @@
 	import InformasiAset from './component/informasiAset.vue'
 	import Notice from './component/notice.vue'
 	import Swiper from './component/swiper.vue'
+	import Popup from './component/popup.vue'
 	import { getIndex } from "@/api/shop"
-	import { mesNotifiList } from "@/api/eventInfo"
+	import { customerServiceInfo, mesNotifiList } from "@/api/eventInfo"
+	import { emitter } from "@/utils/emitter"
 	const userStore = useUserStore()
 	const state = reactive<{
 		pages : any[]
@@ -56,10 +60,32 @@
 	const { userInfo, isLogin } = storeToRefs(userStore)
 	const scrollTop = ref<any>(0)
 	const swiperRef = ref<any>(null)
+	const serviceInfo = ref<any>({})
+	const contactShow = ref<Boolean>(false)
 	const noticeArr = ref<Array<any>>([])
 	const getNotice = async () => {
 		const data = await mesNotifiList({ type:4 })
 		noticeArr.value = data.lists.map((item : any) => item.content)
+	}
+	const contactlink = (link : string) => {
+		contactShow.value = false
+		// #ifdef APP
+		plus.runtime.openURL(link)
+		// #endif
+		// #ifdef H5
+		window.location.href = link
+		// #endif
+	}
+	const getInfo = async () => {
+		const resdata = await customerServiceInfo()
+		serviceInfo.value = resdata.data
+	}
+	const contactService = () => {
+		getInfo()
+		emitter.emit('gifType')
+		setTimeout(()=>{
+			contactShow.value = true
+		},3000)
 	}
 	const getData = async () => {
 		const data = await getIndex()

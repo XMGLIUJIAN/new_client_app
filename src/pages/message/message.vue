@@ -29,8 +29,9 @@
 						</view>
 					</view>
 				</view>
-				<view class="empty pt-[20rpx] pb-[20rpx] mt-[50rpx]" v-if="!messageArr.length">
-					<u-empty text="Tidak ada kabar" mode="data" icon-color="#999999" color="#999999"></u-empty>
+				<view class="empty  pt-[20rpx] pb-[20rpx] mt-[50rpx]" v-if="!messageArr.length">
+					<u-image width="462" height="291" src="@/static/images/icon/empty.png" alt="" />
+					<view class="empty_text">Tidak Ada Kabar</view>
 				</view>
 			</view>
 			<toastPopup></toastPopup>

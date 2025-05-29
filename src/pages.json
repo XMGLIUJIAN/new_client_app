@@ -404,6 +404,20 @@
 			}
 		},
 		{
+			"path": "pages/transaction_info/transaction_info",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "PERCIKAN AIR"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
 			"path": "pages/team_rule/team_rule",
 			"style": {
 				// #ifndef H5
