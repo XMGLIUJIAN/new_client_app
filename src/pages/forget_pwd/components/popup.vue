@@ -60,21 +60,21 @@
 				}
 				.explain{
 					font-family:  Arial;
-					font-size: 28rpx;
+					font-size: 24rpx;
 					font-weight: 400;
 					line-height: 48rpx;
 					text-align: center;
-					color: #1E1E1E;
+					color: #8B9098;
 				}
 				.btn{
 					height: 80rpx;
 					border-radius: 12rpx;
-					background: #E9E9E9;
+					background: #81AF95;
 					font-family:  Arial;
 					font-size: 28rpx;
 					font-weight: 500;
 					line-height: 80rpx;
-					color: #1E1E1E;
+					color: #FFFFFF;
 					text-align: center;
 				}
 			}

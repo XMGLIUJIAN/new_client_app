@@ -44,6 +44,7 @@
 	import Notice from './component/notice.vue'
 	import Swiper from './component/swiper.vue'
 	import Popup from './component/popup.vue'
+	import signPopup from './component/signPopup.vue'
 	import { getIndex } from "@/api/shop"
 	import { customerServiceInfo, mesNotifiList } from "@/api/eventInfo"
 	import { emitter } from "@/utils/emitter"

@@ -80,9 +80,9 @@
 					font-weight: 400;
 					line-height: 48rpx;
 					text-align: center;
-					color: #1E1E1E;
+					color: #8B9098;
 					.agreement {
-						color: #0067E0;
+						color: #458060;
 					}
 				}
 				
@@ -95,7 +95,7 @@
 						width: 250rpx;
 						height: 80rpx;
 						border-radius: 12rpx;
-						background: #0067E0;
+						background: #81AF95;
 						font-family:  Arial;
 						font-size: 28rpx;
 						font-weight: 500;
@@ -108,13 +108,13 @@
 						width: 250rpx;
 						height: 80rpx;
 						border-radius: 12rpx;
-						background: #E9E9E9;
+						background: #C3C6CB;
 						font-family:  Arial;
 						font-size: 28rpx;
 						font-weight: 500;
 						line-height: 80rpx;
 						text-align: center;
-						color: #333333;
+						color: #FFFFFF;
 					}
 				}
 			}

@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="imageGroup">
-			<u-image width="750" height="475" src="@/static/images/page/pageGroup.png"></u-image>
+			<u-image width="750" height="400" src="@/static/images/page/pageGroup.png"></u-image>
 		</view>
 		<view class="points pb-[40rpx]">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
@@ -10,7 +10,8 @@
 					title-color="#FFFFFF">
 					<template #right>
 						<view class="rule mr-[30rpx]" @tap="navigateTo('/pages/point_rule/point_rule')">
-							<u-image v-if="!scrollTop" width="40" height="40" src="@/static/images/icon/icon_help.png"></u-image>
+							<u-image v-if="!scrollTop" width="40" height="40"
+								src="@/static/images/icon/icon_help.png"></u-image>
 							<u-image v-else width="40" height="40" src="@/static/images/icon/help.png"></u-image>
 						</view>
 					</template>
@@ -33,36 +34,37 @@
 					</view>
 				</view>
 			</view>
-
-			<view class="trade_con mt-[20rpx] mb-[40rpx] px-[40rpx] pt-[40rpx] pb-[40rpx] mx-[30rpx]">
-				<view class="trade_submit">
-					<view class="trade_Item">
-						<view class="trade_head">
-							<view class="trade_title">Tukar Saldo</view>
-							<view class="trade_tips" @tap="exchangeAll">Tukar Semua</view>
+			<view class="trade_popup mt-[30rpx] mb-[30rpx] pt-[40rpx] px-[30rpx]">
+				<view class="trade_con px-[40rpx] pt-[40rpx] pb-[40rpx]">
+					<view class="trade_submit">
+						<view class="trade_Item">
+							<view class="trade_head">
+								<view class="trade_title">Tukar Saldo</view>
+								<view class="trade_tips" @tap="exchangeAll">Tukar Semua</view>
+							</view>
+							<view class="trade_input">
+								<u-input v-model="formData.exchange_amount" type="number" :border="false"
+									placeholder-style="color: #8B9098;font-size:24rpx;"
+									placeholder="Masukkan Jumlah Saldo Yang Di Tukar" />
+							</view>
 						</view>
-						<view class="trade_input">
-							<u-input v-model="formData.exchange_amount" type="number" :border="false"
-								placeholder-style="color: #8B9098;font-size:24rpx;"
-								placeholder="Masukkan Jumlah Saldo Yang Di Tukar" />
+						<view class="exchange_rate" v-if="Object.keys(rateInfo).length > 0">
+							<view class="title">Nilai Penukaran:</view>
+							<view class="point">Rp 1 =</view>
+							<view class="token"> {{formatNumber(rateInfo.rate)}} Poin</view>
 						</view>
-					</view>
-					<view class="exchange_rate" v-if="Object.keys(rateInfo).length > 0">
-						<view class="title">Nilai Penukaran:</view>
-						<view class="point">Rp 1 =</view>
-						<view class="token"> {{formatNumber(rateInfo.rate)}} Poin</view>
-					</view>
-					<view class="exchange_result pt-[20rpx]">
-						<view class="result_left">Jumlah Total Penukaran</view>
-						<view class="result_right mt-[20rpx]">
-							<view class="number">
-								<view class="num">{{formatNumber(balance)}} <text class="unit">POIN</text></view>
+						<view class="exchange_result pt-[20rpx]">
+							<view class="result_left">Jumlah Total Penukaran</view>
+							<view class="result_right mt-[20rpx]">
+								<view class="number">
+									<view class="num">{{formatNumber(balance)}} <text class="unit">POIN</text></view>
+								</view>
 							</view>
 						</view>
 					</view>
 				</view>
 			</view>
-			<view class="submit_btn mx-[40rpx]" @tap="submitEvent">Konfirmasi</view>
+			<view class="submit_btn mx-[30rpx]" @tap="submitEvent">Konfirmasi</view>
 			<toastPopup></toastPopup>
 			<Popup v-if="pointsPopup" :pointsType="pointsType" :number="balance" @confirm="pointsFinish"
 				@cancel="pointsCancel"></Popup>
@@ -166,6 +168,10 @@
 	.container {
 		position: relative;
 
+		.imageGroup {
+			background: #FFFFFF;
+		}
+
 		.points {
 			position: absolute;
 			top: 0;
@@ -237,118 +243,124 @@
 				}
 			}
 
+			.trade_popup {
+				border-top-left-radius: 20rpx;
+				border-top-right-radius: 20rpx;
+				background: #F0F0F0;
 
-			.trade_con {
-				border-radius: 12rpx;
-				background: #FFFFFF;
+				.trade_con {
+					border-radius: 12rpx;
+					background: #FFFFFF;
 
-				.trade_submit {
-					.trade_Item {
-						margin-bottom: 20rpx;
+					.trade_submit {
+						.trade_Item {
+							margin-bottom: 20rpx;
 
-						.trade_head {
-							display: flex;
-							justify-content: space-between;
-							align-items: center;
-
-							.trade_title {
-								font-family: Arial;
-								font-size: 32rpx;
-								font-weight: 700;
-								line-height: 40rpx;
-								text-align: left;
-								color: #1E4B2E;
-							}
-
-							.trade_tips {
-								font-family: Arial;
-								font-size: 24rpx;
-								font-weight: 500;
-								line-height: 40rpx;
-								text-align: right;
-								color: #D79D2A;
-							}
-						}
-
-						.trade_input {
-							margin-top: 20rpx;
-							padding: 10rpx 30rpx;
-							background: #FFFFFF;
-							border-radius: 12rpx;
-							border: 2rpx solid #8B9098;
-						}
-					}
-
-					.exchange_rate {
-						display: flex;
-						justify-content: flex-start;
-						align-items: center;
-
-						.title {
-							margin-right: 20rpx;
-							font-family: Arial;
-							font-size: 24rpx;
-							font-weight: 500;
-							line-height: 40rpx;
-							text-align: left;
-							color: #8B9098;
-						}
-
-						.token {
-							margin: 0 10rpx;
-							font-family: Arial;
-							font-size: 24rpx;
-							font-weight: 500;
-							line-height: 40rpx;
-							text-align: left;
-							color: #ECB54B;
-						}
-
-						.point {
-							font-family: Arial;
-							font-size: 24rpx;
-							font-weight: 500;
-							line-height: 40rpx;
-							text-align: left;
-							color: #1E1E1E;
-
-						}
-					}
-
-					.exchange_result {
-
-						.result_left {
-							font-family: Arial;
-							font-size: 32rpx;
-							font-weight: 700;
-							line-height: 48rpx;
-							text-align: left;
-							color: #1E4B2E;
-						}
-
-						.result_right {
-							display: flex;
-							justify-content: flex-start;
-							align-items: center;
-
-							.number {
+							.trade_head {
 								display: flex;
 								justify-content: space-between;
 								align-items: center;
 
-								.num {
+								.trade_title {
 									font-family: Arial;
-									font-size: 36rpx;
-									font-weight: 400;
-									line-height: 48rpx;
+									font-size: 32rpx;
+									font-weight: 700;
+									line-height: 40rpx;
 									text-align: left;
-									color: #1E1E1E;
-									.unit{
+									color: #1E4B2E;
+								}
+
+								.trade_tips {
+									font-family: Arial;
+									font-size: 24rpx;
+									font-weight: 500;
+									line-height: 40rpx;
+									text-align: right;
+									color: #D79D2A;
+								}
+							}
+
+							.trade_input {
+								margin-top: 20rpx;
+								padding: 10rpx 30rpx;
+								background: #FFFFFF;
+								border-radius: 12rpx;
+								border: 2rpx solid #8B9098;
+							}
+						}
+
+						.exchange_rate {
+							display: flex;
+							justify-content: flex-start;
+							align-items: center;
+
+							.title {
+								margin-right: 20rpx;
+								font-family: Arial;
+								font-size: 24rpx;
+								font-weight: 500;
+								line-height: 40rpx;
+								text-align: left;
+								color: #8B9098;
+							}
+
+							.token {
+								margin: 0 10rpx;
+								font-family: Arial;
+								font-size: 24rpx;
+								font-weight: 500;
+								line-height: 40rpx;
+								text-align: left;
+								color: #ECB54B;
+							}
+
+							.point {
+								font-family: Arial;
+								font-size: 24rpx;
+								font-weight: 500;
+								line-height: 40rpx;
+								text-align: left;
+								color: #1E1E1E;
+
+							}
+						}
+
+						.exchange_result {
+
+							.result_left {
+								font-family: Arial;
+								font-size: 32rpx;
+								font-weight: 700;
+								line-height: 48rpx;
+								text-align: left;
+								color: #1E4B2E;
+							}
+
+							.result_right {
+								display: flex;
+								justify-content: flex-start;
+								align-items: center;
+
+								.number {
+									display: flex;
+									justify-content: space-between;
+									align-items: center;
+
+									.num {
 										font-family: Arial;
+										font-size: 36rpx;
 										font-weight: 400;
-										font-size: 24rpx;
-										line-height: 40rpx;
-										color: #D79D2A;
+										line-height: 48rpx;
+										text-align: left;
+										color: #1E1E1E;
+
+										.unit {
+											font-family: Arial;
+											font-weight: 400;
+											font-size: 24rpx;
+											line-height: 40rpx;
+											color: #D79D2A;
+										}
 									}
 								}
 							}
@@ -371,6 +383,7 @@
 				text-align: center;
 				color: #FFFFFF;
 			}
+
 		}
 	}
 </style>

@@ -8,10 +8,10 @@
 				// #ifdef H5
 				"navigationBarTitleText": "Beranda"
 				// #endif
+			},
+			"meta": {
+				"auth": true
 			}
-			// "meta": {
-			// 	"auth": true
-			// }
 		},
 		{
 			"path": "pages/activity/activity",
@@ -508,61 +508,6 @@
 				// #endif
 				// #ifdef H5
 				"navigationBarTitleText": "CUSTOMER SERVICE"
-				// #endif
-			}
-		},
-		{
-			"path": "pages/investment/investment",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "RIWAYAT"
-				// #endif
-			}
-		},
-		{
-			"path": "pages/investment_record/investment_record",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "RIWAYAT INVESTASI"
-				// #endif
-			}
-		},
-		{
-			"path": "pages/newsCement/newsCement",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "RIWAYAT INVESTASI"
-				// #endif
-			}
-		},
-		{
-			"path": "pages/release_info/release_info",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "RINCIAN PELEPASAN"
-				// #endif
-			}
-		},
-		{
-			"path": "pages/qualification/qualification",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "CEK KUALIFIKASI"
 				// #endif
 			}
 		},

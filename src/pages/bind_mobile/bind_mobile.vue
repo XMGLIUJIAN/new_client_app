@@ -11,7 +11,7 @@
 				</u-navbar>
 			</u-sticky>
 			<view class="phone_con mx-[30rpx] mt-[50rpx]">
-				<view class="phone_head" v-if="formData.type == 'change'">Nomor ponsel asli</view>
+				<view class="phone_head" v-if="formData.type == 'change'">Nomor Ponsel Asli</view>
 				<view class="phone_head" v-if="formData.type == 'bind'">Ubah nomor telepon baru</view>
 				<view class="password_input mt-[20rpx] mb-[20rpx]">
 					<u-input type="text" v-model="formData.mobile" :border="false" placeholder-style="color: #999999;font-size:24rpx;"

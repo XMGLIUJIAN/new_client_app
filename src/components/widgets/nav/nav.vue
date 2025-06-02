@@ -112,7 +112,10 @@ const swiperChange = (e: any) => {
 		bottom: 0;
 	}
 	::v-deep .uni-swiper-dot-active{
-		width: 40rpx;
+		width: 30rpx;
+		border-radius: 4rpx;
+	}
+	::v-deep .uni-swiper-dot{
 		border-radius: 4rpx;
 	}
 </style>

@@ -28,7 +28,7 @@
 								</view>
 								<view class="user_info_text">Persentase Pembagian Keuntungan Saat Ini:10%</view>
 							</view>
-							<view class="code_box">
+							<view class="code_box" @tap="extendFun">
 								<u-image width="60" height="60" src="@/static/images/team/code.png" alt="" />
 							</view>
 						</view>
@@ -127,9 +127,6 @@
 					</view>
 				</view>
 			</view>
-			<Popup :show="extendShow" :code="userInfo.invite_code" :link="userInfo.invite_link" @copy="extendCopy"
-				@cancel="extendShow = false">
-			</Popup>
 			<toastPopup></toastPopup>
 			<Search :show="searchShow" :searchInfo="searchInfo" @cancel="searchCancel"></Search>
 			<tabbar />
@@ -151,7 +148,6 @@
 	const scrollTop = ref<number>(0)
 	const router = useRouter()
 	const searchShow = ref<Boolean>(false)
-	const extendShow = ref<Boolean>(false)
 	const mobile = ref<String>('')
 	const userStore = useUserStore()
 	const seriesArr = ref<Array<any>>([])
@@ -172,10 +168,6 @@
 				toast('Isinya disalin')
 			}
 		})
-	}
-	const extendCopy = (link : any) => {
-		copy(link)
-		extendShow.value = false
 	}
 	const teamRule = () => {
 		router.navigateTo('/pages/team_rule/team_rule')
@@ -215,11 +207,6 @@
 	const searchCancel = () => {
 		mobile.value = ''
 		searchShow.value = false;
-	}
-	const refreshCode = () => {
-		// userStore.getUser()
-		// extendShow.value = true
-		extendFun()
 	}
 	onShow(() => {
 		userStore.getUser()

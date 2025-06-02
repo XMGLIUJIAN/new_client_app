@@ -63,8 +63,14 @@
 					<view class="label_num">RP 1.000.000.000.000</view>
 				</view>
 			</view>
-			<u-line-progress height="12" :show-percent="false" round :percent="formatProgress(50,100)"
-				active-color="#F1C44D" inactive-color="#F0F0F0"></u-line-progress>
+			<view class="card_line"></view>
+			<view class="article_foot">
+				<view class="foot_info">
+					<view class="foot_title">Bantuan Tim (Belum Diambil)</view>
+					<u-image width="24" height="24" src="@/static/images/user/help.png" alt="" />
+				</view>
+				<view class="foot_num">4545645</view>
+			</view>
 		</view>
 		<toastPopup></toastPopup>
 	</view>
@@ -290,6 +296,38 @@
 					width: 4rpx;
 					height: 30rpx;
 					background: #D7D7D7;
+				}
+			}
+			.card_line {
+				margin: 30rpx 20rpx;
+				height: 2rpx;
+				background: #D7D7D7;
+			}
+				
+			.article_foot{
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				.foot_info{
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					.foot_title{
+						margin-right: 20rpx;
+						font-family: PingFang SC;
+						font-weight: 500;
+						font-size: 24rpx;
+						line-height: 40rpx;
+						color: #1E1E1E;
+					}
+				}
+				.foot_num{
+					margin-right: 60rpx;
+					font-family: Arial;
+					font-weight: 700;
+					font-size: 24rpx;
+					line-height: 40rpx;
+					color: #1E1E1E;
 				}
 			}
 		}

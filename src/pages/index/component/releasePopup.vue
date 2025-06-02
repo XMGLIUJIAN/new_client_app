@@ -13,7 +13,7 @@
 						<u-image width="150" height="123" src="@/static/images/icon/release_icon.png" alt="" />
 					</view>
 				</view>
-				<view class="btn mt-[20rpx]" @tap="confirmPopup(releaseInfo.id)">Confirm</view>
+				<view class="btn mt-[20rpx]" @tap="confirmPopup(releaseInfo.id)">Konfirmasi</view>
 			</view>
 		</view>
 	</view>
@@ -115,7 +115,7 @@
 				.btn {
 					height: 80rpx;
 					border-radius: 12rpx;
-					background: #0067E0;
+					background: #81AF95;
 					font-family:  Arial;
 					font-size: 28rpx;
 					font-weight: 500;
@@ -193,7 +193,7 @@
 				.btn {
 					height: 80rpx;
 					border-radius: 12rpx;
-					background: #0067E0;
+					background: #C3C6CB;
 					font-family:  Arial;
 					font-size: 28rpx;
 					font-weight: 500;

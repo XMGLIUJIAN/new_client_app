@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="imageGroup">
-			<u-image width="750" height="475" src="@/static/images/page/pageGroup.png"></u-image>
+			<u-image width="750" height="1624" src="@/static/images/page/maskGroup.png"></u-image>
 		</view>
 		<view class="register">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
@@ -11,13 +11,6 @@
 					:title-color="scrollTop ? '#1E1E1E' : '#FFFFFF'">
 				</u-navbar>
 			</u-sticky>
-			<view class="rice_head mt-[50rpx] px-[40rpx]">
-				<view class="rice_logo pt-[40rpx]">
-					<view class="welcome">Silahkan Mendaftar</view>
-					<view class="appName">Rice Rich</view>
-				</view>
-				<u-image class="logo_image" width="360" height="360" src="@/static/images/user/logo.png" alt="" />
-			</view>
 			<view class="register_con  pt-[40rpx] pb-[40rpx] px-[40rpx]">
 				<view class="register_head">Daftar Akun Anda</view>
 				<template v-if="current == 'register'">
@@ -106,7 +99,7 @@
 				</template>
 			</view>
 			<view class="contact" @tap="contactService">
-				<u-image width="115" height="108" src="@/static/images/icon/contact.png" alt="" />
+				<u-image width="75" height="75" src="@/static/images/icon/contact.png" alt="" />
 			</view>
 			<toastPopup></toastPopup>
 			<contactPopup v-if="contactShow" :service="serviceInfo" @confirm="contactConfirm" @cancel="contactShow = false"></contactPopup>
@@ -301,50 +294,28 @@
 <style lang="scss" scoped>
 	.container {
 		position: relative;
-
+		.imageGroup {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
 		.register {
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
-
-			.rice_head {
-				position: relative;
-
-				.rice_logo {
-					.welcome {
-						font-family: Arial;
-						font-size: 40rpx;
-						font-weight: 500;
-						line-height: 80rpx;
-						text-align: left;
-						color: #FFFFFF;
-					}
-
-					.appName {
-						font-family: Arial;
-						font-size: 52rpx;
-						font-weight: 900;
-						line-height: 80rpx;
-						text-align: left;
-						color: #FFFFFF;
-					}
-				}
-
-				.logo_image {
-					position: absolute;
-					top: 0;
-					right: 0;
-					z-index: 90;
-				}
-			}
-
 			.register_con {
-				position: relative;
-				top: 80rpx;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				padding: 50rpx;
 				z-index: 95;
-				border-top-left-radius: 30rpx;
-				border-top-right-radius: 30rpx;
+				border-top-left-radius: 12rpx;
+				border-top-right-radius: 12rpx;
 				background: #FFFFFF;
 
 				.register_head {
@@ -360,7 +331,7 @@
 					display: flex;
 					justify-content: center;
 					align-items: center;
-					padding: 20rpx 40rpx;
+					padding: 10rpx 40rpx;
 					border-radius: 24rpx;
 					background: #F4F7FD;
 
@@ -463,7 +434,7 @@
 
 			.contact {
 				position: fixed;
-				top: 80%;
+				top: 40%;
 				right: 0;
 				z-index: 100;
 			}

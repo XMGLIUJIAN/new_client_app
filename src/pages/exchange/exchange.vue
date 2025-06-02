@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="imageGroup">
-			<u-image width="750" height="475" src="@/static/images/page/pageGroup.png"></u-image>
+			<u-image width="750" height="400" src="@/static/images/page/pageGroup.png"></u-image>
 		</view>
 		<view class="exchange pb-[40rpx]">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
@@ -10,7 +10,8 @@
 					title-color="#FFFFFF">
 					<template #right>
 						<view class="rule mr-[30rpx]" @tap="navigateTo('/pages/point_rule/point_rule')">
-							<u-image v-if="!scrollTop" width="40" height="40" src="@/static/images/icon/icon_help.png"></u-image>
+							<u-image v-if="!scrollTop" width="40" height="40"
+								src="@/static/images/icon/icon_help.png"></u-image>
 							<u-image v-else width="40" height="40" src="@/static/images/icon/help.png"></u-image>
 						</view>
 					</template>
@@ -33,39 +34,40 @@
 					</view>
 				</view>
 			</view>
-
-			<view class="trade_con mt-[20rpx] mb-[40rpx] px-[40rpx] pt-[40rpx] pb-[40rpx] mx-[30rpx]">
-				<view class="trade_submit">
-					<view class="trade_Item">
-						<view class="trade_head">
-							<view class="trade_title">Jumlah Pertukaran</view>
-							<view class="trade_tips" @tap="exchangeAll">Tukar Semua</view>
+			<view class="trade_popup mt-[30rpx] mb-[30rpx] pt-[40rpx] px-[30rpx]">
+				<view class="trade_con px-[40rpx] pt-[40rpx] pb-[40rpx]">
+					<view class="trade_submit">
+						<view class="trade_Item">
+							<view class="trade_head">
+								<view class="trade_title">Jumlah Pertukaran</view>
+								<view class="trade_tips" @tap="exchangeAll">Tukar Semua</view>
+							</view>
+							<view class="trade_input">
+								<u-input v-model="formData.exchange_amount" type="number" :border="false"
+									placeholder-style="color: #8B9098;font-size:24rpx;"
+									placeholder="Masukkan Jumlah Token Yang Di Tukar" />
+							</view>
 						</view>
-						<view class="trade_input">
-							<u-input v-model="formData.exchange_amount" type="number" :border="false"
-								placeholder-style="color: #8B9098;font-size:24rpx;"
-								placeholder="Masukkan Jumlah Token Yang Di Tukar" />
+						<view class="exchange_rate" v-if="Object.keys(rateInfo).length > 0">
+							<view class="title">Nilai Penukaran：</view>
+							<view class="point">1 Token =</view>
+							<view class="token">Rp {{formatNumber(rateInfo.rate)}}</view>
 						</view>
-					</view>
-					<view class="exchange_rate" v-if="Object.keys(rateInfo).length > 0">
-						<view class="title">Nilai Penukaran：</view>
-						<view class="point">1 Token =</view>
-						<view class="token">Rp {{formatNumber(rateInfo.rate)}}</view>
-					</view>
-					<view class="exchange_result pt-[20rpx]">
-						<view class="result_left">Jumlah Total Penukaran</view>
-						<view class="result_right mt-[20rpx]">
-							<view class="number">
-								<view class="num"><text class="unit">Rp</text> {{formatNumber(number)}}</view>
+						<view class="exchange_result pt-[20rpx]">
+							<view class="result_left">Jumlah Total Penukaran</view>
+							<view class="result_right mt-[20rpx]">
+								<view class="number">
+									<view class="num"><text class="unit">Rp</text> {{formatNumber(number)}}</view>
+								</view>
 							</view>
 						</view>
 					</view>
 				</view>
 			</view>
-			<view class="submit_btn mx-[40rpx]" @tap="submitEvent">Konfirmasi</view>
+			<view class="submit_btn mx-[30rpx]" @tap="submitEvent">Konfirmasi</view>
 		</view>
-		<Popup v-if="exchangePopup" :exchangeType="exchangeType" @confirm="exchangeFinish"
-			@cancel="exchangeCancel"></Popup>
+		<Popup v-if="exchangePopup" :exchangeType="exchangeType" @confirm="exchangeFinish" @cancel="exchangeCancel">
+		</Popup>
 		<toastPopup></toastPopup>
 	</view>
 
@@ -146,7 +148,7 @@
 				exchangeType.value = 'lose'
 				exchangePopup.value = true
 			}
-		},3000)
+		}, 3000)
 	}
 	onShow(() => {
 		getRatelist()
@@ -165,6 +167,10 @@
 <style lang="scss" scoped>
 	.container {
 		position: relative;
+
+		.imageGroup {
+			background: #FFFFFF;
+		}
 
 		.exchange {
 			position: absolute;
@@ -185,14 +191,14 @@
 				overflow: hidden;
 				border-radius: 12rpx;
 				background: #FFFFFF;
-				
+
 				.trade_card_head {
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
 					padding: 20rpx 40rpx;
 					background: linear-gradient(303.05deg, #92BEAB 10.45%, #26815A 89.55%);
-				
+
 					.card_head_title {
 						font-family: Arial;
 						font-weight: 500;
@@ -200,7 +206,7 @@
 						line-height: 40rpx;
 						color: #FFFFFF;
 					}
-				
+
 					.card_head_account {
 						font-family: Arial;
 						font-weight: 400;
@@ -209,16 +215,16 @@
 						color: #FFFFFF;
 					}
 				}
-				
+
 				.transfer_card {
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
 					padding: 20rpx 40rpx;
-				
+
 					.card_box {
 						width: 45%;
-				
+
 						.card_num {
 							font-family: Arial;
 							font-size: 28rpx;
@@ -227,7 +233,7 @@
 							text-align: center;
 							color: #1E1E1E;
 						}
-				
+
 						.card_text {
 							font-family: Arial;
 							font-size: 32rpx;
@@ -237,7 +243,7 @@
 							color: #8B9098;
 						}
 					}
-				
+
 					.card_line {
 						width: 2rpx;
 						height: 50rpx;
@@ -246,117 +252,123 @@
 				}
 			}
 
+			.trade_popup {
+				border-top-left-radius: 20rpx;
+				border-top-right-radius: 20rpx;
+				background: #F0F0F0;
 
-			.trade_con {
-				border-radius: 12rpx;
-				background: #FFFFFF;
+				.trade_con {
+					border-radius: 12rpx;
+					background: #FFFFFF;
 
-				.trade_submit {
-					.trade_Item {
-						margin-bottom: 20rpx;
+					.trade_submit {
+						.trade_Item {
+							margin-bottom: 20rpx;
 
-						.trade_head {
-							display: flex;
-							justify-content: space-between;
-							align-items: center;
-
-							.trade_title {
-								font-family: Arial;
-								font-size: 32rpx;
-								font-weight: 700;
-								line-height: 40rpx;
-								text-align: left;
-								color: #1E4B2E;
-							}
-
-							.trade_tips {
-								font-family: Arial;
-								font-size: 24rpx;
-								font-weight: 500;
-								line-height: 40rpx;
-								text-align: right;
-								color: #D79D2A;
-							}
-						}
-
-						.trade_input {
-							margin-top: 20rpx;
-							padding: 10rpx 30rpx;
-							background: #FFFFFF;
-							border-radius: 12rpx;
-							border: 2rpx solid #8B9098;
-						}
-					}
-
-					.exchange_rate {
-						display: flex;
-						justify-content: flex-start;
-						align-items: center;
-
-						.title {
-							font-family: Arial;
-							font-size: 24rpx;
-							font-weight: 500;
-							line-height: 40rpx;
-							text-align: left;
-							color: #8B9098;
-						}
-
-						.token {
-							margin: 0 10rpx;
-							font-family: Arial;
-							font-size: 24rpx;
-							font-weight: 500;
-							line-height: 40rpx;
-							text-align: left;
-							color: #ECB54B;
-						}
-
-						.point {
-							font-family: Arial;
-							font-size: 24rpx;
-							font-weight: 500;
-							line-height: 40rpx;
-							text-align: left;
-							color: #1E1E1E;
-
-						}
-					}
-
-					.exchange_result {
-
-						.result_left {
-							font-family: Arial;
-							font-size: 32rpx;
-							font-weight: 500;
-							line-height: 48rpx;
-							text-align: left;
-							color: #1E4B2E;
-						}
-
-						.result_right {
-							display: flex;
-							justify-content: flex-start;
-							align-items: center;
-
-							.number {
+							.trade_head {
 								display: flex;
 								justify-content: space-between;
 								align-items: center;
 
-								.num {
+								.trade_title {
 									font-family: Arial;
 									font-size: 32rpx;
-									font-weight: 400;
-									line-height: 48rpx;
+									font-weight: 700;
+									line-height: 40rpx;
 									text-align: left;
-									color: #1E1E1E;
-									.unit{
+									color: #1E4B2E;
+								}
+
+								.trade_tips {
+									font-family: Arial;
+									font-size: 24rpx;
+									font-weight: 500;
+									line-height: 40rpx;
+									text-align: right;
+									color: #D79D2A;
+								}
+							}
+
+							.trade_input {
+								margin-top: 20rpx;
+								padding: 10rpx 30rpx;
+								background: #FFFFFF;
+								border-radius: 12rpx;
+								border: 2rpx solid #8B9098;
+							}
+						}
+
+						.exchange_rate {
+							display: flex;
+							justify-content: flex-start;
+							align-items: center;
+
+							.title {
+								font-family: Arial;
+								font-size: 24rpx;
+								font-weight: 500;
+								line-height: 40rpx;
+								text-align: left;
+								color: #8B9098;
+							}
+
+							.token {
+								margin: 0 10rpx;
+								font-family: Arial;
+								font-size: 24rpx;
+								font-weight: 500;
+								line-height: 40rpx;
+								text-align: left;
+								color: #ECB54B;
+							}
+
+							.point {
+								font-family: Arial;
+								font-size: 24rpx;
+								font-weight: 500;
+								line-height: 40rpx;
+								text-align: left;
+								color: #1E1E1E;
+
+							}
+						}
+
+						.exchange_result {
+
+							.result_left {
+								font-family: Arial;
+								font-size: 32rpx;
+								font-weight: 500;
+								line-height: 48rpx;
+								text-align: left;
+								color: #1E4B2E;
+							}
+
+							.result_right {
+								display: flex;
+								justify-content: flex-start;
+								align-items: center;
+
+								.number {
+									display: flex;
+									justify-content: space-between;
+									align-items: center;
+
+									.num {
 										font-family: Arial;
+										font-size: 32rpx;
 										font-weight: 400;
-										font-size: 36rpx;
-										line-height: 40rpx;
-										color: #D79D2A;
+										line-height: 48rpx;
+										text-align: left;
+										color: #1E1E1E;
+
+										.unit {
+											font-family: Arial;
+											font-weight: 400;
+											font-size: 36rpx;
+											line-height: 40rpx;
+											color: #D79D2A;
+										}
 									}
 								}
 							}
@@ -364,7 +376,6 @@
 					}
 				}
 			}
-
 			.submit_btn {
 				display: flex;
 				justify-content: center;

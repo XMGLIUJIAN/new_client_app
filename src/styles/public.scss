@@ -12,7 +12,7 @@ page {
 	justify-content: center;
 	align-items: center;
 	.empty_text{
-		margin-top: 20rpx;
+		margin: 20rpx 0;
 		width: 494rpx;
 		height: 60rpx;
 		font-family: Arial;
@@ -25,7 +25,7 @@ page {
 		background: #C3C6CB;
 	}
 	.empty_popup{
-		margin-top: 20rpx;
+		margin-top: 20rpx 0;
 		width: 494rpx;
 		height: 60rpx;
 		font-family: Arial;

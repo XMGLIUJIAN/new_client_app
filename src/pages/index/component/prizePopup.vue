@@ -2,8 +2,7 @@
 	<view class="popup">
 		<view class="content">
 			<view class="prize" @tap="confirmPopup">
-				<!-- <u-image width="572" height="844" src="@/static/images/raffle/raffle_prizePopup.png"></u-image> -->
-				<u-image width="677" height="916" src="@/static/images/raffle/raffle_noticePopup.png"></u-image>
+				<u-image width="572" height="844" src="@/static/images/raffle/raffle_prizePopup.png"></u-image>
 				<view class="cancel_btn" @tap="cancelPopup">
 					<u-image width="68" height="68" src="@/static/images/raffle/cancel_btn.png"></u-image>
 				</view>

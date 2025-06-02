@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="imageGroup">
-			<u-image width="750" height="475" src="@/static/images/page/pageGroup.png"></u-image>
+			<u-image width="750" height="1624" src="@/static/images/page/maskGroup.png"></u-image>
 		</view>
 		<view class="login">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
@@ -11,14 +11,7 @@
 					:title-color="scrollTop ? '#1E1E1E' : '#FFFFFF'">
 				</u-navbar>
 			</u-sticky>
-			<view class="login_head mt-[50rpx] px-[40rpx]">
-				<view class="login_logo pt-[40rpx]">
-					<view class="welcome">Selamat datang</view>
-					<view class="appName">Rice Rich</view>
-				</view>
-				<u-image class="logo_image" width="360" height="360" src="@/static/images/user/logo.png" alt="" />
-			</view>
-			<view class="login_con pt-[40rpx] px-[40rpx]">
+			<view class="login_con pt-[30rpx] px-[30rpx]">
 				<!-- 密码登录 -->
 				<template
 					v-if="formData.scene == LoginWayEnum.ACCOUNT && includeLoginWay(LoginWayEnum.ACCOUNT) && !current">
@@ -55,7 +48,7 @@
 						<view class="recover_text">
 							Kode verifikasi terkirim <text class="phone_num">(+62) {{formData.account}}</text>
 						</view>
-
+		
 						<view class="recover_code mt-[50rpx]">
 							<u-message-input v-model="formData.code" @finish="loginFun" font-size="64"
 								active-color="#1E1E1E" inactive-color="#D9D9D9" :focus="true" :breathe="true"
@@ -123,7 +116,8 @@
 			</view>
 			<toastPopup></toastPopup>
 			<loginPopup v-if="loginShow" @cancel="loginShow = false" @confirm="confirmPopup"></loginPopup>
-			<contactPopup v-if="contactShow" :service="serviceInfo" @confirm="contactConfirm" @cancel="contactShow = false"></contactPopup>
+			<contactPopup v-if="contactShow" :service="serviceInfo" @confirm="contactConfirm"
+				@cancel="contactShow = false"></contactPopup>
 			<Popup v-if="showModel" @confirm="confirm" @cancel="showModel = false"></Popup>
 			<!-- #ifdef MP-WEIXIN || H5 -->
 			<u-icon class="weixin" v-if="isOpenOtherAuth && isWeixin && inWxAuth && !current" @click="wxLogin"
@@ -189,7 +183,7 @@
 		account: '',
 		password: '',
 		code: '',
-		loginMac:''
+		loginMac: ''
 	})
 	const disabledStatus = computed(() => {
 		let status = formData.account && formData.password ? false : true
@@ -225,9 +219,9 @@
 	const contactService = () => {
 		getInfo()
 		emitter.emit('gifType')
-		setTimeout(()=>{
+		setTimeout(() => {
 			contactShow.value = true
-		},3000)
+		}, 3000)
 	}
 	const sendSms = async () => {
 		if (!formData.account) return
@@ -459,56 +453,37 @@
 	.container {
 		position: relative;
 
+		.imageGroup {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
+
 		.login {
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
 
-			.login_head {
-				position: relative;
-
-				.login_logo {
-					.welcome {
-						font-family: Arial;
-						font-size: 40rpx;
-						font-weight: 500;
-						line-height: 80rpx;
-						text-align: left;
-						color: #FFFFFF;
-					}
-
-					.appName {
-						font-family: Arial;
-						font-size: 52rpx;
-						font-weight: 900;
-						line-height: 80rpx;
-						text-align: left;
-						color: #FFFFFF;
-					}
-				}
-
-				.logo_image {
-					position: absolute;
-					top: 0;
-					right: 0;
-					z-index: 90;
-				}
-			}
-
 			.login_con {
-				position: relative;
-				top: 80rpx;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				padding: 50rpx;
 				z-index: 95;
-				border-top-left-radius: 30rpx;
-				border-top-right-radius: 30rpx;
+				border-top-left-radius: 12rpx;
+				border-top-right-radius: 12rpx;
 				background: #FFFFFF;
 
 				.recover_row {
 					display: flex;
 					justify-content: center;
 					align-items: center;
-					padding: 20rpx 40rpx;
+					padding: 10rpx 30rpx;
 					border-radius: 24rpx;
 					background: #F4F7FD;
 
@@ -649,7 +624,7 @@
 
 			.contact {
 				position: fixed;
-				top: 50%;
+				top: 40%;
 				right: 0;
 				z-index: 100;
 			}
