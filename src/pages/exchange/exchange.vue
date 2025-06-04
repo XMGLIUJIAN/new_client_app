@@ -9,7 +9,7 @@
 					title="TUKAR" :title-bold="true" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
 					title-color="#FFFFFF">
 					<template #right>
-						<view class="rule mr-[30rpx]" @tap="navigateTo('/pages/point_rule/point_rule')">
+						<view class="rule mr-[30rpx]" @tap="navigateTo('/pages/user_rule/user_rule?type=exchange')">
 							<u-image v-if="!scrollTop" width="40" height="40"
 								src="@/static/images/icon/icon_help.png"></u-image>
 							<u-image v-else width="40" height="40" src="@/static/images/icon/help.png"></u-image>
@@ -291,7 +291,7 @@
 
 							.trade_input {
 								margin-top: 20rpx;
-								padding: 10rpx 30rpx;
+								padding: 0 30rpx;
 								background: #FFFFFF;
 								border-radius: 12rpx;
 								border: 2rpx solid #8B9098;

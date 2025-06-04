@@ -321,7 +321,7 @@
 
 						.trade_input {
 							margin-top: 20rpx;
-							padding: 10rpx 30rpx;
+							padding: 0 30rpx;
 							background: #FFFFFF;
 							border-radius: 12rpx;
 							border: 2rpx solid #8B9098;

@@ -67,11 +67,12 @@
 			<view class="article_foot">
 				<view class="foot_info">
 					<view class="foot_title">Bantuan Tim (Belum Diambil)</view>
-					<u-image width="24" height="24" src="@/static/images/user/help.png" alt="" />
+					<u-image @tap="show = true" width="24" height="24" src="@/static/images/user/help.png" alt="" />
 				</view>
 				<view class="foot_num">4545645</view>
 			</view>
 		</view>
+		<Popup v-if="show" @cancel="show = false"></Popup>
 		<toastPopup></toastPopup>
 	</view>
 </template>
@@ -80,6 +81,7 @@
 	import { formatNumber, formatProgress } from '@/utils/util'
 	import { emitter } from '@/utils/emitter';
 	import { mesNotifiConf } from '@/api/eventInfo';
+	import Popup from './components/popup.vue'
 	const props = defineProps({
 		pageMeta: {
 			type: Object,
@@ -109,6 +111,7 @@
 			default: "#000000"
 		}
 	})
+	const show = ref<boolean>(false)
 	const badge = ref<Boolean>(false)
 	const eyeShow = ref<Boolean>(true)
 	const metaData : any = computed(() => {

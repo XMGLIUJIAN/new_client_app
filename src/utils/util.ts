@@ -295,7 +295,7 @@ export const formatDate = (timestamp: any) => {
 	return formatted
 }
 
-//格式化银行卡
+//格式化银行卡、手机号码
 export const bankFormat = (val : string) => {
 	// 移除非数字字符
 	const cleaned = val.replace(/\D/g, '');

@@ -47,7 +47,7 @@
 			width: 100%;
 			height: 100%;
 			.lose {
-				width: 586rpx;
+				width: 580rpx;
 				border-radius: 20rpx;
 				background: #FFFFFF;
 
@@ -69,31 +69,32 @@
 				}
 				.btn {
 					display: flex;
-					justify-content: space-between;
+					justify-content: center;
 					align-items: center;
-				
 					.confirm {
-						width: 250rpx;
-						height: 80rpx;
+						margin: 0 20rpx;
+						width: 200rpx;
+						height: 72rpx;
 						border-radius: 12rpx;
 						background: #81AF95;
 						font-family:  Arial;
-						font-size: 28rpx;
+						font-size: 24rpx;
 						font-weight: 500;
-						line-height: 80rpx;
+						line-height: 72rpx;
 						text-align: center;
 						color: #FFFFFF;
 					}
 				
 					.cancel {
-						width: 250rpx;
-						height: 80rpx;
+						margin: 0 20rpx;
+						width: 200rpx;
+						height: 72rpx;
 						border-radius: 12rpx;
 						background: #C3C6CB;
 						font-family:  Arial;
-						font-size: 28rpx;
+						font-size: 24rpx;
 						font-weight: 500;
-						line-height: 80rpx;
+						line-height: 72rpx;
 						text-align: center;
 						color: #FFFFFF;
 					}

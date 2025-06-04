@@ -16,65 +16,61 @@
 					</view>
 				</u-navbar>
 			</u-sticky>
-			<view class="forget_con pt-[40rpx] px-[40rpx]">
-				<view class="forget_recover" v-if="current == 'phone'">
-					<view class="recover_head mb-[20rpx]">Memulihkan kata sandi</view>
-					<view class="recover_text">
-						Demi memastikan keamanan akun anda,Silahkan masukkan nomor kode verifikasi anda untuk masuk kembali.
-					</view>
-					<view class="recover_row mt-[60rpx]">
-						<u-image width="50" height="50" src="@/static/images/icon/phone.png" alt="" />
-						<view class="recover_input">
-							<u-input type="text" v-model="formData.mobile" :border="false"
-								placeholder-style="color: #999999;" placeholder="Nomor HP anda(08XXXXXX)" />
-						</view>
-					</view>
-					<view class="submit-btn mt-[40rpx]" @tap="nextStep">Selanjutnya</view>
-				</view>
-				<view class="forget_recover" v-if="current == 'code'">
-					<view class="recover_head mb-[20rpx]">Masukkan kode verifikasi</view>
-					<view class="recover_text">
-						Kode verifikasi terkirim <text class="phone_num">(+62) {{formData.mobile}}</text>
-					</view>
-
-					<view class="recover_code mt-[50rpx]">
-						<u-message-input v-model="formData.code" @finish="codeNext" font-size="64"
-							active-color="#1E1E1E" inactive-color="#D9D9D9" :focus="true" :breathe="true" maxlength="6"
-							mode="bottomLine"></u-message-input>
-					</view>
-					<view class="sendCode mt-[50rpx]" @click="sendSms">
-						<u-verification-code ref="uCodeRef" :seconds="60" start-text="Kirim kode verifikasi"
-							change-text="X detik kirim kembali" end-text="Kirim ulang kode verifikasi" :keep-running="false"
-							@change="codeChange" />
-						<text class="codeTips">
-							{{ codeTips }}
-						</text>
-					</view>
-				</view>
-				<view class="forget_recover" v-if="current == 'password'">
-					<view class="recover_head mb-[20rpx]">Atur ulang sandi</view>
-					<view class="recover_text">
-						8-20 karakter, bukan angka murni
+			<view class="forget_con pt-[40rpx] pb-[40rpx] px-[40rpx]">
+				<view class="forget_recover">
+					<view class="recover_head">
+						<u-image width="85" height="22" src="@/static/images/icon/arrow_left.png"></u-image>
+						<view class="recover_head_tips">Memulihkan Kata Sandi</view>
+						<u-image width="85" height="22" src="@/static/images/icon/arrow_right.png"></u-image>
 					</view>
 					<view class="recover_row mt-[40rpx]">
-						<u-image width="50" height="50" src="@/static/images/icon/password.png" alt="" />
+						<u-image width="40" height="40" src="@/static/images/icon/phone.png" alt="" />
+						<view class="recover_tips">+62</view>
+						<view class="recover_input">
+							<u-input type="text" v-model="formData.mobile" :border="false"
+								placeholder-style="color: #8B9098;font-size:24rpx;" placeholder="Nomor HP anda(08XXXXXX)" />
+						</view>
+					</view>
+					<view class="recover_code mt-[20rpx]">
+						<view class="code">
+							<u-image width="40" height="40" src="@/static/images/icon/code.png" alt="" />
+							<view class="code_input">
+								<u-input type="text" v-model="formData.code" :border="false" placeholder-style="color: #999999;font-size:24rpx;"
+								placeholder="Masukkan kode verifikasi" />
+							</view>
+						</view>
+						<view class="sendCode" @click="sendSms">
+							<u-verification-code ref="uCodeRef" unique-key="change" :seconds="60" start-text="Kirim"
+								change-text="X detik" end-text="Kirim Ulang" :keep-running="false" @change="codeChange" />
+							<text class="codeTips">
+								{{ codeTips }}
+							</text>
+						</view>
+					</view>
+					<view class="recover_row mt-[40rpx]">
+						<u-image width="40" height="40" src="@/static/images/icon/password.png" alt="" />
 						<view class="recover_input">
 							<u-input type="password" v-model="formData.password" :border="false"
-								placeholder-style="color: #999999;" placeholder="Masukkan kata sandi" />
+								placeholder-style="color: #8B9098;font-size:24rpx;" placeholder="Masukkan kata sandi" />
 						</view>
 					</view>
 					<view class="recover_row mt-[20rpx]">
-						<u-image width="50" height="50" src="@/static/images/icon/password.png" alt="" />
+						<u-image width="40" height="40" src="@/static/images/icon/password.png" alt="" />
 						<view class="recover_input">
 							<u-input type="password" v-model="formData.password_confirm" :border="false"
-								placeholder-style="color: #999999;" placeholder="Masukkan kata sandi kembali" />
+								placeholder-style="color: #8B9098;font-size:24rpx;" placeholder="Masukkan kata sandi kembali" />
 						</view>
 					</view>
 					<u-button class="submit-btn mt-[40rpx]" :class="{'disabled': disabledStatus}"
-						:disabled="disabledStatus" @click="handleConfirm" hover-class="none">selesai</u-button>
+						:disabled="disabledStatus" @click="nextStep" hover-class="none">selesai</u-button>
 				</view>
 			</view>
-			<Popup v-if="forgetPopup" @confirm="forgetConfirm" :message="forgetMessage"></Popup>
+			<view class="contact" @tap="contactService">
+				<u-image width="75" height="75" src="@/static/images/icon/contact.png" alt="" />
+			</view>
+			<contactPopup v-if="contactShow" :service="serviceInfo" @confirm="contactEvent"
+				@cancel="contactShow = false"></contactPopup>
+			<Popup v-if="forgetPopup" @confirm="forgetEvent" :message="forgetMessage"></Popup>
 			<toastPopup></toastPopup>
 		</view>
 	</view>
@@ -89,12 +85,15 @@
 	import { reactive, ref, shallowRef, computed, nextTick } from 'vue'
 	import { useRouter } from "uniapp-router-next";
 	import { emitter } from '@/utils/emitter';
+	import { customerServiceInfo } from '@/api/eventInfo'
 	import { onPageScroll } from '@dcloudio/uni-app'
 	import Popup from './components/popup.vue'
+	import contactPopup from './components/contactPopup.vue'
 	const router = useRouter()
 	const scrollTop = ref<number>(0)
 	const forgetPopup = ref<Boolean>(false)
-	const current = ref<String>('phone')
+	const serviceInfo = ref<any>({})
+	const contactShow = ref<Boolean>(false)
 	const uCodeRef = shallowRef()
 	const codeTips = ref('')
 	const forgetMessage = ref<any>(null)
@@ -104,13 +103,18 @@
 		password: '',
 		password_confirm: ''
 	})
-	const forgetConfirm = (value : Boolean) => {
-		resetForm()
-		current.value = 'code'
+	const forgetEvent = (value : Boolean) => {
+		const resetData = {
+			code: '',
+			password: '',
+			password_confirm: ''
+		}
+		Object.assign(formData, resetData)
+		uCodeRef.value?.reset()
 		forgetPopup.value = value
 	}
 	const disabledStatus = computed(() => {
-		let status = formData.password && formData.password_confirm ? false : true
+		let status = formData.mobile && formData.code && formData.password && formData.password_confirm ? false : true
 		return status
 	})
 	const toast = (message : any = '') => {
@@ -118,18 +122,6 @@
 	}
 	const codeChange = (text : string) => {
 		codeTips.value = text
-	}
-	const nextStep = () => {
-		current.value = 'code'
-		nextTick(() => {
-			sendSms()
-		})
-	}
-	const codeNext = () => {
-		current.value = 'password'
-		nextTick(() => {
-			uCodeRef.value?.reset()
-		})
 	}
 	const sendSms = async () => {
 		if (!formData.mobile) return
@@ -144,13 +136,34 @@
 	}
 	const resetForm = () => {
 		const resetData = {
+			mobile:'',
 			code: '',
 			password: '',
 			password_confirm: ''
 		}
 		Object.assign(formData, resetData)
 	}
-	const handleConfirm = async () => {
+	const getInfo = async () => {
+		const resdata = await customerServiceInfo()
+		serviceInfo.value = resdata.data
+	}
+	const contactService = () => {
+		getInfo()
+		emitter.emit('gifType')
+		setTimeout(() => {
+			contactShow.value = true
+		}, 3000)
+	}
+	const contactEvent = (link : string) => {
+		contactShow.value = false
+		// #ifdef APP
+		plus.runtime.openURL(link)
+		// #endif
+		// #ifdef H5
+		window.location.href = link
+		// #endif
+	}
+	const nextStep = async () => {
 		if (!formData.mobile) return toast('Nomor HP anda(08XXXXXX)')
 		if (!formData.password) return toast('Masukkan kata sandi')
 		if (!formData.password_confirm) return toast('Masukkan kata sandi kembali')
@@ -205,7 +218,7 @@
 					font-family:  Arial;
 					font-size: 32rpx;
 					font-weight: 700;
-					line-height: 48rpx;
+					line-height: 40rpx;
 					text-align: center;
 				}
 			}
@@ -215,7 +228,6 @@
 				bottom: 0;
 				left: 0;
 				width: 100%;
-				padding: 50rpx;
 				z-index: 95;
 				border-top-left-radius: 12rpx;
 				border-top-right-radius: 12rpx;
@@ -223,39 +235,17 @@
 
 				.forget_recover {
 					.recover_head {
-						font-family:  Arial;
-						font-size: 32rpx;
-						font-weight: 500;
-						line-height: 50rpx;
-						text-align: left;
-						color: #1E1E1E;
-					}
-
-					.recover_text {
-						font-family:  Arial;
-						font-size: 28rpx;
-						font-weight: 500;
-						line-height: 40rpx;
-						text-align: left;
-						color: #999999;
-
-						.phone_num {
-							color: #0067E0;
-						}
-					}
-
-					.sendCode {
 						display: flex;
 						justify-content: center;
 						align-items: center;
-
-						.codeTips {
+						.recover_head_tips{
+							padding: 0 20rpx;
 							font-family:  Arial;
 							font-size: 32rpx;
 							font-weight: 500;
-							line-height: 50rpx;
+							line-height: 48rpx;
 							text-align: center;
-							color: #0067E0;
+							color: #29593E;
 						}
 					}
 
@@ -263,13 +253,59 @@
 						display: flex;
 						justify-content: center;
 						align-items: center;
-						padding: 20rpx 40rpx;
-						border-radius: 24rpx;
-						background: #F4F7FD;
-
+						padding: 0 30rpx;
+						border-radius: 12rpx;
+						background: #FFFFFF;
+						border: 2rpx solid #8B9098;
+						.recover_tips {
+							margin-left: 20rpx;
+							font-family: Arial;
+							font-weight: 400;
+							font-size: 24rpx;
+							line-height: 40rpx;
+							color: #8B9098;
+						}
 						.recover_input {
 							margin-left: 20rpx;
 							width: 100%;
+						}
+					}
+					.recover_code{
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						.code {
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							margin-right: 20rpx;
+							padding: 0 30rpx;
+							border-radius: 10rpx;
+							background: #FFFFFF;
+							border: 2rpx solid #8B9098;
+							.code_input{
+								margin-left: 20rpx;
+								width: 100%;
+							}
+						}
+						
+						.sendCode {
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							width: 162rpx;
+							height: 72rpx;
+							background: #ECB54B;
+							border-radius: 12rpx;
+						
+							.codeTips {
+								font-family:  Arial;
+								font-size: 24rpx;
+								font-weight: 500;
+								line-height: 50rpx;
+								text-align: center;
+								color: #FFFFFF;
+							}
 						}
 					}
 
@@ -279,7 +315,7 @@
 						align-items: center;
 						height: 90rpx;
 						border-radius: 20rpx;
-						background: #0067E0;
+						background: #458060;
 						font-family:  Arial;
 						font-size: 32rpx;
 						font-weight: 500;
@@ -289,9 +325,15 @@
 					}
 
 					.disabled {
-						background: #BDD8F7;
+						background: #81AF95;
 					}
 				}
+			}
+			.contact {
+				position: fixed;
+				top: 40%;
+				right: 0;
+				z-index: 100;
 			}
 		}
 	}

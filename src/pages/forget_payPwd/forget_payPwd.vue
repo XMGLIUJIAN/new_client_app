@@ -22,7 +22,7 @@
 							terkunci dan tidak dapat dit
 						</view>
 						<view class="recover_row mt-[50rpx]">
-							<u-image width="50" height="50" src="@/static/images/icon/phone.png" alt="" />
+							<u-image width="40" height="40" src="@/static/images/icon/phone.png" alt="" />
 							<view class="recover_input">
 								<u-input type="text" v-model="formData.mobile" :border="false"
 									placeholder-style="color: #8B9098;font-size:24rpx;" placeholder="Nomor HP anda(08XXXXXX)" />
@@ -257,7 +257,7 @@
 						justify-content: center;
 						align-items: center;
 						margin-bottom: 20rpx;
-						padding: 10rpx 30rpx;
+						padding: 0 30rpx;
 						background: #FFFFFF;
 						border-radius: 12rpx;
 						border: 2rpx solid #8B9098;

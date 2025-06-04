@@ -9,7 +9,7 @@
 					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
 					:title-color="scrollTop ? '#1E1E1E':'#FFFFFF'" title="TIM">
 					<template #right>
-						<view class="slot-wrap">
+						<view class="slot-wrap" @tap="contactService">
 							<u-image v-if="scrollTop" width="40" height="40" src="@/static/images/icon/contact.png" alt="" />
 							<u-image v-if="!scrollTop" width="40" height="40" src="@/static/images/user/icon_service.png" alt="" />
 						</view>
@@ -200,6 +200,9 @@
 	}
 	const Login = () => {
 		router.navigateTo('/pages/login/login')
+	}
+	const contactService = () => {
+		router.navigateTo('/pages/customer_service/customer_service')
 	}
 	const search = () => {
 		getUserInfo(mobile.value)

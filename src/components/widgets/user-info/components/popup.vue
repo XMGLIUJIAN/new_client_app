@@ -2,10 +2,8 @@
 	<view class="popup">
 		<view class="content">
 			<view class="prize" @tap="confirmPopup">
-				<u-image width="572" height="844" src="@/static/images/raffle/raffle_prizePopup.png"></u-image>
-				<view class="cancel_btn" @tap="cancelPopup">
-					<u-image width="68" height="68" src="@/static/images/raffle/cancel_btn.png"></u-image>
-				</view>
+				<u-image width="624" height="1048" src="@/static/images/page/infoGroup.png"></u-image>
+				<view class="cancel_btn" @tap="cancelPopup"></view>
 			</view>
 		</view>
 	</view>
@@ -40,13 +38,15 @@
 
 			.prize {
 				position: relative;
-				width: 572rpx;
+				width: 624rpx;
 				border-radius: 20rpx;
 
 				.cancel_btn {
 					position: absolute;
-					bottom: -100rpx;
+					bottom: 95rpx;
 					left: 50%;
+					width: 528rpx;
+					height: 72rpx;
 					transform: translate(-50%, 0);
 				}
 			}

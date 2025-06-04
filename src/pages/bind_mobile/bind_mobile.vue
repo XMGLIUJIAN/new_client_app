@@ -193,8 +193,8 @@
 				}
 
 				.password_input {
-					padding: 10rpx 40rpx;
-					border-radius: 10rpx;
+					padding: 0 30rpx;
+					border-radius: 12rpx;
 					background: #FFFFFF;
 					border: 2rpx solid #8B9098;
 				}
@@ -205,8 +205,8 @@
 					align-items: center;
 
 					.code {
-						padding: 10rpx 20rpx;
-						border-radius: 10rpx;
+						padding: 0 30rpx;
+						border-radius: 12rpx;
 						background: #FFFFFF;
 						border: 2rpx solid #8B9098;
 					}
@@ -215,14 +215,14 @@
 						display: flex;
 						justify-content: center;
 						align-items: center;
-						width: 228rpx;
-						height: 90rpx;
-						background: #EDCB8A;
+						width: 200rpx;
+						height: 72rpx;
+						background: #ECB54B;
 						border-radius: 12rpx;
 
 						.codeTips {
 							font-family:  Arial;
-							font-size: 28rpx;
+							font-size: 24rpx;
 							font-weight: 500;
 							line-height: 50rpx;
 							text-align: center;

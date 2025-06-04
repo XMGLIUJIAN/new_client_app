@@ -42,18 +42,13 @@
 
 	const nativeTabbar = [
 		'/pages/index/index',
-		'/pages/run/run',
 		'/pages/activity/activity',
 		'/pages/team/team',
 		'/pages/user/user'
 	]
 
 	// 路由白名单
-	const nativeArr = [
-		'/pages/index/index',
-		'/pages/activity/activity',
-		'/pages/user/user',
-	]
+	const nativeArr: string | any[] = []
 
 	const handleChange = (index : number) => {
 		const selectTab = tabbarList.value[index]

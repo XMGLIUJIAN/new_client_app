@@ -51,7 +51,7 @@
 							<view class="trade_title">Jumlah Deposit</view>
 							<view class="trade_input">
 								<u-input v-model="formData.money" type="number" :border="false"
-									placeholder-style="color: ##8B9098;font-size:24rpx;"
+									placeholder-style="color: #8B9098;font-size:24rpx;"
 									placeholder="Masukkan Jumlah Yang Ingin Deposit" />
 							</view>
 						</view>
@@ -271,7 +271,7 @@
 					
 							.trade_input {
 								margin-top: 20rpx;
-								padding: 10rpx 30rpx;
+								padding: 0 30rpx;
 								background: #FFFFFF;
 								border-radius: 12rpx;
 								border: 2rpx solid #8B9098;

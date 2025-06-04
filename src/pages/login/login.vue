@@ -11,116 +11,66 @@
 					:title-color="scrollTop ? '#1E1E1E' : '#FFFFFF'">
 				</u-navbar>
 			</u-sticky>
-			<view class="login_con pt-[30rpx] px-[30rpx]">
-				<!-- 密码登录 -->
-				<template
-					v-if="formData.scene == LoginWayEnum.ACCOUNT && includeLoginWay(LoginWayEnum.ACCOUNT) && !current">
-					<view class="recover_row mb-[20rpx]">
-						<u-image width="50" height="50" src="@/static/images/icon/phone.png" alt="" />
-						<view class="recover_input">
-							<u-input type="text" v-model="formData.account" :border="false"
-								placeholder-style="color: #999999;" placeholder="Masukkan nomor HP anda" />
-						</view>
-					</view>
-					<view class="recover_row mb-[20rpx]">
-						<u-image width="50" height="50" src="@/static/images/icon/password.png" alt="" />
-						<view class="recover_input">
-							<u-input type="password" v-model="formData.password" :border="false"
-								placeholder-style="color: #999999;" placeholder="Masukkan Kata sandi anda" />
-						</view>
-					</view>
-				</template>
-				<!-- 验证码登录 -->
-				<template
-					v-if=" formData.scene == LoginWayEnum.MOBILE && includeLoginWay(LoginWayEnum.MOBILE) && !current">
-					<view class="recover_row mb-[20rpx]">
-						<u-image width="50" height="50" src="@/static/images/icon/phone.png" alt="" />
-						<view class="recover_input">
-							<u-input type="text" v-model="formData.account" :border="false"
-								placeholder-style="color: #999999;" placeholder="Nomor HP anda(08XXXXXX)" />
-						</view>
-					</view>
-				</template>
-				<!-- 输入验证码 -->
-				<template v-if="current == 'code'">
-					<view class="forget_recover">
-						<view class="recover_head mb-[20rpx]">Silakan masukkan kode verifikasi</view>
-						<view class="recover_text">
-							Kode verifikasi terkirim <text class="phone_num">(+62) {{formData.account}}</text>
-						</view>
-		
-						<view class="recover_code mt-[50rpx]">
-							<u-message-input v-model="formData.code" @finish="loginFun" font-size="64"
-								active-color="#1E1E1E" inactive-color="#D9D9D9" :focus="true" :breathe="true"
-								maxlength="6" mode="bottomLine"></u-message-input>
-						</view>
-						<view class="sendCode mt-[50rpx]" @click="sendSms">
-							<u-verification-code ref="uCodeRef" :seconds="60" start-text="Kirim kode verifikasi"
-								change-text="X detik kirim kembali" end-text="Kirim ulang kode verifikasi"
-								:keep-running="false" @change="codeChange" />
-							<text class="codeTips">
-								{{ codeTips }}
-							</text>
-						</view>
-					</view>
-				</template>
-				<view class="forget_register"
-					:style="{'justify-content':formData.scene == LoginWayEnum.ACCOUNT && includeLoginWay(LoginWayEnum.ACCOUNT) && !current ? 'space-between':'flex-end'}">
-					<view class="forget"
-						v-if="formData.scene == LoginWayEnum.ACCOUNT && includeLoginWay(LoginWayEnum.ACCOUNT) && !current">
-						<navigator url="/pages/forget_pwd/forget_pwd" hover-class="none">Lupa kata sandi</navigator>
-					</view>
-					<view class="register" v-if="!current">
-						<navigator url="/pages/register/register" hover-class="none">Daftar</navigator>
+			<view class="login_con pt-[40rpx] pb-[40rpx] px-[40rpx]">
+				<view class="recover_head">
+					<u-image width="85" height="22" src="@/static/images/icon/arrow_left.png"></u-image>
+					<view class="recover_head_tips">Selamat Datang Di RiceRich</view>
+					<u-image width="85" height="22" src="@/static/images/icon/arrow_right.png"></u-image>
+				</view>
+				<view class="recover_row mt-[40rpx]">
+					<u-image width="40" height="40" src="@/static/images/icon/phone.png" alt="" />
+					<view class="recover_tips">+62</view>
+					<view class="recover_input">
+						<u-input type="text" v-model="formData.account" :border="false"
+							placeholder-style="color: #8B9098;font-size:24rpx;" placeholder="Masukkan nomor HP anda" />
 					</view>
 				</view>
-				<view class="mt-[20rpx]" v-if="isOpenAgreement && !current">
-					<u-checkbox v-model="isCheckAgreement" shape="circle" active-color="#0067E0">
+				<view class="recover_row mt-[20rpx]">
+					<u-image width="40" height="40" src="@/static/images/icon/password.png" alt="" />
+					<view class="recover_input">
+						<u-input type="password" v-model="formData.password" :border="false"
+							placeholder-style="color: #8B9098;font-size:24rpx;" placeholder="Masukkan Kata sandi anda" />
+					</view>
+				</view>
+				<view class="readAgree_box mt-[20rpx]">
+					<u-checkbox v-model="isCheckAgreement" shape="circle" active-color="#528B6B">
 						<view class="readAgree">
-							<text>Silahkan baca dan setuju</text>
+							<text>Silahkan Baca dan Setuju</text>
 							<router-navigate hover-class="none" to="/pages/agreement/agreement?type=service">
-								<text class="agreement">《Ketentuan layanan》</text>
+								<text class="agreement">《 Ketentuan Layanan 》</text>
 							</router-navigate>
 						</view>
 						<view class="readAgree">
 							<text>dan</text>
 							<router-navigate hover-class="none" to="/pages/agreement/agreement?type=privacy">
-								<text class="agreement">《kebijakan Privasi》</text>
+								<text class="agreement">《 Kebijakan Privasi 》</text>
 							</router-navigate>
 						</view>
 					</u-checkbox>
 				</view>
-				<template
-					v-if="formData.scene == LoginWayEnum.ACCOUNT && includeLoginWay(LoginWayEnum.ACCOUNT) && !current">
-					<u-button class="submit-btn mt-[40rpx]" :class="{'disabled': disabledStatus}"
-						:disabled="disabledStatus" @click="handleLogin(formData.scene)" hover-class="none">
-						Masuk
-					</u-button>
-					<view class="login_type mt-[20rpx]" @click="changeLoginWay(LoginWayEnum.MOBILE)"
-						v-if="formData.scene == LoginWayEnum.ACCOUNT && includeLoginWay(LoginWayEnum.MOBILE)">
-						Masuk kode verifikasi
+				<u-button class="submit-btn mt-[40rpx]" :class="{'disabled': disabledStatus}" :disabled="disabledStatus"
+					@click="getCode" hover-class="none">
+					Masuk
+				</u-button>
+				<view class="foot mt-[20rpx]">
+					<view class="forget">
+						<navigator url="/pages/forget_pwd/forget_pwd" hover-class="none">Lupa kata sandi</navigator>
 					</view>
-				</template>
-				<template
-					v-if="formData.scene == LoginWayEnum.MOBILE && includeLoginWay(LoginWayEnum.MOBILE) && !current">
-					<u-button class="submit-btn mt-[40rpx]" :class="{'disabled': disabled}" :disabled="disabled"
-						@click="getCode" hover-class="none">Terima kode verifikasi</u-button>
-					<view class="login_type mt-[20rpx]" @click="changeLoginWay(LoginWayEnum.ACCOUNT)"
-						v-if="formData.scene == LoginWayEnum.MOBILE && includeLoginWay(LoginWayEnum.ACCOUNT)">
-						Masukkan kata sandi
+					<view class="register">
+						<navigator url="/pages/register/register" hover-class="none">Daftar</navigator>
 					</view>
-				</template>
+				</view>
 			</view>
 			<view class="contact" @tap="contactService">
 				<u-image width="75" height="75" src="@/static/images/icon/contact.png" alt="" />
 			</view>
 			<toastPopup></toastPopup>
 			<loginPopup v-if="loginShow" @cancel="loginShow = false" @confirm="confirmPopup"></loginPopup>
-			<contactPopup v-if="contactShow" :service="serviceInfo" @confirm="contactConfirm"
+			<contactPopup v-if="contactShow" :service="serviceInfo" @confirm="contactEvent"
 				@cancel="contactShow = false"></contactPopup>
 			<Popup v-if="showModel" @confirm="confirm" @cancel="showModel = false"></Popup>
 			<!-- #ifdef MP-WEIXIN || H5 -->
-			<u-icon class="weixin" v-if="isOpenOtherAuth && isWeixin && inWxAuth && !current" @click="wxLogin"
+			<u-icon class="weixin" v-if="isOpenOtherAuth && isWeixin && inWxAuth" @click="wxLogin"
 				name="weixin-circle-fill" color="#39AA32" size="80"></u-icon>
 			<!-- #endif -->
 			<!-- #ifdef MP-WEIXIN -->
@@ -133,9 +83,7 @@
 
 <script setup lang="ts">
 	import { login, mnpLogin, updateUser, OALogin, loginPreVerify } from '@/api/account'
-	import { smsSend } from '@/api/app'
 	import { customerServiceInfo } from '@/api/eventInfo'
-	import { SMSEnum } from '@/enums/appEnums'
 	import { BACK_URL } from '@/enums/constantEnums'
 	import { useLockFn } from '@/hooks/useLockFn'
 	import { useAppStore } from '@/stores/app'
@@ -169,36 +117,26 @@
 	const { userInfo, isLogin } = storeToRefs(userStore)
 	const appStore = useAppStore()
 	const showModel = ref(false)
-	const uCodeRef = shallowRef()
-	const codeTips = ref('')
 	const scrollTop = ref<number>(0)
 	const serviceInfo = ref<any>({})
 	const showLoginPopup = ref(false)
 	const loginShow = ref<Boolean>(false)
 	const isCheckAgreement = ref(false)
-	const current = ref<String>('')
 	const contactShow = ref<Boolean>(false)
 	const formData = reactive({
-		scene: 1,
+		scene: 2,
+		code: '',
 		account: '',
 		password: '',
-		code: '',
 		loginMac: ''
 	})
 	const disabledStatus = computed(() => {
 		let status = formData.account && formData.password ? false : true
 		return status
 	})
-	const disabled = computed(() => {
-		let status = formData.account ? false : true
-		return status
-	})
 	const loginData = ref()
 	const websiteConfig = computed(() => appStore.getWebsiteConfig)
-	const codeChange = (text : string) => {
-		codeTips.value = text
-	}
-	const contactConfirm = (link : string) => {
+	const contactEvent = (link : string) => {
 		contactShow.value = false
 		// #ifdef APP
 		plus.runtime.openURL(link)
@@ -223,34 +161,19 @@
 			contactShow.value = true
 		}, 3000)
 	}
-	const sendSms = async () => {
-		if (!formData.account) return
-		if (uCodeRef.value?.canGetCode) {
-			await smsSend({
-				scene: SMSEnum.LOGIN,
-				mobile: formData.account
-			})
-			toast('Kode berhasil di kirim')
-			uCodeRef.value?.start()
-		}
-	}
 	const confirm = () => {
 		isCheckAgreement.value = true
 		showModel.value = false
 	}
-	const changeLoginWay = (way : LoginWayEnum) => {
-		formData.scene = way
-		formData.account = ''
-	}
 
 	const getCode = async () => {
 		if (!isCheckAgreement.value && isOpenAgreement.value) return (showModel.value = true)
+		if (!formData.account) return toast('Masukkan nomor HP anda')
+		if (!formData.password) return toast('Masukkan Kata sandi anda')
+		emitter.emit('gifType')
 		const resData = await loginPreVerify({ mobile: formData.account })
 		if (resData.code == 1) {
-			current.value = 'code'
-			nextTick(() => {
-				sendSms()
-			})
+			loginFun()
 		} else {
 			loginShow.value = true
 		}
@@ -273,33 +196,21 @@
 	const isForceBindMobile = computed(() => appStore.getLoginConfig.coerce_mobile == 1)
 
 	const loginFun = async () => {
-		if (!isCheckAgreement.value && isOpenAgreement.value) return (showModel.value = true)
-		if (formData.scene == LoginWayEnum.ACCOUNT) {
-			if (!formData.account) return toast('Masukkan nomor HP anda')
-			if (!formData.password) return toast('Masukkan Kata sandi anda')
-		}
-		if (formData.scene == LoginWayEnum.MOBILE) {
-			if (!formData.account) return toast('Nomor HP anda(08XXXXXX)')
-			if (!formData.code) return toast('Silakan masukkan kode anda')
-		}
 		const system = getDeviceInfo()
 		formData.loginMac = system.deviceId //获取设备唯一标识码
-		uCodeRef.value?.reset()
 		emitter.emit('gifType')
 		loginAsync()
 	}
 	const toast = (message : any = '') => {
 		emitter.emit('toast', message)
 	}
-	const loginAsync = () => {
-		setTimeout(async () => {
-			try {
-				const data = await login(formData)
-				loginHandle(data)
-			} catch (error : any) {
-				toast(error)
-			}
-		}, 3000)
+	const loginAsync = async () => {
+		try {
+			const data = await login(formData)
+			loginHandle(data)
+		} catch (error : any) {
+			toast(error)
+		}
 	}
 	const loginHandle = async (data : any) => {
 		if (!data) return
@@ -349,8 +260,7 @@
 		emitter.emit('gifType')
 		wxloginAsync()
 	}
-	const wxloginAsync = () => {
-		setTimeout(async () => {
+	const wxloginAsync = async () => {
 			// #ifdef MP-WEIXIN
 			try {
 				const { code } : any = await uni.login({
@@ -375,7 +285,6 @@
 				oaLogin()
 			}
 			// #endif
-		}, 3000)
 	}
 	const handleUpdateUser = async (value : any) => {
 		await updateUser(value, { token: userStore.temToken })
@@ -387,22 +296,13 @@
 		() => appStore.getLoginConfig,
 		(value) => {
 			if (value.login_way) {
-				formData.scene = value.login_way[1]
+				formData.scene = value.login_way[0]
 			}
 		},
 		{
 			immediate: true
 		}
 	)
-	const DisableStyle = computed(() => {
-		if (formData.scene == 1 && formData.account && formData.password) {
-			return true
-		} else if (formData.scene == 2 && formData.account && formData.code) {
-			return true
-		} else {
-			return false
-		}
-	})
 
 	const removeWxQuery = () => {
 		const options = route.query
@@ -478,41 +378,39 @@
 				border-top-left-radius: 12rpx;
 				border-top-right-radius: 12rpx;
 				background: #FFFFFF;
-
+				.recover_head {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					.recover_head_tips{
+						padding: 0 20rpx;
+						font-family:  Arial;
+						font-size: 32rpx;
+						font-weight: 500;
+						line-height: 48rpx;
+						text-align: center;
+						color: #29593E;
+					}
+				}
 				.recover_row {
 					display: flex;
 					justify-content: center;
 					align-items: center;
-					padding: 10rpx 30rpx;
-					border-radius: 24rpx;
-					background: #F4F7FD;
-
+					padding: 0 30rpx;
+					border-radius: 12rpx;
+					background: #FFFFFF;
+					border: 2rpx solid #8B9098;
+					.recover_tips {
+						margin-left: 20rpx;
+						font-family: Arial;
+						font-weight: 400;
+						font-size: 24rpx;
+						line-height: 40rpx;
+						color: #8B9098;
+					}
 					.recover_input {
 						margin-left: 20rpx;
 						width: 100%;
-					}
-				}
-
-				.forget_register {
-					display: flex;
-					align-items: center;
-
-					.forget {
-						font-family: Arial;
-						font-size: 28rpx;
-						font-weight: 500;
-						line-height: 48rpx;
-						text-align: left;
-						color: #999999;
-					}
-
-					.register {
-						font-family: Arial;
-						font-size: 28rpx;
-						font-weight: 500;
-						line-height: 48rpx;
-						text-align: right;
-						color: #0067E0;
 					}
 				}
 
@@ -525,10 +423,10 @@
 					font-weight: 500;
 					line-height: 48rpx;
 					text-align: center;
-					color: #999999;
+					color: #8B9098;
 
 					.agreement {
-						color: #0067E0;
+						color: #458060;
 					}
 				}
 
@@ -537,9 +435,9 @@
 					display: flex;
 					justify-content: center;
 					align-items: center;
-					height: 90rpx;
-					border-radius: 20rpx;
-					background: #0067E0;
+					height: 72rpx;
+					border-radius: 12rpx;
+					background: #458060;
 					font-family: Arial;
 					font-size: 32rpx;
 					font-weight: 500;
@@ -549,68 +447,30 @@
 				}
 
 				.disabled {
-					background: #BDD8F7;
+					background: #81AF95;
 				}
 
-				.login_type {
-					font-family: Arial;
-					font-size: 32rpx;
-					font-weight: 500;
-					line-height: 48rpx;
-					text-align: center;
-					color: #0067E0;
-				}
-			}
-
-			.forget_recover {
-				.recover_head {
-					font-family: Arial;
-					font-size: 32rpx;
-					font-weight: 500;
-					line-height: 50rpx;
-					text-align: left;
-					color: #1E1E1E;
-				}
-
-				.recover_text {
-					font-family: Arial;
-					font-size: 28rpx;
-					font-weight: 500;
-					line-height: 40rpx;
-					text-align: left;
-					color: #999999;
-
-					.phone_num {
-						color: #0067E0;
-					}
-				}
-
-				.sendCode {
+				.foot {
 					display: flex;
-					justify-content: center;
+					justify-content: space-between;
 					align-items: center;
 
-					.codeTips {
+					.forget {
 						font-family: Arial;
-						font-size: 32rpx;
+						font-size: 24rpx;
 						font-weight: 500;
-						line-height: 50rpx;
-						text-align: center;
-						color: #0067E0;
+						line-height: 48rpx;
+						text-align: left;
+						color: #8B9098;
 					}
-				}
 
-				.recover_row {
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					padding: 20rpx 40rpx;
-					border-radius: 24rpx;
-					background: #F4F7FD;
-
-					.recover_input {
-						margin-left: 20rpx;
-						width: 100%;
+					.register {
+						font-family: Arial;
+						font-size: 24rpx;
+						font-weight: 500;
+						line-height: 48rpx;
+						text-align: right;
+						color: #D79D2A;
 					}
 				}
 

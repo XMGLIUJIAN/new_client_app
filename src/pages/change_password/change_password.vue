@@ -126,7 +126,7 @@
 					}
 
 					.password_input {
-						padding: 10rpx 40rpx;
+						padding: 0 30rpx;
 						border-radius: 10rpx;
 						background: #FFFFFF;
 						border: 2rpx solid #8B9098;
