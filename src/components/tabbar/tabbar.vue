@@ -1,5 +1,5 @@
 <template>
-	<u-tabbar v-if="showTabbar" v-model="current" v-bind="tabbarStyle" :list="tabbarList" @change="handleChange"
+	<u-tabbar v-if="showTabbar" v-model="current" v-bind="tabbarStyle" :list="tabbarList" @change="handleChange" :mid-button="true"
 		:hide-tab-bar="true"></u-tabbar>
 </template>
 
@@ -22,7 +22,8 @@
 					selectedIconPath: item.selected,
 					text: item.name,
 					link: item.link,
-					pagePath: item.link.path
+					pagePath: item.link.path,
+					midButton: item.mid_button
 				}
 			})
 	})

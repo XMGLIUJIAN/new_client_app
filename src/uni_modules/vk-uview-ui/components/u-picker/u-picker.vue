@@ -198,7 +198,7 @@
 			// "确定"按钮的颜色
 			confirmColor: {
 				type: String,
-				default: "#2979ff"
+				default: "#458060"
 			},
 			// 默认显示的时间，2025-07-02 || 2025-07-02 13:01:00 || 2025/07/02
 			defaultTime: {

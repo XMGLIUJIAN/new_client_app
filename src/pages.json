@@ -28,6 +28,20 @@
 			}
 		},
 		{
+			"path": "pages/extend/extend",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "Undang Teman"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
 			"path": "pages/team/team",
 			"style": {
 				// #ifndef H5
@@ -309,34 +323,6 @@
 			}
 		},
 		{
-			"path": "pages/mine_detail/mine_detail",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "MINE DETAIL"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/points_investment/points_investment",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "POINTS INVESTMENT"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
 			"path": "pages/activity_detail/activity_detail",
 			"style": {
 				// #ifndef H5
@@ -565,6 +551,12 @@
 				"selectedIconPath": "static/images/tabbar/Activity_Act.png",
 				"pagePath": "pages/activity/activity",
 				"text": "Aktivitas"
+			},
+			{
+				"iconPath": "static/images/tabbar/Extend.png",
+				"selectedIconPath": "static/images/tabbar/Extend_Act.png",
+				"pagePath": "pages/extend/extend",
+				"text": "Undang Teman"
 			},
 			{
 				"iconPath": "static/images/tabbar/Team.png",

@@ -1,6 +1,6 @@
 <template>
-	<view class="mb-[120rpx]">
-		<view class="my-service bg-white mx-[30rpx] mt-[20rpx] mb-[20rpx] rounded-lg px-[20rpx] pt-[20rpx] pb-[20rpx]">
+	<view class="container mb-[30rpx]">
+		<view class="my-service bg-white mx-[30rpx] mt-[30rpx] mb-[30rpx] rounded-lg px-[20rpx] pt-[20rpx] pb-[20rpx]">
 		    <view
 		        v-if="content.title"
 		        class="title font-medium text-lg"
@@ -34,7 +34,7 @@
 		        </view>
 		    </view>
 		</view>
-		<view v-if="isLogin" class="switch_account mx-[40rpx]" @tap="switchAccount">
+		<view v-if="isLogin" class="switch_account mt-[30rpx] mx-[40rpx]" @tap="switchAccount">
 			<view class="switch_text">Tukar Akun</view>
 		</view>
 		<Popup v-if="switchPopup" @confirm="confirm" @cancel="cancel"></Popup>

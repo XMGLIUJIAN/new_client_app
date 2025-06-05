@@ -5,27 +5,27 @@
 		</view>
 		<view class="activity">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
-				<u-navbar :is-back="false" :is-fixed="false" :border-bottom="false"
-					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent' }">
+				<u-navbar :is-back="false" :is-fixed="true" :border-bottom="false" :title-bold="true"
+					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent' }"
+					:title-color="scrollTop ? '#1E1E1E':'#FFFFFF'" title="AKTIVITAS">
+					<template #right>
+						<view class="slot-wrap" @tap="navigateTo('/pages/customer_service/customer_service')">
+							<u-image v-if="scrollTop" width="50" height="50" src="@/static/images/icon/contact.png"
+								alt="" />
+							<u-image v-if="!scrollTop" width="50" height="50"
+								src="@/static/images/user/icon_service.png" alt="" />
+						</view>
+					</template>
 				</u-navbar>
 			</u-sticky>
-			<view class="activity_con pt-[20rpx] px-[30rpx]">
+			<view class="activity_con pt-[20rpx] pb-[20rpx] px-[30rpx]">
 				<swiper class="swiper" :autoplay="true" indicator-color="#F1F1F1" indicator-active-color="#81AF95"
 					:indicator-dots="true">
-					<!--  v-for="(sItem, sIndex) in swiperArr" :key="sIndex" -->
+					 <!-- v-for="(sItem, sIndex) in swiperArr" :key="sIndex" -->
 					<swiper-item>
 						<view class="swiper_box">
-							<u-image width="715" height="327" border-radius="8" src="@/static/images/activity/swiper01.png"></u-image>
-						</view>
-					</swiper-item>
-					<swiper-item>
-						<view class="swiper_box">
-							<u-image width="715" height="327" border-radius="8" src="@/static/images/activity/swiper01.png"></u-image>
-						</view>
-					</swiper-item>
-					<swiper-item>
-						<view class="swiper_box">
-							<u-image width="715" height="327" border-radius="8" src="@/static/images/activity/swiper01.png"></u-image>
+							<u-image width="715" height="327" border-radius="8"
+								src="@/static/images/activity/swiper01.png"></u-image>
 						</view>
 					</swiper-item>
 				</swiper>
@@ -38,7 +38,8 @@
 								<view class="activity_image">
 									<u-image height="250" :src="item.img_url" alt="" />
 									<view class="activity_image_ended" v-if="item.state == 1">
-										<u-image width="220" height="184" src="@/static/images/activity/ended.png" alt="" />
+										<u-image width="220" height="184" src="@/static/images/activity/ended.png"
+											alt="" />
 									</view>
 								</view>
 								<view class="activity_info">
@@ -59,7 +60,7 @@
 								<view class="activity_icon ended" v-if="item.state == 1">Berakhir</view>
 								<view class="activity_icon progress" v-else>Dalam Proses</view>
 							</view>
-						
+
 						</view>
 						<view class="empty mt-[50rpx]" v-if="!list.length">
 							<u-image width="462" height="291" src="@/static/images/icon/empty.png" alt="" />
@@ -137,10 +138,10 @@
 			}
 
 			.activity_con {
-				padding-bottom: 100rpx;
 				.swiper {
 					margin-bottom: 40rpx;
 					height: 350rpx;
+
 					.swiper_box {
 						background: #FFFFFF;
 						border-radius: 8rpx;
@@ -163,8 +164,9 @@
 						border-radius: 4rpx;
 					}
 				}
-				.activity_container{
-					.activity_head{
+
+				.activity_container {
+					.activity_head {
 						padding: 20rpx;
 						background: linear-gradient(328.12deg, #60926D 5.4%, #004D2B 84.83%);
 						border-top-left-radius: 12rpx;
@@ -175,17 +177,21 @@
 						line-height: 54rpx;
 						color: #FFFFFF;
 					}
-					.activity_box{
+
+					.activity_box {
 						padding: 20rpx;
 						background: #F1F1F1;
+						border-bottom-left-radius: 12rpx;
+						border-bottom-right-radius: 12rpx;
+
 						.activity_card {
 							margin-bottom: 20rpx;
-						
+
 							.card_info {
 								position: relative;
 								border-radius: 12rpx;
 								background: #FFFFFF;
-						
+
 								.activity_image {
 									overflow: hidden;
 									position: relative;
@@ -193,7 +199,8 @@
 									height: 250rpx;
 									border-top-left-radius: 12rpx;
 									border-top-right-radius: 12rpx;
-									.activity_image_ended{
+
+									.activity_image_ended {
 										position: absolute;
 										top: 0;
 										left: 0;
@@ -202,10 +209,10 @@
 										padding: 30rpx;
 										border-top-left-radius: 12rpx;
 										border-top-right-radius: 12rpx;
-										background: rgba(0,0,0,0.5);
+										background: rgba(0, 0, 0, 0.5);
 									}
 								}
-						
+
 								.activity_icon {
 									position: absolute;
 									top: 0;
@@ -213,7 +220,7 @@
 									padding: 5rpx 20rpx;
 									border-top-right-radius: 12rpx;
 									border-bottom-left-radius: 12rpx;
-						
+
 									&.progress {
 										font-family: Arial;
 										font-size: 22rpx;
@@ -222,7 +229,7 @@
 										color: #FFFFFF;
 										background: #0067E0;
 									}
-						
+
 									&.ended {
 										font-family: Arial;
 										font-size: 22rpx;
@@ -232,13 +239,13 @@
 										background: #999999;
 									}
 								}
-						
+
 								.activity_info {
 									padding: 20rpx;
 									background: #FFFFFF;
 									border-bottom-left-radius: 12rpx;
 									border-bottom-right-radius: 12rpx;
-						
+
 									.activity_title {
 										font-family: Arial;
 										font-size: 28rpx;
@@ -257,18 +264,18 @@
 										-webkit-line-clamp: 1;
 										/* 限制在两行内 */
 									}
-						
+
 									.activity_foot {
 										display: flex;
 										justify-content: space-between;
 										align-items: center;
 										margin-top: 20rpx;
-						
+
 										.activity_time {
 											display: flex;
 											justify-content: flex-start;
 											align-items: center;
-						
+
 											.date {
 												margin-left: 10rpx;
 												font-family: Arial;
@@ -279,12 +286,12 @@
 												color: #999999;
 											}
 										}
-						
+
 										.activity_hot {
 											display: flex;
 											justify-content: flex-start;
 											align-items: center;
-						
+
 											.hot {
 												margin-left: 10rpx;
 												font-family: Arial;
@@ -298,7 +305,7 @@
 									}
 								}
 							}
-						
+
 						}
 					}
 				}

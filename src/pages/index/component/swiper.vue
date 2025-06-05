@@ -1,5 +1,5 @@
 <template>
-	<view class="content mx-[30rpx] mt-[20rpx] mb-[120rpx] pt-[20rpx] pb-[20rpx]">
+	<view class="content mx-[30rpx] mt-[20rpx] mb-[150rpx] pt-[20rpx] pb-[20rpx]">
 		<view class="swiper_head mb-[10rpx]">
 			<view class="swiper_title">Konten Populer</view>
 		</view>

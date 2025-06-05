@@ -5,14 +5,14 @@
 				:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
 				:title-color="scrollTop ? '#1E1E1E':'#FFFFFF'" title="AKUN">
 				<template #right>
-					<view class="slot-wrap">
-						<u-image v-if="!scrollTop" width="40" height="40" src="@/static/images/user/icon_service.png" alt="" />
-						<u-image v-else width="40" height="40" src="@/static/images/icon/contact.png" alt="" />
+					<view class="slot-wrap" @tap="navigateTo('/pages/customer_service/customer_service')">
+						<u-image v-if="!scrollTop" width="50" height="50" src="@/static/images/user/icon_service.png" alt="" />
+						<u-image v-else width="50" height="50" src="@/static/images/icon/contact.png" alt="" />
 					</view>
 				</template>
 			</u-navbar>
 		</u-sticky>
-		<view class="point_card mx-[30rpx] mt-[20rpx] mb-[20rpx]">
+		<view class="point_card mx-[30rpx] mt-[30rpx] mb-[30rpx]">
 			<u-image width="690" height="360" src="@/static/images/user/mineGroup.png" alt="" />
 			<view class="user_card">
 				<view class="user_card_head">
@@ -26,8 +26,8 @@
 					<view class="card_head_phone">ID:{{user.account}}</view>
 				</view>
 				<view class="user_card_info">
-					<view class="user_card_poin">Poin 200.000.000</view>
-					<view class="user_card_saldo">Saldo Pengguna Rp 9.999.999.999</view>
+					<view class="user_card_poin">Poin {{!eyeShow ? formatNumber(user.user_integral) || 0 : '***' }}</view>
+					<view class="user_card_saldo">Saldo Pengguna Rp {{!eyeShow ? formatNumber(user.user_money) || 0 : '***' }}</view>
 				</view>
 				<view class="user_card_line"></view>
 				<view class="user_card_box">
@@ -50,7 +50,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="article_card mx-[30rpx] mb-[20rpx]">
+		<view class="article_card mx-[30rpx] mb-[30rpx]">
 			<view class="article_head">Pemasukan dan Pengeluaran Bulan Ini</view>
 			<view class="article_box">
 				<view class="article_label">

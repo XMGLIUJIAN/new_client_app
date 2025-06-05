@@ -5,7 +5,7 @@
 		</view>
 		<view class="inactive">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
-				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false"
+				<u-navbar :is-back="false" :is-fixed="true" :border-bottom="false"
 					:back-icon-color="scrollTop ? '#1E1E1E':'#FFFFFF'" :title-bold="true"
 					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
 					:title-color="scrollTop ? '#1E1E1E':'#FFFFFF'" title="UNDANG TEMAN">
@@ -61,6 +61,7 @@
 				<view class="proses mt-[20rpx] mb-[20rpx]">Berhasil Mengundang! Hadiah Sedang Diproses</view>
 			</view>
 			<toastPopup></toastPopup>
+			<tabbar />
 		</view>
 	</view>
 </template>

@@ -46,7 +46,7 @@
 				<view
 					class="u-tabbar__content__item__text"
 					:style="{
-						color: elColor(index)
+						color: midButton && item.midButton ? '#D2B571' : elColor(index)
 					}"
 				>
 					<text class="u-line-1">{{ item.text }}</text>

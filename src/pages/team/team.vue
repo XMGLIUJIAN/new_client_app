@@ -10,13 +10,13 @@
 					:title-color="scrollTop ? '#1E1E1E':'#FFFFFF'" title="TIM">
 					<template #right>
 						<view class="slot-wrap" @tap="contactService">
-							<u-image v-if="scrollTop" width="40" height="40" src="@/static/images/icon/contact.png" alt="" />
-							<u-image v-if="!scrollTop" width="40" height="40" src="@/static/images/user/icon_service.png" alt="" />
+							<u-image v-if="scrollTop" width="50" height="50" src="@/static/images/icon/contact.png" alt="" />
+							<u-image v-if="!scrollTop" width="50" height="50" src="@/static/images/user/icon_service.png" alt="" />
 						</view>
 					</template>
 				</u-navbar>
 			</u-sticky>
-			<view class="team_con px-[30rpx] pt-[20rpx] pb-[120rpx]">
+			<view class="team_con px-[30rpx] pt-[20rpx] pb-[20rpx]">
 				<view class="team_card">
 					<u-image width="690" height="350" src="@/static/images/team/team_info.png" alt="" />
 					<view class="team_user">
@@ -24,7 +24,8 @@
 							<view class="user_info">
 								<view class="user_info_title">
 									<view class="nickname">Level Tim</view>
-									<view class="normal">Lv 1</view>
+									<view class="normal" v-if="userInfo.identity">Lv {{userInfo.identity}}</view>
+									<view class="normal" v-else>Pengguna Biasa</view>
 								</view>
 								<view class="user_info_text">Persentase Pembagian Keuntungan Saat Ini:10%</view>
 							</view>
@@ -77,7 +78,7 @@
 								</view>
 							</view>
 							<view class="rankie_info">
-								<view class="rankie_name">63+ {{item.userName}}</view>
+								<view class="rankie_name">+63 {{item.userName}}</view>
 								<view class="rankie_num">Rp {{formatNumber(item.totalInvestmentAmount)}}</view>
 							</view>
 						</view>
@@ -94,23 +95,23 @@
 						<view class="teamdata_num">
 							<view class="search_investasi">
 								<view class="number_row">
-									<view class="number_title">Total Investasi Tim</view>
+									<view class="number_title">Jumlah InvestasiKu</view>
 									<view class="number_text">
 										<text class="num">Rp</text>
-										{{formatNumber(myTeamInfo.teamTotalIncome)}}
+										{{formatNumber(myTeamInfo.totalInvestment)}}
 									</view>
 								</view>
 							</view>
 							<view class="search_number mt-[20rpx]">
 								<view class="number_row">
-									<view class="number_title">Total Investasi Tim</view>
+									<view class="number_title">Jumlah Investasi Tim</view>
 									<view class="number_text">
 										<text class="num">Rp</text>
-										{{formatNumber(myTeamInfo.teamTotalIncome)}}
+										{{formatNumber(myTeamInfo.teamTotalInvestment)}}
 									</view>
 								</view>
 								<view class="number_row">
-									<view class="number_title">Total Anggota Tim</view>
+									<view class="number_title">Total Jumlah Tim</view>
 									<view class="number_text">{{formatNumber(myTeamInfo.teamSize)}}</view>
 								</view>
 							</view>
@@ -273,7 +274,7 @@
 										margin-left: 10rpx;
 										font-family: Arial;
 										font-weight: 400;
-										font-size: 32rpx;
+										font-size: 28rpx;
 										line-height: 48rpx;
 										color: #D79D2A;
 									}

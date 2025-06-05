@@ -25,10 +25,7 @@
 					</view>
 					<view class="number_row">
 						<view class="number_title">Poin Saat Ini</view>
-						<view class="number_Points">
-							<u-image width="42" height="42" src="@/static/images/tradeExchange/num.png" alt="" />
-							<view class="points_text">{{formatNumber(searchInfo.user_integral)}}</view>
-						</view>
+						<view class="number_amount">{{formatNumber(searchInfo.user_integral)}}</view>
 					</view>
 				</view>
 				<view class="search_number mt-[40rpx] mb-[40rpx]">
@@ -110,11 +107,11 @@
 	
 						.account {
 							font-family:  Arial;
-							font-size: 28rpx;
+							font-size: 24rpx;
 							font-weight: 500;
 							line-height: 48rpx;
 							text-align: left;
-							color: #999999;
+							color: #8B9098;
 						}
 					}
 	
@@ -161,8 +158,8 @@
 	
 				.search_line {
 					margin: 20rpx 0;
-					height: 4rpx;
-					background: #F4F4F4;
+					height: 2rpx;
+					background: #D7D7D7;
 				}
 	
 				.search_areas {
@@ -174,7 +171,7 @@
 						font-weight: 500;
 						line-height: 48rpx;
 						text-align: left;
-						color: #999999;
+						color: #8B9098;
 					}
 	
 					.areas_text {
@@ -199,7 +196,7 @@
 							font-weight: 500;
 							line-height: 48rpx;
 							text-align: left;
-							color: #999999;
+							color: #8B9098;
 						}
 	
 						.number_text {
@@ -224,23 +221,7 @@
 							font-weight: 700;
 							line-height: 48rpx;
 							text-align: left;
-							color: #0067E0;
-						}
-	
-						.number_Points {
-							display: flex;
-							justify-content: flex-end;
-							align-items: center;
-	
-							.points_text {
-								margin-left: 5rpx;
-								font-family:  Arial;
-								font-size: 32rpx;
-								font-weight: 700;
-								line-height: 48rpx;
-								text-align: left;
-								color: #1E1E1E;
-							}
+							color: #275534;
 						}
 					}
 				}
@@ -251,7 +232,7 @@
 					align-items: center;
 					padding: 20rpx;
 					border-radius: 12rpx;
-					background: linear-gradient(90deg, #C8E0FF 0%, #E8F2FF 100%);
+					background: linear-gradient(90deg, #92BEAB 0%, #26815A 100%);
 	
 					.hisher_title {
 						font-family:  Arial;
@@ -259,7 +240,7 @@
 						font-weight: 500;
 						line-height: 48rpx;
 						text-align: left;
-						color: #1E1E1E;
+						color: #FFFFFF;
 					}
 	
 					.hisher_text {
@@ -268,7 +249,7 @@
 						font-weight: 700;
 						line-height: 48rpx;
 						text-align: right;
-						color: #0067E0;
+						color: #FFFFFF;
 					}
 				}
 			}
