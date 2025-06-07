@@ -97,7 +97,7 @@
 	}
 	const getList = async () => {
 		const data = await eventList()
-		list.value = data.lists
+		list.value = data ? data.lists : []
 	}
 	getList()
 	onPageScroll((event : any) => {

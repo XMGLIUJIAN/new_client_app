@@ -70,6 +70,34 @@
 			}
 		},
 		{
+			"path": "pages/contract/contract",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "TUKAR"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/treasure/treasure",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "POIN PROFITPLUS"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
 			"path": "pages/exchange/exchange",
 			"style": {
 				// #ifndef H5

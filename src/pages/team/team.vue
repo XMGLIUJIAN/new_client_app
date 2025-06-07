@@ -25,9 +25,9 @@
 								<view class="user_info_title">
 									<view class="nickname">Level Tim</view>
 									<view class="normal" v-if="userInfo.identity">Lv {{userInfo.identity}}</view>
-									<view class="normal" v-else>Pengguna Biasa</view>
+									<view class="normal" v-else>Biasa</view>
 								</view>
-								<view class="user_info_text">Persentase Pembagian Keuntungan Saat Ini:10%</view>
+								<view class="user_info_text">Bonus Harian Dari Bawahan:{{formatNumber(myTeamInfo.ratio)}}%</view>
 							</view>
 							<view class="code_box" @tap="extendFun">
 								<u-image width="60" height="60" src="@/static/images/team/code.png" alt="" />
@@ -36,18 +36,18 @@
 						<view class="team_card_line"></view>
 						<view class="team_upgrade">
 							<view class="upgrade">
-								<view class="upgrade_text">Undang Pengguna untuk Isi Ulang 2</view>
-								<view class="upgrade_tip">Butuh 2 lagi untuk mencapai LV2</view>
+								<view class="upgrade_text">Jumlah pengguna deposit langsung</view>
+								<view class="upgrade_tip">{{formatNumber(myTeamInfo.directSubordinate)}} Orang / {{formatNumber(myTeamInfo.upgrade)}} Orang</view>
 							</view>
-							<u-line-progress height="8" :show-percent="false" round :percent="formatProgress(50,100)"
+							<u-line-progress height="8" :show-percent="false" round :percent="formatProgress(myTeamInfo.directSubordinate,myTeamInfo.upgrade)"
 								active-color="#81AF95" inactive-color="#FFFFFF"></u-line-progress>
 						</view>
 						<view class="team_upgrade">
 							<view class="upgrade">
-								<view class="upgrade_text">Undang Pengguna untuk Isi Ulang 2</view>
-								<view class="upgrade_tip">Butuh 2 lagi untuk mencapai LV2</view>
+								<view class="upgrade_text">Total investasi bawahan langsung</view>
+								<view class="upgrade_tip">Rp {{formatNumber(myTeamInfo.teamTotalInvestment)}} / Rp {{formatNumber(myTeamInfo.upgradeTeamTotalInvestment)}}</view>
 							</view>
-							<u-line-progress height="8" :show-percent="false" round :percent="formatProgress(50,100)"
+							<u-line-progress height="8" :show-percent="false" round :percent="formatProgress(myTeamInfo.teamTotalInvestment,myTeamInfo.upgradeTeamTotalInvestment)"
 								active-color="#81AF95" inactive-color="#FFFFFF"></u-line-progress>
 						</view>
 					</view>
@@ -59,22 +59,22 @@
 							<view class="rankie_image" v-if="index == 0">
 								<u-image width="88" height="88" src="@/static/images/team/first.png" alt="" />
 								<view class="avatar">
-									<u-image width="60" height="60" src="@/static/images/user/default_avatar.png"
-										alt="" />
+									<u-image width="60" height="60" v-if="item.avatar" :src="item.avatar" alt="" />
+									<u-image width="60" height="60" v-else src="@/static/images/user/default_avatar.png" alt="" />
 								</view>
 							</view>
 							<view class="rankie_image" v-else-if="index == 1">
 								<u-image width="88" height="88" src="@/static/images/team/second.png" alt="" />
 								<view class="avatar">
-									<u-image width="60" height="60" src="@/static/images/user/default_avatar.png"
-										alt="" />
+									<u-image width="60" height="60" v-if="item.avatar" :src="item.avatar" alt="" />
+									<u-image width="60" height="60" v-else src="@/static/images/user/default_avatar.png" alt="" />
 								</view>
 							</view>
 							<view class="rankie_image" v-else-if="index == 2">
 								<u-image width="88" height="88" src="@/static/images/team/third.png" alt="" />
 								<view class="avatar">
-									<u-image width="60" height="60" src="@/static/images/user/default_avatar.png"
-										alt="" />
+									<u-image width="60" height="60" v-if="item.avatar" :src="item.avatar" alt="" />
+									<u-image width="60" height="60" v-else src="@/static/images/user/default_avatar.png" alt="" />
 								</view>
 							</view>
 							<view class="rankie_info">
@@ -95,19 +95,19 @@
 						<view class="teamdata_num">
 							<view class="search_investasi">
 								<view class="number_row">
-									<view class="number_title">Jumlah InvestasiKu</view>
+									<view class="number_title">Jumlah Investasi Tim</view>
 									<view class="number_text">
 										<text class="num">Rp</text>
-										{{formatNumber(myTeamInfo.totalInvestment)}}
+										{{formatNumber(myTeamInfo.teamTotalInvestment)}}
 									</view>
 								</view>
 							</view>
 							<view class="search_number mt-[20rpx]">
 								<view class="number_row">
-									<view class="number_title">Jumlah Investasi Tim</view>
+									<view class="number_title">Total Pendapatan Tim</view>
 									<view class="number_text">
 										<text class="num">Rp</text>
-										{{formatNumber(myTeamInfo.teamTotalInvestment)}}
+										{{formatNumber(myTeamInfo.teamTotalIncome)}}
 									</view>
 								</view>
 								<view class="number_row">

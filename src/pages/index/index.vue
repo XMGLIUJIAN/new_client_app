@@ -27,7 +27,7 @@
 					<w-middle-banner :content="item.content" :styles="item.styles" />
 				</template>
 			</template>
-			<Swiper></Swiper>
+			<Product></Product>
 		</view>
 		<Popup v-if="contactShow" :service="serviceInfo" @confirm="contactlink" @cancel="contactShow = false"></Popup>
 		<toastPopup></toastPopup>
@@ -42,9 +42,8 @@
 	import { storeToRefs } from 'pinia'
 	import InformasiAset from './component/informasiAset.vue'
 	import Notice from './component/notice.vue'
-	import Swiper from './component/swiper.vue'
+	import Product from './component/product.vue'
 	import Popup from './component/popup.vue'
-	import signPopup from './component/signPopup.vue'
 	import { getIndex } from "@/api/shop"
 	import { customerServiceInfo, mesNotifiList } from "@/api/eventInfo"
 	import { emitter } from "@/utils/emitter"
@@ -118,7 +117,6 @@
 			top: 0;
 			left: 0;
 			width: 100%;
-
 			.slot-wrap {
 				display: flex;
 				justify-content: space-between;

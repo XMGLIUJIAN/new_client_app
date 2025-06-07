@@ -55,12 +55,12 @@
 			<view class="article_box">
 				<view class="article_label">
 					<view class="label_title">Pemasukan</view>
-					<view class="label_num">RP 6.000.000.000.000</view>
+					<view class="label_num">{{user.pointVaultIncome ? formatNumber(user.pointVaultIncome) : 0}}</view>
 				</view>
 				<view class="article_line"></view>
 				<view class="article_label">
 					<view class="label_title">Tarik Dana</view>
-					<view class="label_num">RP 1.000.000.000.000</view>
+					<view class="label_num">{{user.totalPointVaultIncome ? formatNumber(user.totalPointVaultIncome) : 0}}</view>
 				</view>
 			</view>
 			<view class="card_line"></view>
@@ -69,7 +69,7 @@
 					<view class="foot_title">Bantuan Tim (Belum Diambil)</view>
 					<u-image @tap="show = true" width="24" height="24" src="@/static/images/user/help.png" alt="" />
 				</view>
-				<view class="foot_num">4545645</view>
+				<view class="foot_num">{{user.teamReserveAmount ? formatNumber(user.teamReserveAmount) : 0}}</view>
 			</view>
 		</view>
 		<Popup v-if="show" @cancel="show = false"></Popup>

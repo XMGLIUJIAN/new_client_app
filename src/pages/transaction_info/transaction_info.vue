@@ -215,6 +215,7 @@
 	}
 	onLoad(() => {
 		nextTick(() => {
+			getInfo()
 			// 初始化加载
 			loadData(true)
 		})
