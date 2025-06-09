@@ -2,7 +2,7 @@
 	<view class="popup">
 		<view class="content">
 			<view class="success px-[40rpx] pt-[40rpx] pb-[40rpx]" v-if="type == 'success'">
-				<view class="tips mb-[40rpx]">Pemberitahuan</view>
+				<view class="tips mb-[40rpx]">Penukaran Berhasil</view>
 				<view class="status">
 					<u-image width="100" height="100" src="@/static/images/icon/success.png" alt="" />
 				</view>

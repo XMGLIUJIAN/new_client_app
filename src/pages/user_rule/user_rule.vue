@@ -6,8 +6,8 @@
 		<view class="rule">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
 				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" :title-bold="true"
-					:title="navBarTitle" back-icon-color="#1E1E1E"
-					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}" title-color="#1E1E1E">
+					:title="navBarTitle" back-icon-color="#FFFFFF"
+					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}" title-color="#FFFFFF">
 				</u-navbar>
 			</u-sticky>
 			<view class="swiper mt-[40rpx] mx-[40rpx]" v-if="swiperArr.length">

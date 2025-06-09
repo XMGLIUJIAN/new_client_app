@@ -19,8 +19,8 @@
 					<view class="card_head_info">
 						<view class="card_head_title">Saldo Poin</view>
 						<view class="lock_box" @tap="eyeChange">
-							<u-image v-if="!eyeShow" width="24" height="24" src="@/static/images/user/icon_see.png" alt="" />
-							<u-image v-else width="24" height="24" src="@/static/images/user/icon_lock.png" alt="" />
+							<u-image v-if="!eyeShow" width="30" height="30" src="@/static/images/user/icon_see.png" alt="" />
+							<u-image v-else width="30" height="30" src="@/static/images/user/icon_lock.png" alt="" />
 						</view>
 					</view>
 					<view class="card_head_phone">ID:{{user.account}}</view>

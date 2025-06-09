@@ -5,6 +5,11 @@ export function eventList() {
     return request.get({ url: '/eventInfo/list' })
 }
 
+//活动资讯轮播
+export function carouselImg() {
+    return request.get({ url: '/eventInfo/carouselImg' })
+}
+
 //活动资讯详情
 export function eventInfo(data: any) {
     return request.get({ url: '/eventInfo/detail',data})

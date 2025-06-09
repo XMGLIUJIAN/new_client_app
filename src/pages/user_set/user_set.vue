@@ -5,7 +5,7 @@
 		</view>
 		<view class="user-set">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
-				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#1E1E1E"
+				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#FFFFFF"
 					:title-bold="true" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
 					title="PRIVASI DAN KEAMANAN" title-color="#FFFFFF">
 				</u-navbar>

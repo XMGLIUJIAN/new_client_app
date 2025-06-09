@@ -84,13 +84,41 @@
 			}
 		},
 		{
-			"path": "pages/treasure/treasure",
+			"path": "pages/point_treasure/point_treasure",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": "MENGUNDANG INTEGRASI"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/earn_point/earn_point",
 			"style": {
 				// #ifndef H5
 				"navigationStyle": "custom",
 				// #endif
 				// #ifdef H5
 				"navigationBarTitleText": "POIN PROFITPLUS"
+				// #endif
+			},
+			"meta": {
+				"auth": true
+			}
+		},
+		{
+			"path": "pages/product_info/product_info",
+			"style": {
+				// #ifndef H5
+				"navigationStyle": "custom",
+				// #endif
+				// #ifdef H5
+				"navigationBarTitleText": ""
 				// #endif
 			},
 			"meta": {

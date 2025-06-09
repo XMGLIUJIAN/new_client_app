@@ -29,6 +29,7 @@
 			</template>
 			<Product></Product>
 		</view>
+		<ContractPopup v-if="contractShow"></ContractPopup>
 		<Popup v-if="contactShow" :service="serviceInfo" @confirm="contactlink" @cancel="contactShow = false"></Popup>
 		<toastPopup></toastPopup>
 		<tabbar />
@@ -44,6 +45,7 @@
 	import Notice from './component/notice.vue'
 	import Product from './component/product.vue'
 	import Popup from './component/popup.vue'
+	import ContractPopup from './component/contractPopup.vue'
 	import { getIndex } from "@/api/shop"
 	import { customerServiceInfo, mesNotifiList } from "@/api/eventInfo"
 	import { emitter } from "@/utils/emitter"
@@ -62,6 +64,7 @@
 	const swiperRef = ref<any>(null)
 	const serviceInfo = ref<any>({})
 	const contactShow = ref<Boolean>(false)
+	const contractShow = ref<Boolean>(false)
 	const noticeArr = ref<Array<any>>([])
 	const getNotice = async () => {
 		const data = await mesNotifiList({ type:4 })

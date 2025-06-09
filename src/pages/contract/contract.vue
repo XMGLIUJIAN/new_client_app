@@ -47,27 +47,46 @@
 					</view>
 					<view class="contact_scroll pt-[5rpx]">
 						<view class="scroll_head mx-[10rpx]">Investasi Stabil, Imbal Hasil Efisien</view>
-						<view class="scroll">
+						<view class="scroll mb-[20rpx] pt-[20rpx] pb-[20rpx]">
 						<scroll-view scroll-y :refresher-enabled="true" :refresher-triggered="isRefreshing"
 							:lower-threshold="40" @refresherrefresh="onRefresh" @scrolltolower="onScrollToLower"
 							:refresher-threshold="40" refresher-background="transparent" refresher-default-style="none"
-							style="height: 880rpx;">
+							style="height: 900rpx;">
 							<template v-if="isRefreshing" #refresher>
 								<u-loadmore icon-type="flower" status="loading" color="#8B9098" />
 							</template>
-							<view class="list_card sign" :class="e.state == 1 ? 'release':'sign'"
-								v-for="(e,index) in list" :key="index">
+							<view class="list_card" :class="e.state == 1 ? 'release':'sign'" v-for="(e,index) in list" :key="index">
 								<view class="list_title">{{e.title_name}}</view>
+								<view class="list_line"></view>
 								<view class="list_info">
-									<view class="rebate">Rasio pelepasan poin harian：<text
-											class="num">{{formatNumber(e.points_rebate)}}%</text></view>
-									<view class="date">{{e.create_time}}</view>
+									<view class="rebate">
+										<view class="rebate_label">
+											<view class="num">100.000.000</view>
+											<view class="title">Poin Investasi</view>
+										</view>
+										<view class="rebate_label">
+											<view class="date">{{e.create_date}}</view>
+											<view class="title">Tanggal Kontrak</view>
+										</view>
+									</view>
+									<view class="serial">
+										<view class="serial_title">No. Kontrak</view>
+										<view class="serial_number">RIC98879990666888</view>
+									</view>
 								</view>
 								<view class="list_image">
-									<u-image v-if="e.state == 1" width="216" height="216"
-										src="@/static/images/icon/release_icon.png" alt="" />
-									<u-image v-else width="216" height="216" src="@/static/images/icon/sign_icon.png"
-										alt="" />
+									<u-image v-if="e.state == 1" width="170" height="170" src="@/static/images/icon/release_icon.png" alt="" />
+									<u-image v-else width="170" height="170" src="@/static/images/icon/sign_icon.png" alt="" />
+								</view>
+								<view class="list_model">
+									<view class="model_box">
+										<u-image width="61" height="93" src="@/static/images/icon/icon_days.png" alt="" />
+										<view class="day_info">
+											<view class="day_title">Hari</view>
+											<view class="day_title">Investasi</view>
+											<view class="daya_num">30</view>
+										</view>
+									</view>
 								</view>
 							</view>
 							<u-loadmore v-if="!isRefreshing &&  list.length > 0" icon-type="flower" :status="status"
@@ -380,63 +399,96 @@
 						}
 						.scroll {
 							overflow: hidden;
-							height: 900rpx;
+							height: 950rpx;
 							padding: 20rpx;
 							.list_card {
 								position: relative;
 								margin-bottom: 10rpx;
-								padding: 40rpx;
+								padding: 20rpx 40rpx;
 								border-radius: 12rpx;
 						
 								&.sign {
-									background: #FFFFFF;
+									background: #FFF8E9;
 								}
 						
 								&.release {
-									background: #EFF2F5;
+									background: #DEEDDE;
 								}
 						
 								.list_title {
-									margin-bottom: 20rpx;
+									width: 480rpx;
+									height: 96rpx;
+									margin-bottom: 10rpx;
 									font-family: Arial;
 									font-size: 32rpx;
 									font-weight: 700;
 									line-height: 48rpx;
 									text-align: left;
-									color: #0067E0;
+									color: #458060;
 								}
-						
+								.list_line{
+									width: 480rpx;
+									height: 2rpx;
+									background: #666666;
+								}
 								.list_info {
+									width: 450rpx;
 									.rebate {
-										font-family: Arial;
-										font-size: 24rpx;
-										font-weight: 500;
-										line-height: 40rpx;
-										text-align: left;
-										color: #999999;
-						
-										.num {
-											font-family: Arial;
-											font-size: 28rpx;
-											font-weight: 700;
-											line-height: 40rpx;
-											text-align: left;
-											color: #1E1E1E;
+										display: flex;
+										justify-content: space-between;
+										align-items: center;
+										.rebate_label{
+											padding: 20rpx 0;
+											.num {
+												font-family: Arial;
+												font-size: 24rpx;
+												font-weight: 700;
+												line-height: 40rpx;
+												text-align: left;
+												color: #1E1E1E;
+											}
+											.date{
+												font-family: Arial;
+												font-size: 24rpx;
+												font-weight: 400;
+												line-height: 40rpx;
+												text-align: left;
+												color: #1E1E1E;
+											}
+											.title {
+												font-family: Arial;
+												font-size: 20rpx;
+												font-weight: 400;
+												line-height: 40rpx;
+												text-align: left;
+												color: #999999;
+											}
 										}
 									}
-						
-									.date {
-										display: inline-block;
-										margin-top: 20rpx;
-										padding: 8rpx 20rpx;
-										border-radius: 8rpx;
-										background: #F1F7FF;
-										font-family: Arial;
-										font-size: 26rpx;
-										font-weight: 500;
-										line-height: 40rpx;
-										text-align: left;
-										color: #1E1E1E;
+									.serial{
+										display: flex;
+										justify-content: space-between;
+										align-items: center;
+										width: 480rpx;
+										height: 44rpx;
+										padding: 0 10rpx;
+										border: 1px solid #666666;
+										.serial_title{
+											font-family: Arial;
+											font-weight: 400;
+											font-size: 20rpx;
+											line-height: 44rpx;
+											text-align: left;
+											color: #666666;
+										}
+										.serial_number{
+											font-family: Arial;
+											font-weight: 400;
+											font-size: 20rpx;
+											line-height: 44rpx;
+											text-align: right;
+											color: #1E1E1E;
+										}
 									}
 								}
 						
@@ -444,6 +496,38 @@
 									position: absolute;
 									bottom: 0;
 									right: 0;
+									z-index: 98;
+								}
+								.list_model{
+									position: absolute;
+									 top: 0;
+									 right: 50rpx;
+									 z-index: 98;
+									 .model_box{
+										 position: relative;
+										 .day_info{
+											 position: absolute;
+											 top: 0;
+											 left: 0;
+											 width: 100%;
+											 .day_title{
+												 font-family: Arial;
+												 font-weight: 400;
+												 font-size: 12rpx;
+												 line-height: 25rpx;
+												 text-align: center;
+												 color: #000000;
+											 }
+											 .daya_num{
+												 font-family: Arial;
+												 font-weight: 400;
+												 font-size: 28rpx;
+												 line-height: 32rpx;
+												 text-align: center;
+												 color: #000000;
+											 }
+										 }
+									 }
 								}
 							}
 						}

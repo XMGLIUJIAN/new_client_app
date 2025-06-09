@@ -5,9 +5,9 @@
 		</view>
 		<view class="user_data pb-[40rpx]">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
-				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#1E1E1E"
+				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false" back-icon-color="#FFFFFF"
 					:title-bold="true" :background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
-					title="DATA PRIBADI" title-color="#1E1E1E">
+					title="DATA PRIBADI" title-color="#FFFFFF">
 				</u-navbar>
 			</u-sticky>
 			<!-- 头部修改头像 -->

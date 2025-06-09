@@ -18,19 +18,23 @@
 					</template>
 				</u-navbar>
 			</u-sticky>
-			<view class="activity_con pt-[20rpx] pb-[20rpx] px-[30rpx]">
-				<swiper class="swiper" :autoplay="true" indicator-color="#F1F1F1" indicator-active-color="#81AF95"
-					:indicator-dots="true">
-					 <!-- v-for="(sItem, sIndex) in swiperArr" :key="sIndex" -->
-					<swiper-item>
-						<view class="swiper_box">
-							<u-image width="715" height="327" border-radius="8"
-								src="@/static/images/activity/swiper01.png"></u-image>
-						</view>
-					</swiper-item>
-				</swiper>
+			<view class="activity_con pt-[20rpx] pb-[20rpx]">
+				<view class="swiper mx-[30rpx]">
+					<swiper class="swiper_box" :autoplay="true" indicator-color="#F1F1F1"
+						indicator-active-color="#1E8552" :indicator-dots="true">
+						<swiper-item v-for="(sItem, sIndex) in swiperArr" :key="sIndex">
+							<view class="swiper_label">
+								<u-image width="678" height="580" border-radius="12" :src="sItem"></u-image>
+							</view>
+						</swiper-item>
+					</swiper>
+				</view>
+
 				<view class="activity_container">
-					<view class="activity_head">Info Kegiatan</view>
+					<view class="activity_head">
+						<u-image width="750" height="310" src="@/static/images/activity/activity_head.png"></u-image>
+						<view class="activity_head_box">Info Kegiatan</view>
+					</view>
 					<view class="activity_box">
 						<view class="activity_card" v-for="(item,index) in list" :key="index"
 							@tap="navigateTo('/pages/activity_detail/activity_detail?activity_id='+ item.id)">
@@ -84,9 +88,9 @@
 
 <script lang="ts" setup>
 	import { ref } from 'vue'
-	import { eventList } from '@/api/eventInfo'
+	import { carouselImg, eventList } from '@/api/eventInfo'
 	import { formatNumber } from '@/utils/util'
-	import { onPageScroll } from '@dcloudio/uni-app'
+	import { onLoad, onPageScroll } from '@dcloudio/uni-app'
 	const scrollTop = ref<number>(0)
 	const list = ref<Array<any>>([])
 	const swiperArr = ref<Array<any>>([])
@@ -95,10 +99,18 @@
 			url: url
 		})
 	}
+	const getSwiper = async () => {
+		const data = await carouselImg()
+		swiperArr.value = data ? data.imgs : []
+	}
 	const getList = async () => {
 		const data = await eventList()
 		list.value = data ? data.lists : []
 	}
+	onLoad(() => {
+		getSwiper()
+		getList()
+	})
 	getList()
 	onPageScroll((event : any) => {
 		scrollTop.value = event.scrollTop
@@ -140,52 +152,74 @@
 			.activity_con {
 				.swiper {
 					margin-bottom: 40rpx;
-					height: 350rpx;
+					padding: 10rpx;
+					height: 628rpx;
+					border-radius: 12rpx;
+					background: #FFFFFF;
 
 					.swiper_box {
-						background: #FFFFFF;
-						border-radius: 8rpx;
-						overflow: hidden;
+						height: 628rpx;
+						.swiper_label {
+							border-radius: 12rpx;
+							overflow: hidden;
+						}
+
+						::v-deep .uni-swiper-dots-horizontal {
+							bottom: 0rpx;
+						}
+
+						::v-deep .uni-swiper-dot {
+							width: 8rpx;
+							height: 8rpx;
+							border-radius: 4rpx;
+						}
+
+						::v-deep .uni-swiper-dot-active {
+							width: 20rpx;
+							height: 8rpx;
+							border-radius: 4rpx;
+						}
 					}
 
-					::v-deep .uni-swiper-dots-horizontal {
-						bottom: 0rpx;
-					}
-
-					::v-deep .uni-swiper-dot {
-						width: 8rpx;
-						height: 8rpx;
-						border-radius: 4rpx;
-					}
-
-					::v-deep .uni-swiper-dot-active {
-						width: 20rpx;
-						height: 8rpx;
-						border-radius: 4rpx;
-					}
 				}
 
 				.activity_container {
 					.activity_head {
-						padding: 20rpx;
-						background: linear-gradient(328.12deg, #60926D 5.4%, #004D2B 84.83%);
+						position: relative;
 						border-top-left-radius: 12rpx;
 						border-top-right-radius: 12rpx;
-						font-family: Arial;
-						font-weight: 700;
-						font-size: 32rpx;
-						line-height: 54rpx;
-						color: #FFFFFF;
+						overflow: hidden;
+
+						.activity_head_box {
+							position: absolute;
+							bottom: 0;
+							left: 50%;
+							transform: translate(-50%, 0);
+							width: 678rpx;
+							height: 70rpx;
+							border-top-left-radius: 12rpx;
+							border-top-right-radius: 12rpx;
+							background: linear-gradient(316.44deg, #77DD9F 1.2%, #1D8556 98.8%);
+							font-family: Arial;
+							font-weight: 700;
+							font-size: 32rpx;
+							line-height: 70rpx;
+							text-align: center;
+							color: #FFFFFF;
+						}
 					}
 
 					.activity_box {
-						padding: 20rpx;
-						background: #F1F1F1;
-						border-bottom-left-radius: 12rpx;
-						border-bottom-right-radius: 12rpx;
+						position: relative;
+						top: -10rpx;
+						padding: 20rpx 30rpx;
+						background: #FFFFFF;
+						border-radius: 20rpx;
 
 						.activity_card {
 							margin-bottom: 20rpx;
+							border-radius: 12rpx;
+							box-shadow: 0rpx 4rpx 6rpx 0rpx rgba(0, 0, 0, 0.05);
 
 							.card_info {
 								position: relative;
@@ -227,7 +261,7 @@
 										font-weight: 500;
 										text-align: center;
 										color: #FFFFFF;
-										background: #0067E0;
+										background: #1E8552;
 									}
 
 									&.ended {
@@ -283,7 +317,7 @@
 												font-weight: 500;
 												line-height: 40rpx;
 												text-align: left;
-												color: #999999;
+												color: #A0A3A9;
 											}
 										}
 
@@ -299,7 +333,7 @@
 												font-weight: 500;
 												line-height: 40rpx;
 												text-align: left;
-												color: #FF8138;
+												color: #EB2C0F;
 											}
 										}
 									}
