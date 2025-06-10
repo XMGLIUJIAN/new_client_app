@@ -80,9 +80,9 @@
 								</view>
 								<view class="list_model">
 									<view class="model_box">
-										<u-image width="61" height="93" src="@/static/images/icon/icon_days.png" alt="" />
+										<u-image width="61" height="95" src="@/static/images/icon/icon_days.png" alt="" />
 										<view class="day_info">
-											<view class="day_title">Hari</view>
+											<view class="day_title mt-[5rpx]">Hari</view>
 											<view class="day_title">Investasi</view>
 											<view class="daya_num">30</view>
 										</view>
@@ -514,7 +514,7 @@
 												 font-family: Arial;
 												 font-weight: 400;
 												 font-size: 12rpx;
-												 line-height: 25rpx;
+												 line-height: 20rpx;
 												 text-align: center;
 												 color: #000000;
 											 }
@@ -522,7 +522,7 @@
 												 font-family: Arial;
 												 font-weight: 400;
 												 font-size: 28rpx;
-												 line-height: 32rpx;
+												 line-height: 25rpx;
 												 text-align: center;
 												 color: #000000;
 											 }

@@ -118,7 +118,7 @@
 				"navigationStyle": "custom",
 				// #endif
 				// #ifdef H5
-				"navigationBarTitleText": ""
+				"navigationBarTitleText": "RINCIAN PRODUK"
 				// #endif
 			},
 			"meta": {
