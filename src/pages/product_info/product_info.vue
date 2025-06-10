@@ -179,7 +179,7 @@
 	import Popup from './components/popup.vue'
 	const scrollTop = ref<number>(0)
 	const contractShow = ref<boolean>(false)
-	const successShow = ref<boolean>(true)
+	const successShow = ref<boolean>(false)
 	const loseShow = ref<boolean>(false)
 	const show = ref<boolean>(false)
 	const exchange_amount = ref<any>(null)
