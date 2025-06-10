@@ -27,7 +27,7 @@
 					<w-middle-banner :content="item.content" :styles="item.styles" />
 				</template>
 			</template>
-			<Product></Product>
+			<ProductList :data="productData"></ProductList>
 		</view>
 		<ContractPopup v-if="contractShow"></ContractPopup>
 		<Popup v-if="contactShow" :service="serviceInfo" @confirm="contactlink" @cancel="contactShow = false"></Popup>
@@ -43,12 +43,13 @@
 	import { storeToRefs } from 'pinia'
 	import InformasiAset from './component/informasiAset.vue'
 	import Notice from './component/notice.vue'
-	import Product from './component/product.vue'
+	import ProductList from './component/productList.vue'
 	import Popup from './component/popup.vue'
 	import ContractPopup from './component/contractPopup.vue'
 	import { getIndex } from "@/api/shop"
 	import { customerServiceInfo, mesNotifiList } from "@/api/eventInfo"
 	import { emitter } from "@/utils/emitter"
+    import { getProductApi } from '@/api/product'
 	const userStore = useUserStore()
 	const state = reactive<{
 		pages : any[]
@@ -66,6 +67,7 @@
 	const contactShow = ref<Boolean>(false)
 	const contractShow = ref<Boolean>(false)
 	const noticeArr = ref<Array<any>>([])
+	const productData = ref<Array<any>>([])
 	const getNotice = async () => {
 		const data = await mesNotifiList({ type:4 })
 		noticeArr.value = data.lists.map((item : any) => item.content)
@@ -96,12 +98,20 @@
 		state.meta = JSON.parse(data?.page?.meta)
 		state.article = data.article
 	}
+
+    const getProduct = async ()=>{
+        const data = await getProductApi()
+        productData.value = data.lists
+        console.log(data.lists)
+    }
+
 	onPageScroll((event : any) => {
 		scrollTop.value = event.scrollTop
 	})
 	onLoad(()=>{
 		getData()
 		getNotice()
+        getProduct()
 		userStore.getUser()
 	})
 </script>

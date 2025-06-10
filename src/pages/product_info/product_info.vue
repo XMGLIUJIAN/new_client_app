@@ -137,30 +137,36 @@
 					</view>
 				</view>
 			</view>
-			<view class="product_cokelat mb-[20rpx] mx-[30rpx]" v-if="type == 1">
-				<u-image width="690" height="825" src="@/static/images/product/product_address01.png"></u-image>
-			</view>
-			<view class="product_cokelat mb-[20rpx] mx-[30rpx]" v-if="type == 2">
-				<u-image width="690" height="825" src="@/static/images/product/product_address02.png"></u-image>
-			</view>
-			<view class="product_cokelat mb-[20rpx] mx-[30rpx]" v-if="type == 3">
-				<u-image width="690" height="825" src="@/static/images/product/product_address03.png"></u-image>
-			</view>
-			<view class="product_advantage mb-[150rpx] mx-[30rpx]" v-if="type == 1">
-				<u-image width="690" height="1110" src="@/static/images/product/product_advantage_short.png"></u-image>
-			</view>
-			<view class="product_advantage mb-[150rpx] mx-[30rpx]" v-if="type == 2">
-				<u-image width="690" height="1110" src="@/static/images/product/product_advantage_mid.png"></u-image>
-			</view>
-			<view class="product_advantage mb-[150rpx] mx-[30rpx]" v-if="type == 3">
-				<u-image width="690" height="1110" src="@/static/images/product/product_advantage_long.png"></u-image>
-			</view>
-			<view class="product_foot">
-				<u-image v-if="type == 1" width="80" height="80" src="@/static/images/product/product_frame_short.png"></u-image>
-				<u-image v-if="type == 2" width="80" height="80" src="@/static/images/product/product_frame_mid.png"></u-image>
-				<u-image v-if="type == 3" width="80" height="80" src="@/static/images/product/product_frame_long.png"></u-image>
-				<view class="product_foot_btn" :class="switchCard(type)">Tandatangan</view>
-			</view>
+			<view v-if="doShow" class="doShow">
+                <view class="product_cokelat mb-[20rpx] mx-[30rpx]" v-if="type == 1">
+                    <u-image width="690" height="825" src="@/static/images/product/product_address01.png"></u-image>
+                </view>
+                <view class="product_cokelat mb-[20rpx] mx-[30rpx]" v-if="type == 2">
+                    <u-image width="690" height="825" src="@/static/images/product/product_address02.png"></u-image>
+                </view>
+                <view class="product_cokelat mb-[20rpx] mx-[30rpx]" v-if="type == 3">
+                    <u-image width="690" height="825" src="@/static/images/product/product_address03.png"></u-image>
+                </view>
+                <view class="product_advantage mb-[150rpx] mx-[30rpx]" v-if="type == 1">
+                    <u-image width="690" height="1110" src="@/static/images/product/product_advantage_short.png"></u-image>
+                </view>
+                <view class="product_advantage mb-[150rpx] mx-[30rpx]" v-if="type == 2">
+                    <u-image width="690" height="1110" src="@/static/images/product/product_advantage_mid.png"></u-image>
+                </view>
+                <view class="product_advantage mb-[150rpx] mx-[30rpx]" v-if="type == 3">
+                    <u-image width="690" height="1110" src="@/static/images/product/product_advantage_long.png"></u-image>
+                </view>
+            </view>
+            <view v-else class="doShowBtn mb-[160rpx]">
+                <view @tap="doShow = true">Klik untuk Melihat Detail
+                    <u-icon name="arrow-down" color="#1E1E1E" size="28"></u-icon></view>
+            </view>
+            <view class="product_foot">
+                <u-image v-if="type == 1" width="80" height="80" src="@/static/images/product/product_frame_short.png"></u-image>
+                <u-image v-if="type == 2" width="80" height="80" src="@/static/images/product/product_frame_mid.png"></u-image>
+                <u-image v-if="type == 3" width="80" height="80" src="@/static/images/product/product_frame_long.png"></u-image>
+                <view class="product_foot_btn" :class="switchCard(type)">Tandatangan</view>
+            </view>
 			<ContractPopup v-if="contractShow" @cancel="contractShow = false"></ContractPopup>
 			<SuccessPopup v-if="successShow" @cancel="successShow = false"></SuccessPopup>
 			<LosePopup v-if="loseShow" @cancel="loseShow = false"></LosePopup>
@@ -184,6 +190,7 @@
 	const show = ref<boolean>(false)
 	const exchange_amount = ref<any>(null)
 	const type = ref<number>(1)
+    const doShow = ref(false)
 	const navigateTo = (url : string) => {
 		uni.navigateTo({
 			url: url
@@ -206,6 +213,10 @@
 	}
 	onLoad((option : any) => {
 		type.value = option.type
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // 平滑滚动，可选
+        });
 	})
 	onPageScroll((event : any) => {
 		scrollTop.value = event.scrollTop
@@ -549,11 +560,11 @@
 						&.short {
 							color: #1E4B2E;
 						}
-						
+
 						&.mid {
 							color: #A88228;
 						}
-						
+
 						&.long {
 							color: #AE2D1A;
 						}
@@ -641,16 +652,20 @@
 					&.short {
 						background: #458060;
 					}
-					
+
 					&.mid {
 						background: #D2B571;
 					}
-					
+
 					&.long {
 						background: #AE2D1A;
 					}
 				}
 			}
+
+            .doShowBtn{
+                text-align: center;
+            }
 		}
 	}
 </style>

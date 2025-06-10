@@ -115,10 +115,13 @@
                                 /></view>
                                 <view class="bonus_card_content mx-[30rpx] mt-[20rpx]">
                                     <view class="bonus_total pt-[50rpx]"
-                                        ><text>RP {{formatNumber(BonusKeberuntunganTambahan)}}</text></view
+                                        ><text
+                                            >RP {{ formatNumber(BonusKeberuntunganTambahan) }}</text
+                                        ></view
                                     >
                                     <view class="bonus_desc pt-[40rpx]"
-                                        ><text class="first_bonus">Rasio Bonus</text>：Rp 10 = 1
+                                        ><text class="first_bonus">Rasio Bonus</text>：Rp
+                                        {{ rateInfo.team_reserve_rate }} = 1
                                         <text class="unit">Bonus</text></view
                                     >
                                 </view>
@@ -149,22 +152,23 @@ import { storeToRefs } from 'pinia'
 import { emitter } from '@/utils/emitter'
 import { formatNumber } from '@/utils/util'
 import { currencyConversion, exchangelist } from '@/api/exchangeTransfer'
-import { onShow, onPageScroll } from '@dcloudio/uni-app'
+import { onPageScroll, onShow } from '@dcloudio/uni-app'
 import { computed, reactive, ref } from 'vue'
 import Popup from './components/popup.vue'
 import BonusPopup from '@/components/toastPopup/BonusPopup.vue'
+
 const scrollTop = ref<number>(0)
-const pointsPopup = ref<Boolean>(false)
-const pointsType = ref<String>('success') // success 交易成功 lose 交易失败
+const pointsPopup = ref<boolean>(false)
+const pointsType = ref<string>('success') // success 交易成功 lose 交易失败
 const userStore = useUserStore()
 const rateInfo = ref<any>({})
 const show = ref(false)
 const balance = computed(() => {
-    let num = formData.exchange_amount * rateInfo.value.rate || 0
-    return num
+    return formData.exchange_amount * rateInfo.value.rate || 0
 })
 const BonusKeberuntunganTambahan = computed(() => {
-    return formData.exchange_amount * rateInfo.value.rate || 0
+    const num = formData.exchange_amount / rateInfo.value.team_reserve_rate || 0
+    return Math.floor(num)
 })
 const { userInfo, isLogin } = storeToRefs(userStore)
 const formData = reactive<{

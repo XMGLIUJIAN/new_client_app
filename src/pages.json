@@ -1,638 +1,642 @@
 {
-	"pages": [{
-			"path": "pages/index/index",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "Beranda"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/activity/activity",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "Aktivitas"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/extend/extend",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "Undang Teman"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/team/team",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "Tim"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/user/user",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "Akun"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/contract/contract",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "TUKAR"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/point_treasure/point_treasure",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "MENGUNDANG INTEGRASI"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/earn_point/earn_point",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "POIN PROFITPLUS"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/product_info/product_info",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "RINCIAN PRODUK"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/exchange/exchange",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "TUKAR"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/points/points",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "POIN"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/trade/trade",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "TRANSAKSI"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/recharge/recharge",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "DEPOSIT"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/withdrawal/withdrawal",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "PENARIKAN"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/about_us/about_us",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "TENTANG"
-				// #endif
-			}
-		},
-		{
-			"path": "pages/as_us/as_us",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "ABOUT THE APP"
-				// #endif
-			}
-			
-		},
-		{
-			"path": "pages/user_set/user_set",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "ACCOUNT AND SECURITY"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/forget_pwd/forget_pwd",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "RECOVER YOUR PASSWORD"
-				// #endif
-			}
-		},
-		{
-			"path": "pages/forget_payPwd/forget_payPwd",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "RECOVER YOUR PAYPASSWORD"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/change_password/change_password",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "ACCOUNT AND SECURITY"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/user_data/user_data",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "PERSONAL DATA"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/bind_mobile/bind_mobile",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "CHANGING YOUR PHONE"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/change_payPwd/change_payPwd",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "WITHDRAWAL PASSWORD"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/manage_bank/manage_bank",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "MANAGE BANK CARDS"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/bind_card/bind_card",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "BIND CARD NUMBER"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/select_bank/select_bank",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "PILIH BANK",
-				// #endif
-				"disableScroll": true
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/login/login",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "LOG IN"
-				// #endif
-			}
-		},
-		{
-			"path": "pages/register/register",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "REGISTER"
-				// #endif
-			}
-		},
-		{
-			"path": "pages/activity_detail/activity_detail",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "EVENT INFORMATION"
-				// #endif
-			}
-		},
-		{
-			"path": "pages/message/message",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "MESSAGE NOTIFICATION"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/message/detail",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "MESSAGE NOTIFICATION"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/message/parse",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "MESSAGE DETAILS"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/connection/connection",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "RELATIONSHIP LIST"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/transaction_info/transaction_info",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "PERCIKAN AIR"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/team_rule/team_rule",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "RULES"
-				// #endif
-			}
-		},
-		{
-			"path": "pages/invite_rule/invite_rule",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "RULES"
-				// #endif
-			}
-		},
-		{
-			"path": "pages/point_rule/point_rule",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "RULES"
-				// #endif
-			}
-		},
-		{
-			"path": "pages/user_rule/user_rule",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "RULES"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/invite/invite",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "INVITE FRIENDS"
-				// #endif
-			},
-			"meta": {
-				"auth": true
-			}
-		},
-		{
-			"path": "pages/agreement/agreement",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "AGREEMENT"
-				// #endif
-			}
-		},
-		{
-			"path": "pages/raffle/raffle",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "REFFLE"
-				// #endif
-			}
-		},
-		{
-			"path": "pages/customer_service/customer_service",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "CUSTOMER SERVICE"
-				// #endif
-			}
-		},
-		{
-			"path": "uni_modules/vk-uview-ui/components/u-avatar-cropper/u-avatar-cropper",
-			"style": {
-				// #ifndef H5
-				"navigationStyle": "custom",
-				// #endif
-				// #ifdef H5
-				"navigationBarTitleText": "AVATAR CROPPER",
-				// #endif
-				"navigationBarBackgroundColor": "#000000"
-			}
-		}
-	],
-	"subPackages": [{
-		"root": "packages",
-		"pages": [{
-				"path": "pages/404/404",
-				"style": {
-					"navigationBarTitleText": "404"
-				},
-				"name": "404",
-				"meta": {
-					"white": true
-				}
-			}
-		]
-	}],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "Rice Rich",
-		"navigationBarBackgroundColor": "#FFFFFF",
-		"backgroundColor": "#FFFFFF",
-		"h5": {
-			"navigationStyle": "custom"
-		}
-	},
-	"tabBar": {
-		"backgroundColor": "#FFFFFF",
-		"selectedColor": "#1E4B2E",
-		"color": "#D7D7D7",
-		"borderStyle": "white",
-		"custom": true,
-		"iconWidth": "20px",
-		"list": [{
-				"iconPath": "static/images/tabbar/Home.png",
-				"selectedIconPath": "static/images/tabbar/Home_Act.png",
-				"pagePath": "pages/index/index",
-				"text": "Beranda"
-			},
-			{
-				"iconPath": "static/images/tabbar/Activity.png",
-				"selectedIconPath": "static/images/tabbar/Activity_Act.png",
-				"pagePath": "pages/activity/activity",
-				"text": "Aktivitas"
-			},
-			{
-				"iconPath": "static/images/tabbar/Extend.png",
-				"selectedIconPath": "static/images/tabbar/Extend_Act.png",
-				"pagePath": "pages/extend/extend",
-				"text": "Undang Teman"
-			},
-			{
-				"iconPath": "static/images/tabbar/Team.png",
-				"selectedIconPath": "static/images/tabbar/Team_Act.png",
-				"pagePath": "pages/team/team",
-				"text": "Tim"
-			},
-			{
-				"iconPath": "static/images/tabbar/Mine.png",
-				"selectedIconPath": "static/images/tabbar/Mine_Act.png",
-				"pagePath": "pages/user/user",
-				"text": "Akun"
-			}
-		]
-	},
-	"easycom": {
-		"custom": {
-			"router-navigate": "uniapp-router-next/components/router-navigate/router-navigate.vue",
-			"^(?!z-paging-refresh|z-paging-load-more)z-paging(.*)": "z-paging/components/z-paging$1/z-paging$1.vue",
-			"^w-(.*)": "@/components/widgets/$1/$1.vue"
-		}
-	}
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "Beranda"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/activity/activity",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "Aktivitas"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/extend/extend",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "Undang Teman"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/team/team",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "Tim"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/user/user",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "Akun"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/contract/contract",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "TUKAR"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/point_treasure/point_treasure",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "MENGUNDANG INTEGRASI"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/earn_point/earn_point",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "POIN PROFITPLUS"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/product_info/product_info",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "RINCIAN PRODUK"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/exchange/exchange",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "TUKAR"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/points/points",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "POIN"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/trade/trade",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "TRANSAKSI"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/recharge/recharge",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "DEPOSIT"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/withdrawal/withdrawal",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "PENARIKAN"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/about_us/about_us",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "TENTANG"
+        // #endif
+      }
+    },
+    {
+      "path": "pages/as_us/as_us",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "ABOUT THE APP"
+        // #endif
+      }
+    },
+    {
+      "path": "pages/user_set/user_set",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "ACCOUNT AND SECURITY"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/forget_pwd/forget_pwd",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "RECOVER YOUR PASSWORD"
+        // #endif
+      }
+    },
+    {
+      "path": "pages/forget_payPwd/forget_payPwd",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "RECOVER YOUR PAYPASSWORD"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/change_password/change_password",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "ACCOUNT AND SECURITY"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/user_data/user_data",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "PERSONAL DATA"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/bind_mobile/bind_mobile",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "CHANGING YOUR PHONE"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/change_payPwd/change_payPwd",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "WITHDRAWAL PASSWORD"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/manage_bank/manage_bank",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "MANAGE BANK CARDS"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/bind_card/bind_card",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "BIND CARD NUMBER"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/select_bank/select_bank",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "PILIH BANK",
+        // #endif
+        "disableScroll": true
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/login/login",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "LOG IN"
+        // #endif
+      }
+    },
+    {
+      "path": "pages/register/register",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "REGISTER"
+        // #endif
+      }
+    },
+    {
+      "path": "pages/activity_detail/activity_detail",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "EVENT INFORMATION"
+        // #endif
+      }
+    },
+    {
+      "path": "pages/message/message",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "MESSAGE NOTIFICATION"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/message/detail",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "MESSAGE NOTIFICATION"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/message/parse",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "MESSAGE DETAILS"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/connection/connection",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "RELATIONSHIP LIST"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/transaction_info/transaction_info",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "PERCIKAN AIR"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/team_rule/team_rule",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "RULES"
+        // #endif
+      }
+    },
+    {
+      "path": "pages/invite_rule/invite_rule",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "RULES"
+        // #endif
+      }
+    },
+    {
+      "path": "pages/point_rule/point_rule",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "RULES"
+        // #endif
+      }
+    },
+    {
+      "path": "pages/user_rule/user_rule",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "RULES"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/invite/invite",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "INVITE FRIENDS"
+        // #endif
+      },
+      "meta": {
+        "auth": true
+      }
+    },
+    {
+      "path": "pages/agreement/agreement",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "AGREEMENT"
+        // #endif
+      }
+    },
+    {
+      "path": "pages/raffle/raffle",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "REFFLE"
+        // #endif
+      }
+    },
+    {
+      "path": "pages/customer_service/customer_service",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "CUSTOMER SERVICE"
+        // #endif
+      }
+    },
+    {
+      "path": "uni_modules/vk-uview-ui/components/u-avatar-cropper/u-avatar-cropper",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "AVATAR CROPPER",
+        // #endif
+        "navigationBarBackgroundColor": "#000000"
+      }
+    }
+  ],
+  "subPackages": [
+    {
+      "root": "packages",
+      "pages": [
+        {
+          "path": "pages/404/404",
+          "style": {
+            "navigationBarTitleText": "404"
+          },
+          "name": "404",
+          "meta": {
+            "white": true
+          }
+        }
+      ]
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Rice Rich",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#FFFFFF",
+    "h5": {
+      "navigationStyle": "custom"
+    }
+  },
+  "tabBar": {
+    "backgroundColor": "#FFFFFF",
+    "selectedColor": "#1E4B2E",
+    "color": "#D7D7D7",
+    "borderStyle": "white",
+    "custom": true,
+    "iconWidth": "20px",
+    "list": [
+      {
+        "iconPath": "static/images/tabbar/Home.png",
+        "selectedIconPath": "static/images/tabbar/Home_Act.png",
+        "pagePath": "pages/index/index",
+        "text": "Beranda"
+      },
+      {
+        "iconPath": "static/images/tabbar/Activity.png",
+        "selectedIconPath": "static/images/tabbar/Activity_Act.png",
+        "pagePath": "pages/activity/activity",
+        "text": "Aktivitas"
+      },
+      {
+        "iconPath": "static/images/tabbar/Extend.png",
+        "selectedIconPath": "static/images/tabbar/Extend_Act.png",
+        "pagePath": "pages/extend/extend",
+        "text": "Undang Teman"
+      },
+      {
+        "iconPath": "static/images/tabbar/Team.png",
+        "selectedIconPath": "static/images/tabbar/Team_Act.png",
+        "pagePath": "pages/team/team",
+        "text": "Tim"
+      },
+      {
+        "iconPath": "static/images/tabbar/Mine.png",
+        "selectedIconPath": "static/images/tabbar/Mine_Act.png",
+        "pagePath": "pages/user/user",
+        "text": "Akun"
+      }
+    ]
+  },
+  "easycom": {
+    "custom": {
+      "router-navigate": "uniapp-router-next/components/router-navigate/router-navigate.vue",
+      "^(?!z-paging-refresh|z-paging-load-more)z-paging(.*)": "z-paging/components/z-paging$1/z-paging$1.vue",
+      "^w-(.*)": "@/components/widgets/$1/$1.vue"
+    }
+  }
 }
