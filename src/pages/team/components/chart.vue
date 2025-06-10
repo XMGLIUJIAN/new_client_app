@@ -31,7 +31,11 @@
 		yAxis: [
 			{
 				type: 'category',
-				data: []
+				data: [],
+                axisLabel: {
+                    color: '#D79D2A',
+                    fontWeight:900
+                }
 			}
 		],
 		series: [

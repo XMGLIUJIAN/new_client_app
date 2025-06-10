@@ -26,7 +26,10 @@
 					<view class="card_head_phone">ID:{{user.account}}</view>
 				</view>
 				<view class="user_card_info">
-					<view class="user_card_poin">Poin {{!eyeShow ? formatNumber(user.user_integral) || 0 : '***' }}</view>
+					<view class="user_card_poin">
+                        <view>Poin {{!eyeShow ? formatNumber(user.user_integral) || 0 : '***' }}</view>
+                        <u-image @tap="navigateAuth('/pages/earn_point/earn_point')" width="30" height="30" src="@/static/images/user/to.png" alt="" />
+                    </view>
 					<view class="user_card_saldo">Saldo Pengguna Rp {{!eyeShow ? formatNumber(user.user_money) || 0 : '***' }}</view>
 				</view>
 				<view class="user_card_line"></view>
@@ -72,7 +75,7 @@
 				<view class="foot_num">{{user.teamReserveAmount ? formatNumber(user.teamReserveAmount) : 0}}</view>
 			</view>
 		</view>
-		<Popup v-if="show" @cancel="show = false"></Popup>
+		<BonusPopup v-if="show" @cancel="show = false"></BonusPopup>
 		<toastPopup></toastPopup>
 	</view>
 </template>
@@ -81,7 +84,7 @@
 	import { formatNumber, formatProgress } from '@/utils/util'
 	import { emitter } from '@/utils/emitter';
 	import { mesNotifiConf } from '@/api/eventInfo';
-	import Popup from './components/popup.vue'
+    import BonusPopup from '@/components/toastPopup/BonusPopup.vue'
 	const props = defineProps({
 		pageMeta: {
 			type: Object,
@@ -207,6 +210,9 @@
 						line-height: 54rpx;
 						text-align: left;
 						color: #FFFFFF;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
 					}
 
 					.user_card_saldo {
@@ -306,7 +312,7 @@
 				height: 2rpx;
 				background: #D7D7D7;
 			}
-				
+
 			.article_foot{
 				display: flex;
 				justify-content: space-between;

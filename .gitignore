@@ -26,7 +26,8 @@ unpackage
 *.njsproj
 *.sln
 *.sw?
-.hbuilderx  
+.hbuilderx
+yarn.lock
 
 # .env
 #.env.development

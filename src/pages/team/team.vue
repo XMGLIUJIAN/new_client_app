@@ -363,6 +363,8 @@
 									position: absolute;
 									top: 50%;
 									left: 50%;
+                                    overflow: hidden;
+                                    border-radius: 50%;
 									transform: translate(-50%, -38%);
 								}
 
