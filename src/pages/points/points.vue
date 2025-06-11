@@ -60,6 +60,23 @@
 								</view>
 							</view>
 						</view>
+						<view class="exchange_card">
+							<u-image width="610" height="284" src="@/static/images/page/pointGroup.png"></u-image>
+							<view class="exchange_card_info">
+								<view class="exchange_card_head mb-[20rpx]">
+									<u-image width="40" height="40" src="@/static/images/page/point_icon.png"></u-image>
+									<view class="head_title">Bonus Keberuntungan Tambahan</view>
+									<u-image width="30" height="30" src="@/static/images/page/point_help.png"></u-image>
+								</view>
+								<view class="exchange_card_box">
+									<view class="card_box_num">Rp 1.000.000</view>
+									<view class="card_box_rate mt-[20rpx]">
+										<view class="card_rate_title">Rasio Bonus：</view>
+										<view class="card_rate_text">Rp 10 = <text class="rate_text_num">1 Bonus</text></view>
+									</view>
+								</view>
+							</view>
+						</view>
 					</view>
 				</view>
 			</view>
@@ -325,7 +342,7 @@
 						}
 
 						.exchange_result {
-
+							margin-bottom: 40rpx;
 							.result_left {
 								font-family: Arial;
 								font-size: 32rpx;
@@ -359,6 +376,74 @@
 											font-size: 24rpx;
 											line-height: 40rpx;
 											color: #D79D2A;
+										}
+									}
+								}
+							}
+						}
+						.exchange_card{
+							position: relative;
+							overflow: hidden;
+							border-radius: 12rpx;
+							.exchange_card_info{
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								padding: 20rpx 30rpx;
+								.exchange_card_head{
+									display: flex;
+									justify-content: center;
+									align-items: center;
+									.head_title{
+										margin: 0 10rpx;
+										font-family: Arial;
+										font-weight: 700;
+										font-size: 28rpx;
+										line-height: 40rpx;
+										text-align: center;
+										color: #1E4B2E;
+									}
+								}
+								.exchange_card_box{
+									padding: 40rpx;
+									border-radius: 12rpx;
+									background: #FFFFFF;
+									.card_box_num{
+										font-family: Arial;
+										font-weight: 400;
+										font-size: 36rpx;
+										text-align: center;
+										line-height: 40rpx;
+										color: #1E1E1E;
+									}
+									.card_box_rate{
+										display: flex;
+										justify-content: center;
+										align-items: center;
+										.card_rate_title{
+											font-family: Arial;
+											font-weight: 400;
+											font-size: 24rpx;
+											line-height: 30rpx;
+											text-align: left;
+											color: #8B9098;
+										}
+										.card_rate_text{
+											font-family: Arial;
+											font-weight: 400;
+											font-size: 24rpx;
+											line-height: 30rpx;
+											text-align: left;
+											color: #1E1E1E;
+											.rate_text_num{
+												font-family: Arial;
+												font-weight: 400;
+												font-size: 24rpx;
+												line-height: 30rpx;
+												text-align: left;
+												color: #ECB54B;
+											}
 										}
 									}
 								}
