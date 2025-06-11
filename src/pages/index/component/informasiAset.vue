@@ -27,21 +27,21 @@
 					<view class="label_title">Nilai Kontrak</view>
 				</view>
 				<view class="article_row_date">
-					<view class="">3天</view>
+					<view class="">3 Hari</view>
 					<view class="label_title">Jangka Waktu Produk</view>
 				</view>
 			</view>
 			<view class="article_image mt-[30rpx]">
 				<u-image width="630" height="238" src="@/static/images/informasiAset/swiperGroup.png"></u-image>
 			</view>
-			<view class="article_btn mt-[20rpx]">Beli Sekarang</view>
+			<view class="article_btn mt-[20rpx]" @tap="navigateTo('/pages/product_info/product_info?id=1')">Beli Sekarang</view>
 		</view>
 	</view>
 </template>
 
 <script lang="ts" setup>
 	import { ref, watch } from 'vue';
-	import { formatNumber } from '@/utils/util'
+    import { formatNumber } from '@/utils/util'
 	const incomeInfo = ref<any>({})
 	const props = defineProps({
 		informasiInfo: {
@@ -56,6 +56,12 @@
 		},
 		{ deep: true }
 	)
+
+    const navigateTo = (url: string) => {
+        uni.navigateTo({
+            url
+        })
+    }
 </script>
 
 <style lang="scss" scoped>
@@ -187,7 +193,7 @@
 				height: 238rpx;
 				border-radius: 8rpx;
 			}
-				
+
 			.article_btn{
 				width: 630rpx;
 				height: 70rpx;

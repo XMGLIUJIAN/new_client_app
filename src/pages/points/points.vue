@@ -114,11 +114,9 @@
                                         alt=""
                                 /></view>
                                 <view class="bonus_card_content mx-[30rpx] mt-[20rpx]">
-                                    <view class="bonus_total pt-[50rpx]"
-                                        ><text
-                                            >RP {{ formatNumber(BonusKeberuntunganTambahan) }}</text
-                                        ></view
-                                    >
+                                    <view class="bonus_total pt-[50rpx]">
+                                        <text>Rp {{ formatNumber(BonusKeberuntunganTambahan) }}</text>
+                                    </view>
                                     <view class="bonus_desc pt-[40rpx]"
                                         ><text class="first_bonus">Rasio Bonus</text>：Rp
                                         {{ rateInfo.team_reserve_rate }} = 1

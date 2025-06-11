@@ -53,8 +53,8 @@
 	import noDataImgSrc from '../../static/noData.png'
 	import rightSrc from '../../static/right.png'
 	import nextScrollRightTopSrc from '../../static/top.png'
-	import pinyin from './js-pinyin/dist/pinyin.js'
-	// import pinyin from 'js-pinyin'
+	// import pinyin from './js-pinyin/dist/pinyin.js'
+	import pinyin from 'js-pinyin'
 
 
 	// 创建pinyin实例

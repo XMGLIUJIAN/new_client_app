@@ -40,6 +40,10 @@
 		emitter.on('gifType',(time: number | any) =>{
 			 gifType(time);
 		})
+        emitter.on('toast_close', () => {
+            toastType.value = null
+            show.value = false
+		})
 	})
 </script>
 

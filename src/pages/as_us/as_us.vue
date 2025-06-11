@@ -11,7 +11,7 @@
 				</u-navbar>
 			</u-sticky>
 			<view class="app_info mt-[100rpx] mb-[30rpx] ml-[30rpx] mr-[30rpx]">
-				<u-image width="159" height="154" :src="appStore.getWebsiteConfig.shop_logo" alt="" />
+				<u-image width="159" height="154" border-radius="50%" :src="appStore.getWebsiteConfig.shop_logo" alt="" />
 				<view class="text-content mt-[20rpx]">{{ appStore.getWebsiteConfig.shop_name }}</view>
 				<view class="version mt-[30rpx]">Versi 2.3.1</view>
 			</view>

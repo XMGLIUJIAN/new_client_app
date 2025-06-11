@@ -181,6 +181,7 @@
 	const getInfo = async () => {
 		const data = await teamInfo()
 		myTeamInfo.value = data;
+        console.log(data)
 		levelArr.value = data.teamLeaderClassification.map((item : any) => item.identity)
 		seriesArr.value = data.teamLeaderClassification.map((item : any) => Number(item.num))
 		if (teamRef.value && levelArr.value.length && seriesArr.value.length) {

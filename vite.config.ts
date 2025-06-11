@@ -32,11 +32,12 @@ export default defineConfig({
 		}
 	},
 	server: {
-		port: 80,
+		port: 8090,
 		https: true,
 		proxy: {
 			"/api": {
-				target: "https://h5www.ricerich.id/",
+				// target: "https://h5www.ricerich.id/",
+				target: "https://a98d-172-86-104-13.ngrok-free.app/",
 				changeOrigin: true,
 				secure: true,
 				rewrite: (path) => path.replace(/^\/api/, "api")
