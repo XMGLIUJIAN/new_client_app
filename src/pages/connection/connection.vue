@@ -78,6 +78,7 @@
 	import { ref, computed } from 'vue'
 	import { useUserStore } from '@/stores/user'
 	import { onShow, onPageScroll } from '@dcloudio/uni-app'
+    import { emitter } from '@/utils/emitter'
 	const scrollTop = ref<number>(0)
 	const seniorUser = ref<any>({})
 	// 用户信息
@@ -88,8 +89,10 @@
 		const data = await lowerLevelUser({ inviteCode: userInfo.value.invite_code })
 		seniorUser.value = data.seniorUser
 		list.value = data.lowerLevelUsers.lists
+        emitter.emit('toast_close')
 	}
 	onShow(() => {
+        emitter.emit('gifType')
 		userStore.getUser()
 		lowerUser()
 	})

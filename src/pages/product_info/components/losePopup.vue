@@ -5,8 +5,9 @@
 				<view class="tips mb-[20rpx]">Investasi Gagal</view>
 				<view class="explain mb-[40rpx]">
 					<u-image width="443" height="358" src="@/static/images/product/lose.png"></u-image>
+                    <view class="tip_test">Poin belum cukup.<br/>Silakan input ulang</view>
 				</view>
-				<view class="btn" @tap="cancelPopup">Batal</view>
+				<view class="btn" @tap="cancelPopup">Knew</view>
 			</view>
 		</view>
 	</view>
@@ -52,6 +53,13 @@
 					display: flex;
 					justify-content: center;
 					align-items: center;
+                    position: relative;
+                    .tip_test{
+                        position: absolute;
+                        bottom: -20rpx;
+                        font-size: 26rpx;
+                        color: #9f9f9f;
+                    }
 				}
 				.btn{
 					height: 60rpx;

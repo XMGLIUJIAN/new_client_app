@@ -32,7 +32,7 @@
                         >{{ props.data.country }}</view
                     >
                 </view>
-                <view class="head_tips canSigned">
+                <view class="head_tips canSigned" @tap="()=>{contractShow = true}">
                     <u-image
                         width="34"
                         height="34"
@@ -42,7 +42,7 @@
                 </view>
             </view>
             <view class="product_line"></view>
-            <view class="product_info">
+            <view class="product_info" @tap="navigateTo(`/pages/product_info/product_info?product_id=${props.data.product_id}`)">
                 <view class="product_info_title">{{ props.data.about_product }}</view>
                 <view class="product_info_level">
                     <view class="level">Risiko {{ props.data.risk_level }}</view>
@@ -102,12 +102,14 @@
             </view>
         </view>
     </view>
+    <ContractPopup v-if="contractShow" @cancel="contractShow = false"></ContractPopup>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import { formatNumber } from '../../../utils/util'
-
+import ContractPopup from '@/pages/product_info/components/contractPopup.vue'
+const contractShow = ref(false)
 const props = defineProps({
     data: {
         type: Object,
@@ -115,11 +117,13 @@ const props = defineProps({
     }
 })
 
-const couentArr = ref<Array<string>>([
-    'product_laos.png',
-    'product_thailand.png',
-    'product_vietnam.png'
-])
+const navigateTo = (url: string) => {
+    uni.navigateTo({
+        url
+    })
+}
+
+
 </script>
 
 <style scoped lang="scss">

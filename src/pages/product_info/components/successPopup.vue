@@ -16,7 +16,7 @@
 									<view class="day_info">
 										<view class="day_title mt-[10rpx]">Hari</view>
 										<view class="day_title">Investasi</view>
-										<view class="daya_num">7</view>
+										<view class="daya_num">{{props.data.siklus_investasi}}</view>
 									</view>
 								</view>
 							</view>
@@ -25,7 +25,7 @@
 								<view class="explain_line mt-[20rpx] mb-[30rpx]"></view>
 								<view class="explain_box">
 									<view class="explain_label">
-										<view class="label_num">100.000.000</view>
+										<view class="label_num">{{props.investPoint}}</view>
 										<view class="label_title">Poin Investasi</view>
 									</view>
 									<view class="explain_label">
@@ -37,9 +37,9 @@
 							<view class="success_foot mt-[20rpx]">
 								<view class="explain_card mb-[175rpx]">
 									<view class="explain_card_title">No. Kontrak</view>
-									<view class="explain_card_num">RIC98879990666888</view>
+									<view class="explain_card_num">{{props.contractName}}</view>
 								</view>
-								<view class="explain_btn ">Selesai</view>
+								<view class="explain_btn" @tap="navigateTo('/pages/contract/contract')">Selesai</view>
 							</view>
 						</view>
 					</view>
@@ -50,10 +50,34 @@
 </template>
 
 <script lang="ts" setup>
-	const emit = defineEmits(['confirm', 'cancel'])
-	const cancelPopup = () => {
-		emit('cancel')
-	}
+import { ref } from 'vue'
+const date = new Date()
+const today = ref()
+const emit = defineEmits(['confirm', 'cancel'])
+const cancelPopup = () => {
+    emit('cancel')
+}
+const navigateTo = (url: string) => {
+    cancelPopup()
+    uni.navigateTo({
+        url: url
+    })
+}
+const props = defineProps({
+    data: {
+        type: Object,
+        default: {}
+    },
+    contractName: {
+        type:String,
+        default:''
+    },
+    investPoint: {
+        type: Number,
+        default:0
+    }
+})
+console.log(props)
 </script>
 
 <style lang="scss" scoped>

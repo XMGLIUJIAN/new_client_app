@@ -25,7 +25,7 @@
 					<view class="treasure_book_label ml-[75rpx]">
 						<view class="label_image">
 							<u-image width="30" height="30" src="@/static/images/activity/treasure_union.png"></u-image>
-						</view>		
+						</view>
 						<view class="label_info">
 							Dapatkan hingga <text class="label_info_text">50%</text> dari hasil investasi harian teman setiap hari
 						</view>
@@ -33,7 +33,7 @@
 					<view class="treasure_book_label ml-[75rpx]">
 						<view class="label_image">
 							<u-image width="30" height="30" src="@/static/images/activity/treasure_union.png"></u-image>
-						</view>		
+						</view>
 						<view class="label_info">
 							Dihitung langsung, masuk ke akun esok harinya
 						</view>
@@ -41,7 +41,7 @@
 					<view class="treasure_book_label ml-[75rpx]">
 						<view class="label_image">
 							<u-image width="30" height="30" src="@/static/images/activity/treasure_union.png"></u-image>
-						</view>		
+						</view>
 						<view class="label_info">
 							Semakin banyak undangan, semakin besar bonusnya — <text class="label_info_text">Tanpa batas!</text>
 						</view>
@@ -80,14 +80,22 @@
 <script lang="ts" setup>
 	import { ref } from 'vue';
 	import { onLoad, onPageScroll } from '@dcloudio/uni-app'
+    import { getInviteRecordApi } from '@/api/point'
 	const scrollTop = ref<number>(0)
-	
+
 	const navigateTo = (url : string) => {
 		uni.navigateTo({
 			url
 		})
 	}
-	
+
+    const fetchData = async ()=>{
+        const data = await getInviteRecordApi()
+        console.log(data)
+    }
+	onLoad(()=>{
+        fetchData()
+    })
 	onPageScroll((event : any) => {
 		scrollTop.value = event.scrollTop
 	})

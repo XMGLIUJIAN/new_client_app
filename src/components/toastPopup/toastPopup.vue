@@ -28,10 +28,10 @@
 	const gifType = (time:number = 2000) => {
 		toastType.value = 'gif'
 		show.value = true
-		setTimeout(() => {
-			toastType.value = 'message'
-			show.value = false
-		}, time)
+		// setTimeout(() => {
+		// 	toastType.value = 'message'
+		// 	show.value = false
+		// }, time)
 	}
 	onMounted(() => {
 		emitter.on('toast', (message : string | any) => {
@@ -41,7 +41,7 @@
 			 gifType(time);
 		})
         emitter.on('toast_close', () => {
-            toastType.value = null
+            toastType.value = "message"
             show.value = false
 		})
 	})

@@ -98,13 +98,13 @@
 						</scroll-view>
 					</view>
 					</view>
-					
+
 				</view>
 
 			</view>
 			<u-picker mode="time" :showTimeTag="false" v-model="calendarShow" :defaultTime="currentDate"
 				:params="params" @confirm="change"></u-picker>
-			<toastPopup></toastPopup>	
+			<toastPopup></toastPopup>
 		</view>
 	</view>
 
@@ -156,7 +156,7 @@
 		try {
 			const page =  currentPage.value
 			const data : any = await myContractLogList(filterFormat({ page_no: page, page_size: pageSize, state: active.value == 1 ? 0 : active.value == 2 ? 1 : null, createDate: createDate.value}))
-	
+
 			if (isRefresh) {
 				list.value = data.lists
 			} else {
@@ -168,8 +168,10 @@
 		} finally {
 			status.value = 'loadmore'
 			isRefreshing.value = false
+
+            emitter.emit('toast_close')
 		}
-	
+
 	}
 	// 下拉刷新
 	const onRefresh = () => {
@@ -177,7 +179,7 @@
 		isRefreshing.value = true
 		loadData(true)
 	}
-	
+
 	// 上拉加载
 	const onScrollToLower = () => {
 		loadData()
@@ -406,15 +408,15 @@
 								margin-bottom: 10rpx;
 								padding: 20rpx 40rpx;
 								border-radius: 12rpx;
-						
+
 								&.sign {
 									background: #FFF8E9;
 								}
-						
+
 								&.release {
 									background: #DEEDDE;
 								}
-						
+
 								.list_title {
 									width: 480rpx;
 									height: 96rpx;
@@ -491,7 +493,7 @@
 										}
 									}
 								}
-						
+
 								.list_image {
 									position: absolute;
 									bottom: 0;

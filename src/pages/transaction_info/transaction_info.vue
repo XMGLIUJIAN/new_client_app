@@ -187,7 +187,7 @@
 		try {
 			const page =  currentPage.value
 			const data : any = await cashFlowLogList(filterFormat({ page_no: page, page_size: pageSize, currencyType: active.value, year: year.value, month: month.value}))
-	
+
 			if (isRefresh) {
 				list.value = data.lists
 			} else {
@@ -199,8 +199,9 @@
 		} finally {
 			status.value = 'loadmore'
 			isRefreshing.value = false
+            emitter.emit("toast_close")
 		}
-	
+
 	}
 	// 下拉刷新
 	const onRefresh = () => {
@@ -208,7 +209,7 @@
 		isRefreshing.value = true
 		loadData(true)
 	}
-	
+
 	// 上拉加载
 	const onScrollToLower = () => {
 		loadData()

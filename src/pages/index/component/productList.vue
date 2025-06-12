@@ -38,14 +38,13 @@
             </view>
         </view>
         <view class="article_product">
-            <Product v-for="(item,index) in selectedData" :key="index" :data="item" @tap="navigateTo(`/pages/product_info/product_info?id=${item.id}`)"/>
+            <Product v-for="(item,index) in selectedData" :key="index" :data="item"/>
         </view>
     </view>
 </template>
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
-import { formatNumber, formatProgress } from '@/utils/util'
 import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
 import Product from '@/pages/index/component/product.vue'
@@ -84,11 +83,7 @@ const change = (e: any) => {
     selectActive.value = e.title
     scrollLeft.value = e.current * 30
 }
-const navigateTo = (url: string) => {
-    uni.navigateTo({
-        url
-    })
-}
+
 onLoad(() => {
     getProductData()
 })

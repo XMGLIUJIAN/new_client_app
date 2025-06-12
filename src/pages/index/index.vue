@@ -21,7 +21,7 @@
 					<w-nav :content="item.content" :styles="item.styles" />
 				</template>
 			</template>
-			<InformasiAset></InformasiAset>
+			<InformasiAset v-show="indexProduct.is_investing==false" :informasiInfo="indexProduct"></InformasiAset>
 			<template v-for="item in state.pages" :key="item.name">
 				<template v-if="item.name == 'middle-banner'">
 					<w-middle-banner :content="item.content" :styles="item.styles" />
@@ -49,6 +49,7 @@
 	import { getIndex } from "@/api/shop"
 	import { customerServiceInfo, mesNotifiList } from "@/api/eventInfo"
 	import { emitter } from "@/utils/emitter"
+    import { getProductDetailApi } from '@/api/product'
 	const userStore = useUserStore()
     const { userInfo, isLogin } = storeToRefs(userStore)
 	const state = reactive<{
@@ -66,6 +67,7 @@
 	const contactShow = ref<Boolean>(false)
 	const contractShow = ref<Boolean>(false)
 	const noticeArr = ref<Array<any>>([])
+    const indexProduct = ref<any>({})
 	const getNotice = async () => {
 		const data = await mesNotifiList({ type:4 })
 		noticeArr.value = data.lists.map((item : any) => item.content)
@@ -99,6 +101,11 @@
 		state.article = data.article
 	}
 
+    const fetchIndexProduct = async ()=>{
+        const data = await getProductDetailApi({productId:"P2025060710000"})
+        indexProduct.value = data
+    }
+
 
 
 	onPageScroll((event : any) => {
@@ -107,6 +114,7 @@
 	onLoad(()=>{
 		getData()
 		getNotice()
+        fetchIndexProduct()
 		userStore.getUser()
 	})
 </script>
