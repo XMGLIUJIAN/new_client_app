@@ -17,7 +17,7 @@
 				</view>
 			</view>
 		</view>
-		
+
 		<view class="recharge_payment mt-[30rpx] mb-[30rpx] px-[30rpx] pt-[20rpx] pb-[30rpx] mx-[30rpx]">
 			<view class="payment_head">Memilih Pembayaran</view>
 			<u-radio-group v-model="formData.pay_way">
@@ -33,7 +33,7 @@
 				</view>
 			</u-radio-group>
 		</view>
-		
+
 		<view class="settings_con mt-[20rpx] mb-[30rpx] px-[30rpx] pt-[30rpx] pb-[30rpx] mx-[30rpx]">
 			<view class="settings_list">
 				<view class="settings_label mt-[20rpx] mb-[20rpx]" :class="{'active':formData.money == e}"
@@ -204,6 +204,7 @@
 			} else {
 				toast(resData.msg)
 			}
+            emitter.emit('toast_close')
 		}, 3000)
 	}
 	onShow(() => {
@@ -264,12 +265,12 @@
 			}
 
 		}
-		
+
 		.recharge_payment {
 			padding: 40rpx 40rpx 20rpx 40rpx;
 			border-radius: 12rpx;
 			background: #FFFFFF;
-		
+
 			.payment_head {
 				margin-bottom: 20rpx;
 				font-family: Arial;
@@ -279,22 +280,22 @@
 				text-align: left;
 				color: #1E4B2E;
 			}
-		
+
 			.u-radio-group {
 				display: block;
 			}
-		
+
 			.payment_list {
 				.payment_Item {
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
-		
+
 					.payment_label {
 						display: flex;
 						justify-content: space-between;
 						align-items: center;
-		
+
 						.payment_name {
 							margin-left: 20rpx;
 							font-family: Arial;
@@ -308,7 +309,7 @@
 				}
 			}
 		}
-		
+
 		.settings_con {
 			border-radius: 12rpx;
 			background: #FFFFFF;
@@ -349,7 +350,7 @@
 			.trade_submit {
 				.trade_Item {
 					margin-bottom: 20rpx;
-									
+
 					.trade_title {
 						font-family: Arial;
 						font-size: 32rpx;
@@ -358,7 +359,7 @@
 						text-align: left;
 						color: #1E4B2E;
 					}
-									
+
 					.trade_input {
 						margin-top: 20rpx;
 						padding: 0 30rpx;

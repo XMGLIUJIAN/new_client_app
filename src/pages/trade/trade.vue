@@ -178,6 +178,7 @@
 				tradeType.value = 'lose'
 				tradePopup.value = true
 			}
+            emitter.emit('toast_close')
 		}, 3000)
 	}
 	onShow(() => {
@@ -279,18 +280,18 @@
 				.u-radio-group {
 					display: block;
 				}
-								
+
 				.payment_list {
 					.payment_Item {
 						display: flex;
 						justify-content: space-between;
 						align-items: center;
-								
+
 						.payment_label {
 							display: flex;
 							justify-content: space-between;
 							align-items: center;
-								
+
 							.payment_name {
 								margin-left: 20rpx;
 								font-family: Arial;

@@ -52,7 +52,7 @@
 	const getInfo = async () => {
 		const resdata = await customerServiceInfo()
 		serviceInfo.value = resdata.data
-		emitter.emit('gifType')
+		// emitter.emit('gifType')
 	}
 	const connect = (link: any) => {
 		// #ifdef APP

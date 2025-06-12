@@ -153,10 +153,11 @@
 	const getInfo = async () => {
 		const resdata = await customerServiceInfo()
 		serviceInfo.value = resdata.data
+        emitter.emit('toast_close')
 	}
 	const contactService = () => {
+        emitter.emit('gifType')
 		getInfo()
-		emitter.emit('gifType')
 		setTimeout(() => {
 			contactShow.value = true
 		}, 3000)
@@ -177,6 +178,7 @@
 		} else {
 			loginShow.value = true
 		}
+        emitter.emit('toast_close')
 	}
 	const confirmPopup = () => {
 		loginShow.value = false
@@ -210,7 +212,9 @@
 			loginHandle(data)
 		} catch (error : any) {
 			toast(error)
-		}
+		}finally {
+            emitter.emit('toast_close')
+        }
 	}
 	const loginHandle = async (data : any) => {
 		if (!data) return
@@ -278,7 +282,10 @@
 				loginHandle(data)
 			} catch (error : any) {
 				toast(error)
-			}
+			}finally{
+
+                emitter.emit('toast_close')
+            }
 			// #endif
 			// #ifdef H5
 			if (isWeixin.value) {

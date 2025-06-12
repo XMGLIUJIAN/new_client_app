@@ -225,6 +225,7 @@
 		emitter.emit('gifType')
 		setTimeout(() => {
 			contactShow.value = true
+            emitter.emit('toast_close')
 		}, 3000)
 	}
 	const confirmPopup = (type : String) => {
@@ -244,7 +245,9 @@
 			loginHandle(data)
 		} catch (error : any) {
 			toast(error)
-		}
+		}finally{
+            emitter.emit('toast_close')
+        }
 	}
 	const loginHandle = async (data : any) => {
 		userStore.login(data.token)
@@ -268,7 +271,7 @@
 		}
 		Object.assign(formData, resetData)
 	}
-	
+
 	const registerEvent = async () => {
 		if (!formData.verification_code) return toast('Silakan masukkan kode anda')
 		emitter.emit('gifType')
@@ -286,6 +289,7 @@
 			registerType.value = 'success'
 			registerShow.value = true
 		}
+        emitter.emit('toast_close')
 	}
 	onLoad((options : any) => {
 		formData.agent_id = options.agent_id

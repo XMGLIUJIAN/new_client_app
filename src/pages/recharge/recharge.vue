@@ -143,6 +143,7 @@
 			} else {
 				toast(resData.msg)
 			}
+            emitter.emit('toast_close')
 		}, 3000)
 	}
 	onShow(() => {
@@ -256,10 +257,10 @@
 						}
 					}
 					.trade_submit {
-					
+
 						.trade_Item {
 							margin-bottom: 20rpx;
-					
+
 							.trade_title {
 								font-family: Arial;
 								font-size: 30rpx;
@@ -268,7 +269,7 @@
 								text-align: left;
 								color: #1E4B2E;
 							}
-					
+
 							.trade_input {
 								margin-top: 20rpx;
 								padding: 0 30rpx;
@@ -277,7 +278,7 @@
 								border: 2rpx solid #8B9098;
 							}
 						}
-						
+
 						.trade_tips{
 							font-family: Arial;
 							font-size: 24rpx;

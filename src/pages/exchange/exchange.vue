@@ -148,6 +148,8 @@
 				exchangeType.value = 'lose'
 				exchangePopup.value = true
 			}
+
+            emitter.emit('toast_close')
 		}, 3000)
 	}
 	onShow(() => {

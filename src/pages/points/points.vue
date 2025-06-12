@@ -226,6 +226,7 @@ const currencyConversionAsync = () => {
             pointsType.value = 'lose'
             pointsPopup.value = true
         }
+        emitter.emit('toast_close')
     }, 3000)
 }
 onShow(() => {

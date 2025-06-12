@@ -125,7 +125,10 @@
 			await userStore.getUser()
 		} catch (e) {
 			toast(e)
-		}
+		}finally {
+
+            emitter.emit('toast_close')
+        }
 	}
 	const { lockFn: bindWechatLock } = useLockFn(bindWechat)
 
@@ -143,8 +146,10 @@
 				await oaAuthBind({ code })
 				await userStore.getUser()
 			} catch (error) {
-				
-			}
+
+			}finally{
+                emitter.emit('toast_close')
+            }
 			//用于清空code
 			router.redirectTo('/pages/user_set/user_set')
 		}
@@ -179,7 +184,7 @@
 					color: #1E4B2E;
 				}
 			}
-			
+
 			.account_num {
 				font-family:  Arial;
 				font-size: 24rpx;
@@ -187,11 +192,11 @@
 				text-align: left;
 				color: #999999;
 			}
-		
+
 			.user_set_card {
 				border-radius: 12rpx;
 				background: #FFFFFF;
-		
+
 				.Not_set {
 					font-family:  Arial;
 					font-size: 28rpx;
@@ -207,11 +212,11 @@
 					color: #1E1E1E;
 				}
 			}
-		
+
 			.item {
 				padding: 30rpx;
 			}
-		
+
 			.btn-border {
 				border-bottom: 2rpx solid #f8f8f8;
 			}

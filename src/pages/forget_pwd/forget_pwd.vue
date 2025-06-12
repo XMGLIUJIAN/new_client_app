@@ -152,6 +152,8 @@
 		emitter.emit('gifType')
 		setTimeout(() => {
 			contactShow.value = true
+
+            emitter.emit('toast_close')
 		}, 3000)
 	}
 	const contactEvent = (link : string) => {
@@ -288,7 +290,7 @@
 								width: 100%;
 							}
 						}
-						
+
 						.sendCode {
 							display: flex;
 							justify-content: center;
@@ -297,7 +299,7 @@
 							height: 72rpx;
 							background: #ECB54B;
 							border-radius: 12rpx;
-						
+
 							.codeTips {
 								font-family:  Arial;
 								font-size: 24rpx;

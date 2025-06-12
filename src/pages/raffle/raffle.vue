@@ -120,6 +120,9 @@
 	}
 	const prizeEvent = () => {
 		emitter.emit('gifType')
+        setTimeout(()=>{
+            emitter.emit('toast_close')
+        },1000)
 		logArrShow.value = true
 	}
 	const getluckUser = async () => {
@@ -175,6 +178,8 @@
 		} else {
 			console.log('获取奖品失败')
 		}
+
+        emitter.emit('toast_close')
 	}
 	// 获取奖品数据
 	const getPrizeList = () => {
