@@ -48,28 +48,26 @@ import { ref, computed } from 'vue'
 import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
 import Product from '@/pages/index/component/product.vue'
-import { getProductApi } from '@/api/product'
-import { onLoad } from '@dcloudio/uni-app'
 const active = ref<number>(0)
 const scrollLeft = ref(0)
 const selectActive = ref('')
-const productData = ref<Array<any>>([])
 const navArr = ref<Array<any>>([
     { current: 0, title: 'Semua' },
     { current: 1, title: 'Thailand' },
     { current: 2, title: "Vietnam" },
     { current: 3, title: "Laos" },
 ])
+const props = defineProps({
+    productData: {
+        type: Object,
+        default: []
+    }
+})
 
-const getProductData = async () => {
-    const data = await getProductApi()
-    productData.value = data.lists
-    console.log(data.lists)
 
-}
 
 const selectedData = computed(() => {
-    const data = productData.value.filter(
+    const data = props.productData.filter(
         (item) =>
             (selectActive.value === '' ||
                 selectActive.value === 'Semua' ||
@@ -86,9 +84,6 @@ const change = (e: any) => {
     scrollLeft.value = e.current * 30
 }
 
-onLoad(() => {
-    getProductData()
-})
 </script>
 
 <style lang="scss" scoped>

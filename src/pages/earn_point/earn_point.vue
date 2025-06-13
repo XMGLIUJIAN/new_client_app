@@ -138,20 +138,6 @@
                     src="@/static/images/card/point_investasi.png"
                 ></u-image>
             </view>
-            <view class="point_investasi mb-[30rpx] mx-[30rpx]">
-                <u-image
-                    width="690"
-                    height="260"
-                    :src="pageData.double_income_img_url"
-                ></u-image>
-            </view>
-            <view class="point_investasi mb-[30rpx] mx-[30rpx]">
-                <u-image
-                    width="690"
-                    height="260"
-                    :src="pageData.guide_picture_img_url"
-                ></u-image>
-            </view>
         </view>
     </view>
     <toastPopup></toastPopup>
@@ -170,9 +156,10 @@ const eyeShow = ref<boolean>(false)
 const pageData = ref<any>({
     income_level:0,
     yesterday_income:0,
-    rate:0,
+    rate:0.0005,
     total_income:0,
-    estimated_revenue:0
+    estimated_revenue:0,
+    expiration_time:'-'
 })
 const userStore = useUserStore()
 const { userInfo } = storeToRefs(userStore)

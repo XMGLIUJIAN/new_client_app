@@ -58,12 +58,12 @@
 			<view class="article_box">
 				<view class="article_label">
 					<view class="label_title">Pemasukan</view>
-					<view class="label_num">{{user.pointVaultIncome ? formatNumber(user.pointVaultIncome) : 0}}</view>
+					<view class="label_num">Rp {{user.pointVaultIncome ? formatNumber(user.pointVaultIncome) : 0}}</view>
 				</view>
 				<view class="article_line"></view>
 				<view class="article_label">
 					<view class="label_title">Tarik Dana</view>
-					<view class="label_num">{{user.totalPointVaultIncome ? formatNumber(user.totalPointVaultIncome) : 0}}</view>
+					<view class="label_num">Rp {{user.totalPointVaultIncome ? formatNumber(user.totalPointVaultIncome) : 0}}</view>
 				</view>
 			</view>
 			<view class="card_line"></view>
@@ -246,7 +246,7 @@
 						.card_label_text {
 							font-family: Arial;
 							font-weight: 400;
-							font-size: 16rpx;
+							font-size: 20rpx;
 							line-height: 40rpx;
 							text-align: center;
 							color: #FFFFFF;

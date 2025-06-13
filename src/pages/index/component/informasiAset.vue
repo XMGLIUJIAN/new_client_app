@@ -49,7 +49,7 @@
             </view>
             <view
                 class="article_btn mt-[20rpx]"
-                @tap="navigateTo(`/pages/product_info/product_info?product_id=`+props.informasiInfo.product_id)"
+                @tap="navigateTo(`/pages/product_info/product_info?product_id=${props.informasiInfo.product_id}&color=${props.informasiInfo.color}`)"
                 >Beli Sekarang</view
             >
         </view>

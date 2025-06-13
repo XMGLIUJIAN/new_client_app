@@ -1,26 +1,28 @@
 <template>
     <view class="container">
         <view class="imageGroup">
-            <u-image
-                v-if="productData.color == 1"
-                width="750"
-                height="1227"
-                src="@/static/images/product/product_shortGroup.png"
-            ></u-image>
-            <u-image
-                v-if="productData.color == 2"
-                width="750"
-                height="1227"
-                src="@/static/images/product/product_midGroup.png"
-            ></u-image>
-            <u-image
-                v-if="productData.color == 3"
-                width="750"
-                height="1227"
-                src="@/static/images/product/product_longGroup.png"
-            ></u-image>
-        </view>
-        <view class="product_info">
+                <u-image
+                    v-if="color == 1"
+                    width="750"
+                    height="1227"
+                    src="@/static/images/product/product_shortGroup.png"
+                ></u-image>
+                <u-image
+                    v-if="color == 2"
+                    width="750"
+                    height="1227"
+                    src="@/static/images/product/product_midGroup.png"
+                ></u-image>
+                <u-image
+                    v-if="color == 3"
+                    width="750"
+                    height="1227"
+                    src="@/static/images/product/product_longGroup.png"
+                ></u-image>
+    </view>
+
+        <view v-if="loading" class="text-center mt-[100rpx] text-white text-lg">loading...</view>
+        <view v-else class="product_info">
             <u-sticky h5-nav-height="0" bg-color="transparent">
                 <u-navbar
                     :is-back="true"
@@ -60,25 +62,6 @@
             </u-sticky>
             <view class="product_card mt-[225rpx] mx-[30rpx]">
                 <view class="product_card_image mb-[20rpx]">
-                    <!--                    <u-image-->
-                    <!--                        v-if="productData.color == 1"-->
-                    <!--                        width="650"-->
-                    <!--                        height="325"-->
-                    <!--                        src="@/static/images/product/product_short.png"-->
-                    <!--                    ></u-image>-->
-                    <!--                    <u-image-->
-                    <!--                        v-if="productData.color == 2"-->
-                    <!--                        width="650"-->
-                    <!--                        height="325"-->
-                    <!--                        src="@/static/images/product/product_mid.png"-->
-                    <!--                    ></u-image>-->
-                    <!--                    <u-image-->
-                    <!--                        v-if="productData.color == 3"-->
-                    <!--                        width="650"-->
-                    <!--                        height="325"-->
-                    <!--                        src="@/static/images/product/product_long.png"-->
-                    <!--                    ></u-image>-->
-
                     <u-image
                         v-if="productData.product_img_url && productData.product_img_url.length > 0"
                         width="650"
@@ -96,8 +79,8 @@
                     </view>
                     <view class="card_info_box">
                         <view class="card_box_head" :class="switchCard(productData.color)">{{
-                            productData.product_name
-                        }}</view>
+                                productData.product_name
+                            }}</view>
                         <view class="card_box_line">
                             <u-image
                                 v-if="productData.color == 1"
@@ -121,13 +104,13 @@
                         <view class="card_box_info mt-[40rpx] mb-[40rpx]">
                             <view class="card_box_label">
                                 <view class="label_num" :class="switchCard(productData.color)"
-                                    >{{ (productData.show_interest_rate * 100).toFixed(2) }}%</view
+                                >{{ (productData.show_interest_rate * 100).toFixed(2) }}%</view
                                 >
                                 <view class="label_text">Pertumbuhan Bulanan</view>
                             </view>
                             <view class="card_box_label">
                                 <view class="label_num" :class="switchCard(productData.color)"
-                                    >{{ productData.siklus_investasi }} Hari</view
+                                >{{ productData.siklus_investasi }} Hari</view
                                 >
                                 <view class="label_text">Tanggal Investasi</view>
                             </view>
@@ -135,7 +118,7 @@
                         <view
                             class="card_info_title mb-[20rpx]"
                             :class="switchCard(productData.color)"
-                            >Jumlah Investasi</view
+                        >Jumlah Investasi</view
                         >
                         <view class="card_info_investasi" v-if="productData.color == 1">
                             <u-image
@@ -144,8 +127,8 @@
                                 src="@/static/images/product/investasiGroup.png"
                             ></u-image>
                             <view class="card_investasi_num">{{
-                                formatNumber(productData.investment_points)
-                            }}</view>
+                                    formatNumber(productData.investment_points)
+                                }}</view>
                         </view>
                         <view class="product_info_profit" v-if="productData.color != 1">
                             <view class="card_info_profit" :class="switchCard(productData.color)">
@@ -159,7 +142,7 @@
                                     />
                                 </view>
                                 <view class="profit_info_btn" :class="switchCard(productData.color)"
-                                    >Estimasi Profit</view
+                                >Estimasi Profit</view
                                 >
                             </view>
                         </view>
@@ -175,7 +158,7 @@
                                 class="product_card_btn mt-[20rpx]"
                                 @tap="InvestHandle"
                                 :class="switchCard(productData.color)"
-                                >Booking Sekarang</view
+                            >Booking Sekarang</view
                             >
                         </view>
                     </view>
@@ -221,18 +204,18 @@
                             src="@/static/images/product/product_icon_long.png"
                         ></u-image>
                         <view class="head_title" :class="switchCard(productData.color)"
-                            >Jenis Kontrak</view
+                        >Jenis Kontrak</view
                         >
                     </view>
                     <view class="card_info_line"></view>
                     <view class="card_info_foot" v-if="productData.color == 1"
-                        >Harian Bunga,Jatuh Tempo Pokok</view
+                    >Harian Bunga,Jatuh Tempo Pokok</view
                     >
                     <view class="card_info_foot" v-if="productData.color == 2"
-                        >Harian Bunga,Jatuh Tempo Pokok</view
+                    >Harian Bunga,Jatuh Tempo Pokok</view
                     >
                     <view class="card_info_foot" v-if="productData.color == 3"
-                        >Bunga & Pokok Saat Jatuh Tempo</view
+                    >Bunga & Pokok Saat Jatuh Tempo</view
                     >
                 </view>
             </view>
@@ -244,7 +227,7 @@
                         src="@/static/images/product/product_advantage.png"
                     ></u-image>
                     <view class="head_title" :class="switchCard(productData.color)"
-                        >Jumlah Keuntungan</view
+                    >Jumlah Keuntungan</view
                     >
                 </view>
                 <view class="card_info_line"></view>
@@ -252,14 +235,14 @@
                     <view class="foot_label">
                         <view class="label_title">Tunai Harian</view>
                         <view class="label_text"
-                            >Rp {{ formatNumber(productData.day_profit) }}</view
+                        >Rp {{ formatNumber(productData.day_profit) }}</view
                         >
                     </view>
                     <view class="foot_line"></view>
                     <view class="foot_label">
                         <view class="label_title">Kembali Pokok</view>
                         <view class="label_num"
-                            >Rp {{ formatNumber(productData.total_profit) }}</view
+                        >Rp {{ formatNumber(productData.total_profit) }}</view
                         >
                     </view>
                 </view>
@@ -267,14 +250,14 @@
                     <view class="foot_label">
                         <view class="label_title">Tunai Harian</view>
                         <view class="label_text"
-                            >Rp {{ formatNumber(income) }}</view
+                        >Rp {{ formatNumber(income) }}</view
                         >
                     </view>
                     <view class="foot_line"></view>
                     <view class="foot_label">
                         <view class="label_title">Kembali Pokok</view>
                         <view class="label_num"
-                            >Rp {{ formatNumber(total) }}</view
+                        >Rp {{ formatNumber(total) }}</view
                         >
                     </view>
                 </view>
@@ -282,7 +265,7 @@
                     <view class="foot_label">
                         <view class="label_title">Poin Investasi</view>
                         <view class="label_text"
-                            >Rp {{ formatNumber(income) }}</view
+                        >Rp {{ formatNumber(income) }}</view
                         >
                     </view>
                     <view class="foot_temp">
@@ -295,7 +278,7 @@
                     <view class="foot_label">
                         <view class="label_title">Keuntungan Tunai</view>
                         <view class="label_num"
-                            >Rp {{ formatNumber(total) }}</view
+                        >Rp {{ formatNumber(total) }}</view
                         >
                     </view>
                 </view>
@@ -318,35 +301,11 @@
                 <view @tap="doShow = true">
                     <u-image width="678" height="83" src="@/static/images/page/btn.png"></u-image>
                     <view class="btn_text mt-[33rpx] mx-[60rpx]"
-                        >Klik Untuk Memuat Lebih Banyak Informasi &nbsp;&nbsp; →</view
+                    >Klik Untuk Memuat Lebih Banyak Informasi &nbsp;&nbsp; →</view
                     >
                     <!--                    <u-icon name="arrow-down" color="#1E1E1E" size="28"></u-icon>-->
                 </view>
             </view>
-            <!--            <view class="product_foot">-->
-            <!--                <u-image-->
-            <!--                    v-if="productData.color == 1"-->
-            <!--                    @tap="contactService"-->
-            <!--                    width="80"-->
-            <!--                    height="80"-->
-            <!--                    src="@/static/images/product/product_frame_short.png"-->
-            <!--                ></u-image>-->
-            <!--                <u-image-->
-            <!--                    v-if="productData.color == 2"-->
-            <!--                    @tap="contactService"-->
-            <!--                    width="80"-->
-            <!--                    height="80"-->
-            <!--                    src="@/static/images/product/product_frame_mid.png"-->
-            <!--                ></u-image>-->
-            <!--                <u-image-->
-            <!--                    v-if="productData.color == 3"-->
-            <!--                    @tap="contactService"-->
-            <!--                    width="80"-->
-            <!--                    height="80"-->
-            <!--                    src="@/static/images/product/product_frame_long.png"-->
-            <!--                ></u-image>-->
-            <!--                <view class="product_foot_btn" :class="switchCard(productData.color)">Tandatangan</view>-->
-            <!--            </view>-->
             <ContractPopup v-if="contractShow" @cancel="contractShow = false"></ContractPopup>
             <SuccessPopup
                 v-if="successShow"
@@ -396,6 +355,8 @@ const investPoint = ref(0)
 const doShow = ref(false)
 const income = ref(0)
 const total = ref(0)
+const color = ref(0)
+const loading = ref(true)
 const navigateTo = (url: string) => {
     uni.navigateTo({
         url: url
@@ -412,6 +373,7 @@ watch(exchange_amount, (newVal, oldVal) => {
 
 const fetchData = async (product_id: string) => {
     productData.value = await getProductDetailApi({ productId: product_id })
+    loading.value = false
 }
 
 
@@ -486,6 +448,7 @@ const switchCard = (type: number | string) => {
     return classColor
 }
 onLoad((option: any) => {
+    color.value = option.color
     fetchData(option.product_id)
     window.scrollTo({
         top: 0,

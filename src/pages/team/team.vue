@@ -119,11 +119,11 @@
 					</view>
 					<view class="teamdata_input">
 						<u-image class="search" width="30" height="30" src="@/static/images/team/search.png" alt="" />
-						<u-input type="text" v-model="mobile" @confirm="search" :border="false"
+						<u-input type="text" v-model="mobile" @confirm="doSearch" :border="false"
 							placeholder-style="color: #8B9098;font-size:20rpx;" placeholder="Masukan nomor HP" />
 					</view>
 					<view class="team_chart mt-[20rpx]">
-						<view class="chart_head">Distribusi Tim</view>
+						<view class="chart_head mb-[20rpx]">Distribusi Tim</view>
 						<Chart ref="teamRef"></Chart>
 					</view>
 				</view>
@@ -205,7 +205,7 @@
 	const contactService = () => {
 		router.navigateTo('/pages/customer_service/customer_service')
 	}
-	const search = () => {
+	const doSearch = () => {
 		getUserInfo(mobile.value)
 	}
 	const searchCancel = () => {

@@ -9,6 +9,7 @@
 	import { ref } from 'vue'
 	const chartRef = ref(null)
 	const option = {
+        title: "",
 		color: ['#F6DB90'],
 		tooltip: {
 			trigger: 'axis',
@@ -17,6 +18,7 @@
 			}
 		},
 		grid: {
+            top:0,
 			left: '3%',
 			right: '4%',
 			bottom: '3%',
