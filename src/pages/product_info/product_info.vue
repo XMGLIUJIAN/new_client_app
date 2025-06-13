@@ -252,14 +252,14 @@
                     <view class="foot_label">
                         <view class="label_title">Tunai Harian</view>
                         <view class="label_text"
-                            >Rp {{ formatNumber(productData.yesterday_income) }}</view
+                            >Rp {{ formatNumber(productData.day_profit) }}</view
                         >
                     </view>
                     <view class="foot_line"></view>
                     <view class="foot_label">
                         <view class="label_title">Kembali Pokok</view>
                         <view class="label_num"
-                            >Rp {{ formatNumber(productData.total_income) }}</view
+                            >Rp {{ formatNumber(productData.total_profit) }}</view
                         >
                     </view>
                 </view>
@@ -267,14 +267,14 @@
                     <view class="foot_label">
                         <view class="label_title">Tunai Harian</view>
                         <view class="label_text"
-                            >Rp {{ formatNumber(productData.yesterday_income) }}</view
+                            >Rp {{ formatNumber(income) }}</view
                         >
                     </view>
                     <view class="foot_line"></view>
                     <view class="foot_label">
                         <view class="label_title">Kembali Pokok</view>
                         <view class="label_num"
-                            >Rp {{ formatNumber(productData.total_income) }}</view
+                            >Rp {{ formatNumber(total) }}</view
                         >
                     </view>
                 </view>
@@ -282,7 +282,7 @@
                     <view class="foot_label">
                         <view class="label_title">Poin Investasi</view>
                         <view class="label_text"
-                            >Rp {{ formatNumber(productData.yesterday_income) }}</view
+                            >Rp {{ formatNumber(income) }}</view
                         >
                     </view>
                     <view class="foot_temp">
@@ -295,7 +295,7 @@
                     <view class="foot_label">
                         <view class="label_title">Keuntungan Tunai</view>
                         <view class="label_num"
-                            >Rp {{ formatNumber(productData.total_income) }}</view
+                            >Rp {{ formatNumber(total) }}</view
                         >
                     </view>
                 </view>
@@ -394,6 +394,8 @@ const contactShow = ref(false)
 const contractName = ref('')
 const investPoint = ref(0)
 const doShow = ref(false)
+const income = ref(0)
+const total = ref(0)
 const navigateTo = (url: string) => {
     uni.navigateTo({
         url: url
@@ -401,21 +403,18 @@ const navigateTo = (url: string) => {
 }
 
 watch(exchange_amount, (newVal, oldVal) => {
-    console.log(`输入从 "${oldVal}" 变成了 "${newVal}"`)
-
-    emitter.emit('gifType')
-    calculator(parseInt(newVal))
+    // console.log(`输入从 "${oldVal}" 变成了 "${newVal}"`)
+    const incomeVal = (parseInt(newVal)/productData.value.exchange_rate*productData.value.day_cash_rate)
+    const totalVal = (incomeVal*productData.value.siklus_investasi)+parseInt(newVal)
+    income.value = incomeVal.toFixed(0)
+    total.value = totalVal.toFixed(0)
 })
 
 const fetchData = async (product_id: string) => {
     productData.value = await getProductDetailApi({ productId: product_id })
 }
 
-const calculator = async (amount:number)=>{
-    const data = await interestCalculator({ productId:productData.value.product_id,amount })
-    console.log(data)
-    emitter.emit('toast_close')
-}
+
 
 const contactlink = (link: string) => {
     contactShow.value = false
