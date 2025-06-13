@@ -43,7 +43,7 @@ const requestHooks: RequestHooks = {
 				isCustom ?  msg && show : msg && show && emitter.emit('toast',msg)
                 return isCustom ? response.data : data;
             case RequestCodeEnum.FAILED:
-                return isCustom ? response.data : emitter.emit('toast',msg);
+                return isCustom ? response.data : emitter.emit('toast',msg??"server fail");
             case RequestCodeEnum.TOKEN_INVALID:
                 if (isAuth && !getToken()) {
                     uni.navigateTo({

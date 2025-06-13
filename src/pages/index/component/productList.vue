@@ -24,7 +24,7 @@
                         <view class="tabs_content">
                             <view class="tabs_label" v-for="(e, index) in navArr" :key="index">
                                 <view
-                                    class="tabs_name"
+                                    class="tabs_name pt-[10rpx]"
                                     :style="{ color: e.current == active ? '#1E4B2E' : '#666666' }"
                                     @tap="change(e)"
                                 >
@@ -56,16 +56,16 @@ const selectActive = ref('')
 const productData = ref<Array<any>>([])
 const navArr = ref<Array<any>>([
     { current: 0, title: 'Semua' },
-    { current: 1, title: 'Vietnam' },
-    { current: 2, title: 'Laos' },
-    { current: 3, title: 'Thailand' },
-    { current: 4, title: 'Myanmar' }
+    { current: 1, title: 'Thailand' },
+    { current: 2, title: "Vietnam" },
+    { current: 3, title: "Laos" },
 ])
 
 const getProductData = async () => {
     const data = await getProductApi()
     productData.value = data.lists
     console.log(data.lists)
+
 }
 
 const selectedData = computed(() => {

@@ -79,7 +79,12 @@
                     <!--                        src="@/static/images/product/product_long.png"-->
                     <!--                    ></u-image>-->
 
-                    <u-image width="650" height="325" :src="topPic"></u-image>
+                    <u-image
+                        v-if="productData.product_img_url && productData.product_img_url.length > 0"
+                        width="650"
+                        height="325"
+                        :src="productData.product_img_url[0]"
+                    ></u-image>
                 </view>
                 <view class="product_card_info" :class="switchCard(productData.color)">
                     <view class="card_info_head">
@@ -301,58 +306,12 @@
                 </view>
             </view>
             <view v-if="doShow" class="doShow">
-                <view class="product_cokelat mb-[20rpx] mx-[30rpx]" v-if="productData.color == 1">
+                <view v-if="productData.product_area_img_url" v-for="(pic,index) in productData.product_area_img_url" class="product_cokelat mb-[20rpx] mx-[30rpx]">
                     <u-image
-                        width="690"
-                        height="825"
-                        src="@/static/images/product/product_address01.png"
-                    ></u-image>
-                </view>
-                <view class="product_cokelat mb-[20rpx] mx-[30rpx]" v-if="productData.color == 2">
-                    <u-image
-                        width="690"
-                        height="825"
-                        src="@/static/images/product/product_address02.png"
-                    ></u-image>
-                </view>
-                <view
-                    class="product_cokelat mb-[20rpx] mx-[30rpx]"
-                    v-if="productData.color == 3"
-                >
-                    <u-image
-                        width="690"
-                        height="825"
-                        src="@/static/images/product/product_address03.png"
-                    ></u-image>
-                </view>
-                <view
-                    class="product_advantage mb-[150rpx] mx-[30rpx]"
-                    v-if="productData.color == 1"
-                >
-                    <u-image
-                        width="690"
-                        height="1110"
-                        src="@/static/images/product/product_advantage_short.png"
-                    ></u-image>
-                </view>
-                <view
-                    class="product_advantage mb-[150rpx] mx-[30rpx]"
-                    v-if="productData.color == 2"
-                >
-                    <u-image
-                        width="690"
-                        height="1110"
-                        src="@/static/images/product/product_advantage_mid.png"
-                    ></u-image>
-                </view>
-                <view
-                    class="product_advantage mb-[150rpx] mx-[30rpx]"
-                    v-if="productData.color == 3"
-                >
-                    <u-image
-                        width="690"
-                        height="1110"
-                        src="@/static/images/product/product_advantage_long.png"
+                        class="py-[20]"
+                        width="100%"
+                        :height="index==0?825:1110"
+                        :src="pic"
                     ></u-image>
                 </view>
             </view>
@@ -421,7 +380,7 @@ import { count } from 'echarts/types/src/component/dataZoom/history'
 const scrollTop = ref<number>(0)
 const contractShow = ref<boolean>(false)
 const successShow = ref<boolean>(false)
-const loseShow = ref<boolean>(true)
+const loseShow = ref<boolean>(false)
 const show = ref<boolean>(false)
 const exchange_amount = ref<any>(null)
 const serviceInfo = ref<any>({})

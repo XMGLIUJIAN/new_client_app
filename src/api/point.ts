@@ -1,8 +1,7 @@
 import request from '@/utils/request'
 
-
 export function getPointVaultIncomeRateApi() {
-    return request.get({ url: '/pointVaultIncomeRate/detail' })
+    return request.get({ url: '/pointVaultIncomeRate/detail'},{ isCustom: true})
 }
 
 //邀请记录

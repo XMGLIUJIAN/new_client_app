@@ -38,7 +38,10 @@
                         height="34"
                         src="@/static/images/card/canSigned.png"
                     ></u-image>
-                    <view class="tips_title">Syarat Terbatas</view>
+<!--                    "状态 0:可购买-可购买 1：条件未满足-灰色 2：合约生效中，等待合约到期后，再次购买-黄色 -->
+                    <view v-if="props.data.status==0" class="tips_title bg0">Syarat Terbatas</view>
+                    <view v-else-if="props.data.status==1" class="tips_title bg1">Syarat Terbatas</view>
+                    <view v-else-if="props.data.status==2" class="tips_title bg2">Syarat Terbatas</view>
                 </view>
             </view>
             <view class="product_line"></view>
@@ -75,12 +78,12 @@
             <view class="product_foot">
                 <view class="foot_box">
                     <view class="foot_label">
-                        <view class="label_num">+{{ props.data.show_interest_rate * 100}}%</view>
+                        <view class="label_num">+{{ (props.data.show_interest_rate * 100).toFixed(2)}}%</view>
                         <view class="label_title">Pertumbuhan Bersih</view>
                     </view>
                     <view class="foot_label">
                         <view class="label_num">
-                            <view>Rp {{ formatNumber(props.data.investment_points) }}</view>
+                            <view>{{ props.data.color>1?"Tanpa Batas":"Rp "+formatNumber(props.data.investment_amount) }}</view>
                             <u-image
                                 v-if="props.data.color > 1"
                                 width="30"
@@ -183,6 +186,15 @@ const navigateTo = (url: string) => {
                     font-size: 16rpx;
                     line-height: 40rpx;
                     color: #ffffff;
+                    .bg0{
+                        background: #67BA8C;
+                    }
+                    .bg1{
+                        background: #999999;
+                    }
+                    .bg2{
+                        background: #ECB54B;
+                    }
                 }
             }
         }

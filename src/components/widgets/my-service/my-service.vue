@@ -75,7 +75,7 @@ const switchAccount = () => {
 	switchPopup.value = true
 }
 // 切换账号
-	
+
 const logoutFun = async () => {
 	await logout()
 }

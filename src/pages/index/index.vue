@@ -105,9 +105,6 @@
         const data = await getProductDetailApi({productId:"P2025060710000"})
         indexProduct.value = data
     }
-
-
-
 	onPageScroll((event : any) => {
 		scrollTop.value = event.scrollTop
 	})

@@ -47,7 +47,7 @@
 							</text>
 						</view>
 					</view>
-					<view class="recover_row mt-[40rpx]">
+					<view class="recover_row mt-[20rpx]">
 						<u-image width="40" height="40" src="@/static/images/icon/password.png" alt="" />
 						<view class="recover_input">
 							<u-input type="password" v-model="formData.password" :border="false"

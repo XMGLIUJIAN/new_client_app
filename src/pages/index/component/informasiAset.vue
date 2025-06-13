@@ -28,11 +28,11 @@
             </view>
             <view class="article_row">
                 <view class="article_row_label">
-                    <view class="label_text">+{{props.informasiInfo.show_interest_rate*100}}%</view>
+                    <view class="label_text">+{{(props.informasiInfo.show_interest_rate*100).toFixed(2)}}%</view>
                     <view class="label_title">Pertumbuhan Bersih</view>
                 </view>
                 <view class="article_row_label">
-                    <view class="label_text">Rp {{ formatNumber(props.informasiInfo.investment_points) }}</view>
+                    <view class="label_text">{{ props.informasiInfo.color>1?"Tanpa Batas":"Rp "+formatNumber(props.informasiInfo.investment_amount) }}</view>
                     <view class="label_title">Nilai Kontrak</view>
                 </view>
                 <view class="article_row_date">
@@ -44,7 +44,7 @@
                 <u-image
                     width="630"
                     height="238"
-                    src="@/static/images/informasiAset/swiperGroup.png"
+                    :src="topPic"
                 ></u-image>
             </view>
             <view
@@ -57,7 +57,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { formatNumber } from '@/utils/util'
 import { onLoad } from '@dcloudio/uni-app'
 const incomeInfo = ref<any>({})
@@ -67,10 +67,12 @@ const props = defineProps({
         default: () => {}
     }
 })
-// onLoad(()=>{
-//
-//     console.log(props.informasiInfo)
-// })
+
+const topPic = computed(()=>{
+    if(Array.isArray(props.informasiInfo.product_img_url) && props.informasiInfo.product_img_url.length>0){
+        return props.informasiInfo.product_img_url[0]
+    }
+})
 watch(
     () => props.informasiInfo,
     (value) => {

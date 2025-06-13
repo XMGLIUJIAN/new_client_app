@@ -154,6 +154,7 @@
             </view>
         </view>
     </view>
+    <toastPopup></toastPopup>
 </template>
 
 <script lang="ts" setup>
@@ -161,11 +162,18 @@ import { ref } from 'vue'
 import { formatNumber } from '@/utils/util'
 import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
-import { onLoad, onPageScroll } from '@dcloudio/uni-app'
+import { onLoad, onPageScroll, onShow } from '@dcloudio/uni-app'
 import { getPointVaultIncomeRateApi } from '@/api/point'
+import { emitter } from '@/utils/emitter'
 const scrollTop = ref<number>(0)
 const eyeShow = ref<boolean>(false)
-const pageData = ref<any>({})
+const pageData = ref<any>({
+    income_level:0,
+    yesterday_income:0,
+    rate:0,
+    total_income:0,
+    estimated_revenue:0
+})
 const userStore = useUserStore()
 const { userInfo } = storeToRefs(userStore)
 const navigateTo = (url: string) => {
@@ -177,14 +185,23 @@ const eyeChange = () => {
     eyeShow.value = !eyeShow.value
 }
 
-const fetchData = async () => {
-    const data = await getPointVaultIncomeRateApi()
-    console.log(data)
-    pageData.value = data
+const fetchEarnPointData = async () => {
+    emitter.emit('gifType')
+    try {
+        const res = await getPointVaultIncomeRateApi()
+        if (res.code==1){
+            pageData.value = res.data
+        }
+    } catch (err){
+        console.log("请求失败")
+        console.log(err)
+    }finally {
+        emitter.emit("toast_close")
+    }
 }
 
-onLoad(() => {
-    fetchData()
+onShow(() => {
+    fetchEarnPointData()
 })
 
 onPageScroll((event: any) => {
