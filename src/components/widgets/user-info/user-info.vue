@@ -23,14 +23,14 @@
 							<u-image v-else width="30" height="30" src="@/static/images/user/icon_lock.png" alt="" />
 						</view>
 					</view>
-					<view class="card_head_phone">ID:{{user.account}}</view>
+					<view class="card_head_phone">ID:{{props.user.account}}</view>
 				</view>
 				<view class="user_card_info">
 					<view class="user_card_poin">
-                        <view>Poin {{!eyeShow ? formatNumber(user.user_integral) || 0 : '***' }}</view>
+                        <view>Poin {{!eyeShow ? formatNumber(props.user.user_integral) || 0 : '***' }}</view>
                         <u-image @tap="navigateAuth('/pages/earn_point/earn_point')" width="30" height="30" src="@/static/images/user/to.png" alt="" />
                     </view>
-					<view class="user_card_saldo">Saldo Pengguna Rp {{!eyeShow ? formatNumber(user.user_money) || 0 : '***' }}</view>
+					<view class="user_card_saldo">Saldo Pengguna Rp {{!eyeShow ? formatNumber(props.user.user_money) || 0 : '***' }}</view>
 				</view>
 				<view class="user_card_line"></view>
 				<view class="user_card_box">
@@ -58,12 +58,12 @@
 			<view class="article_box">
 				<view class="article_label">
 					<view class="label_title">Pemasukan</view>
-					<view class="label_num">Rp {{!eyeShow ? formatNumber(user.pointVaultIncome) || 0 : '***' }}</view>
+					<view class="label_num">Rp {{!eyeShow ? formatNumber(props.user.pointVaultIncome) || 0 : '***' }}</view>
 				</view>
 				<view class="article_line"></view>
 				<view class="article_label">
 					<view class="label_title">Tarik Dana</view>
-					<view class="label_num" style="color: #0f0f0f">Rp {{!eyeShow ? formatNumber(user.totalPointVaultIncome) || 0 : '***' }}</view>
+					<view class="label_num" style="color: #0f0f0f">Rp {{!eyeShow ? formatNumber(props.user.totalPointVaultIncome) || 0 : '***' }}</view>
 				</view>
 			</view>
 			<view class="card_line"></view>
@@ -72,7 +72,8 @@
 					<view class="foot_title">Bantuan Tim (Belum Diambil)</view>
 					<u-image @tap="show = true" width="24" height="24" src="@/static/images/user/help.png" alt="" />
 				</view>
-				<view class="foot_num">Rp {{!eyeShow ? formatNumber(user.teamReserveAmount) || 0 : '***' }}</view>
+<!--                team_reserve_amount-->
+				<view class="foot_num">Rp {{!eyeShow ? formatNumber(props.user.teamReserveAmount) || 0 : '***' }}</view>
 			</view>
 		</view>
 		<BonusPopup v-if="show" @cancel="show = false"></BonusPopup>
@@ -114,6 +115,8 @@
 			default: "#000000"
 		}
 	})
+    // console.log(props.props.user.team_reserve_amount)
+
 	const show = ref<boolean>(false)
 	const badge = ref<Boolean>(false)
 	const eyeShow = ref<Boolean>(true)

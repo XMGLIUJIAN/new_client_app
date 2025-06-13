@@ -74,7 +74,7 @@ const selectedData = computed(() => {
                 item.country === selectActive.value) &&
             item.product_id !== "P2025060710000"
     )
-    return data.sort((a, b) => a.id - b.id);
+    return data.sort((a, b) => a.sort - b.sort);
 })
 const userStore = useUserStore()
 const { userInfo, isLogin } = storeToRefs(userStore)
