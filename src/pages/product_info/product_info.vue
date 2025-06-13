@@ -39,7 +39,7 @@
 							Berembrio No.8</view>
 						<view class="card_box_line">
 							<u-image v-if="type == 1" width="395" height="19"
-								src="@/static/images/product/rectangle_mid.png"></u-image>
+								src="@/static/images/product/rectangle_short.png"></u-image>
 							<u-image v-if="type == 2" width="395" height="19"
 								src="@/static/images/product/rectangle_mid.png"></u-image>
 							<u-image v-if="type == 3" width="395" height="19"
