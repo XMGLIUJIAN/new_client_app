@@ -46,7 +46,7 @@
             </view>
             <view class="product_line"></view>
             <view class="product_info" @tap="navigateTo(`/pages/product_info/product_info?product_id=${props.data.product_id}`)">
-                <view class="product_info_title">{{ props.data.about_product }}</view>
+                <view class="product_info_title">{{ props.data.product_name }}</view>
                 <view class="product_info_level">
                     <view class="level">Risiko {{ props.data.risk_level }}</view>
                     <view class="level_tips long">{{ props.data.product_tags }}</view>

@@ -121,7 +121,7 @@
                         <view class="card_box_info mt-[40rpx] mb-[40rpx]">
                             <view class="card_box_label">
                                 <view class="label_num" :class="switchCard(productData.color)"
-                                    >{{ productData.show_interest_rate * 100 }}%</view
+                                    >{{ (productData.show_interest_rate * 100).toFixed(2) }}%</view
                                 >
                                 <view class="label_text">Pertumbuhan Bulanan</view>
                             </view>
@@ -231,9 +231,7 @@
                     <view class="card_info_foot" v-if="productData.color == 2"
                         >Harian Bunga,Jatuh Tempo Pokok</view
                     >
-                    <view
-                        class="card_info_foot"
-                        v-if="productData.color == 3"
+                    <view class="card_info_foot" v-if="productData.color == 3"
                         >Bunga & Pokok Saat Jatuh Tempo</view
                     >
                 </view>
@@ -280,10 +278,7 @@
                         >
                     </view>
                 </view>
-                <view
-                    class="card_box_foot"
-                    v-if="productData.color == 3"
-                >
+                <view class="card_box_foot" v-if="productData.color == 3">
                     <view class="foot_label">
                         <view class="label_title">Poin Investasi</view>
                         <view class="label_text"
@@ -306,11 +301,15 @@
                 </view>
             </view>
             <view v-if="doShow" class="doShow">
-                <view v-if="productData.product_area_img_url" v-for="(pic,index) in productData.product_area_img_url" class="product_cokelat mb-[20rpx] mx-[30rpx]">
+                <view
+                    v-if="productData.product_area_img_url"
+                    v-for="(pic, index) in productData.product_area_img_url"
+                    class="product_cokelat mb-[20rpx] mx-[30rpx]"
+                >
                     <u-image
                         class="py-[20]"
                         width="100%"
-                        :height="index==0?825:1110"
+                        :height="index == 0 ? 825 : 1110"
                         :src="pic"
                     ></u-image>
                 </view>
@@ -324,32 +323,38 @@
                     <!--                    <u-icon name="arrow-down" color="#1E1E1E" size="28"></u-icon>-->
                 </view>
             </view>
-<!--            <view class="product_foot">-->
-<!--                <u-image-->
-<!--                    v-if="productData.color == 1"-->
-<!--                    @tap="contactService"-->
-<!--                    width="80"-->
-<!--                    height="80"-->
-<!--                    src="@/static/images/product/product_frame_short.png"-->
-<!--                ></u-image>-->
-<!--                <u-image-->
-<!--                    v-if="productData.color == 2"-->
-<!--                    @tap="contactService"-->
-<!--                    width="80"-->
-<!--                    height="80"-->
-<!--                    src="@/static/images/product/product_frame_mid.png"-->
-<!--                ></u-image>-->
-<!--                <u-image-->
-<!--                    v-if="productData.color == 3"-->
-<!--                    @tap="contactService"-->
-<!--                    width="80"-->
-<!--                    height="80"-->
-<!--                    src="@/static/images/product/product_frame_long.png"-->
-<!--                ></u-image>-->
-<!--                <view class="product_foot_btn" :class="switchCard(productData.color)">Tandatangan</view>-->
-<!--            </view>-->
+            <!--            <view class="product_foot">-->
+            <!--                <u-image-->
+            <!--                    v-if="productData.color == 1"-->
+            <!--                    @tap="contactService"-->
+            <!--                    width="80"-->
+            <!--                    height="80"-->
+            <!--                    src="@/static/images/product/product_frame_short.png"-->
+            <!--                ></u-image>-->
+            <!--                <u-image-->
+            <!--                    v-if="productData.color == 2"-->
+            <!--                    @tap="contactService"-->
+            <!--                    width="80"-->
+            <!--                    height="80"-->
+            <!--                    src="@/static/images/product/product_frame_mid.png"-->
+            <!--                ></u-image>-->
+            <!--                <u-image-->
+            <!--                    v-if="productData.color == 3"-->
+            <!--                    @tap="contactService"-->
+            <!--                    width="80"-->
+            <!--                    height="80"-->
+            <!--                    src="@/static/images/product/product_frame_long.png"-->
+            <!--                ></u-image>-->
+            <!--                <view class="product_foot_btn" :class="switchCard(productData.color)">Tandatangan</view>-->
+            <!--            </view>-->
             <ContractPopup v-if="contractShow" @cancel="contractShow = false"></ContractPopup>
-            <SuccessPopup v-if="successShow" :data="productData" :investPoint="investPoint" :contractName="contractName"  @cancel="successShow = false"></SuccessPopup>
+            <SuccessPopup
+                v-if="successShow"
+                :data="productData"
+                :investPoint="investPoint"
+                :contractName="contractName"
+                @cancel="successShow = false"
+            ></SuccessPopup>
             <LosePopup v-if="loseShow" @cancel="loseShow = false"></LosePopup>
             <Popup v-if="show" @cancel="show = false"></Popup>
             <CustomerPopup
@@ -365,7 +370,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
+import { ref, watch } from 'vue'
 import { formatNumber } from '@/utils/util'
 import { onLoad, onPageScroll } from '@dcloudio/uni-app'
 import ContractPopup from './components/contractPopup.vue'
@@ -375,8 +380,8 @@ import Popup from './components/popup.vue'
 import { customerServiceInfo } from '@/api/eventInfo'
 import { emitter } from '@/utils/emitter'
 import CustomerPopup from '@/pages/index/component/customerPopup.vue'
-import { getProductDetailApi, InvestProductApi } from '@/api/product'
-import { count } from 'echarts/types/src/component/dataZoom/history'
+import { getProductDetailApi, InvestProductApi,interestCalculator } from '@/api/product'
+
 const scrollTop = ref<number>(0)
 const contractShow = ref<boolean>(false)
 const successShow = ref<boolean>(false)
@@ -386,7 +391,7 @@ const exchange_amount = ref<any>(null)
 const serviceInfo = ref<any>({})
 const productData = ref<any>({})
 const contactShow = ref(false)
-const contractName = ref("")
+const contractName = ref('')
 const investPoint = ref(0)
 const doShow = ref(false)
 const navigateTo = (url: string) => {
@@ -395,16 +400,21 @@ const navigateTo = (url: string) => {
     })
 }
 
-const topPic = computed(() => {
-    if (productData.value.product_img_url) {
-        return productData.value.product_img_url[0]
-    }
-    return 'https://h5source.ricerich.id/image/20250611/84786615-a933-454d-a8c0-81cb57a795b3.jpg'
+watch(exchange_amount, (newVal, oldVal) => {
+    console.log(`输入从 "${oldVal}" 变成了 "${newVal}"`)
+
+    emitter.emit('gifType')
+    calculator(parseInt(newVal))
 })
 
 const fetchData = async (product_id: string) => {
-    const data = await getProductDetailApi({ productId:product_id })
-    productData.value = data
+    productData.value = await getProductDetailApi({ productId: product_id })
+}
+
+const calculator = async (amount:number)=>{
+    const data = await interestCalculator({ productId:productData.value.product_id,amount })
+    console.log(data)
+    emitter.emit('toast_close')
 }
 
 const contactlink = (link: string) => {
@@ -431,23 +441,23 @@ const contactService = () => {
     // },3000)
 }
 
-const InvestHandle = async ()=>{
+const InvestHandle = async () => {
     const params = {
-        'amount':productData.value.investment_points,
-        'product_id':productData.value.product_id
+        amount: productData.value.investment_points,
+        product_id: productData.value.product_id
     }
-    if (productData.value.color>1){
+    if (productData.value.color > 1) {
         params.amount = exchange_amount.value
     }
-    if (params.amount<productData.value.investment_points){
+    if (params.amount < productData.value.investment_points) {
         loseShow.value = true
         return
     }
     emitter.emit('gifType')
     const data = await InvestProductApi(params)
     emitter.emit('toast_close')
-    if (data.code==0){
-        emitter.emit('toast',data.msg)
+    if (data.code == 0) {
+        emitter.emit('toast', data.msg)
         return
     } else {
         // contractName
@@ -502,7 +512,7 @@ page {
         top: 0;
         left: 0;
         width: 100%;
-        .service_btn{
+        .service_btn {
             position: absolute;
             right: 10rpx;
             top: 10rpx;

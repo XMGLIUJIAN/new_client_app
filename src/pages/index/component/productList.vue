@@ -69,12 +69,14 @@ const getProductData = async () => {
 }
 
 const selectedData = computed(() => {
-    return productData.value.filter(
+    const data = productData.value.filter(
         (item) =>
-            selectActive.value === '' ||
-            selectActive.value === 'Semua' ||
-            item.country === selectActive.value
+            (selectActive.value === '' ||
+                selectActive.value === 'Semua' ||
+                item.country === selectActive.value) &&
+            item.product_id !== "P2025060710000"
     )
+    return data.sort((a, b) => a.id - b.id);
 })
 const userStore = useUserStore()
 const { userInfo, isLogin } = storeToRefs(userStore)
