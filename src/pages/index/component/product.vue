@@ -29,7 +29,7 @@
                         :src="props.data.national_flag_url"
                     ></u-image>
                     <view class="head_info_name"
-                        >{{ props.data.country }}</view
+                        >{{ props.data.country }}-{{props.data.product_id}}</view
                     >
                 </view>
                 <view :class="['head_tips','bg'+props.data.status]" @tap="()=>{contractShow = true}">
@@ -214,6 +214,7 @@ const navigateTo = (url: string) => {
                 align-items: center;
                 .tag {
                     margin-right: 20rpx;
+                    padding: 0 20rpx;
                     height: 25rpx;
                     border-radius: 2rpx;
                     background: #d2ecdd;

@@ -37,17 +37,15 @@
                         />
                     </view>
                 </view>
-                <view class="card_point_num">{{
-                    !eyeShow ? formatNumber(userInfo.user_integral) || 0 : '***'
-                }}</view>
+                <view class="card_point_num">{{!eyeShow ? formatNumber(userInfo.user_integral) || 0 : '***' }}</view>
                 <view class="point_card_box">
                     <view class="point_card_label">
                         <view class="card_label_text">Pendapatan Kemarin</view>
-                        <view class="card_label_num">Rp {{ formatNumber(pageData.yesterday_income) }}</view>
+                        <view class="card_label_num">{{!eyeShow ? "Rp "+formatNumber(pageData.yesterday_income) || 0 : '***' }}</view>
                     </view>
                     <view class="point_card_label">
                         <view class="card_label_text">Total Keuntungan</view>
-                        <view class="card_label_num">Rp {{ formatNumber(pageData.total_income) }}</view>
+                        <view class="card_label_num">{{!eyeShow ? "Rp "+formatNumber(pageData.total_income) || 0 : '***' }}</view>
                     </view>
                 </view>
                 <view class="point_card_foot mt-[50rpx]">
@@ -82,7 +80,7 @@
                 </view>
                 <view class="profit_card_estimate">
                     <view class="card_estimate_text">Estimasi Hari Ini</view>
-                    <view class="card_estimate_num">Rp {{pageData.estimated_revenue}}</view>
+                    <view class="card_estimate_num">{{!eyeShow ? "Rp "+formatNumber(pageData.estimated_revenue) || 0 : '***' }}</view>
                 </view>
                 <view class="profit_card_issue">
                     <view class="card_issue_head">
