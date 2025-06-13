@@ -32,24 +32,25 @@
                         >{{ props.data.country }}</view
                     >
                 </view>
-                <view class="head_tips canSigned" @tap="()=>{contractShow = true}">
-                    <u-image
-                        width="34"
-                        height="34"
-                        src="@/static/images/card/canSigned.png"
-                    ></u-image>
-<!--                    "状态 0:可购买-可购买 1：条件未满足-灰色 2：合约生效中，等待合约到期后，再次购买-黄色 -->
-                    <view v-if="props.data.status==0" class="tips_title bg0">Syarat Terbatas</view>
-                    <view v-else-if="props.data.status==1" class="tips_title bg1">Syarat Terbatas</view>
-                    <view v-else-if="props.data.status==2" class="tips_title bg2">Syarat Terbatas</view>
+                <view :class="['head_tips','bg'+props.data.status]" @tap="()=>{contractShow = true}">
+<!--                    <u-image width="34" height="34" src="@/static/images/card/canSigned.png"></u-image>-->
+<!--&lt;!&ndash;                    "状态 0:可购买-可购买 1：条件未满足-灰色 2：合约生效中，等待合约到期后，再次购买-黄色 &ndash;&gt;-->
+<!--                    <view v-if="props.data.status==0" class="tips_title bg0">Syarat Terbatas</view>-->
+<!--                    <view v-else-if="props.data.status==1" class="tips_title bg1">Syarat Terbatas</view>-->
+<!--                    <view v-else-if="props.data.status==2" class="tips_title bg2">Syarat Terbatas</view>-->
+                    <u-image width="34" height="34" :src="`/static/images/card/c${props.data.status}.png`"></u-image>
+                    <view :class="['tips_title']">Syarat Terbatas</view>
                 </view>
             </view>
             <view class="product_line"></view>
             <view class="product_info" @tap="navigateTo(`/pages/product_info/product_info?product_id=${props.data.product_id}&color=${props.data.color}`)">
                 <view class="product_info_title">{{ props.data.product_name }}</view>
                 <view class="product_info_level">
-                    <view class="level">Risiko {{ props.data.risk_level }}</view>
-                    <view class="level_tips long">{{ props.data.product_tags }}</view>
+<!--                    <view class="level">Risiko {{ props.data.risk_level }}</view>-->
+<!--                    <view class="level_tips long">{{ props.data.product_tags }}</view>-->
+
+                    <view v-for="(item,index) in tags" :class="`tag tag_${index}`">{{item}}</view>
+
                 </view>
                 <view class="product_medal">
                     <view class="medal">
@@ -91,7 +92,7 @@
                                 src="@/static/images/page/up.png"
                             ></u-image>
                         </view>
-                        <view class="label_text">Poin Investasi</view>
+                        <view class="label_text">Jumlah Investasi</view>
                     </view>
                 </view>
                 <view class="foot_date">
@@ -105,11 +106,11 @@
             </view>
         </view>
     </view>
-    <ContractPopup v-if="contractShow" @cancel="contractShow = false"></ContractPopup>
+    <ContractPopup v-if="contractShow" @cancel="contractShow = false" :invite="props.data.invite_users"></ContractPopup>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { formatNumber } from '../../../utils/util'
 import ContractPopup from '@/pages/product_info/components/contractPopup.vue'
 const contractShow = ref(false)
@@ -118,6 +119,10 @@ const props = defineProps({
         type: Object,
         default: {}
     }
+})
+
+const tags = computed(()=>{
+    return props.data.product_tags.split(',')
 })
 
 const navigateTo = (url: string) => {
@@ -170,14 +175,14 @@ const navigateTo = (url: string) => {
                 height: 40rpx;
                 padding: 5rpx;
                 border-radius: 40rpx;
-                &.unActivated {
+                &.bg0{
+                    background: #67BA8C;
+                }
+                &.bg1{
                     background: #999999;
                 }
-                &.inEffect {
-                    background: #ecb54b;
-                }
-                &.canSigned {
-                    background: #67ba8c;
+                &.bg2{
+                    background: #ECB54B;
                 }
                 .tips_title {
                     margin-left: 5rpx;
@@ -186,15 +191,6 @@ const navigateTo = (url: string) => {
                     font-size: 16rpx;
                     line-height: 40rpx;
                     color: #ffffff;
-                    .bg0{
-                        background: #67BA8C;
-                    }
-                    .bg1{
-                        background: #999999;
-                    }
-                    .bg2{
-                        background: #ECB54B;
-                    }
                 }
             }
         }
@@ -216,9 +212,8 @@ const navigateTo = (url: string) => {
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
-                .level {
+                .tag {
                     margin-right: 20rpx;
-                    width: 90rpx;
                     height: 25rpx;
                     border-radius: 2rpx;
                     background: #d2ecdd;
@@ -228,29 +223,62 @@ const navigateTo = (url: string) => {
                     font-size: 16rpx;
                     line-height: 25rpx;
                     color: #1e4b2e;
-                }
-                .level_tips {
-                    width: 155rpx;
-                    height: 25rpx;
-                    border-radius: 2rpx;
-                    font-family: Arial;
-                    font-weight: 400;
-                    text-align: center;
-                    font-size: 16rpx;
-                    line-height: 25rpx;
-                    &.short {
+                    //&.tag_0 {
+                    //    background: #d2ecdd;
+                    //    color: #1e4b2e;
+                    //}
+                    //&.tag_2 {
+                    //    background: #d2ecdd;
+                    //    color: #1e4b2e;
+                    //}
+                    &.tag_1 {
                         color: #81af95;
                         background: rgba(129, 175, 149, 0.3);
                     }
-                    &.mid {
+                    &.tag_2 {
                         color: #d2b571;
                         background: rgba(236, 181, 75, 0.3);
                     }
-                    &.long {
+                    &.tag_0 {
                         color: #f06550;
                         background: rgba(255, 175, 175, 0.3);
                     }
                 }
+                //.level {
+                //    margin-right: 20rpx;
+                //    width: 90rpx;
+                //    height: 25rpx;
+                //    border-radius: 2rpx;
+                //    background: #d2ecdd;
+                //    font-family: Arial;
+                //    font-weight: 400;
+                //    text-align: center;
+                //    font-size: 16rpx;
+                //    line-height: 25rpx;
+                //    color: #1e4b2e;
+                //}
+                //.level_tips {
+                //    width: 155rpx;
+                //    height: 25rpx;
+                //    border-radius: 2rpx;
+                //    font-family: Arial;
+                //    font-weight: 400;
+                //    text-align: center;
+                //    font-size: 16rpx;
+                //    line-height: 25rpx;
+                //    &.short {
+                //        color: #81af95;
+                //        background: rgba(129, 175, 149, 0.3);
+                //    }
+                //    &.mid {
+                //        color: #d2b571;
+                //        background: rgba(236, 181, 75, 0.3);
+                //    }
+                //    &.long {
+                //        color: #f06550;
+                //        background: rgba(255, 175, 175, 0.3);
+                //    }
+                //}
             }
             .product_medal {
                 position: absolute;

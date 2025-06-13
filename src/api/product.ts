@@ -13,6 +13,9 @@ export function interestCalculator(params  : any) {
     return request.get({ url: '/productConfig/interestCalculator',data:params }, { isAuth: true })
 }
 
+export function productPurchaseHistory(params:any){
+    return request.get({ url: '/productPurchaseHistory/list',data:params }, { isAuth: true })
+}
 
 
 export function InvestProductApi(params  : any) {

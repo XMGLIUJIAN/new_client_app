@@ -19,7 +19,7 @@
 				<view class="invention">Versi baru ditemukan</view>
 				<view class="tip">V.2.3.1</view>
 			</view>
-			<view class="app_btn mt-[50rpx]">
+			<view class="app_btn mt-[50rpx]" style="display: none">
 				<view class="btn">Perbarui sekarang</view>
 			</view>
 		</view>

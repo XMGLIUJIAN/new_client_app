@@ -33,7 +33,7 @@
                 </view>
                 <view class="article_row_label">
                     <view class="label_text">{{ props.informasiInfo.color>1?"Tanpa Batas":"Rp "+formatNumber(props.informasiInfo.investment_amount) }}</view>
-                    <view class="label_title">Nilai Kontrak</view>
+                    <view class="label_title">Jumlah Investasi</view>
                 </view>
                 <view class="article_row_date">
                     <view class="">{{props.informasiInfo.siklus_investasi}} Hari</view>

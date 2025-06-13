@@ -58,9 +58,13 @@
 
 
 	// 创建pinyin实例
-	const pinyinInstance = new pinyin({
-		charCase: 0
-	})
+	const pinyinInstance = pinyin
+        // .setOptions({
+        //     charCase: 0
+        // })
+    pinyin.setOptions({
+        charCase: 0
+    })
 
 	const position = {}
 

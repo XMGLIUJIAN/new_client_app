@@ -56,22 +56,22 @@
 								<u-loadmore icon-type="flower" status="loading" color="#8B9098" />
 							</template>
 							<view class="list_card" :class="e.state == 1 ? 'release':'sign'" v-for="(e,index) in list" :key="index">
-								<view class="list_title">{{e.title_name}}</view>
+								<view class="list_title">{{e.product_name}}<br/>{{e.product_tags}}</view>
 								<view class="list_line"></view>
 								<view class="list_info">
 									<view class="rebate">
 										<view class="rebate_label">
-											<view class="num">100.000.000</view>
+											<view class="num">{{e.investment_points}}</view>
 											<view class="title">Poin Investasi</view>
 										</view>
 										<view class="rebate_label">
-											<view class="date">{{e.create_date}}</view>
+											<view class="date">{{e.create_time.substr(0,10)}}</view>
 											<view class="title">Tanggal Kontrak</view>
 										</view>
 									</view>
 									<view class="serial">
 										<view class="serial_title">No. Kontrak</view>
-										<view class="serial_number">RIC98879990666888</view>
+										<view class="serial_number">{{e.contract_number}}</view>
 									</view>
 								</view>
 								<view class="list_image">
@@ -84,7 +84,7 @@
 										<view class="day_info">
 											<view class="day_title mt-[5rpx]">Hari</view>
 											<view class="day_title">Investasi</view>
-											<view class="daya_num">30</view>
+											<view class="daya_num">{{e.siklus_investasi}}</view>
 										</view>
 									</view>
 								</view>
@@ -116,6 +116,7 @@
 	import { myContractLogList } from '@/api/contract'
 	import { filterFormat, formatNumber } from '@/utils/util'
 	import { emitter } from '@/utils/emitter';
+    import { productPurchaseHistory } from '@/api/product'
 	const scrollTop = ref<number>(0)
 	const date = ref<String>('')
 	const active = ref<Number>(0)
@@ -155,7 +156,7 @@
 		emitter.emit('gifType')
 		try {
 			const page =  currentPage.value
-			const data : any = await myContractLogList(filterFormat({ page_no: page, page_size: pageSize, state: active.value == 1 ? 0 : active.value == 2 ? 1 : null, createDate: createDate.value}))
+			const data : any = await productPurchaseHistory(filterFormat({ page_no: page, page_size: pageSize, state: active.value == 1 ? 0 : active.value == 2 ? 1 : null, createDate: createDate.value}))
 
 			if (isRefresh) {
 				list.value = data.lists
@@ -232,7 +233,7 @@
 		return text
 	}
 	const change = (e : any) => {
-		createDate.value = e.month + '-' + e.year
+		createDate.value = e.year + '-' + e.month
 		createText.value = formatMouth(e.month) + ' ' + e.year
 		list.value = []
 		loadData(true)
@@ -427,6 +428,7 @@
 									line-height: 48rpx;
 									text-align: left;
 									color: #458060;
+                                    word-wrap: break-word;
 								}
 								.list_line{
 									width: 480rpx;

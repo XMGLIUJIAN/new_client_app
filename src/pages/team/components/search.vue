@@ -24,17 +24,17 @@
 						<view class="number_amount">{{formatNumber(searchInfo.my_total_investment)}}</view>
 					</view>
 					<view class="number_row">
-						<view class="number_title">Poin Saat Ini</view>
+						<view class="number_title">Poin</view>
 						<view class="number_amount">{{formatNumber(searchInfo.user_integral)}}</view>
 					</view>
 				</view>
 				<view class="search_number mt-[40rpx] mb-[40rpx]">
 					<view class="number_row">
-						<view class="number_title">Total Anggota Tim</view>
+						<view class="number_title">Jumlah Anggota</view>
 						<view class="number_text">{{formatNumber(searchInfo.team_size)}}</view>
 					</view>
 					<view class="number_row">
-						<view class="number_title">Total Pendapatan Tim</view>
+						<view class="number_title">Pendapatan Tim</view>
 						<view class="number_num">Rp {{formatNumber(searchInfo.team_total_income)}}</view>
 					</view>
 				</view>
@@ -188,7 +188,6 @@
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
-
 					.number_row {
 						.number_title {
 							font-family:  Arial;

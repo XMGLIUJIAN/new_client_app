@@ -64,6 +64,11 @@
 			url
 		})
 	}
+    // const navigateTo = (url : string) => {
+    //     uni.navigateTo({
+    //         url
+    //     })
+    // }
 	const selectBank = () => {
 		navigateTo('/pages/select_bank/select_bank')
 	}

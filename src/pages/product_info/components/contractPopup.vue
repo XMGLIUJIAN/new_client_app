@@ -16,7 +16,8 @@
 					<view class="num">02</view>
 					<view class="contract_text">Mengundang anggota resmi baru</view>
 				</view>
-				<view class="contract_num">2 Orang</view>
+				<view v-if="props.invite>0" class="contract_num">{{props.invite}} Orang</view>
+				<view v-else class="contract_num">Tanpa Batas</view>
 				<view class="btn" @tap="cancelPopup">
 					<u-image width="52" height="52" src="@/static/images/icon/icon_cancel.png"></u-image>
 				</view>
@@ -26,7 +27,14 @@
 </template>
 
 <script lang="ts" setup>
-	const emit = defineEmits(['confirm','cancel'])
+
+    const emit = defineEmits(['confirm','cancel'])
+    const props = defineProps({
+        invite: {
+			type: Number,
+			default: 0
+		}
+	})
 	const confirmPopup = () => {
 		emit('confirm')
 	}

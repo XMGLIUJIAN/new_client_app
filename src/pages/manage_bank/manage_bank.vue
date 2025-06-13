@@ -37,8 +37,13 @@
 				</view>
 				<view class="empty mt-[300rpx]" v-if="!list.length">
 					<u-image width="462" height="291" src="@/static/images/icon/empty.png" alt="" />
-					<view class="empty_text">Tidak Ada Catatan</view>
+<!--					<view class="empty_text">Tidak Ada Catatan</view>-->
 				</view>
+<!--                /pages/bind_card/bind_card-->
+                <view class="add_card_box" @tap="navigateTo('/pages/bind_card/bind_card')">
+                    <u-image width="32" height="32" class="mr-[10rpx]" src="@/static/images/icon/addCard.png" alt="" />
+                    <view>Tambahkan Rekening Bank Baru</view>
+                </view>
 			</view>
 		</view>
 		<toastPopup></toastPopup>
@@ -165,6 +170,14 @@
 				.card:nth-child(even) {
 					background: linear-gradient(90deg, #81AF95 0%, #417E5C 100%);
 				}
+                .add_card_box {
+                    display: flex;
+                    justify-content: center;
+                    padding: 20rpx 0;
+                    color: #458060;
+                    border: #458060 solid 2px;
+                    border-radius: 12rpx;
+                }
 			}
 		}
 	}

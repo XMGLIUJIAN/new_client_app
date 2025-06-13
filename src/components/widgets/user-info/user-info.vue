@@ -58,12 +58,12 @@
 			<view class="article_box">
 				<view class="article_label">
 					<view class="label_title">Pemasukan</view>
-					<view class="label_num">Rp {{user.pointVaultIncome ? formatNumber(user.pointVaultIncome) : 0}}</view>
+					<view class="label_num">Rp {{!eyeShow ? formatNumber(user.pointVaultIncome) || 0 : '***' }}</view>
 				</view>
 				<view class="article_line"></view>
 				<view class="article_label">
 					<view class="label_title">Tarik Dana</view>
-					<view class="label_num">Rp {{user.totalPointVaultIncome ? formatNumber(user.totalPointVaultIncome) : 0}}</view>
+					<view class="label_num" style="color: #0f0f0f">Rp {{!eyeShow ? formatNumber(user.totalPointVaultIncome) || 0 : '***' }}</view>
 				</view>
 			</view>
 			<view class="card_line"></view>
@@ -72,7 +72,7 @@
 					<view class="foot_title">Bantuan Tim (Belum Diambil)</view>
 					<u-image @tap="show = true" width="24" height="24" src="@/static/images/user/help.png" alt="" />
 				</view>
-				<view class="foot_num">{{user.teamReserveAmount ? formatNumber(user.teamReserveAmount) : 0}}</view>
+				<view class="foot_num">Rp {{!eyeShow ? formatNumber(user.teamReserveAmount) || 0 : '***' }}</view>
 			</view>
 		</view>
 		<BonusPopup v-if="show" @cancel="show = false"></BonusPopup>
@@ -285,7 +285,7 @@
 					.label_title {
 						font-family: Arial;
 						font-weight: 400;
-						font-size: 20rpx;
+						font-size: 24rpx;
 						line-height: 40rpx;
 						text-align: center;
 						color: #8B9098;
@@ -294,7 +294,7 @@
 					.label_num {
 						font-family: Arial;
 						font-weight: 700;
-						font-size: 24rpx;
+						font-size: 30rpx;
 						line-height: 40rpx;
 						text-align: center;
 						color: #D90C07;
