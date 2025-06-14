@@ -169,6 +169,7 @@
 	}
 	const getInfo = async () => {
 		const data = await monthReport(filterFormat({ year: year.value, month: month.value }))
+        console.log(data)
 		totalCashProceeds.value = data ? data.extend.totalCashProceeds : 0
 		totalPointsIncome.value = data ? data.extend.totalPointsIncome : 0
 	}

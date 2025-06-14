@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-	import { onLoad, onPageScroll } from "@dcloudio/uni-app"
+import { onLoad, onPageScroll, onShow } from '@dcloudio/uni-app'
 	import { computed, reactive, ref, nextTick } from 'vue'
 	import { useUserStore } from '@/stores/user'
 	import { storeToRefs } from 'pinia'
@@ -118,11 +118,16 @@
 
     }
 
+    onShow(()=>{
+        console.log("onShow...................")
+        getProductListData()
+    })
 
 	onLoad(()=>{
+        console.log("onLoad》》》》》》》》》》》》》")
 		getData()
 		getNotice()
-        getProductListData()
+        // getProductListData()
 		userStore.getUser()
 
         onPageScroll((event : any) => {

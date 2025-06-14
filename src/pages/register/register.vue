@@ -84,7 +84,7 @@
 						</view>
 
 						<view class="recover_code mt-[50rpx]">
-							<u-message-input v-model="formData.verification_code"
+							<u-message-input v-model="formData.verification_code" @change="inputCodeChange"
 								font-size="64" active-color="#1E1E1E" inactive-color="#29593E" :focus="true"
 								:breathe="true" maxlength="6" mode="bottomLine"></u-message-input>
 						</view>
@@ -197,7 +197,15 @@
 			url
 		})
 	}
-	const codeChange = (text : string) => {
+    const inputCodeChange =(n:string)=>{
+        if (n.length == 6){
+            console.log("提交")
+            setTimeout(()=>{
+                registerEvent()
+            },  500)
+        }
+    }
+	const codeChange = (text : string) => {1
 		codeTips.value = text
 	}
 	const sendSms = async () => {

@@ -68,20 +68,39 @@ const props = defineProps({
 
 // "状态 0:可购买-可购买 1：条件未满足-灰色 2：合约生效中，等待合约到期后，再次购买-黄色
 const selectedData = computed(() => {
-    return props.productData.filter(
-        (item) =>
-            (selectActive.value === '' ||
-                selectActive.value === 'Semua' ||
-                item.country === selectActive.value) &&
-            item.product_id !== "P2025060710000"
-    ).sort((a, b) => {
-        // 先按 status 升序
-        if (a.status !== b.status) {
-            return a.status - b.status;
-        }
-        // 如果 status 相同，按 sort 升序
-        return a.sort - b.sort;
-    });
+    return props.productData
+        .filter(item =>
+            selectActive.value === '' ||
+            selectActive.value === 'Semua' ||
+            item.country === selectActive.value
+        )
+        .sort((a, b) => {
+            // 1. is_investing === true 的放到最后
+            if (a.is_investing && !b.is_investing) return 1;
+            if (!a.is_investing && b.is_investing) return -1;
+
+            // 2. 按 status 升序
+            if (a.status !== b.status) {
+                return a.status - b.status;
+            }
+
+            // 3. 如果 status 相同，按 sort 升序
+            return a.sort - b.sort;
+        });
+    // return props.productData.filter(
+    //     (item) =>
+    //         (selectActive.value === '' ||
+    //             selectActive.value === 'Semua' ||
+    //             item.country === selectActive.value)
+    // ).sort((a, b) => {
+    //     // 先按 status 升序
+    //     if (a.status !== b.status) {
+    //         return a.status - b.status;
+    //     }
+    //     // 如果 status 相同，按 sort 升序
+    //     return a.sort - b.sort;
+    // });
+    // is_investing == true 时放在最后
     // return data.sort((a, b) => a.sort - b.sort);
 })
 const userStore = useUserStore()
@@ -182,7 +201,7 @@ const change = (e: any) => {
         }
     }
     .article_product {
-        padding: 10rpx 20rpx;
+        padding: 20rpx 20rpx;
         .product_box {
             position: relative;
             margin-top: 10rpx;

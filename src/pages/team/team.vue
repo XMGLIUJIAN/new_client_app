@@ -381,7 +381,7 @@
 
 								.rankie_name {
 									font-family: Arial;
-									font-size: 24rpx;
+									font-size: 26rpx;
 									font-weight: 400;
 									line-height: 48rpx;
 									text-align: left;
@@ -438,7 +438,7 @@
 								.number_row {
 									.number_title {
 										font-family: Arial;
-										font-size: 20rpx;
+										font-size: 24rpx;
 										font-weight: 500;
 										line-height: 40rpx;
 										text-align: left;
@@ -447,7 +447,7 @@
 
 									.number_text {
 										font-family: Arial;
-										font-size: 20rpx;
+										font-size: 26rpx;
 										font-weight: 500;
 										line-height: 40rpx;
 										text-align: left;
@@ -455,7 +455,7 @@
 
 										.num {
 											font-family: Arial;
-											font-size: 20rpx;
+											font-size: 26rpx;
 											font-weight: 500;
 											line-height: 40rpx;
 											text-align: left;
@@ -473,7 +473,7 @@
 								.number_row {
 									.number_title {
 										font-family: Arial;
-										font-size: 20rpx;
+										font-size: 24rpx;
 										font-weight: 500;
 										line-height: 40rpx;
 										text-align: left;
@@ -482,7 +482,7 @@
 
 									.number_text {
 										font-family: Arial;
-										font-size: 20rpx;
+										font-size: 26rpx;
 										font-weight: 500;
 										line-height: 40rpx;
 										text-align: left;
@@ -490,7 +490,7 @@
 
 										.num {
 											font-family: Arial;
-											font-size: 20rpx;
+											font-size: 26rpx;
 											font-weight: 500;
 											line-height: 40rpx;
 											text-align: left;

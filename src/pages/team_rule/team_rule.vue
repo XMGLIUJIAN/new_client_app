@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="imageGroup">
-			<u-image width="750" height="2712" src="@/static/images/page/team_rule.png"></u-image>
+			<u-image width="750" height="2367" src="@/static/images/page/team_rule.png"></u-image>
 		</view>
 		<view class="rules">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
