@@ -150,7 +150,7 @@ import { onLoad, onPageScroll, onShow } from '@dcloudio/uni-app'
 import { getPointVaultIncomeRateApi } from '@/api/point'
 import { emitter } from '@/utils/emitter'
 const scrollTop = ref<number>(0)
-const eyeShow = ref<boolean>(false)
+const eyeShow = ref<boolean>(true)
 const pageData = ref<any>({
     income_level:0,
     yesterday_income:0,

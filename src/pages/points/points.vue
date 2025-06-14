@@ -49,7 +49,7 @@
                     <view class="card_line"></view>
                     <view class="card_box">
                         <view class="card_text">Poin</view>
-                        <view class="card_num">{{ formatNumber(userInfo.user_token) }}</view>
+                        <view class="card_num">{{ formatNumber(userInfo.user_integral) }}</view>
                     </view>
                 </view>
             </view>
@@ -135,6 +135,7 @@
                 v-if="pointsPopup"
                 :pointsType="pointsType"
                 :number="balance"
+                :bonus="BonusKeberuntunganTambahan"
                 @confirm="pointsFinish"
                 @cancel="pointsCancel"
             ></Popup>
@@ -164,11 +165,13 @@ const show = ref(false)
 const balance = computed(() => {
     return formData.exchange_amount * rateInfo.value.rate || 0
 })
+
 const BonusKeberuntunganTambahan = computed(() => {
     const num = formData.exchange_amount / rateInfo.value.team_reserve_rate || 0
     return Math.floor(num)
 })
 const { userInfo, isLogin } = storeToRefs(userStore)
+
 const formData = reactive<{
     exchange_amount: any
     type: number

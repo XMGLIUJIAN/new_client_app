@@ -26,13 +26,13 @@
 							</view>
 						</view>
 						<view class="contact">
-							<view class="contact_box">
-								<u-image width="45" height="45" src="@/static/images/icon/icon_whatsapp.png" alt="" />
-								<view class="contact_num">{{seniorUser.whatsapp}}</view>
+							<view class="contact_box" v-if="seniorUser.whatsapp" @tap="copy(seniorUser.whatsapp)">
+								<u-image width="45" height="45" src="@/static/images/icon/whatsapp_icon.png" alt="" />
+								<view class="contact_num">{{seniorUser.whatsapp && seniorUser.whatsapp.substr(0,15)}}</view>
 							</view>
-							<view class="contact_box">
+							<view class="contact_box" v-if="seniorUser.telegram" @tap="copy(seniorUser.telegram)">
 								<u-image width="45" height="45" src="@/static/images/icon/icon_telegram.png" alt="" />
-								<view class="contact_num">{{seniorUser.telegram}}</view>
+								<view class="contact_num">{{seniorUser.telegram && seniorUser.telegram.substr(0,15)}}</view>
 							</view>
 						</view>
 					</view>
@@ -51,13 +51,13 @@
 							</view>
 						</view>
 						<view class="contact">
-							<view class="contact_box" v-if="item.whatsapp">
-								<u-image width="45" height="45" src="@/static/images/icon/icon_whatsapp.png" alt="" />
-								<view class="contact_num">{{item.whatsapp}}</view>
+							<view class="contact_box" v-if="item.whatsapp" @tap="copy(item.whatsapp)">
+								<u-image width="45" height="45" src="@/static/images/icon/whatsapp_icon.png" alt="" />
+								<view class="contact_num">{{item.whatsapp.substr(0,15)}}</view>
 							</view>
-							<view class="contact_box" v-if="item.telegram">
+							<view class="contact_box" v-if="item.telegram" @tap="copy(item.telegram)">
 								<u-image width="45" height="45" src="@/static/images/icon/icon_telegram.png" alt="" />
-								<view class="contact_num">{{item.telegram}}</view>
+								<view class="contact_num">{{item.telegram.substr(0,15)}}</view>
 							</view>
 						</view>
 					</view>
@@ -91,6 +91,15 @@
 		list.value = data.lowerLevelUsers.lists
         emitter.emit('toast_close')
 	}
+    const copy = (text : string) => {
+        uni.setClipboardData({
+            showToast: false,
+            data: String(text),
+            success: function () {
+                emitter.emit('toast', 'Isinya disalin')
+            }
+        })
+    }
 	onShow(() => {
         emitter.emit('gifType')
 		userStore.getUser()
@@ -165,6 +174,7 @@
 							justify-content: space-between;
 							align-items: center;
 							padding: 20rpx 40rpx;
+                            min-height: 80rpx;
 							background: linear-gradient(316.44deg, #92BEAB 1.2%, #26815A 98.8%);
 							.contact_box {
 								display: flex;
@@ -235,6 +245,7 @@
 							align-items: center;
 							background: #E3EDFF;
 							padding: 20rpx 40rpx;
+                            min-height: 80rpx;
 							background: linear-gradient(316.44deg, #92BEAB 1.2%, #26815A 98.8%);
 
 

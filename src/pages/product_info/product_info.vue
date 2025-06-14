@@ -151,7 +151,7 @@
                             v-if="productData.color != 1"
                             :class="switchCard(productData.color)"
                         >
-                            Poin Minimum Investasi: {{productData.investment_points}}</view
+                            Poin Minimum Investasi: {{formatNumber(productData.investment_points)}}</view
                         >
                         <view class="product_card_foot">
                             <view
@@ -260,7 +260,7 @@
                 <view class="card_box_foot" v-if="productData.color == 3">
                     <view class="foot_label">
                         <view class="label_title">Poin Investasi</view>
-                        <view class="label_text">{{ formatNumber(exchange_amount) }}</view>
+                        <view class="label_text">{{ exchange_amount?formatNumber(exchange_amount):0 }}</view>
                     </view>
                     <view class="foot_temp">
                         <u-image
@@ -306,7 +306,7 @@
                 :contractName="contractName"
                 @cancel="successShow = false"
             ></SuccessPopup>
-            <LosePopup v-if="loseShow" @cancel="loseShow = false"></LosePopup>
+            <LosePopup v-if="loseShow" @cancel="loseShow = false" :msg="loseShowText"></LosePopup>
             <Popup v-if="show" @cancel="show = false"></Popup>
             <CustomerPopup
                 v-if="contactShow"
@@ -337,6 +337,7 @@ const scrollTop = ref<number>(0)
 const contractShow = ref<boolean>(false)
 const successShow = ref<boolean>(false)
 const loseShow = ref<boolean>(false)
+const loseShowText = ref("")
 const show = ref<boolean>(false)
 const exchange_amount = ref<any>(null)
 const serviceInfo = ref<any>({})
@@ -346,6 +347,7 @@ const contractName = ref('')
 const investPoint = ref(0)
 const doShow = ref(false)
 const total = ref(0)
+const income = ref(0)
 const color = ref(0)
 const loading = ref(true)
 const navigateTo = (url: string) => {
@@ -354,12 +356,19 @@ const navigateTo = (url: string) => {
     })
 }
 
-watch(exchange_amount, (newVal, oldVal) => {
+watch(exchange_amount, (newVal:number) => {
     // console.log(`输入从 "${oldVal}" 变成了 "${newVal}"`)
+    if (newVal>999999999){
+        loseShowText.value = "Poin belum mencapai<br/> minimum investasi"
+        loseShow.value = true
+        exchange_amount.value = 999999999
+        return
+    }
     const incomeVal =
-        (parseInt(newVal) / productData.value.exchange_rate) * productData.value.day_cash_rate
-    const totalVal = incomeVal * productData.value.siklus_investasi + parseInt(newVal)
-    total.value = totalVal.toFixed(0)
+        (newVal / productData.value.exchange_rate) * productData.value.day_cash_rate
+    const totalVal = incomeVal * productData.value.siklus_investasi + (newVal/productData.value.exchange_rate)
+    income.value = Math.floor(incomeVal)
+    total.value = Math.floor(totalVal)
 })
 
 const fetchData = async (product_id: string) => {
@@ -400,21 +409,45 @@ const InvestHandle = async () => {
         params.amount = exchange_amount.value
     }
     if (params.amount < productData.value.investment_points) {
+        //没有达到最低投资条件
+        //Poin belum mencapai minimum investasi
+        loseShowText.value = "Poin belum mencapai<br/> minimum investasi"
         loseShow.value = true
         return
     }
     emitter.emit('gifType')
     const data = await InvestProductApi(params)
     emitter.emit('toast_close')
-    if (data.code == 0) {
-        emitter.emit('toast', data.msg)
-        return
-    } else {
+    //持有积分不足
+    // INSUFFICIENT_INTEGRAL_HOLDING(2005, "Poin yang dimiliki tidak mencukupi"),
+    // //条件不满足
+    // CONDITIONS_NOT_MET(2006, "Kondisi tidak memenuhi"),
+    // //当前合约生中
+    // THE_CONTRACT_IS_OPENING(2007, "Saat ini kontrak sedang berjalan"),
+    if (data.code == 1) {
         // contractName
         investPoint.value = params.amount
         contractName.value = data.data.contractName
         // params.amount
         successShow.value = true
+    } else {
+        switch (data.code) {
+            case 2005: //持有积分不足
+                loseShowText.value = "Poin belum cukup.<br/>Silakan input ulang"
+                loseShow.value = true
+                break;
+            case 2006://条件不满足
+                contractShow.value = true
+                break;
+            case 2007://当前合约生中
+                show.value = true
+                break;
+            case 2008://没有达到最低投资积分数
+                show.value = true
+                break;
+            default:
+                emitter.emit('toast', data.msg)
+        }
     }
 }
 

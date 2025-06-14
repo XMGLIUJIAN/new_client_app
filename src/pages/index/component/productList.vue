@@ -56,6 +56,7 @@ const navArr = ref<Array<any>>([
     { current: 1, title: 'Thailand' },
     { current: 2, title: "Vietnam" },
     { current: 3, title: "Laos" },
+    { current: 4, title: "Myanmar" },
 ])
 const props = defineProps({
     productData: {
@@ -65,16 +66,23 @@ const props = defineProps({
 })
 
 
-
+// "状态 0:可购买-可购买 1：条件未满足-灰色 2：合约生效中，等待合约到期后，再次购买-黄色
 const selectedData = computed(() => {
-    const data = props.productData.filter(
+    return props.productData.filter(
         (item) =>
             (selectActive.value === '' ||
                 selectActive.value === 'Semua' ||
                 item.country === selectActive.value) &&
             item.product_id !== "P2025060710000"
-    )
-    return data.sort((a, b) => a.sort - b.sort);
+    ).sort((a, b) => {
+        // 先按 status 升序
+        if (a.status !== b.status) {
+            return a.status - b.status;
+        }
+        // 如果 status 相同，按 sort 升序
+        return a.sort - b.sort;
+    });
+    // return data.sort((a, b) => a.sort - b.sort);
 })
 const userStore = useUserStore()
 const { userInfo, isLogin } = storeToRefs(userStore)
@@ -160,7 +168,7 @@ const change = (e: any) => {
 
                     .active {
                         position: absolute;
-                        top: 50%;
+                        top: 55%;
                         transform: translateY(-50%);
                         transition: all 0.5s;
                         width: 140rpx;
@@ -174,7 +182,7 @@ const change = (e: any) => {
         }
     }
     .article_product {
-        padding: 30rpx 20rpx;
+        padding: 10rpx 20rpx;
         .product_box {
             position: relative;
             margin-top: 10rpx;

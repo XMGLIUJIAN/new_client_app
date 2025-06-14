@@ -34,7 +34,7 @@
 						<view class="payment_Item mb-[20rpx]" @tap="radioChange(item)" v-for="(item,index) in transferArr"
 							:key="index">
 							<view class="payment_label" v-if="!item.state">
-								<u-image width="100" height="100" :src="item.icon" alt="" />
+								<u-image width="100" height="100" v-if="item.icon" :src="item.icon" alt="" />
 								<view class="payment_name">{{item.currency_name}}</view>
 							</view>
 							<u-radio  v-if="!item.state" activeColor="#528B6B" shape="circle" @change="radioChange" :name="item.currency_type"></u-radio>

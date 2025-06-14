@@ -58,7 +58,7 @@
 						</view>
 					</view>
 				</view>
-				<view class="proses mt-[20rpx] mb-[20rpx]">Berhasil Mengundang! Hadiah Sedang Diproses</view>
+<!--				<view class="proses mt-[20rpx] mb-[20rpx]">Berhasil Mengundang! Hadiah Sedang Diproses</view>-->
 			</view>
 			<toastPopup></toastPopup>
 			<tabbar />
@@ -173,7 +173,7 @@
 								justify-content: center;
 								align-items: center;
 							}
-							
+
 							.inactive_text {
 								font-family: Arial;
 								font-weight: 400;
@@ -182,7 +182,7 @@
 								line-height: 54rpx;
 								color: #FFFFFF;
 							}
-							
+
 							.card_invite {
 								display: flex;
 								justify-content: center;

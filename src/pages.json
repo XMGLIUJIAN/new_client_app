@@ -9,9 +9,6 @@
         // #ifdef H5
         "navigationBarTitleText": "Beranda"
         // #endif
-      },
-      "meta": {
-        "auth": true
       }
     },
     {

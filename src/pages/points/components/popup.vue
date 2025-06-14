@@ -12,7 +12,7 @@
 				</view>
 				<view class="explain">
 					<view class="explain_title">Bonus Berkah Tambahan:</view>
-					<view class="explain_num">Rp 500.000</view>
+					<view class="explain_num">Rp {{formatNumber(bonus)}}</view>
 				</view>
 				<view class="btn mt-[20rpx]" @tap="confirmPopup">konfirmasi</view>
 			</view>
@@ -39,7 +39,11 @@
 		number: {
 			type: [Number, String],
 			default: 0
-		}
+		},
+        bonus: {
+            type: Number,
+            default: 0
+        }
 	})
 	const confirmPopup = () => {
 		emit('confirm')

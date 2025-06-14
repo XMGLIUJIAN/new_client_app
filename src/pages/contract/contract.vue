@@ -56,7 +56,7 @@
 								<u-loadmore icon-type="flower" status="loading" color="#8B9098" />
 							</template>
 							<view class="list_card" :class="e.state == 1 ? 'release':'sign'" v-for="(e,index) in list" :key="index">
-								<view class="list_title">{{e.product_name}}<br/>{{e.product_tags}}</view>
+								<view class="list_title">{{e.product_name}}</view>
 								<view class="list_line"></view>
 								<view class="list_info">
 									<view class="rebate">
@@ -417,15 +417,13 @@
 								&.release {
 									background: #DEEDDE;
 								}
-
 								.list_title {
 									width: 480rpx;
-									height: 96rpx;
-									margin-bottom: 10rpx;
+									min-height: 66rpx;
 									font-family: Arial;
 									font-size: 32rpx;
 									font-weight: 700;
-									line-height: 48rpx;
+									//line-height: 48rpx;
 									text-align: left;
 									color: #458060;
                                     word-wrap: break-word;

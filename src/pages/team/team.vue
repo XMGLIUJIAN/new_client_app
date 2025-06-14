@@ -27,7 +27,7 @@
 									<view class="normal" v-if="userInfo.identity">Lv {{userInfo.identity}}</view>
 									<view class="normal" v-else>Biasa</view>
 								</view>
-								<view class="user_info_text">Bonus Harian Dari Bawahan:{{formatNumber(myTeamInfo.ratio)}}%</view>
+								<view class="user_info_text">Bonus Harian Dari Bawahan:<text class="num">{{formatNumber(myTeamInfo.ratio)}}%</text></view>
 							</view>
 							<view class="code_box" @tap="extendFun">
 								<u-image width="60" height="60" src="@/static/images/team/code.png" alt="" />
@@ -36,7 +36,7 @@
 						<view class="team_card_line"></view>
 						<view class="team_upgrade">
 							<view class="upgrade">
-								<view class="upgrade_text">Jumlah pengguna deposit langsung</view>
+								<view class="upgrade_text">Pengguna Langsung</view>
 								<view class="upgrade_tip">{{formatNumber(myTeamInfo.directSubordinate)}} Orang / {{formatNumber(myTeamInfo.upgrade)}} Orang</view>
 							</view>
 							<u-line-progress height="8" :show-percent="false" round :percent="formatProgress(myTeamInfo.directSubordinate,myTeamInfo.upgrade)"
@@ -44,7 +44,7 @@
 						</view>
 						<view class="team_upgrade">
 							<view class="upgrade">
-								<view class="upgrade_text">Total investasi bawahan langsung</view>
+								<view class="upgrade_text">Investasi Bawahan</view>
 								<view class="upgrade_tip">Rp {{formatNumber(myTeamInfo.teamTotalInvestment)}} / Rp {{formatNumber(myTeamInfo.upgradeTeamTotalInvestment)}}</view>
 							</view>
 							<u-line-progress height="8" :show-percent="false" round :percent="formatProgress(myTeamInfo.teamTotalInvestment,myTeamInfo.upgradeTeamTotalInvestment)"
@@ -78,7 +78,7 @@
 								</view>
 							</view>
 							<view class="rankie_info">
-								<view class="rankie_name">+63 {{item.userName}}</view>
+								<view class="rankie_name">{{item.userName}}</view>
 								<view class="rankie_num">Rp {{formatNumber(item.totalInvestmentAmount)}}</view>
 							</view>
 						</view>
@@ -181,6 +181,7 @@
 	const getInfo = async () => {
 		const data = await teamInfo()
 		myTeamInfo.value = data;
+        console.log(data)
 		levelArr.value = data.teamLeaderClassification.map((item : any) => item.identity)
 		seriesArr.value = data.teamLeaderClassification.map((item : any) => Number(item.num))
 		if (teamRef.value && levelArr.value.length && seriesArr.value.length) {
@@ -283,9 +284,14 @@
 								.user_info_text {
 									font-family: Arial;
 									font-weight: 400;
-									font-size: 18rpx;
+									font-size: 22rpx;
 									line-height: 48rpx;
 									color: #275534;
+                                    .num {
+                                        margin-left: 5rpx;
+                                        font-size: 24rpx;
+                                        font-weight: bold;
+                                    }
 								}
 							}
 
@@ -313,14 +319,14 @@
 								.upgrade_text{
 									font-family: Arial;
 									font-weight: 400;
-									font-size: 18rpx;
+									font-size: 22rpx;
 									line-height: 40rpx;
 									color: #275534;
 								}
 								.upgrade_tip{
 									font-family: Arial;
 									font-weight: 400;
-									font-size: 14rpx;
+									font-size: 18rpx;
 									line-height: 40rpx;
 									color: #275534;
 								}

@@ -29,7 +29,7 @@
 										<view class="label_title">Poin Investasi</view>
 									</view>
 									<view class="explain_label">
-										<view class="label_text">10.15.2025</view>
+										<view class="label_text">{{today}}</view>
 										<view class="label_title">Tanggal Kontrak</view>
 									</view>
 								</view>
@@ -52,7 +52,11 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 const date = new Date()
-const today = ref()
+const formattedDate =
+    String(date.getDate()).padStart(2, '0') + "." +
+    String(date.getMonth() + 1).padStart(2, '0') + "." +
+    date.getFullYear();
+const today = ref(formattedDate)
 const emit = defineEmits(['confirm', 'cancel'])
 const cancelPopup = () => {
     emit('cancel')
@@ -77,7 +81,6 @@ const props = defineProps({
         default:0
     }
 })
-console.log(props)
 </script>
 
 <style lang="scss" scoped>

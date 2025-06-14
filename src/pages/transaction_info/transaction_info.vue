@@ -16,11 +16,11 @@
 				<view class="card_box">
 					<view class="card_label mb-[30rpx]">
 						<view class="label_title">Saldo</view>
-						<view class="label_text">{{formatNumber(totalPointsIncome)}}</view>
+						<view class="label_text">{{formatNumber(totalCashProceeds)}}</view>
 					</view>
 					<view class="card_label">
 						<view class="label_title">Pion</view>
-						<view class="label_text">{{formatNumber(totalCashProceeds)}}</view>
+						<view class="label_text">{{formatNumber(totalPointsIncome)}}</view>
 					</view>
 					<view class="card_date">
 						<u-image width="193" height="172" src="@/static/images/page/card_date.png"></u-image>

@@ -1,24 +1,30 @@
 <template>
     <view class="product_box">
-        <view class="product_image">
-            <u-image
-                v-if="props.data.color == 1"
-                width="648"
-                height="300"
-                src="@/static/images/card/product_short.png"
-            ></u-image>
-            <u-image
-                v-else-if="props.data.color == 2"
-                width="648"
-                height="300"
-                src="@/static/images/card/product_mid.png"
-            ></u-image>
-            <u-image
-                v-else
-                width="648"
-                height="300"
-                src="@/static/images/card/product_long.png"
-            ></u-image>
+        <view :class="['product_image',`color_${props.data.color}`]">
+<!--            <u-image-->
+<!--                v-if="props.data.color == 1"-->
+<!--                width="648"-->
+<!--                height="300"-->
+<!--                src="@/static/images/card/green.png"-->
+<!--            ></u-image>-->
+<!--            <u-image-->
+<!--                v-else-if="props.data.color == 2"-->
+<!--                width="648"-->
+<!--                height="300"-->
+<!--                src="@/static/images/card/product_mid.png"-->
+<!--            ></u-image>-->
+<!--            <u-image-->
+<!--                v-else-->
+<!--                width="648"-->
+<!--                height="300"-->
+<!--                src="@/static/images/card/product_long.png"-->
+<!--            ></u-image>-->
+
+                <u-image
+                    width="628"
+                    height="300"
+                    :src="`/static/images/card/${props.data.country}.png`"
+                ></u-image>
         </view>
         <view class="product_card">
             <view class="product_head">
@@ -29,7 +35,7 @@
                         :src="props.data.national_flag_url"
                     ></u-image>
                     <view class="head_info_name"
-                        >{{ props.data.country }}-{{props.data.product_id}}</view
+                        >{{ props.data.country }}</view
                     >
                 </view>
                 <view :class="['head_tips','bg'+props.data.status]" @tap="()=>{contractShow = true}">
@@ -137,11 +143,22 @@ const navigateTo = (url: string) => {
 <style scoped lang="scss">
 .product_box {
     position: relative;
-    margin-top: 10rpx;
+    margin-top: 20rpx;
     .product_image {
         display: flex;
         justify-content: center;
         align-items: center;
+        box-shadow: 0px -3px 10px 0px #D9D9D9;
+        border-radius: 12rpx;
+        &.color_1 {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(187, 232, 208, 1) 100%);
+        }
+        &.color_2 {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgb(246, 213, 133) 100%);
+        }
+        &.color_3 {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(234, 155, 149, 1) 100%);
+        }
     }
     .product_card {
         position: absolute;

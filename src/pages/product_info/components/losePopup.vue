@@ -5,7 +5,8 @@
 				<view class="tips mb-[20rpx]">Investasi Gagal</view>
 				<view class="explain mb-[40rpx]">
 					<u-image width="443" height="358" src="@/static/images/product/lose.png"></u-image>
-                    <view class="tip_test">Poin belum cukup.<br/>Silakan input ulang</view>
+<!--                    <view class="tip_test">Poin belum cukup.<br/>Silakan input ulang</view>-->
+                    <view class="tip_test" v-html="props.msg"></view>
 				</view>
 				<view class="btn" @tap="cancelPopup">Knew</view>
 			</view>
@@ -14,6 +15,12 @@
 </template>
 
 <script lang="ts" setup>
+    const props = defineProps({
+        msg:{
+            type:String,
+            default:0
+        }
+    })
 	const emit = defineEmits(['confirm','cancel'])
 	const cancelPopup = () => {
 		emit('cancel')

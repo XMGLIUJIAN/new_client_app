@@ -187,28 +187,31 @@
 
 		showNickName.value = false
 	}
-	
+
 	// 修改用户whatsapp
 	const changeWhatConfirm = async (e : any) => {
 		newWhatsapp.value = e.detail.value.whatsapp
 		if (newWhatsapp.value == '') return toast('Whatsapp tidak bisa kosong')
 		if (newWhatsapp.value.length < 10) return toast('Silakan masukkan nomor WhatsApp yang benar')
+        if (newWhatsapp.value.length > 15) return toast('Silakan masukkan nomor WhatsApp yang benar')
 		fieldType.value = FieldType.WHATSAPP
 		await setUserInfoFun(newWhatsapp.value)
-	
+
 		showWhatapp.value = false
 	}
-	
+
 	// 修改用户Telegram
 	const changeTelegramConfirm = async (e : any) => {
 		newTelegram.value = e.detail.value.telegram
 		if (newTelegram.value == '') return toast('Telegram tidak bisa kosong')
+        if (newWhatsapp.value.length < 5) return toast('Silakan masukkan nomor Telegram yang benar')
+        if (newWhatsapp.value.length > 32) return toast('Silakan masukkan nomor Telegram yang benar')
 		fieldType.value = FieldType.TELEGRAM
 		await setUserInfoFun(newTelegram.value)
-	
+
 		showTelegram.value = false
 	}
-	
+
 	const goPage = (url : string) => {
 		uni.navigateTo({
 			url: url

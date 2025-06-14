@@ -19,10 +19,10 @@
 				</view>
 				<view class="recover_row mt-[40rpx]">
 					<u-image width="40" height="40" src="@/static/images/icon/phone.png" alt="" />
-					<view class="recover_tips">+62</view>
+<!--					<view class="recover_tips">+62</view>-->
 					<view class="recover_input">
 						<u-input type="text" v-model="formData.account" :border="false"
-							placeholder-style="color: #8B9098;font-size:24rpx;" placeholder="Masukkan nomor HP anda" />
+							placeholder-style="color: #8B9098;font-size:24rpx;" placeholder="Nomor HP anda(08XXXXXX)" />
 					</view>
 				</view>
 				<view class="recover_row mt-[20rpx]">
