@@ -23,7 +23,7 @@
                 <u-image
                     width="628"
                     height="300"
-                    :src="`/static/images/card/${props.data.country}.png`"
+                    :src="`/static/images/card/building_${props.data.country}.png`"
                 ></u-image>
         </view>
         <view class="product_card">

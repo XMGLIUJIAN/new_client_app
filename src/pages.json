@@ -551,6 +551,17 @@
       }
     },
     {
+      "path": "pages/pcu/pcu",
+      "style": {
+        // #ifndef H5
+        "navigationStyle": "custom",
+        // #endif
+        // #ifdef H5
+        "navigationBarTitleText": "AVATAR CROPPER",
+        // #endif
+      }
+    },
+    {
       "path": "uni_modules/vk-uview-ui/components/u-avatar-cropper/u-avatar-cropper",
       "style": {
         // #ifndef H5

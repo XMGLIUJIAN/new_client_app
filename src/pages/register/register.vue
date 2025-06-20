@@ -247,15 +247,12 @@
 	}
 
 	const loginFun = async () => {
-		emitter.emit('gifType')
 		try {
 			const data = await login({ scene: 1, account: formData.mobile, password: formData.password, registerMac: formData.registerMac })
 			loginHandle(data)
 		} catch (error : any) {
 			toast(error)
-		}finally{
-            emitter.emit('toast_close')
-        }
+		}
 	}
 	const loginHandle = async (data : any) => {
 		userStore.login(data.token)

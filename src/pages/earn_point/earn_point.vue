@@ -10,7 +10,7 @@
                     :is-fixed="true"
                     :border-bottom="false"
                     :back-icon-color="scrollTop ? '#1E1E1E' : '#FFFFFF'"
-                    title="POIN PROFITPLUS"
+                    title="TABUNGAN POIN"
                     :title-bold="true"
                     :background="{ background: scrollTop ? '#FFFFFF' : 'transparent' }"
                     :title-color="scrollTop ? '#1E1E1E' : '#FFFFFF'"
@@ -37,15 +37,15 @@
                         />
                     </view>
                 </view>
-                <view class="card_point_num">{{!eyeShow ? formatNumber(userInfo.user_integral) || 0 : '***' }}</view>
+                <view class="card_point_num">{{formatNumber(userInfo.user_integral) }}</view>
                 <view class="point_card_box">
                     <view class="point_card_label">
                         <view class="card_label_text">Pendapatan Kemarin</view>
-                        <view class="card_label_num">{{!eyeShow ? "Rp "+formatNumber(pageData.yesterday_income) || 0 : '***' }}</view>
+                        <view class="card_label_num">{{"Rp "+formatNumber(pageData.yesterday_income) }}</view>
                     </view>
                     <view class="point_card_label">
                         <view class="card_label_text">Total Keuntungan</view>
-                        <view class="card_label_num">{{!eyeShow ? "Rp "+formatNumber(pageData.total_income) || 0 : '***' }}</view>
+                        <view class="card_label_num">{{"Rp "+formatNumber(pageData.total_income) }}</view>
                     </view>
                 </view>
                 <view class="point_card_foot mt-[50rpx]">
@@ -72,7 +72,7 @@
                         height="35"
                         src="@/static/images/card/icon_countdown.png"
                     ></u-image>
-                    <view class="profit_countdown_text">Hitung Mundur：{{pageData.expiration_time}}</view>
+                    <view class="profit_countdown_text">SISA HARI：{{pageData.expiration_time}}</view>
                 </view>
                 <view class="profit_card_box mb-[40rpx] mx-[40rpx]">
                     <view class="profit_card_text">Tingkat Keuntungan</view>
@@ -80,7 +80,7 @@
                 </view>
                 <view class="profit_card_estimate">
                     <view class="card_estimate_text">Estimasi Hari Ini</view>
-                    <view class="card_estimate_num">{{!eyeShow ? "Rp "+formatNumber(pageData.estimated_revenue) || 0 : '***' }}</view>
+                    <view class="card_estimate_num">{{"Rp "+formatNumber(pageData.estimated_revenue) }}</view>
                 </view>
                 <view class="profit_card_issue">
                     <view class="card_issue_head">
@@ -223,6 +223,7 @@ page {
                     color: #999999;
                 }
                 .card_head_lock {
+                    display: none;
                     margin-left: 20rpx;
                 }
             }

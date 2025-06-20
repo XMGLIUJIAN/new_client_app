@@ -67,7 +67,7 @@
                                     type="number"
                                     :border="false"
                                     placeholder-style="color: #8B9098;font-size:24rpx;"
-                                    placeholder="Masukkan Jumlah Saldo Yang Di Tukar"
+                                    placeholder="Minimal Penukaran: Rp 50.000"
                                 />
                             </view>
                         </view>
@@ -134,6 +134,7 @@
             <Popup
                 v-if="pointsPopup"
                 :pointsType="pointsType"
+                :pointsMsg="pointsMsg"
                 :number="balance"
                 :bonus="BonusKeberuntunganTambahan"
                 @confirm="pointsFinish"
@@ -159,6 +160,7 @@ import BonusPopup from '@/components/toastPopup/BonusPopup.vue'
 const scrollTop = ref<number>(0)
 const pointsPopup = ref<boolean>(false)
 const pointsType = ref<string>('success') // success 交易成功 lose 交易失败
+const pointsMsg = ref<string>('Saldo tidak cukup, silakan coba lagi') // success 交易成功 lose 交易失败
 const userStore = useUserStore()
 const rateInfo = ref<any>({})
 const show = ref(false)
@@ -219,18 +221,28 @@ const submitEvent = async () => {
     emitter.emit('gifType')
     currencyConversionAsync()
 }
-const currencyConversionAsync = () => {
-    setTimeout(async () => {
-        const resData = await currencyConversion(formData)
-        if (resData.code == 1) {
-            pointsType.value = 'success'
-            pointsPopup.value = true
-        } else {
-            pointsType.value = 'lose'
-            pointsPopup.value = true
-        }
-        emitter.emit('toast_close')
-    }, 3000)
+const currencyConversionAsync = async () => {
+    const resData = await currencyConversion(formData)
+    emitter.emit('toast_close')
+    if (resData.code == 1) {
+        pointsType.value = 'success'
+        pointsPopup.value = true
+    } else {
+        pointsType.value = 'lose'
+        pointsMsg.value = resData.msg
+        pointsPopup.value = true
+    }
+    // setTimeout(async () => {
+    //     const resData = await currencyConversion(formData)
+    //     if (resData.code == 1) {
+    //         pointsType.value = 'success'
+    //         pointsPopup.value = true
+    //     } else {
+    //         pointsType.value = 'lose'
+    //         pointsPopup.value = true
+    //     }
+    //     emitter.emit('toast_close')
+    // }, 3000)
 }
 onShow(() => {
     getRatelist()

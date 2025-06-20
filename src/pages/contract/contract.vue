@@ -61,7 +61,7 @@
 								<view class="list_info">
 									<view class="rebate">
 										<view class="rebate_label">
-											<view class="num">{{e.investment_points}}</view>
+											<view class="num">{{formatNumber(e.investment_points)}}</view>
 											<view class="title">Poin Investasi</view>
 										</view>
 										<view class="rebate_label">

@@ -6,7 +6,7 @@
 		<view class="transaction_info">
 			<u-sticky h5-nav-height="0" bg-color="transparent">
 				<u-navbar :is-back="true" :is-fixed="true" :border-bottom="false"
-					:back-icon-color="scrollTop ? '#1E1E1E' : '#FFFFFF'" title="PERCIKAN AIR" :title-bold="true"
+					:back-icon-color="scrollTop ? '#1E1E1E' : '#FFFFFF'" title="RIWAYAT TRANSAKSI" :title-bold="true"
 					:background="{ background: scrollTop ? '#FFFFFF' : 'transparent'}"
 					:title-color="scrollTop ? '#1E1E1E' : '#FFFFFF'">
 				</u-navbar>
@@ -19,7 +19,7 @@
 						<view class="label_text">{{formatNumber(totalCashProceeds)}}</view>
 					</view>
 					<view class="card_label">
-						<view class="label_title">Pion</view>
+						<view class="label_title">Poin</view>
 						<view class="label_text">{{formatNumber(totalPointsIncome)}}</view>
 					</view>
 					<view class="card_date">
@@ -50,7 +50,7 @@
 							<view class="investasi_foot">
 								<view class="foot_date">{{item.create_time}}</view>
 								<view class="foot_piont">
-									<view class="point_title">{{item.currency_type == 2 ? 'Pion':'Saldo'}}</view>
+									<view class="point_title">{{item.currency_type == 2 ? 'Poin':'Saldo'}}</view>
 									<view class="point_text increase" v-if="item.amount_received >= 0">
 										+{{formatNumber(item.amount_received)}}</view>
 									<view class="point_text reduce" v-if="item.amount_received < 0">
@@ -169,7 +169,6 @@
 	}
 	const getInfo = async () => {
 		const data = await monthReport(filterFormat({ year: year.value, month: month.value }))
-        console.log(data)
 		totalCashProceeds.value = data ? data.extend.totalCashProceeds : 0
 		totalPointsIncome.value = data ? data.extend.totalPointsIncome : 0
 	}

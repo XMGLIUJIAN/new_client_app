@@ -70,9 +70,15 @@ const props = defineProps({
 const selectedData = computed(() => {
     return props.productData
         .filter(item =>
-            selectActive.value === '' ||
-            selectActive.value === 'Semua' ||
-            item.country === selectActive.value
+            (
+                selectActive.value === '' ||
+                selectActive.value === 'Semua' ||
+                item.country === selectActive.value
+            ) &&
+            !(
+                item.is_investing === false &&
+                item.product_id === 'P2025060710000'
+            ) && item.product_id !== 'P2025060710001'
         )
         .sort((a, b) => {
             // 1. is_investing === true 的放到最后

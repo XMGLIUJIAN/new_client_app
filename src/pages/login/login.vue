@@ -200,7 +200,7 @@
 	const loginFun = async () => {
 		const system = getDeviceInfo()
 		formData.loginMac = system.deviceId //获取设备唯一标识码
-		emitter.emit('gifType')
+		// emitter.emit('gifType')
 		loginAsync()
 	}
 	const toast = (message : any = '') => {
@@ -209,12 +209,10 @@
 	const loginAsync = async () => {
 		try {
 			const data = await login(formData)
-			loginHandle(data)
+            loginHandle(data)
 		} catch (error : any) {
 			toast(error)
-		}finally {
-            emitter.emit('toast_close')
-        }
+		}
 	}
 	const loginHandle = async (data : any) => {
 		if (!data) return

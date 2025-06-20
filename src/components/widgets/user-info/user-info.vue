@@ -27,10 +27,10 @@
 				</view>
 				<view class="user_card_info">
 					<view class="user_card_poin">
-                        <view>Poin {{!eyeShow ? formatNumber(props.user.user_integral) || 0 : '***' }}</view>
+                        <view>Poin {{formatNumber(props.user.user_integral)}}</view>
                         <u-image @tap="navigateAuth('/pages/earn_point/earn_point')" width="30" height="30" src="@/static/images/user/to.png" alt="" />
                     </view>
-					<view class="user_card_saldo">Saldo Pengguna {{!eyeShow ? "Rp "+formatNumber(props.user.user_money) || 0 : '***' }}</view>
+					<view class="user_card_saldo">Saldo Pengguna {{"Rp "+formatNumber(props.user.user_money)}}</view>
 				</view>
 				<view class="user_card_line"></view>
 				<view class="user_card_box">
@@ -57,23 +57,23 @@
 			<view class="article_head">Pemasukan dan Pengeluaran Bulan Ini</view>
 			<view class="article_box">
 				<view class="article_label">
-					<view class="label_title">Pemasukan</view>
-					<view class="label_num">{{!eyeShow ? "Rp "+formatNumber(props.user.point_vault_income) || 0 : '***' }}</view>
+					<view class="label_title">Hasil kemarin</view>
+					<view class="label_num">{{"Rp "+formatNumber(props.user.point_vault_income)}}</view>
 				</view>
 				<view class="article_line"></view>
 				<view class="article_label">
-					<view class="label_title">Tarik Dana</view>
-					<view class="label_num" style="color: #0f0f0f">{{!eyeShow ? "Rp "+formatNumber(props.user.total_point_vault_income) || 0 : '***' }}</view>
+					<view class="label_title">Total Pendapatan</view>
+					<view class="label_num" style="color: #0f0f0f">{{"Rp "+formatNumber(props.user.total_point_vault_income)}}</view>
 				</view>
 			</view>
 			<view class="card_line"></view>
 			<view class="article_foot">
 				<view class="foot_info">
-					<view class="foot_title">Bantuan Tim (Belum Diambil)</view>
+					<view class="foot_title">BONUS BERKAH (Belum Diambil)</view>
 					<u-image @tap="show = true" width="24" height="24" src="@/static/images/user/help.png" alt="" />
 				</view>
 <!--                team_reserve_amount-->
-				<view class="foot_num">{{!eyeShow ? "Rp "+formatNumber(props.user.team_reserve_amount) || 0 : '***' }}</view>
+				<view class="foot_num">{{"Rp "+formatNumber(props.user.team_reserve_amount)}}</view>
 			</view>
 		</view>
 		<BonusPopup v-if="show" @cancel="show = false"></BonusPopup>
@@ -181,6 +181,9 @@
 						display: flex;
 						justify-content: space-between;
 						align-items: center;
+                        .lock_box{
+                            display: none;
+                        }
 
 						.card_head_title {
 							margin-right: 20rpx;

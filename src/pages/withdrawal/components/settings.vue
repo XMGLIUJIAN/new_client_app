@@ -185,27 +185,48 @@
 		emitter.emit('gifType')
 		withdrawalAsync()
 	}
-	const withdrawalAsync = () => {
-		setTimeout(async () => {
-			const payInfo = {
-				bank_code: formData.bank_code,
-				bank_name: formData.bank_name,
-				card_number: formData.card_number,
-				money: formData.money,
-				pay_way: formData.pay_way,
-				withdrawal_password: formData.password,
-				type: formData.type
-			}
-			const resData = await withdrawal(payInfo)
-			if (resData.code == 1) {
-				userStore.getUser()
-				resetForm()
-				toast('Sukses')
-			} else {
-				toast(resData.msg)
-			}
-            emitter.emit('toast_close')
-		}, 3000)
+	const withdrawalAsync = async () => {
+
+        const payInfo = {
+            bank_code: formData.bank_code,
+            bank_name: formData.bank_name,
+            card_number: formData.card_number,
+            money: formData.money,
+            pay_way: formData.pay_way,
+            withdrawal_password: formData.password,
+            type: formData.type
+        }
+        const resData = await withdrawal(payInfo)
+        emitter.emit('toast_close')
+        if (resData.code == 1) {
+            userStore.getUser()
+            resetForm()
+            toast('Sukses')
+        } else {
+            toast(resData.msg)
+        }
+
+		// setTimeout(async () => {
+		// 	const payInfo = {
+		// 		bank_code: formData.bank_code,
+		// 		bank_name: formData.bank_name,
+		// 		card_number: formData.card_number,
+		// 		money: formData.money,
+		// 		pay_way: formData.pay_way,
+		// 		withdrawal_password: formData.password,
+		// 		type: formData.type
+		// 	}
+		// 	const resData = await withdrawal(payInfo)
+        //     emitter.emit('toast_close')
+		// 	if (resData.code == 1) {
+		// 		userStore.getUser()
+		// 		resetForm()
+		// 		toast('Sukses')
+		// 	} else {
+		// 		toast(resData.msg)
+		// 	}
+        //
+		// }, 3000)
 	}
 	onShow(() => {
 		userStore.getUser()

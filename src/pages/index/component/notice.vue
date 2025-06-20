@@ -3,7 +3,7 @@
 		<view class="announcement">
 			<view class="announcement_icon">
 				<u-image width="36" height="36" src="@/static/images/user/notice.png" alt="" />
-				<view class="announcement_title">Siaran Sistem</view>
+				<view class="announcement_title">PESAN SIARAN</view>
 			</view>
 			<view class="announcement_text">
 				<view class="songName">
@@ -34,7 +34,7 @@ import {
 		() => props.notice,
 		(value) => {
 			noticeArr.value = value
-		}, 
+		},
 		{ deep: true }
 	)
 	const noticeArr = ref([])
@@ -128,7 +128,7 @@ import {
 		await getContainerWidth()
 		startScroll()
 	})
-	
+
 	// 清理
 	onBeforeUnmount(() => {
 		if (animationFrame) {

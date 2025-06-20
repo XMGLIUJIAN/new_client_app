@@ -65,6 +65,7 @@
 								placeholder-style="color: #8B9098;font-size:24rpx;"
 								placeholder="Masukkan Nilai Yang Dikirim" />
 						</view>
+                        <view class="mt-2">Biaya Transfer：<text class="text-[#ECB54B] text-xs">{{(formData.fee*100).toFixed(0)}}%</text></view>
 					</view>
 				</view>
 			</view>
@@ -105,15 +106,18 @@
 		accept_user_id : any,
 		accept_user_id_confirm : any,
 		exchange_amount : any,
-		type : number
+		type : number,
+        fee:number
 	}>({
 		accept_user_id: null,
 		accept_user_id_confirm: null,
 		exchange_amount: null,
-		type: 0
+		type: 0,
+        fee:0
 	})
 	const radioChange = (e : any) => {
 		formData.type = e.currency_type
+		formData.fee = e.fee
 		currencyName.value = e.currency_name
 		min_amount.value = e.min_amount
 		max_amount.value = e.max_amount

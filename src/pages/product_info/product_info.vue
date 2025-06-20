@@ -208,15 +208,9 @@
                         >
                     </view>
                     <view class="card_info_line"></view>
-                    <view class="card_info_foot" v-if="productData.color == 1"
-                        >Harian Bunga,Jatuh Tempo Pokok</view
-                    >
-                    <view class="card_info_foot" v-if="productData.color == 2"
-                        >Harian Bunga,Jatuh Tempo Pokok</view
-                    >
-                    <view class="card_info_foot" v-if="productData.color == 3"
-                        >Bunga & Pokok Saat Jatuh Tempo</view
-                    >
+                    <view class="card_info_foot" v-if="productData.color == 1">KEUNTUNGAN HARIAN,MODAL DI AKHIR KONTRAK</view>
+                    <view class="card_info_foot" v-if="productData.color == 2">KEUNTUNGAN HARIAN,MODAL DI AKHIR KONTRAK</view>
+                    <view class="card_info_foot" v-if="productData.color == 3">KEUNTUNGAN DAN MODAL DI AKHIR KOTRAK</view>
                 </view>
             </view>
             <view class="advantage_card mt-[20rpx] mb-[20rpx] mx-[30rpx]">
@@ -298,7 +292,7 @@
                     <!--                    <u-icon name="arrow-down" color="#1E1E1E" size="28"></u-icon>-->
                 </view>
             </view>
-            <ContractPopup v-if="contractShow" @cancel="contractShow = false"></ContractPopup>
+            <ContractPopup v-if="contractShow" @cancel="contractShow = false" :msg="contractValue"></ContractPopup>
             <SuccessPopup
                 v-if="successShow"
                 :data="productData"
@@ -335,6 +329,7 @@ import { getProductDetailApi, InvestProductApi, interestCalculator } from '@/api
 
 const scrollTop = ref<number>(0)
 const contractShow = ref<boolean>(false)
+const contractValue = ref("Tanpa Batas")
 const successShow = ref<boolean>(false)
 const loseShow = ref<boolean>(false)
 const loseShowText = ref("")
@@ -437,6 +432,7 @@ const InvestHandle = async () => {
                 loseShow.value = true
                 break;
             case 2006://条件不满足
+                contractValue.value = data.msg
                 contractShow.value = true
                 break;
             case 2007://当前合约生中
@@ -802,7 +798,7 @@ page {
                     padding: 15rpx 0;
                     font-family: Arial;
                     font-weight: 400;
-                    font-size: 28rpx;
+                    font-size: 22rpx;
                     line-height: 40rpx;
                     text-align: center;
                     color: #1e1e1e;
