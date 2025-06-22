@@ -199,7 +199,6 @@
 	}
     const inputCodeChange =(n:string)=>{
         if (n.length == 6){
-            console.log("提交")
             setTimeout(()=>{
                 registerEvent()
             },  500)

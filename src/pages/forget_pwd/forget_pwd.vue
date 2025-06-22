@@ -25,7 +25,7 @@
 					</view>
 					<view class="recover_row mt-[40rpx]">
 						<u-image width="40" height="40" src="@/static/images/icon/phone.png" alt="" />
-						<view class="recover_tips">+62</view>
+<!--						<view class="recover_tips">+62</view>-->
 						<view class="recover_input">
 							<u-input type="text" v-model="formData.mobile" :border="false"
 								placeholder-style="color: #8B9098;font-size:24rpx;" placeholder="Nomor HP anda(08XXXXXX)" />
@@ -78,7 +78,7 @@
 </template>
 
 <script setup lang="ts">
-	import { smsSend } from '@/api/app'
+import { smsSend, smsSendResp } from '@/api/app'
 	import { forgotPassword } from '@/api/user'
 	import { SMSEnum } from '@/enums/appEnums'
 	import { RequestCodeEnum } from '@/enums/requestEnums'
@@ -126,12 +126,16 @@
 	const sendSms = async () => {
 		if (!formData.mobile) return
 		if (uCodeRef.value?.canGetCode) {
-			await smsSend({
+			const res = await smsSendResp({
 				scene: SMSEnum.FIND_PASSWORD,
 				mobile: formData.mobile
 			})
-			toast('Kode berhasil di kirim')
-			uCodeRef.value?.start()
+            if (res.code == RequestCodeEnum.SUCCESS){
+                toast('Kode berhasil di kirim')
+                uCodeRef.value?.start()
+            } else {
+                toast(res.msg)
+            }
 		}
 	}
 	const resetForm = () => {

@@ -5,6 +5,10 @@ export function smsSend(data: any) {
     return request.post({ url: '/sms/sendCode', data: data })
 }
 
+export function smsSendResp(data: any) {
+    return request.post({ url: '/sms/sendCode', data: data },  { isCustom: true })
+}
+
 export function getConfig() {
     return request.get({ url: '/index/config' })
 }
