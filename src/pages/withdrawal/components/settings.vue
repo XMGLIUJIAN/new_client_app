@@ -70,7 +70,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="submit_btn mx-[30rpx]" @tap="submitEvent">Permintaan</view>
+		<view class="submit_btn mx-[30rpx]" @tap="submitEvent">Konfirmasi</view>
 		<u-select v-model="selectShow" confirm-text="Konfirmasi" cancel-text="Batal" :list="cardArr"
 			@confirm="actionSheet"></u-select>
 		<keywords :popup="keywordShow" title="Penarikan" :money="formData.money" @confirm="keywordConfirm" @close="keywordClose"></keywords>

@@ -208,8 +208,8 @@
                         >
                     </view>
                     <view class="card_info_line"></view>
-                    <view class="card_info_foot" v-if="productData.color == 1">KEUNTUNGAN HARIAN,MODAL DI AKHIR KONTRAK</view>
-                    <view class="card_info_foot" v-if="productData.color == 2">KEUNTUNGAN HARIAN,MODAL DI AKHIR KONTRAK</view>
+                    <view class="card_info_foot" v-if="productData.color == 1">Profit Harian , Modal Selesai Kontrak</view>
+                    <view class="card_info_foot" v-if="productData.color == 2">Profit Harian , Modal Selesai Kontrak</view>
                     <view class="card_info_foot" v-if="productData.color == 3">KEUNTUNGAN DAN MODAL DI AKHIR KOTRAK</view>
                 </view>
             </view>

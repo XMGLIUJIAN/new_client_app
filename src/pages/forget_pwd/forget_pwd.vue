@@ -28,7 +28,7 @@
 <!--						<view class="recover_tips">+62</view>-->
 						<view class="recover_input">
 							<u-input type="text" v-model="formData.mobile" :border="false"
-								placeholder-style="color: #8B9098;font-size:24rpx;" placeholder="Nomor HP anda(08XXXXXX)" />
+								placeholder-style="color: #8B9098;font-size:24rpx;" placeholder="Nomor WA Anda(08XXXXX)" />
 						</view>
 					</view>
 					<view class="recover_code mt-[20rpx]">
