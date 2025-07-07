@@ -12,9 +12,9 @@
 				</u-navbar>
 			</u-sticky>
 			<view class="treasure_card mt-[275rpx] mx-[30rpx]">
-				<view class="card_title">Undang Teman Berhasil, Dapatkan</view>
+				<view class="card_title">BERHASIL MENGAJAK TEMAN, DAPATKAN</view>
 				<view class="card_num">Rp 30.000</view>
-				<view class="card_text">Bonus Tunai</view>
+				<view class="card_text">TUNAI</view>
 			</view>
 			<view class="treasure_book mt-[20rpx] mx-[30rpx]">
 				<u-image width="690" height="752" src="@/static/images/activity/treasure_book.png"></u-image>
@@ -35,8 +35,9 @@
 							<u-image width="30" height="30" src="@/static/images/activity/treasure_union.png"></u-image>
 						</view>
 						<view class="label_info">
-							Dihitung langsung, masuk ke akun esok harinya
-						</view>
+<!--							Dihitung langsung, masuk ke akun esok harinya-->
+                            Otomatis masuk ke Akun Anda setiap hari
+                        </view>
 					</view>
 					<view class="treasure_book_label ml-[75rpx]">
 						<view class="label_image">
@@ -48,10 +49,10 @@
 					</view>
 					<view class="treasure_book_foot mx-[20rpx]">
 						<view class="treasure_book_invite" @tap="navigateTo('/pages/invite/invite')">
-							<view class="treasure_book_text">Lihat Daftar</view>
+							<view class="treasure_book_text">Undang Teman</view>
 						</view>
 						<view class="treasure_book_connection" @tap="navigateTo('/pages/connection/connection')">
-							<view class="treasure_book_text">Lihat Daftar</view>
+							<view class="treasure_book_text">Undang Teman</view>
 							<view class="treasure_book_text">Undangan Saya</view>
 						</view>
 					</view>

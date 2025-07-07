@@ -64,7 +64,7 @@
                     ></u-image>
                      <u-image v-else width="268" height="120" src="@/static/images/card/dashboard_second.png"></u-image>
                 </view>
-                <view class="profit_dashboard_text">Persentase Rilis Harian Saat Ini</view>
+                <view class="profit_dashboard_text">Persentasi Keuntungan</view>
                 <view class="profit_dashboard_num">{{ pageData.rate*100 }}%</view>
                 <view class="profit_countdown mt-[20rpx] mb-[20rpx]">
                     <u-image
@@ -72,19 +72,19 @@
                         height="35"
                         src="@/static/images/card/icon_countdown.png"
                     ></u-image>
-                    <view class="profit_countdown_text">SISA HARI：{{pageData.expiration_time}}</view>
+                    <view class="profit_countdown_text">Masa Berlaku {{pageData.expiration_time}}</view>
                 </view>
                 <view class="profit_card_box mb-[40rpx] mx-[40rpx]">
                     <view class="profit_card_text">Tingkat Keuntungan</view>
                     <view class="profit_card_btn">{{pageData.income_level*100}}%</view>
                 </view>
                 <view class="profit_card_estimate">
-                    <view class="card_estimate_text">Estimasi Hari Ini</view>
+                    <view class="card_estimate_text">Estimasi Keuntungan</view>
                     <view class="card_estimate_num">{{"Rp "+formatNumber(pageData.estimated_revenue) }}</view>
                 </view>
                 <view class="profit_card_issue">
                     <view class="card_issue_head">
-                        <view class="issue_head_title">Pengalaman Rilis</view>
+                        <view class="issue_head_title">Tingkatkan Keuntungan</view>
                         <view class="issue_head_num">200%</view>
                     </view>
                     <view class="card_issue_line mt-[5rpx] mb-[20rpx]"></view>
@@ -97,9 +97,7 @@
                             ></u-image>
                             <view class="invite_info">
                                 <view class="invite_info_label">Undang Pengguna Resmi,</view>
-                                <view class="invite_info_label"
-                                    >Rilis Naik Menjadi<text class="label_text">0.1%</text></view
-                                >
+                                <view class="invite_info_label">Tingkatkan menjadi<text class="label_text">0.1%</text></view>
                             </view>
                         </view>
                         <view class="card_invite_user">
@@ -108,10 +106,7 @@
                                     >Undang Pengguna<text class="label_text">+1,</text></view
                                 >
                                 <view class="invite_info_label"
-                                    >Waktu Keuntungan Tinggi<text class="label_text"
-                                        >+2 Hari</text
-                                    ></view
-                                >
+                                    >Waktu Keuntungan<text class="label_text">+2 Hari</text></view>
                             </view>
                             <u-image
                                 width="143"

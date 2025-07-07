@@ -106,13 +106,13 @@
                                 <view class="label_num" :class="switchCard(productData.color)"
                                     >{{ (productData.show_interest_rate * 100).toFixed(2) }}%</view
                                 >
-                                <view class="label_text">Pertumbuhan Bulanan</view>
+                                <view class="label_text">Keuntungan Bersih</view>
                             </view>
                             <view class="card_box_label">
                                 <view class="label_num" :class="switchCard(productData.color)"
                                     >{{ productData.siklus_investasi }} Hari</view
                                 >
-                                <view class="label_text">Tanggal Investasi</view>
+                                <view class="label_text">Jangka Waktu</view>
                             </view>
                         </view>
                         <view
@@ -142,7 +142,7 @@
                                     />
                                 </view>
                                 <view class="profit_info_btn" :class="switchCard(productData.color)"
-                                    >Estimasi Profit</view
+                                    >Total Keuntungan</view
                                 >
                             </view>
                         </view>
@@ -158,7 +158,7 @@
                                 class="product_card_btn mt-[20rpx]"
                                 @tap="InvestHandle"
                                 :class="switchCard(productData.color)"
-                                >Booking Sekarang</view
+                                >Beli Sekarang</view
                             >
                         </view>
                     </view>
@@ -208,7 +208,7 @@
                         >
                     </view>
                     <view class="card_info_line"></view>
-                    <view class="card_info_foot" v-if="productData.color == 1">Profit Harian , Modal Selesai Kontrak</view>
+                    <view class="card_info_foot" v-if="productData.color == 1">Profit Harian , Pengembalian Modal Setelah Kontrak Selesai </view>
                     <view class="card_info_foot" v-if="productData.color == 2">Profit Harian , Modal Selesai Kontrak</view>
                     <view class="card_info_foot" v-if="productData.color == 3">KEUNTUNGAN DAN MODAL DI AKHIR KOTRAK</view>
                 </view>
@@ -227,14 +227,14 @@
                 <view class="card_info_line"></view>
                 <view class="card_box_foot" v-if="productData.color == 1">
                     <view class="foot_label">
-                        <view class="label_title">Tunai Harian</view>
+                        <view class="label_title">Keuntungan Harian</view>
                         <view class="label_text"
                             >Rp {{ formatNumber(productData.day_profit) }}</view
                         >
                     </view>
                     <view class="foot_line"></view>
                     <view class="foot_label">
-                        <view class="label_title">Total Pengembalian</view>
+                        <view class="label_title">Total yang di Dapatkan</view>
                         <view class="label_num"
                             >Rp {{ formatNumber(productData.total_profit) }}</view
                         >
@@ -286,9 +286,7 @@
             <view v-else class="doShowBtn my-[30rpx] mx-[30rpx] py-[5rpx]">
                 <view @tap="doShow = true">
                     <u-image width="678" height="83" src="@/static/images/page/btn.png"></u-image>
-                    <view class="btn_text mt-[33rpx] mx-[60rpx]"
-                        >Klik Untuk Memuat Lebih Banyak Informasi &nbsp;&nbsp; →</view
-                    >
+                    <view class="btn_text mt-[33rpx] text-center">Informasi Produk &nbsp;&nbsp; →</view>
                     <!--                    <u-icon name="arrow-down" color="#1E1E1E" size="28"></u-icon>-->
                 </view>
             </view>
@@ -931,8 +929,10 @@ page {
             position: relative;
             .btn_text {
                 position: absolute;
+                width: 100%;
                 top: 0;
                 left: 0;
+                text-align: center;
                 color: #ffffff;
                 font-size: 26rpx;
             }

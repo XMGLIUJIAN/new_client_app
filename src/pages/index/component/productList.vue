@@ -13,7 +13,7 @@
                     src="@/static/images/card/article_image.png"
                 ></u-image>
                 <view class="article_head_title">Zona Global</view>
-                <view class="article_head_text">Pertumbuhan Stabil</view>
+                <view class="article_head_text">Keuntungan Stabil</view>
             </view>
         </view>
         <view class="article_nav mb-[20rpx]">

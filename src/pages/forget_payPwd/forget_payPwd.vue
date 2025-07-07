@@ -18,8 +18,7 @@
 					<view class="forget_recover">
 						<view class="recover_head mb-[20rpx]">Pemulihan Kata Sandi</view>
 						<view class="recover_text">
-							Hanya dapat dioperasikan sekali sehari untuk memastikan akun anda aman atau akun anda akan
-							terkunci dan tidak dapat dit
+                            Hanya dapat dioperasikan sekali sehari untuk memastikan akun Anda aman, atau akun Anda akan terkunci dan tidak dapat digunakan.
 						</view>
 						<view class="recover_row mt-[50rpx]">
 							<u-image width="40" height="40" src="@/static/images/icon/phone.png" alt="" />
@@ -313,7 +312,7 @@
 					text-align: center;
 					color: #FFFFFF;
 				}
-				
+
 				.disabled {
 					background: #81AF95;
 				}

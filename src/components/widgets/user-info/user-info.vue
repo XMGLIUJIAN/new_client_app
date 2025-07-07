@@ -44,11 +44,11 @@
 					</view>
 					<view class="user_card_label" @tap="navigateAuth('/pages/withdrawal/withdrawal')">
 						<u-image width="80" height="80" src="@/static/images/user/icon_card03.png" alt="" />
-						<view class="card_label_text">Tarik Dana</view>
+						<view class="card_label_text">Penarikan</view>
 					</view>
 					<view class="user_card_label" @tap="navigateAuth('/pages/trade/trade')">
 						<u-image width="80" height="80" src="@/static/images/user/icon_card04.png" alt="" />
-						<view class="card_label_text">Transfer Dana</view>
+						<view class="card_label_text">Transfer</view>
 					</view>
 				</view>
 			</view>
@@ -57,7 +57,7 @@
 			<view class="article_head">Pemasukan dan Pengeluaran Bulan Ini</view>
 			<view class="article_box">
 				<view class="article_label">
-					<view class="label_title">Hasil kemarin</view>
+					<view class="label_title">Pendapatan Kemarin</view>
 					<view class="label_num">{{"Rp "+formatNumber(props.user.point_vault_income)}}</view>
 				</view>
 				<view class="article_line"></view>

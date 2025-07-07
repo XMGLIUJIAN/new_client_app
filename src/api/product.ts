@@ -22,3 +22,10 @@ export function InvestProductApi(params  : any) {
     // return request.post({ url: '/pay/prepay', data: { ...data, terminal: client } }, { isAuth: true, isCustom: true })
     return request.post({ url: '/myContract/productInvest',data: { ...params, terminal: client } }, { isAuth: true, isCustom: true })
 }
+
+
+
+//收益日志列表
+export function PcuLogList(data: any) {
+    return request.get({ url: '/productMonthReleaseRecord/list', data}, { isAuth: true })
+}

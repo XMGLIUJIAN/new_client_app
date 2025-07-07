@@ -35,7 +35,7 @@
 		    </view>
 		</view>
 		<view v-if="isLogin" class="switch_account mt-[30rpx] mx-[40rpx]" @tap="switchAccount">
-			<view class="switch_text">Tukar Akun</view>
+			<view class="switch_text">Keluar</view>
 		</view>
 		<Popup v-if="switchPopup" @confirm="confirm" @cancel="cancel"></Popup>
 		<toastPopup></toastPopup>

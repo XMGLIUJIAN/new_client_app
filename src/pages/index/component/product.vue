@@ -45,7 +45,7 @@
 <!--                    <view v-else-if="props.data.status==1" class="tips_title bg1">Syarat Terbatas</view>-->
 <!--                    <view v-else-if="props.data.status==2" class="tips_title bg2">Syarat Terbatas</view>-->
                     <u-image width="34" height="34" :src="`/static/images/card/c${props.data.status}.png`"></u-image>
-                    <view :class="['tips_title']">Syarat Terbatas</view>
+                    <view :class="['tips_title']">Syarat & Ketentuan</view>
                 </view>
             </view>
             <view class="product_line"></view>
@@ -86,7 +86,7 @@
                 <view class="foot_box">
                     <view class="foot_label">
                         <view class="label_num">+{{ (props.data.show_interest_rate * 100).toFixed(2)}}%</view>
-                        <view class="label_title">Pertumbuhan Bersih</view>
+                        <view class="label_title">Keuntungan Bersih</view>
                     </view>
                     <view class="foot_label">
                         <view class="label_num">
@@ -188,7 +188,7 @@ const navigateTo = (url: string) => {
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
-                width: 168rpx;
+                width: 188rpx;
                 height: 40rpx;
                 padding: 5rpx;
                 border-radius: 40rpx;
