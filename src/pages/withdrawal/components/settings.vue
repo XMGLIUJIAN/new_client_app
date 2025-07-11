@@ -1,76 +1,104 @@
 <template>
 	<view class="settings">
 		<view class="set_card mt-[20rpx] mx-[30rpx]">
-			<u-image width="690" height="245" src="@/static/images/user/setGroup.png"></u-image>
-			<view class="settings_card pt-[20rpx] pb-[20rpx] px-[40rpx]">
+			<u-image width="100%" height="171" src="@/static/images/withdrawal/setGroup.png"></u-image>
+			<view class="settings_card pt-[20rpx] pb-[20rpx] px-[20rpx]">
 				<view class="card_head">
-					<view class="card_head_title">Informasi Aset</view>
-					<view class="card_head_account">ID:{{userInfo.account}}</view>
+					<view class="card_head_title">Saldo Dompet (Rp)</view>
+<!--					<view class="card_head_account">ID:{{userInfo.account}}</view>-->
 				</view>
 				<view class="card_box">
 					<view class="card_num">
 						{{formatNumber(userInfo.user_money)}}
 					</view>
-					<view class="card_text">
-						Saldo
-					</view>
+<!--					<view class="card_text">Saldo</view>-->
 				</view>
-			</view>
-		</view>
 
-		<view class="recharge_payment mt-[30rpx] mb-[30rpx] px-[30rpx] pt-[20rpx] pb-[30rpx] mx-[30rpx]">
-			<view class="payment_head">Memilih Pembayaran</view>
-			<u-radio-group v-model="formData.pay_way">
-				<view class="payment_list">
-					<view class="payment_Item mb-[20rpx]" @tap="radioChange(item)" v-for="(item,index) in paymentArr"
-						:key="index">
-						<view class="payment_label">
-							<u-image width="100" height="100" :src="item.icon" alt="" />
-							<view class="payment_name">{{item.name}}</view>
-						</view>
-						<u-radio shape="circle" activeColor="#528B6B" :name="item.pay_way"></u-radio>
-					</view>
-				</view>
-			</u-radio-group>
-		</view>
+            <view class="trade_submit">
+                <view class="trade_Item">
+                    <view class="trade_title">Jumlah Penarikan</view>
+                    <view class="settings_list">
+                        <view class="settings_label mt-[20rpx] mb-[20rpx]" :class="{'active':formData.money == e}"
+                              v-for="(e,index) in withdrawArr" :key="index" @tap="change(e)">
+                            <view class="settings_Item">
+                                {{formatNumber(e)}}
+                            </view>
+                        </view>
+                    </view>
+                    <view class="trade_input">
+                        <u-input v-model="formData.money" type="number" :border="false"
+                                 placeholder-style="color: #8B9098;font-size:24rpx;"
+                                 placeholder="Masukkan Jumlah Yang Ingin Ditarik" />
+                    </view>
+                </view>
 
-		<view class="settings_con mt-[20rpx] mb-[30rpx] px-[30rpx] pt-[30rpx] pb-[30rpx] mx-[30rpx]">
-			<view class="settings_list">
-				<view class="settings_label mt-[20rpx] mb-[20rpx]" :class="{'active':formData.money == e}"
-					v-for="(e,index) in withdrawArr" :key="index" @tap="change(e)">
-					<view class="settings_Item">
-						{{formatNumber(e)}}
-					</view>
-				</view>
-			</view>
-			<view class="trade_submit">
-				<view class="trade_Item">
-					<view class="trade_title">Jumlah Penarikan</view>
-					<view class="trade_input">
-						<u-input v-model="formData.money" type="number" :border="false"
-							placeholder-style="color: #8B9098;font-size:24rpx;"
-							placeholder="Masukkan Jumlah Yang Ingin Ditarik" />
-					</view>
-				</view>
-				<view class="trade_tips">Jumlah penarikan minimal adalah 50.000</view>
-				<view class="exchange_rate">
-					<view class="title">Biaya penarikan：</view>
-					<view class="point">({{feeRate}}%)</view>
-				</view>
-				<view class="trade_head  mt-[20rpx] mb-[20rpx]">
-					<view class="head_title">Bank</view>
-					<view class="head_bind" @tap="navigateTo('/pages/bind_card/bind_card')">
-						<u-image width="30" height="30" src="@/static/images/icon/addCard.png" alt="" />
-						<text class="addCard">Mengikat Rekening Bank</text>
-					</view>
-				</view>
-				<view class="trade_bank" @tap="select">
-					<u-input type="select" v-model="cardNumber" @click="selectShow = true" :border="false"
-						placeholder-style="color: #8B9098;font-size:24rpx;" placeholder="Pilih Rekening Bank" />
-				</view>
-			</view>
-		</view>
-		<view class="submit_btn mx-[30rpx]" @tap="submitEvent">Konfirmasi</view>
+                <view class="trade_head  mt-[10rpx] mb-[2rpx]">
+                    <view class="head_title">Bank</view>
+                    <view class="head_bind" @tap="navigateTo('/pages/bind_card/bind_card')">
+                        <u-image width="30" height="30" src="@/static/images/withdrawal/write_icon.png" alt="" />
+                        <text class="addCard">Edit Informasi Bank</text>
+                    </view>
+                </view>
+                <view class="trade_bank" @tap="select">
+                    <view class="trade_bank_item">
+                        <view>Name</view>
+                        <view>Bronson</view>
+                    </view>
+                    <view class="trade_bank_item">
+                        <view>Bank</view>
+                        <view>Bank Mandirl</view>
+                    </view>
+                    <view class="trade_bank_item">
+                        <view>Akun</view>
+                        <view>1730015127963</view>
+                    </view>
+                </view>
+            </view>
+            <view class="submit_btn mx-[10rpx] my-[30rpx]" @tap="submitEvent">Konfirmasi</view>
+                <view class="trade_footer_tips">
+                    <u-image width="100%" height="518" src="@/static/images/withdrawal/tips_bg.png"></u-image>
+                    <view class="trade_footer_tips_text p-[20rpx]">
+                        <view class="trade_footer_tips_text_title">Tips Penarikan</view>
+                        <view class="trade_footer_tips_text_content">
+                            <view class="trade_footer_tips_text_content_item">
+                                <u-image width="30" height="30" src="@/static/images/withdrawal/num1.png" alt="" />
+                                Jumlah penarikan minimum adalah Rp 50.000.
+                            </view>
+                            <view class="trade_footer_tips_text_content_item">
+                                <u-image width="30" height="30" src="@/static/images/withdrawal/num2.png" alt="" />
+                                Waktu proses penarikan: 12 hingga 72 jam kerja.
+                            </view>
+                            <view class="trade_footer_tips_text_content_item">
+                                <u-image width="30" height="30" src="@/static/images/withdrawal/num3.png" alt="" />
+                                Penarikan akan dikenakan pajak dan biaya administrasi.
+                            </view>
+                        </view>
+                        <view class="fees_lv">
+                            <view class="fees_lv_item fees_lv_title">
+                                <view class="fess_lv_item_line">Jumlah Penarikan</view>
+                                <view class="fess_lv_item_line">Biaya Penarikan</view>
+                            </view>
+                            <view class="fees_lv_item">
+                                <view class="fess_lv_item_line">0—200.000</view>
+                                <view class="fess_lv_item_line">12%</view>
+                            </view>
+                            <view class="fees_lv_item">
+                                <view class="fess_lv_item_line">200.001—1.000.000</view>
+                                <view class="fess_lv_item_line">8%</view>
+                            </view>
+                            <view class="fees_lv_item">
+                                <view class="fess_lv_item_line">1.000.001—10.000.000</view>
+                                <view class="fess_lv_item_line">5%</view>
+                            </view>
+                            <view class="fees_lv_item">
+                                <view class="fess_lv_item_line">Lebin dari 10.000.000</view>
+                                <view class="fess_lv_item_line">2%</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
 		<u-select v-model="selectShow" confirm-text="Konfirmasi" cancel-text="Batal" :list="cardArr"
 			@confirm="actionSheet"></u-select>
 		<keywords :popup="keywordShow" title="Penarikan" :money="formData.money" @confirm="keywordConfirm" @close="keywordClose"></keywords>
@@ -237,6 +265,10 @@
 <style lang="scss" scoped>
 	.settings {
 		.set_card {
+            background: #ffffff;
+            min-height: 100vh;
+            border-top-right-radius: 10rpx;
+            border-top-left-radius: 10rpx;
 			position: relative;
 			.settings_card {
 				position: absolute;
@@ -250,9 +282,9 @@
 					.card_head_title{
 						font-family: Arial;
 						font-weight: 700;
-						font-size: 32rpx;
+						font-size: 28rpx;
 						line-height: 48rpx;
-						color: #FFFFFF;
+						color: #1E1E1E;
 					}
 					.card_head_account{
 						font-family: Arial;
@@ -270,7 +302,7 @@
 						font-weight: 700;
 						line-height: 64rpx;
 						text-align: left;
-						color: #FFFFFF;
+						color: #1E4B2E;
 					}
 
 					.card_text {
@@ -285,6 +317,203 @@
 
 			}
 
+            .settings_list {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0 10px;
+
+                .settings_label {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 186rpx;
+                    height: 96rpx;
+                    border-radius: 6rpx;
+                    background: #F0F0F0;
+
+                    .settings_Item {
+                        font-family: Arial;
+                        font-size: 28rpx;
+                        font-weight: 700;
+                        text-align: center;
+                        color: #1E1E1E;
+                    }
+                }
+
+                .active {
+                    border: 2rpx solid #1E4B2E;
+                    background: #E5F0FF;
+                }
+
+                .hidden {
+                    display: none;
+                }
+            }
+
+            .trade_submit {
+                .trade_Item {
+                    margin-bottom: 20rpx;
+
+                    .trade_title {
+                        font-family: Arial;
+                        font-size: 32rpx;
+                        font-weight: 700;
+                        line-height: 40rpx;
+                        text-align: left;
+                        color: #1E4B2E;
+                    }
+
+                    .trade_input {
+                        margin-top: 20rpx;
+                        padding: 0 30rpx;
+                        background: #FFFFFF;
+                        border-radius: 12rpx;
+                        border: 2rpx solid #8B9098;
+                    }
+                }
+                .trade_tips{
+                    margin: 10rpx 0;
+                    font-family: Arial;
+                    font-size: 24rpx;
+                    font-weight: 500;
+                    line-height: 40rpx;
+                    text-align: left;
+                    color: #8B9098;
+                    .tips{
+                        margin-right: 5rpx;
+                        font-family: Arial;
+                        font-size: 24rpx;
+                        font-weight: 500;
+                        line-height: 40rpx;
+                        text-align: left;
+                        color: #999999;
+                    }
+                }
+                .exchange_rate {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+
+                    .title {
+                        font-family: Arial;
+                        font-size: 24rpx;
+                        font-weight: 500;
+                        line-height: 40rpx;
+                        text-align: left;
+                        color: #1E1E1E;
+                    }
+
+                    .point {
+                        margin: 0 10rpx;
+                        font-family: Arial;
+                        font-size: 24rpx;
+                        font-weight: 500;
+                        line-height: 40rpx;
+                        text-align: left;
+                        color: #ECB54B;
+                    }
+                }
+                .trade_head {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .head_title {
+                        font-family: Arial;
+                        font-size: 32rpx;
+                        font-weight: 500;
+                        line-height: 48rpx;
+                        text-align: left;
+                        color: #1E1E1E;
+                    }
+
+                    .head_bind {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .addCard {
+                            margin-left: 10rpx;
+                            font-family: Arial;
+                            font-size: 22rpx;
+                            font-weight: 500;
+                            line-height: 40rpx;
+                            text-align: right;
+                            color: #1E4B2E;
+                        }
+                    }
+                }
+
+                .trade_bank {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                    background: #FFFFFF;
+                    margin-bottom: 20rpx;
+                    .trade_bank_item {
+                        display: flex;
+                        height: 40rpx;
+                        color: #666666;
+                        margin-top: 20rpx;
+                        flex-direction: row;
+                        width: 100%;
+                        justify-content: space-between;
+                        border-bottom: 1px #252424 dashed ;
+                    }
+                }
+
+
+            }
+            .trade_footer_tips {
+                position: relative;
+                .trade_footer_tips_text {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    .trade_footer_tips_text_title {
+                        color: #000000;
+                        font-size: 30rpx;
+                        font-weight: 700;
+                        padding: 10rpx 0;
+                    }
+                    .trade_footer_tips_text_content{
+                        .trade_footer_tips_text_content_item {
+                            :first-child{
+                                margin-right: 10rpx;
+                            }
+                            display: flex;
+                            flex-direction: row;
+                            font-size: 26rpx;
+                            margin: 15rpx 0;
+                        }
+                    }
+                    .fees_lv {
+                        border: #1E4B2E solid 1rpx;
+                        border-radius: 6rpx;
+                        padding: 10rpx;
+                        margin-top: 10rpx;
+                        color: #1E4B2E;
+                        .fees_lv_title {
+                            font-weight: bold;
+                        }
+                        .fees_lv_item{
+                            font-size: 24rpx;
+                            margin-top: 10rpx;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            align-items: start;
+                            .fess_lv_item_line{
+                                flex: 1;
+                            }
+                            :first-child{
+                                flex: 2;
+                            }
+                        }
+                    }
+                }
+            }
 		}
 
 		.recharge_payment {
@@ -331,148 +560,6 @@
 			}
 		}
 
-		.settings_con {
-			border-radius: 12rpx;
-			background: #FFFFFF;
-
-			.settings_list {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				gap: 0 10px;
-
-				.settings_label {
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					width: 186rpx;
-					height: 124rpx;
-					border-radius: 6rpx;
-					background: #F0F0F0;
-
-					.settings_Item {
-						font-family: Arial;
-						font-size: 28rpx;
-						font-weight: 700;
-						text-align: center;
-						color: #1E1E1E;
-					}
-				}
-
-				.active {
-					border: 2rpx solid #1E4B2E;
-					background: #E5F0FF;
-				}
-
-				.hidden {
-					display: none;
-				}
-			}
-
-			.trade_submit {
-				.trade_Item {
-					margin-bottom: 20rpx;
-
-					.trade_title {
-						font-family: Arial;
-						font-size: 32rpx;
-						font-weight: 700;
-						line-height: 40rpx;
-						text-align: left;
-						color: #1E4B2E;
-					}
-
-					.trade_input {
-						margin-top: 20rpx;
-						padding: 0 30rpx;
-						background: #FFFFFF;
-						border-radius: 12rpx;
-						border: 2rpx solid #8B9098;
-					}
-				}
-				.trade_tips{
-					margin: 10rpx 0;
-					font-family: Arial;
-					font-size: 24rpx;
-					font-weight: 500;
-					line-height: 40rpx;
-					text-align: left;
-					color: #8B9098;
-					.tips{
-						margin-right: 5rpx;
-						font-family: Arial;
-						font-size: 24rpx;
-						font-weight: 500;
-						line-height: 40rpx;
-						text-align: left;
-						color: #999999;
-					}
-				}
-				.exchange_rate {
-					display: flex;
-					justify-content: flex-start;
-					align-items: center;
-
-					.title {
-						font-family: Arial;
-						font-size: 24rpx;
-						font-weight: 500;
-						line-height: 40rpx;
-						text-align: left;
-						color: #1E1E1E;
-					}
-
-					.point {
-						margin: 0 10rpx;
-						font-family: Arial;
-						font-size: 24rpx;
-						font-weight: 500;
-						line-height: 40rpx;
-						text-align: left;
-						color: #ECB54B;
-					}
-				}
-				.trade_head {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-
-					.head_title {
-						font-family: Arial;
-						font-size: 32rpx;
-						font-weight: 500;
-						line-height: 48rpx;
-						text-align: left;
-						color: #1E4B2E;
-					}
-
-					.head_bind {
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-
-						.addCard {
-							margin-left: 10rpx;
-							font-family: Arial;
-							font-size: 24rpx;
-							font-weight: 500;
-							line-height: 40rpx;
-							text-align: right;
-							color: #1E4B2E;
-						}
-					}
-				}
-
-				.trade_bank {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					padding: 0 30rpx;
-					background: #FFFFFF;
-					border-radius: 12rpx;
-					border: 2rpx solid #8B9098;
-				}
-			}
-		}
 
 		.submit_btn {
 			display: flex;

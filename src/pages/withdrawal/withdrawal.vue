@@ -19,6 +19,8 @@
 			<view class="withdraw_tabs pt-[20rpx] pb-[20rpx]">
 				<view class="tabs_Item" @tap="changeTab(e)" v-for="(e,index) in tabList" :key="index"
 					:class="{'active': active == e.active}">
+                    <u-image v-if="index==0" class="top_icon" width="50" height="50" src="@/static/images/withdrawal/icon_1.png"></u-image>
+                    <u-image v-if="index==1" class="top_icon" width="50" height="50" src="@/static/images/withdrawal/icon_2.png"></u-image>
 					{{e.name}}
 				</view>
 			</view>
@@ -74,25 +76,28 @@
 				align-items: center;
 
 				.tabs_Item {
-					width: 258rpx;
+					width: 327rpx;
 					height: 80rpx;
-					border-radius: 48rpx;
-					background: transparent;
+					border-radius: 20rpx;
+					//background: transparent;
 					font-family: serif;
-					font-size: 28rpx;
-					font-weight: 500;
+					font-size: 26rpx;
 					line-height: 80rpx;
 					text-align: center;
-					color: #A0A3A9;
-					background: rgba(255, 255, 255, 0.5);
+					//color: #A0A3A9;
+					background: rgba(255, 255, 255, 0.3);
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10rpx;
 				}
 
 				.active {
 					font-family: serif;
-					font-size: 28rpx;
-					font-weight: 700;
 					border: 2rpx solid #FFFFFF;
 					color: #1E4B2E;
+                    background: rgba(255, 255, 255, 0.6);
 				}
 			}
 		}

@@ -1,31 +1,33 @@
 <template>
 	<view class="state pb-[40rpx]">
-		<view class="state_con px-[30rpx]">
-			<view class="state_card px-[30rpx] pb-[30rpx] pt-[30rpx]">
-				<view class="card_left">
-					<view class="card_num">
+		<view class="state_con mx-[30rpx]">
+            <u-image width="100%" height="171" class="z-10" src="@/static/images/withdrawal/setGroup.png"></u-image>
+			<view class="state_card pb-[30rpx] pt-[30rpx]">
+				<view class="card_left px-[30rpx]">
+                    <view class="card_title">Total Penarikan (Rp)</view>
+					<view class="card_num mt-[20rpx]">
 						{{formatNumber(userInfo.user_money)}}
 					</view>
-					<view class="card_text">
-						Saldo
-					</view>
 				</view>
-			</view>
-			<view class="state_list mt-[20rpx]">
-				<view class="state_Item  pt-[20rpx]  pb-[20rpx]" v-for="(item,index) in stateArr" :key="index">
-					<view class="state_head">
-						<view class="state_title">PENARIKAN</view>
-						<view class="state_num">{{formatNumber(item.withdrawal_amount)}}</view>
-					</view>
-					<view class="state_foot mt-[10rpx]">
-						<view class="state_time">{{item.create_time}}</view>
-						<view class="state_status" :class="getState(item.state)">{{getStatus(item.state)}}</view>
-					</view>
-				</view>
-				<view class="empty mt-[50rpx]" v-if="!stateArr.length">
-					<u-image width="462" height="291" src="@/static/images/icon/empty.png" alt="" />
-					<view class="empty_text">Tidak Ada Catatan</view>
-				</view>
+                <view class="state_list mx-[30rpx]">
+                    <view class="state_Item" v-for="(item,index) in stateArr" :key="index">
+                        <view class="state_head">
+                            <u-image width="60" height="60" src="@/static/images/withdrawal/card_icon_red.png" alt="" />
+                            <view>
+                                <view class="state_title">Penarikan</view>
+                                <view class="state_time">{{item.create_time}}</view>
+                            </view>
+                        </view>
+                        <view class="state_foot mt-[10rpx]">
+                            <u-image class="state_foot_icon" width="155" height="155" src="@/static/images/withdrawal/state_icon_red.png" alt="" />
+                            <view class="state_num">Rp {{formatNumber(item.withdrawal_amount)}}-{{item.state}}</view>
+                        </view>
+                    </view>
+                    <view class="empty mt-[50rpx]" v-if="!stateArr.length">
+                        <u-image width="462" height="291" src="@/static/images/icon/empty.png" alt="" />
+                        <view class="empty_text">Tidak Ada Catatan</view>
+                    </view>
+                </view>
 			</view>
 		</view>
 		<toastPopup></toastPopup>
@@ -92,47 +94,52 @@
 	.state {
 		.state_con {
 			margin-top: 20rpx;
+            position: relative;
 
 			.state_card {
+                background: #FFFFFF;
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 0;
 				display: flex;
+                flex-direction: column;
 				justify-content: space-between;
-				align-items: center;
 				border-radius: 12rpx;
-				background: linear-gradient(270.01deg, #FFFFFF 29.05%, #C7E1C9 111.86%);
 
 				.card_left {
+                    z-index: 10;
+                    .card_title {
+                        font-family:  Arial;
+                        font-size: 28rpx;
+                        font-weight: 700;
+                        color: #1E1E1E;
+                    }
 					.card_num {
 						font-family:  Arial;
 						font-size: 48rpx;
 						font-weight: 700;
-						line-height: 64rpx;
+						line-height: 74rpx;
 						text-align: left;
-						color: #1E1E1E;
-					}
-
-					.card_text {
-						font-family:  Arial;
-						font-size: 30rpx;
-						font-weight: 500;
-						line-height: 48rpx;
-						text-align: left;
-						color: #A0A3A9;
+						color: #1E4B2E;
 					}
 				}
 
 			}
 
 			.state_list {
-				padding: 30rpx;
-				border-radius: 12rpx;
-				background: #FFFFFF;
-
 				.state_Item {
 					border-bottom: 2rpx solid #D7D7D7;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
 					.state_head {
 						display: flex;
 						justify-content: space-between;
 						align-items: center;
+                        :first-child {
+                            margin-right: 20rpx;
+                        }
 
 						.state_title {
 							font-family:  Arial;
@@ -143,28 +150,29 @@
 							color: #1E1E1E;
 						}
 
-						.state_num {
-							font-family:  Arial;
-							font-size: 36rpx;
-							font-weight: 400;
-							line-height: 48rpx;
-							text-align: right;
-							color: #1E1E1E;
-						}
+                        .state_time {
+                            font-family:  Arial;
+                            font-size: 20rpx;
+                            line-height: 40rpx;
+                            text-align: left;
+                            color: #A0A3A9;
+                        }
 					}
 					.state_foot {
 						display: flex;
 						justify-content: space-between;
 						align-items: center;
-
-						.state_time {
-							font-family:  Arial;
-							font-size: 24rpx;
-							font-weight: 500;
-							line-height: 40rpx;
-							text-align: left;
-							color: #A0A3A9;
-						}
+                        .state_foot_icon{
+                            margin-right: -60rpx;
+                        }
+                        .state_num {
+                            font-family:  Arial;
+                            font-size: 34rpx;
+                            font-weight: 700;
+                            line-height: 48rpx;
+                            text-align: right;
+                            color: #1E1E1E;
+                        }
 
 						.state_status {
 							padding: 2rpx 18rpx;

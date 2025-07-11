@@ -166,8 +166,8 @@ const eyeChange = () => {
 }
 
 const fetchEarnPointData = async () => {
-    emitter.emit('gifType')
     try {
+        // emitter.emit('gifType')
         const res = await getPointVaultIncomeRateApi()
         if (res.code==1){
             pageData.value = res.data
