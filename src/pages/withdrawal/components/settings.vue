@@ -42,15 +42,15 @@
                 <view class="trade_bank" @tap="select">
                     <view class="trade_bank_item">
                         <view>Name</view>
-                        <view>Bronson</view>
+                        <view>{{ cardInfo.name }}</view>
                     </view>
                     <view class="trade_bank_item">
                         <view>Bank</view>
-                        <view>Bank Mandirl</view>
+                        <view>{{ cardInfo.bank_name }}</view>
                     </view>
                     <view class="trade_bank_item">
                         <view>Akun</view>
-                        <view>1730015127963</view>
+                        <view>{{ cardInfo.bank_card }}</view>
                     </view>
                 </view>
             </view>
@@ -107,16 +107,17 @@
 </template>
 
 <script lang="ts" setup>
-	import { useUserStore } from '@/stores/user'
-	import { storeToRefs } from 'pinia'
-	import { formatNumber, bankFormat } from '@/utils/util'
-	import { onShow } from '@dcloudio/uni-app'
-	import { computed, reactive, ref } from 'vue'
-	import { withdrawalConfig, withdrawal } from '@/api/recharge'
-	import { bankCardList } from '@/api/bank'
-	import keywords from './keywords.vue'
-	import { emitter } from '@/utils/emitter';
-	const userStore = useUserStore()
+import { useUserStore } from '@/stores/user'
+import { storeToRefs } from 'pinia'
+import { bankFormat, formatNumber } from '@/utils/util'
+import { onShow } from '@dcloudio/uni-app'
+import { reactive, ref } from 'vue'
+import { withdrawal, withdrawalConfig } from '@/api/recharge'
+import { bankCardDetail, bankCardList } from '@/api/bank'
+import keywords from './keywords.vue'
+import { emitter } from '@/utils/emitter'
+
+const userStore = useUserStore()
 	const { userInfo, isLogin } = storeToRefs(userStore)
 	const selectShow = ref<Boolean>(false)
 	const feeRate = ref<number>(0)
@@ -125,6 +126,12 @@
 	const paymentArr = ref<Array<any>>([])
 	const withdrawArr = ref<Array<any>>([])
 	const cardArr = ref<Array<any>>([])
+    const cardInfo = reactive({
+        name: '',
+        bank_name: '',
+        bank_card: '',
+        bank_code: ''
+    })
 	const formData = reactive<{
 		bank_code : String,
 		bank_name : String,
@@ -185,14 +192,23 @@
 		formData.pay_way = data.lists[0].pay_way
 		withdrawArr.value =  data.lists[0].withdrawal_amount ? data.lists[0].withdrawal_amount.split(',') : []
 		feeRate.value = data.lists[0].fee_rate
-		cardList()
+		// cardList()
+        await getBankCardDetail()
 	}
+    const getBankCardDetail = async () => {
+        const data = await bankCardDetail({})
+        cardInfo.name  = data.name
+        cardInfo.bank_card  = data.bank_card
+        cardInfo.bank_name = data.bank_name
+        cardInfo.bank_code = data.ifsc
+
+    }
 	const select = () => {
 		selectShow.value = !selectShow.value
 	}
 	const submitEvent = () => {
 		if (!formData.money) return toast('Silahkan pilih jumlah untuk menarik')
-		if (!formData.card_number) return toast('Silahkan pilih kartu bank')
+		// if (!formData.card_number) return toast('Silahkan pilih kartu bank')
 		userInfo.value.has_pay_password ? keywordShow.value = true : navigateTo('/pages/change_payPwd/change_payPwd?type=set')
 	}
 	const keywordConfirm = (e: any) => {
@@ -216,13 +232,13 @@
 	const withdrawalAsync = async () => {
 
         const payInfo = {
-            bank_code: formData.bank_code,
-            bank_name: formData.bank_name,
-            card_number: formData.card_number,
+            bank_code: cardInfo.bank_code,
+            bank_name: cardInfo.bank_name,
+            card_number: cardInfo.bank_card,
             money: formData.money,
             pay_way: formData.pay_way,
             withdrawal_password: formData.password,
-            type: formData.type
+            // type: formData.type
         }
         const resData = await withdrawal(payInfo)
         emitter.emit('toast_close')

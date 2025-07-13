@@ -36,8 +36,8 @@ export default defineConfig({
 		https: true,
 		proxy: {
 			"/api": {
-				target: "https://h5www.ricerich.id/",
-				// target: "https://28ce-36-37-234-158.ngrok-free.app/",
+				// target: "https://h5www.ricerich.id/",
+				target: "https://d1e1732ace9e.ngrok-free.app/",
 				changeOrigin: true,
 				secure: true,
 				rewrite: (path) => path.replace(/^\/api/, "api")

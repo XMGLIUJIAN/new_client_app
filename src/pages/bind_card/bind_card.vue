@@ -69,6 +69,8 @@
     //         url
     //     })
     // }
+
+
 	const selectBank = () => {
 		navigateTo('/pages/select_bank/select_bank')
 	}
@@ -81,6 +83,15 @@
 		bank_name: '',
 		area_code: ''
 	})
+
+    const getBankCardDetail = async () => {
+        const data = await bankCardDetail({})
+        formData.name  = data.name
+        formData.bank_card  = data.bank_card
+        formData.bank_name = data.bank_name
+        formData.ifsc = data.ifsc
+    }
+
 	const getBankInfo = () => {
 		emitter.on('bank',(e: any) => {
 			formData.bank_name = e.name
@@ -110,27 +121,35 @@
 	}
 	const submitEvent = async () => {
 		if(formData.bank_card.length < 10) return toast('Nomor kartu bank 10-16 digit')
-		if (card_id.value) {
-			try {
-				await bankCardEdit({ id: card_id.value, user_id: userInfo.value.id, ...formData })
-				resetForm()
-				uni.navigateBack()
-			} catch (error) {
-				toast(error)
-			}
-		} else {
-			try {
-				await bankCardAdd({ user_id: userInfo.value.id, ...formData })
-				resetForm()
-				uni.navigateBack()
-			} catch (error) {
-				toast(error)
-			}
-		}
+        try {
+            await bankCardAdd({ user_id: userInfo.value.id, ...formData })
+            resetForm()
+            uni.navigateBack()
+        } catch (error) {
+            toast(error)
+        }
+		// if (card_id.value) {
+		// 	try {
+		// 		await bankCardEdit({ id: card_id.value, user_id: userInfo.value.id, ...formData })
+		// 		resetForm()
+		// 		uni.navigateBack()
+		// 	} catch (error) {
+		// 		toast(error)
+		// 	}
+		// } else {
+		// 	try {
+		// 		await bankCardAdd({ user_id: userInfo.value.id, ...formData })
+		// 		resetForm()
+		// 		uni.navigateBack()
+		// 	} catch (error) {
+		// 		toast(error)
+		// 	}
+		// }
 	}
 	onLoad((options : any) => {
-		card_id.value = options.id
+		// card_id.value = options.id
 		getBankInfo()
+        getBankCardDetail()
 		getCard()
 	})
 	onShow(() => {
